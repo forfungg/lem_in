@@ -1,3 +1,4 @@
+## Lem_In
 the starting amount of paths will determine the mode
 	- one path means only one ant can exit the starting node at the time
 		-> shortest path (done in python)
