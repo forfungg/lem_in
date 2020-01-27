@@ -6,8 +6,8 @@ n = int(input("Amount of nodes: "))
 res = list()
 i = 0
 while i < n:
-	x = randint(1, 30)
-	y = randint(1, 30)
+	x = randint(1, 100)
+	y = randint(1, 100)
 	if x == 1 and y == 1:
 		continue
 	s = f"{i} {x} {y}"
@@ -43,7 +43,7 @@ print(randint(1, 100))
 print("##start")
 print("S 1 1")
 print("##end")
-print("E 33 33")
+print("E 101 101")
 for l in res:
 	print(l)
 for e in edges:

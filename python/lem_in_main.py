@@ -8,7 +8,7 @@ class LemInGui:
 	def __init__(self, root):
 		self.root = root
 		self.load_file_start()
-		self.ratio = 25
+		self.ratio = 8
 		self.ed_on = tk.IntVar(value=1)
 		self.pth_on = tk.IntVar(value=0)
 		# self.root.geometry("1100x1100")
@@ -122,6 +122,7 @@ class LemInGui:
 			self.colony = read_colony(res)
 			self.colony.pars_pathways()
 			self.get_paths()
+
 	def draw_paths(self):
 		if self.pth_on.get():
 			i = 0
