@@ -1,19 +1,19 @@
 import tkinter as tk
 import tkinter.filedialog
 from random import randint
-from srcs.read_input import open_file, read_colony
+from srcs.colony import Colony
 from sys import argv
 
 class LemInGui:
 	def __init__(self, root):
 		self.root = root
 		self.load_file_start()
-		self.ratio = 8
+		self.ratio = 2
 		self.ed_on = tk.IntVar(value=1)
 		self.pth_on = tk.IntVar(value=0)
 		# self.root.geometry("1100x1100")
 		self.init_tools()
-		self.canva = tk.Canvas(self.root, width=900, height=900, bd=5, relief=tk.GROOVE, bg="black")
+		self.canva = tk.Canvas(self.root, width=1200, height=1200, bd=5, relief=tk.GROOVE, bg="black")
 		self.canva.pack()
 		self.draw_nodes()
 		self.draw_edges()
@@ -31,20 +31,22 @@ class LemInGui:
 		self.toolbar.pack(side = tk.TOP, fill = tk.X)
 
 	def draw_nodes(self):
-		for n in self.colony.nodes:
+		for v in self.colony.nodes:
+			n = self.colony.nodes[v]
 			self.canva.create_rectangle(n.point[0] * self.ratio, n.point[1] * self.ratio, n.point[0] * self.ratio + 10, n.point[1] * self.ratio + 10, fill="green")
 			self.canva.create_text(n.point[0] * self.ratio, n.point[1] * self.ratio - 10, text=n.name, fill="red")
 		self.canva.update()
 	
 	def draw_edges(self):
 		if self.ed_on.get():
-			for n in self.colony.nodes:
-				if len(n.edge) == 0:
+			for v in self.colony.nodes:
+				n = self.colony.nodes[v]
+				if len(n.neighbors) == 0:
 					continue
 				else:
 					j = 0
-					while j < len(n.edge):
-						i = self.colony.get_node_index(n.edge[j])
+					while j < len(n.neighbors):
+						i = n.neighbors[j]
 						x = self.colony.nodes[i].point[0]
 						y = self.colony.nodes[i].point[1]
 						self.canva.create_line(n.point[0] * self.ratio + 5, n.point[1] * self.ratio + 5, x * self.ratio + 5, y * self.ratio + 5, fill="green")
@@ -52,7 +54,7 @@ class LemInGui:
 			self.canva.update()
 	
 	def get_paths_color(self):
-		default_set = ["#ff0000", "#0000ff", "#ff0066", "#00ffff", "#ffffff", "#993399", "#ffccff", "#ffff00"]
+		default_set = ["#ff0000", "#0000ff", "#ff0066", "#00ffff", "#ffffff", "#993399", "#ffa31a", "#ffccff", "#ffff00"]
 		self.paths_colorset = default_set.copy()
 		if len(self.paths_colorset) < len(self.all_paths):
 			i = len(self.paths_colorset)
@@ -72,12 +74,14 @@ class LemInGui:
 		color = self.paths_colorset[i]
 		j = 0
 		while j < len(path) - 1:
-			s = self.colony.get_node_index(path[j])
-			x1 = self.colony.nodes[s].point[0]
-			y1 = self.colony.nodes[s].point[1]
-			e = self.colony.get_node_index(path[j + 1])
-			x2 = self.colony.nodes[e].point[0]
-			y2 = self.colony.nodes[e].point[1]
+			n1 = self.colony.nodes[path[j]]
+			x1 = n1.point[0]
+			y1 = n1.point[1]
+			n2 = self.colony.nodes[path[j + 1]]
+			x2 = n2.point[0]
+			y2 = n2.point[1]
+			self.canva.create_rectangle(n1.point[0] * self.ratio, n1.point[1] * self.ratio, n1.point[0] * self.ratio + 10, n1.point[1] * self.ratio + 10, fill=color)
+			self.canva.create_rectangle(n2.point[0] * self.ratio, n2.point[1] * self.ratio, n2.point[0] * self.ratio + 10, n2.point[1] * self.ratio + 10, fill=color)
 			self.canva.create_line(x1 * self.ratio + 5, y1 * self.ratio + j + 1, x2 * self.ratio + 5, y2 * self.ratio + j, fill=color)
 			self.canva.create_line(x1 * self.ratio + 5, y1 * self.ratio + j + 2, x2 * self.ratio + 5, y2 * self.ratio + j, fill=color)
 			
@@ -86,7 +90,10 @@ class LemInGui:
 	
 	def get_paths(self):
 		self.all_paths = list()
-		self.shortest, self.all_paths = self.colony.min_path()
+		self.colony.search_usefulpaths()
+		self.all_paths = self.colony.pars_unique()
+		# self.all_paths.append(self.colony.shortest_path())
+		self.shortest = len(self.all_paths[0])
 		self.get_paths_color()
 		self.path_on = list()
 		i = 0
@@ -109,7 +116,9 @@ class LemInGui:
 		if f != None:
 			res = f.read()
 			f.close()
-			self.colony = read_colony(res)
+			del(self.colony)
+			self.colony = Colony()
+			self.colony.read_colony(res)
 			self.colony.pars_pathways()
 			self.get_paths()
 			self.reset_graph()
@@ -119,7 +128,8 @@ class LemInGui:
 		if f != None:
 			res = f.read()
 			f.close()
-			self.colony = read_colony(res)
+			self.colony = Colony()
+			self.colony.read_colony(res)
 			self.colony.pars_pathways()
 			self.get_paths()
 

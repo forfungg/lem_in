@@ -8,6 +8,23 @@ the starting (ending) amount of paths will determine the mode
 
 [Unit test](https://github.com/TBouder/lem-in_test)
 
+Amount of turns required for N ants
+1 path l = [len(p) - 1] (amount of vertices minus the starting point)
+		l + N - 1
+2 paths l1, l2
+		r = max(l1, l2) + N - 1 is the maximum amount of turns
+		l = min(l1, l2) + N - 1 is the minimum
+		d = r - l is the flow difference
+		therefore
+		a1 - amount of ants for min(l1, l2)
+		a2 - amount of ants for max(l1, l2)
+		a1 + d + a2 = N
+		so up to d + 1 ants we use only min(l1, l2) (prefering single route over 2 if the total amount of turns is equal)
+		d + 1 < N we use both paths in ratio 1 : (d + 1)
+multiple paths l1, l2 ... lx in sorted order
+
+
+
 # Constrains/ General
 - no memory leaks
 - Allowed:

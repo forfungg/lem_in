@@ -1,171 +1,205 @@
 from collections import deque
 
+def read_node_def(text):
+	elems=text.split()
+	if len(elems) != 3:
+		print("ERROR")
+		exit()
+	return elems
+
+def read_edge_info(text):
+	elems=text.split('-')
+	if len(elems) != 2:
+		print("Fucked up path")
+		exit()
+	return elems
+
 class Node():
 	def __init__(self, name, x, y):
 		self.name = name
-		self.edge = list()
+		self.neighbors = list()
 		self.point = (x, y)
 		self.start = False
 		self.end = False
 		self.empty = True
+		self.lvl = 2147483646
+		self.visited = False
 	
 	def __str__(self):
-		str = f"Node: {self.name}\nCoords: {self.point}\nEdges: {self.edge}\nEmpty: {self.empty}\nParam: "
+		str = f"Node: {self.name}\nCoords: {self.point}\nNeighbors: {self.neighbors}\nEmpty: {self.empty}\nParam: "
 		if self.start:
 			str += "Start"
 		elif self.end:
 			str += "End"
 		else:
 			str += "Normal"
+		str += f"\nLevel: {self.lvl}\nVisited: {self.visited}"
 		return str + "\n"
+	
+	def add_neighbor(self, v):
+		if v not in self.neighbors:
+			self.neighbors.append(v)
+			self.neighbors.sort()
 
 class Colony():
 	def __init__(self):
-		self.nodes = list()
+		self.nodes = dict()
 		self.pathways = list()
 		self.size = 0
 		self.ants = 0
+		self.start = None
+		self.end = None
+		self.all_paths = list()
+		self.unique_paths = list()
 	
 	def __str__(self):
 		str = f"Colony Lem_In\nAnts: {self.ants}\nPathways: {self.pathways}\n"
 		for node in self.nodes:
-			str += "\n" + node.__str__()
+			str += "\n" + self.nodes[node].__str__()
 		return str
 	
+	def add_node(self, node):
+		if isinstance(node, Node) and node.name not in self.nodes:
+			self.nodes[node.name] = node
+			return True
+		else:
+			return False
+	
+	def read_colony(self, colony_text):
+		i = 0
+		colony_object = colony_text.split("\n")
+		while i < len(colony_object):
+			if colony_object[i] == "##start":
+				i += 1
+				ret = read_node_def(colony_object[i])
+				node = Node(ret[0], int(ret[1]), int(ret[2]))
+				node.start = True
+				if not self.add_node(node):
+					print("Error adding node")
+				self.start = node.name
+			elif colony_object[i] == "##end":
+				i += 1
+				ret = read_node_def(colony_object[i])
+				node = Node(ret[0], int(ret[1]), int(ret[2]))
+				node.end = True
+				if not self.add_node(node):
+					print("Error adding node")
+				self.end = node.name
+			elif colony_object[i][0] == '#':
+				pass
+			elif " " in colony_object[i]:
+				ret = read_node_def(colony_object[i])
+				node = Node(ret[0], int(ret[1]), int(ret[2]))
+				if not self.add_node(node):
+					print("Error adding node")
+			elif "-" in colony_object[i]:
+				ret = read_edge_info(colony_object[i])
+				self.pathways.append(ret)
+			elif colony_object[i].isdigit():
+				self.ants = int(colony_object[i])
+			else:
+				print(f"Some shit went wrong @reading the colony instructions.\nLine: \"{colony_object[i]}\"")
+				exit()
+			i += 1
+
 	def pars_pathways(self):
-		self.graph = dict()
-		i = 0
-		while i < len(self.nodes):
-			k = 0
-			self.graph[self.nodes[i].name] = []
-			while k < len(self.pathways):
-				if self.nodes[i].name == self.pathways[k][0]:
-					self.nodes[i].edge.append(self.pathways[k][1])
-					self.graph[self.nodes[i].name].append(self.pathways[k][1])
-				elif self.nodes[i].name == self.pathways[k][1]:
-					self.nodes[i].edge.append(self.pathways[k][0])
-					self.graph[self.nodes[i].name].append(self.pathways[k][0])
-				k += 1
-			i += 1
-		print(self.graph)
-		# self.first_path()
-		# self.find_all_paths()
-		self.find_shortest_bsf()
+		for edge in self.pathways:
+			if edge[0] in self.nodes and edge[1] in self.nodes:
+				self.nodes[edge[0]].add_neighbor(edge[1])
+				self.nodes[edge[1]].add_neighbor(edge[0])
+			else:
+				print(f"Couldn't find either node: {edge}")
 
-	def get_node_index(self, name):
-		i = 0
-		while i < len(self.nodes):
-			if self.nodes[i].name == name:
-				return i
-			i += 1
-		print(f"Cannot find {name} in nodes")
-		exit()
+	def bfs(self, node):
+		if not isinstance(node, Node):
+			print("Trying BFS with no-node type")
+			exit()
+		q = deque()
+		node.lvl = 0
+		node.visited = True
+		for n in node.neighbors:
+			self.nodes[n].lvl = node.lvl + 1
+			q.append(n)
 		
+		while len(q) > 0:
+			u = q.popleft()
+			node_u = self.nodes[u]
+			node_u.visited = True
 
-	def min_path(self):
-		'''
-		Returns minimum amount of steps to travers from start to end
-		'''
-		visited = list()
-		all_paths = list()
-		def search_path(node, visited, c, best):
-			visited.append(node.name)
-			if not node.start:
-				c += 1
-			if c > best:
-				return -1
-			if node.end:
-				if len(visited) < best:
-					best = len(visited)
-				all_paths.append(visited.copy())
-				print(visited)
-				visited.pop(-1)
-				return c
-			elif len(node.edge) == 0:
-				visited.pop(-1)
-				return -1
-			for next in node.edge:
-				if next not in visited:
-					i = self.get_node_index(next)
-					ret = search_path(self.nodes[i], visited, c, best)
-					if ret != -1 and ret < best:
-						best = ret
-			visited.pop(-1)
-			return best
-		c = search_path(self.nodes[0], visited, 0, 9999999)
-		return c, all_paths
-
-	def first_path(self):
-		def find_path(graph, start, end, path = []):
-			path = path + [start]
-			if start == end:
-				return path
-			if not start in graph.keys():
-				return None
-			for node in graph[start]:
-				if node not in path:
-					newpath = find_path(graph, node, end, path)
-					if newpath: return newpath
-			return None
-		ret = find_path(self.graph, self.nodes[0].name, self.nodes[-1].name)
-		print("First Paths")
-		print(ret)
+			for v in node_u.neighbors:
+				node_v = self.nodes[v]
+				if not node_v.visited:
+					q.append(v)
+					if node_v.lvl > node_u.lvl + 1:
+						node_v.lvl = node_u.lvl + 1
 	
-	def find_all_paths(self):
-		# super unefficient for larger graphs
-		def find_all(graph, start, end, path = []):
-			path = path + [start]
-			if start == end:
-				return [path]
-			if not start in graph.keys():
-				return []
-			all_paths = []
-			for node in graph[start]:
-				if node not in path:
-					new_paths = find_all(graph, node, end, path)
-					for new in new_paths:
-						if not new in all_paths:
-							all_paths.append(new)
-			return all_paths
-		ret = find_all(self.graph, self.nodes[0].name, self.nodes[-1].name)
-		print("All Paths")
-		i = 1
-		for p in ret:
-			print(f"{i}: {p}")
+	def reset_visit(self):
+		for n in self.nodes:
+			self.nodes[n].visited = False
+	
+	def shortest_path(self):
+		self.reset_visit()
+		q = [[self.nodes[self.start].name]]
+		
+		while q:
+			path = q.pop(0)
+			node = self.nodes[path[-1]]
+			if not node.visited:
+				for n in node.neighbors:
+					new_path = list(path)
+					new_path.append(n)
+					q.append(new_path)
+					if n == self.end:
+						if new_path in self.all_paths:
+							q.pop(-1)
+						else:
+							return new_path
+			node.visited = True
+		return None
+	
+	def search_usefulpaths(self):
+		if len(self.nodes[self.start].neighbors) < len(self.nodes[self.end].neighbors):
+			limit = len(self.nodes[self.start].neighbors)
+		else:
+			limit = len(self.nodes[self.end].neighbors)
+		while len(self.unique_paths) < limit:
+			new_path = self.shortest_path()
+			if new_path == None:
+				break
+			self.all_paths.append(new_path)
+			self.pars_unique()
+		print(self.all_paths)
+		return self.all_paths
+
+	def pars_unique(self):
+		self.unique_paths = self.all_paths.copy()
+		def check_in(a, b):
+			for p in a:
+				if p in b:
+					return True
+			return False
+		i = 0
+		while i < len(self.unique_paths):
+			a = self.unique_paths[i][1:-1]
+			j = i + 1
+			while j < len(self.unique_paths):
+				b = self.unique_paths[j][1:-1]
+				if check_in(a, b):
+					self.unique_paths.pop(j)
+					j = i + 1
+					continue
+				else:
+					j += 1
 			i += 1
-	
-	def find_shortest_path(self):
-		def find_shortest(graph, start, end, path = []):
-			path = path + [start]
-			if start == end:
-				return path
-			if not start in graph.keys():
-				return None
-			shortest = None
-			for node in graph[start]:
-				if node not in path:
-					new = find_shortest(graph, node, end, path)
-					if new:
-						if not shortest or len(new) < len(shortest):
-							shortest = new
-			return shortest
-		ret = find_shortest(self.graph, self.nodes[0].name, self.nodes[-1].name)
-		print("Shortest Path")
-		print(ret)
-	
-	def find_shortest_bsf(self):
-		def find_shortest_path(graph, start, end):
-			dist = {start: [start]}
-			q = deque(start)
-			print(q)
-			while len(q):
-				at = q.popleft()
-				print(at)
-				for next in graph[at]:
-					if next not in dist:
-						dist[next] = [dist[at], next]
-						q.append(next)
-			return dist.get(end)
-		ret = find_shortest_path(self.graph, self.nodes[0].name, self.nodes[-1].name)
-		print("Shortest Path BSF")
-		print(ret)
+		return self.unique_paths
+
+
+if __name__ == "__main__":
+	my_colony = Colony()
+	with open("../../resources/lem_map_100", "r") as f:
+		ret = f.read()
+	my_colony.read_colony(ret)
+	my_colony.pars_pathways()
+	my_colony.bfs(my_colony.nodes[my_colony.start])
+	print(my_colony)
+	print(my_colony.shortest_path())
