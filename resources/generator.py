@@ -10,8 +10,8 @@ filename = input("Filename?\n")
 res = list()
 i = 0
 while i < n:
-	x = randint(20, 500)
-	y = randint(20, 500)
+	x = randint(10, 490)
+	y = randint(10, 490)
 	if x == 1 and y == 1:
 		continue
 	s = f"{i} {x} {y}"
@@ -45,7 +45,7 @@ while i < m:
 		i += 1
 with open(filename, "w+") as f:
 	ant = randint(1, 100)
-	f.write(f"#Given {n} nodes, {d}% density\n#ANTS\n{ant}\n##start\nS 15 15\n##end\nE 515 515\n")
+	f.write(f"#Given {n} nodes, {d}% density\n#ANTS\n{ant}\n##start\nS 6 6\n##end\nE 495 495\n")
 	i = 0
 	for l in res:
 		f.write(f"{l}\n")
