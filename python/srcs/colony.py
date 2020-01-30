@@ -26,10 +26,11 @@ class Ant:
 	
 	def add_path(self, path):
 		self.path = path.copy()
+		self.path.pop(0)
 	
 	def move(self):
 		if len(self.path) > 0:
-			self.position = self.path.pop(0)
+			self.pos = self.path.pop(0)
 
 class Node():
 	def __init__(self, name, x, y):
@@ -275,9 +276,21 @@ class Colony():
 	def create_turns(self):
 		self.identify_ants()
 		self.assign_paths()
-		for a in self.ants_list:
-			print(f"{a.name}: {a.path}")
-
+		def check_if_move():
+			for a in self.ants_list:
+				if len(a.path) > 0:
+					return True
+			return False
+		self.turns = list()
+		while check_if_move():
+			s = ""
+			for a in self.ants_list:
+				a.move()
+				s += f"{a} "
+			s += "\n"
+			self.turns.append(s)
+		for l in self.turns:
+			print(l)
 
 
 if __name__ == "__main__":
