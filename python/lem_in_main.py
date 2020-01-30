@@ -109,6 +109,7 @@ class LemInGui:
 		print(self.shortest)
 		print(self.all_paths)
 		print(self.path_on)
+		self.colony.distribute_ants()
 
 	def reset_graph(self):
 		self.canva.delete(tk.ALL)

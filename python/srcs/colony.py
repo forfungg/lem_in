@@ -51,6 +51,7 @@ class Colony():
 		self.end = None
 		self.all_paths = list()
 		self.unique_paths = list()
+		self.ants_to_path = list()
 	
 	def __str__(self):
 		str = f"Colony Lem_In\nAnts: {self.ants}\nPathways: {self.pathways}\n"
@@ -193,6 +194,48 @@ class Colony():
 			i += 1
 		return self.unique_paths
 
+	def distribute_ants(self):
+		def get_filla(lst):
+			tmp = lst.copy()
+			pt = 0
+			for p in tmp:
+				pt += len(p)
+			ro = len(tmp[-1]) * len(tmp)
+			to_fill = ro - pt
+			if to_fill > self.ants:
+				tmp.pop(-1)
+				return get_filla(tmp)
+			else:
+				return len(tmp)
+
+		if len(self.unique_paths) == 0:
+			self.ants_to_path = None
+		elif len(self.unique_paths) == 1:
+			self.ants_to_path = [self.ants]
+		else:
+			i = 0
+			while i < len(self.unique_paths):
+				self.ants_to_path.append(0)
+				i += 1
+			# get rectangle
+			limit = get_filla(self.unique_paths)
+			i = 0
+			while i < limit - 1:
+				self.ants_to_path[i] = len(self.unique_paths[limit - 1]) - len(self.unique_paths[i])
+				i += 1
+			current = self.ants - sum(self.ants_to_path)
+			tbd = current - (current % limit)
+			current -= tbd
+			tbd = int(tbd / limit)
+			i = 0
+			while i < limit:
+				self.ants_to_path[i] += tbd
+				i += 1
+			while current > 0:
+				self.ants_to_path[current - 1] += 1
+				current -= 1
+		for i in range(len(self.unique_paths)):
+			print(f"Ants {self.ants_to_path[i]} for path {self.unique_paths[i]}")
 
 if __name__ == "__main__":
 	my_colony = Colony()
