@@ -13,6 +13,23 @@ def read_edge_info(text):
 		print("Fucked up path")
 		exit()
 	return elems
+class Ant:
+	def __init__(self, name, position):
+		self.name = name
+		self.pos = position
+		self.path = list()
+		self.color = "#ffffff"
+		self.size = 15
+	
+	def __str__(self):
+		return f"{self.name}-{self.pos}"
+	
+	def add_path(self, path):
+		self.path = path.copy()
+	
+	def move(self):
+		if len(self.path) > 0:
+			self.position = self.path.pop(0)
 
 class Node():
 	def __init__(self, name, x, y):
@@ -47,6 +64,7 @@ class Colony():
 		self.pathways = list()
 		self.size = 0
 		self.ants = 0
+		self.ants_list = list()
 		self.start = None
 		self.end = None
 		self.all_paths = list()
@@ -236,6 +254,31 @@ class Colony():
 				current -= 1
 		for i in range(len(self.unique_paths)):
 			print(f"Ants {self.ants_to_path[i]} for path {self.unique_paths[i]}")
+	
+	def identify_ants(self):
+		for i in range(1 , self.ants + 1):
+			a = Ant(f"L{i}", self.start)
+			self.ants_list.append(a)
+
+	def assign_paths(self):
+		tmp = self.ants_to_path.copy()
+		a = 0
+		while a < self.ants:
+			i = 0
+			while i < len(self.unique_paths):
+				if tmp[i] > 0:
+					self.ants_list[a].add_path(self.unique_paths[i])
+					a += 1
+					tmp[i] -= 1
+				i += 1
+		
+	def create_turns(self):
+		self.identify_ants()
+		self.assign_paths()
+		for a in self.ants_list:
+			print(f"{a.name}: {a.path}")
+
+
 
 if __name__ == "__main__":
 	my_colony = Colony()
