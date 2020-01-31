@@ -20,6 +20,7 @@ class Ant:
 		self.path = list()
 		self.color = "#ffffff"
 		self.size = 15
+		self.visible = True
 	
 	def __str__(self):
 		return f"{self.name}-{self.pos}"
@@ -272,6 +273,26 @@ class Colony():
 					a += 1
 					tmp[i] -= 1
 				i += 1
+	
+	def get_ants_dict(self):
+		ret_ants = list()
+		for i in range(1 , self.ants + 1):
+			ant = Ant(f"L{i}", self.start)
+			ret_ants.append(ant)
+		tmp = self.ants_to_path.copy()
+		a = 0
+		while a < self.ants:
+			i = 0
+			while i < len(self.unique_paths):
+				if tmp[i] > 0:
+					ret_ants[a].add_path(self.unique_paths[i])
+					a += 1
+					tmp[i] -= 1
+				i += 1
+		res = dict ()
+		for a in ret_ants:
+			res[a.name] = a
+		return res
 		
 	def create_turns(self):
 		self.identify_ants()
@@ -283,15 +304,23 @@ class Colony():
 			return False
 		self.turns = list()
 		while check_if_move():
-			s = ""
+			turn = dict()
 			for a in self.ants_list:
 				if self.move_one_ant(a):
-					s += f"{a} "
-			s += "\n"
-			self.turns.append(s)
-		for l in self.turns:
-			print(l)
+					turn[a.name] = a.pos
+			self.turns.append(turn)
+		print(self.turns)
+		self.print_turns()
 	
+	def print_turns(self):
+		s = ""
+		for turn in self.turns:
+			if s != "":
+				s += "\n"
+			for key in turn:
+				s += f"{key}-{turn[key]} "
+		print(s)
+
 	def move_one_ant(self, ant):
 		c_node = self.nodes[ant.pos]
 		if c_node.end or len(ant.path) == 0:

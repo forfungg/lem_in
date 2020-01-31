@@ -86,3 +86,10 @@ multiple paths l1, l2 ... lx in sorted order
 - Bonus
 	- A very efficient algorithm
 	- Graphic visualiser (if well made can be worth more than 1 point)
+
+
+# Python Version
+Plotting graph
+Finds all unique shortest paths that can be utilized
+Assigns Ants to correct paths
+Prints desired output for moving ants across the graph
