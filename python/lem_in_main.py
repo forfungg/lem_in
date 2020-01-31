@@ -34,6 +34,8 @@ class LemInGui:
 		self.chb1.pack(side=tk.LEFT, padx=2, pady=2)
 		self.chb2 = tk.Checkbutton(self.toolbar, text="Paths", variable=self.pth_on, onvalue=1,  offvalue=0, command=self.reset_graph)
 		self.chb2.pack(side=tk.LEFT, padx=2, pady=2)
+		self.scl = tk.Scale(self.toolbar, from_=1, to=20, orient=tk.HORIZONTAL, command=self.change_scale)
+		self.scl.pack(side=tk.LEFT, padx=2, pady=2)
 		self.toolbar.pack(side = tk.TOP, fill = tk.X)
 
 	def draw_nodes(self):
@@ -147,6 +149,10 @@ class LemInGui:
 			while i < len(self.all_paths):
 				self.show_path_no(i)
 				i += 1
+
+	def change_scale(self, value):
+		self.ratio = int(value)
+		self.reset_graph()
 
 if __name__ == "__main__":
 	root = tk.Tk()

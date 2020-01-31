@@ -285,13 +285,25 @@ class Colony():
 		while check_if_move():
 			s = ""
 			for a in self.ants_list:
-				a.move()
-				s += f"{a} "
+				if self.move_one_ant(a):
+					s += f"{a} "
 			s += "\n"
 			self.turns.append(s)
 		for l in self.turns:
 			print(l)
-
+	
+	def move_one_ant(self, ant):
+		c_node = self.nodes[ant.pos]
+		if c_node.end or len(ant.path) == 0:
+			return False
+		n_node = self.nodes[ant.path[0]]
+		if n_node.empty or n_node.end:
+			ant.move()
+			c_node.empty = True
+			n_node.empty = False
+			return True
+		else:
+			return False
 
 if __name__ == "__main__":
 	my_colony = Colony()
