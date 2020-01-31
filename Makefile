@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/31 10:58:17 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/31 16:17:03 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ RED			=	\033[0;31m
 
 NAME				= lem_in
 
-LEM_IN_SRCS			= main.c
+LEM_IN_SRCS			= main.c\
+					input_process.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 
