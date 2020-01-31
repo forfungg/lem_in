@@ -13,6 +13,24 @@ def read_edge_info(text):
 		print("Fucked up path")
 		exit()
 	return elems
+class Ant:
+	def __init__(self, name, position):
+		self.name = name
+		self.pos = position
+		self.path = list()
+		self.color = "#ffffff"
+		self.size = 15
+	
+	def __str__(self):
+		return f"{self.name}-{self.pos}"
+	
+	def add_path(self, path):
+		self.path = path.copy()
+		self.path.pop(0)
+	
+	def move(self):
+		if len(self.path) > 0:
+			self.pos = self.path.pop(0)
 
 class Node():
 	def __init__(self, name, x, y):
@@ -47,10 +65,12 @@ class Colony():
 		self.pathways = list()
 		self.size = 0
 		self.ants = 0
+		self.ants_list = list()
 		self.start = None
 		self.end = None
 		self.all_paths = list()
 		self.unique_paths = list()
+		self.ants_to_path = list()
 	
 	def __str__(self):
 		str = f"Colony Lem_In\nAnts: {self.ants}\nPathways: {self.pathways}\n"
@@ -192,6 +212,85 @@ class Colony():
 					j += 1
 			i += 1
 		return self.unique_paths
+
+	def distribute_ants(self):
+		def get_filla(lst):
+			tmp = lst.copy()
+			pt = 0
+			for p in tmp:
+				pt += len(p)
+			ro = len(tmp[-1]) * len(tmp)
+			to_fill = ro - pt
+			if to_fill > self.ants:
+				tmp.pop(-1)
+				return get_filla(tmp)
+			else:
+				return len(tmp)
+
+		if len(self.unique_paths) == 0:
+			self.ants_to_path = None
+		elif len(self.unique_paths) == 1:
+			self.ants_to_path = [self.ants]
+		else:
+			i = 0
+			while i < len(self.unique_paths):
+				self.ants_to_path.append(0)
+				i += 1
+			# get rectangle
+			limit = get_filla(self.unique_paths)
+			i = 0
+			while i < limit - 1:
+				self.ants_to_path[i] = len(self.unique_paths[limit - 1]) - len(self.unique_paths[i])
+				i += 1
+			current = self.ants - sum(self.ants_to_path)
+			tbd = current - (current % limit)
+			current -= tbd
+			tbd = int(tbd / limit)
+			i = 0
+			while i < limit:
+				self.ants_to_path[i] += tbd
+				i += 1
+			while current > 0:
+				self.ants_to_path[current - 1] += 1
+				current -= 1
+		for i in range(len(self.unique_paths)):
+			print(f"Ants {self.ants_to_path[i]} for path {self.unique_paths[i]}")
+	
+	def identify_ants(self):
+		for i in range(1 , self.ants + 1):
+			a = Ant(f"L{i}", self.start)
+			self.ants_list.append(a)
+
+	def assign_paths(self):
+		tmp = self.ants_to_path.copy()
+		a = 0
+		while a < self.ants:
+			i = 0
+			while i < len(self.unique_paths):
+				if tmp[i] > 0:
+					self.ants_list[a].add_path(self.unique_paths[i])
+					a += 1
+					tmp[i] -= 1
+				i += 1
+		
+	def create_turns(self):
+		self.identify_ants()
+		self.assign_paths()
+		def check_if_move():
+			for a in self.ants_list:
+				if len(a.path) > 0:
+					return True
+			return False
+		self.turns = list()
+		while check_if_move():
+			s = ""
+			for a in self.ants_list:
+				a.move()
+				s += f"{a} "
+			s += "\n"
+			self.turns.append(s)
+		for l in self.turns:
+			print(l)
 
 
 if __name__ == "__main__":
