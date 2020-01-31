@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/15 18:07:41 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/19 16:26:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	printf("suka\n");
+	int x;
+	int y;
+	int len;
+
+	x = 0;
+	y = 0;
+	len = ft_strlen(needle);
+	if (*needle)
+	{
+		while (haystack[x])
+		{
+			while (needle[y] == haystack[x + y])
+			{
+				if (y == len - 1)
+					return ((char*)&haystack[x]);
+				y++;
+			}
+			y = 0;
+			x++;
+		}
+		return (0);
+	}
+	else
+		return ((char*)haystack);
 }

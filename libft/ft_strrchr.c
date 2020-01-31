@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/16 16:14:56 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 11:06:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include <stdio.h>
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	printf("suka\n");
+	int len;
+
+	len = ft_strlen(s);
+	while (len >= 0)
+	{
+		if (c == s[len])
+			return ((char*)&s[len]);
+		len--;
+	}
+	return (0);
 }

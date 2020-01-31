@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/17 17:31:38 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 14:00:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strnew(size_t size)
 {
-	printf("suka\n");
+	char *str;
+
+	if (!(str = (char *)malloc((size + 1) * sizeof(char))))
+		return (0);
+	else
+	{
+		ft_bzero(str, size + 1);
+	}
+	return (str);
 }

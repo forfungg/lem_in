@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/18 11:24:13 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 14:56:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	printf("suka\n");
+	unsigned int x;
+
+	x = 0;
+	if (s == 0 || f == 0)
+		return ;
+	while (s != 0 && *s)
+	{
+		f(x, s++);
+		x++;
+	}
 }

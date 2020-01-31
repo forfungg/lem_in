@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/15 17:51:56 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 12:07:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
 {
-	printf("suka\n");
+	size_t x;
+	size_t y;
+
+	y = 0;
+	x = ft_strlen(s1);
+	while (s2[y] != '\0' && y < n)
+	{
+		s1[x] = s2[y];
+		x++;
+		y++;
+	}
+	s1[x] = '\0';
+	return (s1);
 }

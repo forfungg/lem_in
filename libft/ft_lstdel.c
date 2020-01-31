@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/21 16:45:38 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 16:51:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	printf("suka\n");
+	t_list	*temp;
+
+	if (*alst && del)
+	{
+		while (*alst)
+		{
+			temp = *alst;
+			del((*alst)->content, (*alst)->content_size);
+			free(*alst);
+			*alst = temp->next;
+		}
+	}
 }

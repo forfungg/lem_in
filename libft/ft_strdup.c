@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/15 16:14:53 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/22 11:21:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strdup(const char *src)
 {
-	printf("suka\n");
+	int		x;
+	int		len;
+	char	*dest;
+
+	x = 0;
+	len = ft_strlen(src);
+	if (!(dest = (char *)malloc(sizeof(*dest) * (len + 1))))
+		return (0);
+	while (x <= len)
+	{
+		dest[x] = src[x];
+		x++;
+	}
+	return (dest);
 }

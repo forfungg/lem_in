@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/18 12:29:42 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 15:09:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strtrim(char const *s)
 {
-	printf("suka\n");
+	unsigned int	strt;
+	size_t			end;
+	char			*str;
+
+	if (!s)
+		return (0);
+	end = ft_strlen(s);
+	strt = 0;
+	while (s[strt] != '\0' && \
+			(s[strt] == ' ' || s[strt] == '\t' || s[strt] == '\n'))
+		strt++;
+	while (strt < end && \
+			(s[end - 1] == ' ' || s[end - 1] == '\t' || s[end - 1] == '\n'))
+		end--;
+	return (str = ft_strsub(s, strt, (end - strt)));
 }

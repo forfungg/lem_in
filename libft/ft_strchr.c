@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/16 12:27:06 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/19 16:25:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	printf("suka\n");
+	int len;
+	int x;
+
+	len = ft_strlen(s);
+	x = 0;
+	while (x <= len)
+	{
+		if (c == s[x])
+			return ((char*)&s[x]);
+		x++;
+	}
+	return (0);
 }

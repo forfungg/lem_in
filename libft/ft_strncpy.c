@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/15 17:12:50 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 12:04:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	printf("suka\n");
+	size_t	index;
+
+	index = 0;
+	while (index < len && src[index] != '\0')
+	{
+		dst[index] = src[index];
+		index++;
+	}
+	while (index < len)
+	{
+		dst[index] = '\0';
+		index++;
+	}
+	return (dst);
 }

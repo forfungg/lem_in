@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/18 11:56:10 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 15:07:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	printf("suka\n");
+	char	*str;
+	size_t	x;
+
+	x = 0;
+	if (!s)
+		return (0);
+	if (!(str = ft_strnew(len)))
+		return (0);
+	while (x < len)
+	{
+		str[x] = s[start];
+		x++;
+		start++;
+	}
+	str[x] = '\0';
+	return (str);
 }

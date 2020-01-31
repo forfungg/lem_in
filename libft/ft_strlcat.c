@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/31 10:57:23 by asolopov         ###   ########.fr       */
+/*   Created: 2019/10/19 14:04:06 by asolopov          #+#    #+#             */
+/*   Updated: 2019/10/21 12:33:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	printf("suka\n");
+	size_t	dlen;
+	size_t	slen;
+
+	dlen = 0;
+	slen = ft_strlen(src);
+	while (*dst && dstsize > 0)
+	{
+		dst++;
+		dlen++;
+		dstsize--;
+	}
+	while (*src && dstsize > 1)
+	{
+		*dst++ = *src++;
+		dstsize--;
+	}
+	if (dstsize == 1 || *src == 0)
+		*dst = '\0';
+	return (slen + dlen);
 }
