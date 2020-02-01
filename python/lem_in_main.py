@@ -32,7 +32,7 @@ class LemInGui:
 		self.tb1.pack(side=tk.LEFT, padx=2, pady=2)
 		self.tb2 = tk.Button(self.toolbar, text="Redraw", command=self.reset_graph)
 		self.tb2.pack(side=tk.LEFT, padx=2, pady=2)
-		self.chb1 = tk.Checkbutton(self.toolbar, text="Edges", variable=self.ed_on, onvalue=1,  offvalue=0, command=self.reset_graph)
+		self.chb1 = tk.Checkbutton(self.toolbar, text="Edges", variable=self.ed_on, onvalue=1,  offvalue=0, command=self.checkbox_edges)
 		self.chb1.pack(side=tk.LEFT, padx=2, pady=2)
 		self.chb2 = tk.Checkbutton(self.toolbar, text="Paths", variable=self.pth_on, onvalue=1,  offvalue=0, command=self.reset_graph)
 		self.chb2.pack(side=tk.LEFT, padx=2, pady=2)
@@ -46,14 +46,18 @@ class LemInGui:
 		self.toolbar.pack(side = tk.TOP, fill = tk.X)
 
 	def draw_nodes(self):
+		self.nodes_vfx = list()
 		for v in self.colony.nodes:
 			n = self.colony.nodes[v]
-			self.canva.create_rectangle(n.point[0] * self.ratio, n.point[1] * self.ratio, n.point[0] * self.ratio + 10, n.point[1] * self.ratio + 10, fill="green")
-			self.canva.create_text(n.point[0] * self.ratio, n.point[1] * self.ratio - 10, text=n.name, fill="red")
+			new = self.canva.create_rectangle(n.point[0] * self.ratio, n.point[1] * self.ratio, n.point[0] * self.ratio + 10, n.point[1] * self.ratio + 10, fill="green")
+			self.nodes_vfx.append(new)
+			new = self.canva.create_text(n.point[0] * self.ratio, n.point[1] * self.ratio - 10, text=n.name, fill="red")
+			self.nodes_vfx.append(new)
 		self.canva.update()
 	
 	def draw_edges(self):
 		if self.ed_on.get():
+			self.edges_vfx = list()
 			for v in self.colony.nodes:
 				n = self.colony.nodes[v]
 				if len(n.neighbors) == 0:
@@ -64,9 +68,20 @@ class LemInGui:
 						i = n.neighbors[j]
 						x = self.colony.nodes[i].point[0]
 						y = self.colony.nodes[i].point[1]
-						self.canva.create_line(n.point[0] * self.ratio + 5, n.point[1] * self.ratio + 5, x * self.ratio + 5, y * self.ratio + 5, fill="green")
+						new = self.canva.create_line(n.point[0] * self.ratio + 5, n.point[1] * self.ratio + 5, x * self.ratio + 5, y * self.ratio + 5, fill="green")
 						j += 1
+						self.edges_vfx.append(new)
 			self.canva.update()
+	
+	def hide_vfx(self, vfx_list):
+		for vfx in vfx_list:
+			self.canva.itemconfigure(vfx, state=tk.HIDDEN)
+		self.canva.update()
+	
+	def show_vfx(self, vfx_list):
+		for vfx in vfx_list:
+			self.canva.itemconfigure(vfx, state=tk.NORMAL)
+		self.canva.update()
 	
 	def get_paths_color(self):
 		default_set = ["#ff0000", "#0000ff", "#ff0066", "#00ffff", "#ffffff", "#993399", "#ffa31a", "#ffccff", "#ffff00"]
@@ -124,6 +139,15 @@ class LemInGui:
 		self.colony.create_turns()
 		self.ants = self.colony.get_ants_dict()
 		self.turn = 0
+
+	def checkbox_edges(self):
+		if self.ed_on.get():
+			if self.edges_vfx:
+				self.show_vfx(self.edges_vfx)
+			else:
+				self.draw_edges()
+		else:
+			self.hide_vfx(self.edges_vfx)
 
 	def reset_graph(self):
 		self.canva.delete(tk.ALL)
@@ -200,7 +224,7 @@ class LemInGui:
 		sy = self.colony.nodes[origin].point[1]
 		ex = self.colony.nodes[destination].point[0]
 		ey = self.colony.nodes[destination].point[1]
-		speed = 0.001
+		speed = 0.005
 		margin = 0.1
 		x_ch = speed * abs(sx - ex)
 		y_ch = speed * abs(sy - ey)
