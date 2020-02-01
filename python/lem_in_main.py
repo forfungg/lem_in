@@ -119,6 +119,7 @@ class LemInGui:
 		print(self.all_paths)
 		print(self.path_on)
 		self.ants = dict()
+		self.ants_geometry = list()
 		self.colony.distribute_ants()
 		self.colony.create_turns()
 		self.ants = self.colony.get_ants_dict()
@@ -166,12 +167,15 @@ class LemInGui:
 		self.reset_graph()
 
 	def draw_ants(self):
+		for a in self.ants_geometry:
+			self.canva.delete(a)
 		for key in self.ants:
 			a = self.ants[key]
 			if a.visible:
 				x = self.colony.nodes[a.pos].point[0]
 				y = self.colony.nodes[a.pos].point[1]
-				self.canva.create_rectangle(x * self.ratio, y * self.ratio, x * self.ratio + a.size, y * self.ratio + a.size, fill=a.color)
+				new = self.canva.create_rectangle(x * self.ratio, y * self.ratio, x * self.ratio + a.size, y * self.ratio + a.size, fill=a.color)
+				self.ants_geometry.append(new)
 		
 	def move_ants_next(self):
 		if self.turn < len(self.colony.turns):
@@ -196,23 +200,30 @@ class LemInGui:
 		sy = self.colony.nodes[origin].point[1]
 		ex = self.colony.nodes[destination].point[0]
 		ey = self.colony.nodes[destination].point[1]
-		speed = 0.5
+		speed = 0.001
+		margin = 0.1
+		x_ch = speed * abs(sx - ex)
+		y_ch = speed * abs(sy - ey)
 		self.ants[ant].visible = False
-		self.reset_graph()
+		self.draw_ants()
 		while sx != ex or sy != ey:
-			if sx > ex:
-				sx -= speed
-			elif sx < ex:
-				sx += speed
-			if sy > ey:
-				sy -= speed
-			elif sy < ey:
-				sy += speed
-			bitch = self.canva.create_rectangle(sx * self.ratio, sy * self.ratio, sx * self.ratio + self.ants[ant].size, sy * self.ratio + self.ants[ant].size, fill=self.ants[ant].color)
+			if sx > (ex + margin):
+				sx -= x_ch
+			elif sx < (ex - margin):
+				sx += x_ch
+			else:
+				sx = ex
+			if sy > (ey + margin):
+				sy -= y_ch
+			elif sy < (ey - margin):
+				sy += y_ch
+			else:
+				sy = ey
+			a_move = self.canva.create_rectangle(sx * self.ratio, sy * self.ratio, sx * self.ratio + self.ants[ant].size, sy * self.ratio + self.ants[ant].size, fill=self.ants[ant].color)
 			self.canva.update()
-			self.canva.delete(bitch)
+			self.canva.delete(a_move)
 		self.ants[ant].visible = True
-		self.reset_graph()
+		self.draw_ants()
 	
 	def reset_ants(self):
 		for a in self.ants:
