@@ -1,5 +1,8 @@
 {
 	"python.pythonPath": "/Users/jnovotny/.brew/bin/python3",
 	"python.linting.pylintEnabled": true,
-	"python.linting.enabled": true
+	"python.linting.enabled": true,
+	"files.associations": {
+		"lem_in.h": "c"
+	}
 }
