@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/31 16:17:03 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/01 21:19:17 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,11 @@ $(LIBFT_NAME):
 	@echo "$(RED)Compiling Library$(RES)"
 	@Make all -C $(LIBFT_DIR)
 	@echo "$(GREEN)Done.$(RES)"
+
+jiri:
+	@rm -f a.out
+	@gcc srcs/jiris_test_main.c srcs/nodes_management.c srcs/print_functions.c libft/libft.a -I includes
+	@echo "$(GREENB)Jiri's test file created$(RES)"
 
 clean:
 	@echo "$(RED)Removing Object Files...$(RES)"

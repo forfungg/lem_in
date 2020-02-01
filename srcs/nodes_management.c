@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/01 20:32:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/01 21:17:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_node	*create_node(char *name, int x, int y)
 	node->name = ft_strdup(name);
 	node->x = x;
 	node->y = y;
+	node->ngb = NULL;
 	return (node);
 }
 
@@ -34,11 +35,19 @@ t_node	*create_node(char *name, int x, int y)
 ** Deletes node
 */
 
-void	*delete_node(t_node *node)
+void	delete_node(t_node *node)
 {
+	int i;
+
+	i = 0;
 	if (!node)
 		return ;
-	/* free neighbours? */
+	if (node->ngb != NULL)
+	{
+		while (node->ngb[i])
+			node->ngb[i++] = NULL;
+		free(node->ngb);
+	}
 	free(node->name);
 	free(node);
 }
@@ -151,7 +160,10 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 		return (FALSE);
 	i = 0;
 	while (node->ngb[i])
-		tmp[i] = node->ngb[i++];
+	{
+		tmp[i] = node->ngb[i];
+		i++;
+	}
 	tmp[i] = neighbor;
 	tmp[i + 1] = NULL;
 	free(node->ngb);
@@ -161,7 +173,10 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 		return (FALSE);
 	i = 0;
 	while (tmp[i])
-		node->ngb[i] = tmp[i++];
+	{
+		node->ngb[i] = tmp[i];
+		i++;
+	}
 	node->ngb[i] = NULL;
 	free(tmp);
 	return (TRUE);
