@@ -6,7 +6,7 @@
 /*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/02 10:55:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 11:53:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct		s_node
 	int				visited;
 	int				lvl;
 }					t_node;
+
+/*
+** Queue struct
+*/
+
+typedef struct		s_queue
+{
+	t_node			*node;
+	struct s_queue	*next;
+}					t_que;
 
 /*
 ** Node Struct
@@ -82,9 +92,17 @@ int					add_neighbor(t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
 
 /*
-**	Print Functions
+** Queue Management
+*/
+
+t_que  		         *enqueue(t_que *head, t_node *node);
+t_node        		 *que_getnext(t_que **queue);
+
+/*
+**	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
 */
 
 void				print_list(t_node *head);
+void				print_queue(t_que *queue)
 
 #endif
