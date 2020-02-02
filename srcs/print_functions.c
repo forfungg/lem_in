@@ -6,7 +6,7 @@
 /*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/02 11:52:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 12:02:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_queue(t_que *queue)
 {
 	while (queue)
 	{
-		printf("- %s", queue->node->name);
+		printf(" - %s", queue->node->name);
 		queue = queue->next;
 	}
 	printf("\n");

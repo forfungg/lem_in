@@ -6,7 +6,7 @@
 #    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/02 10:46:25 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/02 11:59:54 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ LEM_IN_SRCS			= main.c\
 
 JIRIS_LEM			= jiris_test_main.c \
 					nodes_management.c \
-					print_functions.c
+					print_functions.c \
+					bfs_functions.c \
+					queue_functions.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))

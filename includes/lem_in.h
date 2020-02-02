@@ -6,7 +6,7 @@
 /*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/02 11:53:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 11:58:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,19 @@ int					count_neighbors(t_node **neighbors);
 ** Queue Management
 */
 
-t_que  		         *enqueue(t_que *head, t_node *node);
-t_node        		 *que_getnext(t_que **queue);
+t_que  		        *enqueue(t_que *head, t_node *node);
+t_node        		*que_getnext(t_que **queue);
 
+/*
+** Breath First Search for paths
+*/
+
+void				bfs(t_node *head);
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
 */
 
 void				print_list(t_node *head);
-void				print_queue(t_que *queue)
+void				print_queue(t_que *queue);
 
 #endif
