@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/01 21:17:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 10:55:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,22 @@ void	delete_node(t_node *node)
 	}
 	free(node->name);
 	free(node);
+}
+
+/*
+** Deletes the whole list
+*/
+
+void	delete_list(t_node *lst)
+{
+	t_node *tmp;
+
+	while (lst)
+	{
+		tmp = lst;
+		lst = lst->next;
+		delete_node(tmp);
+	}
 }
 
 /*

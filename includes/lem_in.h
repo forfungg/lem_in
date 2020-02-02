@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/01 21:16:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 10:55:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void				read_input(t_prop *xt);
 
 t_node				*create_node(char *name, int x, int y);
 void				delete_node(t_node *node);
+void				delete_list(t_node *lst);
 t_node				*create_front(t_node *head, char *name, int x, int y);
 t_node				*create_back(t_node *head, char *name, int x, int y);
 t_node				*add_front(t_node *head, t_node *node);

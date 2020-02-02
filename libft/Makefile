@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 15:25:28 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/27 14:43:30 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/02 10:49:28 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ FLAGS = -Werror -Wextra -Wall
 all: $(NAME)
 
 $(NAME):
-		@gcc -c $(FLAGS) $(SRCS) -I $(HDS)
+		@gcc -c $(FLAGS) $(SRCS)
 		@ar rc $(NAME) $(OBJ)
 		@ranlib $(NAME)
 

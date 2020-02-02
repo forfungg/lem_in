@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jiris_test_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 20:37:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/01 21:15:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/02 11:18:25 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int main()
 
 	my_list = generate_stuff();
 	print_list(my_list);
+	delete_list(my_list);
 	return (0);
 }
