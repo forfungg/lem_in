@@ -3,3 +3,4 @@
 a.out
 libft/libft.a
 jiris_test
+*.o
