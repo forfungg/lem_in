@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/02 11:58:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/03 09:42:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,22 @@ t_node				*add_back(t_node *head, t_node *node);
 t_node				*find_node(t_node *head, char *name);
 int					add_neighbor(t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
+t_node				*find_start(t_node *list);
+t_node				*find_end(t_node *list);
 
 /*
 ** Queue Management
 */
 
-t_que  		        *enqueue(t_que *head, t_node *node);
-t_node        		*que_getnext(t_que **queue);
+t_que				*enqueue(t_que *head, t_node *node);
+t_node				*que_getnext(t_que **queue);
 
 /*
 ** Breath First Search for paths
 */
 
-void				bfs(t_node *head);
+void				bfs(t_node *start, t_node *end);
+
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
 */

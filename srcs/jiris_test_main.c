@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jiris_test_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 20:37:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/02 11:59:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/03 09:42:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ t_node	*generate_stuff(void)
 	return (head);
 }
 
-int main()
+int		main(void)
 {
 	t_node *my_list;
 
 	my_list = generate_stuff();
 	print_list(my_list);
-	bfs(my_list);
+	bfs(find_start(my_list), find_end(my_list));
 	delete_list(my_list);
 	return (0);
 }
