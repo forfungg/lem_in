@@ -6,14 +6,14 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/03 09:42:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/03 11:10:21 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -65,8 +65,8 @@ typedef struct		s_readdata
 typedef struct		s_prop
 {
 	t_node			*path;
-	int				r_start;
-	int				r_end;
+	t_node			*start;
+	t_node			*end;
 }					t_prop;
 
 /*
