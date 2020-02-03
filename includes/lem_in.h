@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/03 11:10:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/03 11:19:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,11 @@ void				bfs(t_node *start, t_node *end);
 
 void				print_list(t_node *head);
 void				print_queue(t_que *queue);
+
+/*
+**	Program functionality support tools
+*/
+
+void				error_exit(char *msg);
 
 #endif
