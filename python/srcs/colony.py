@@ -163,6 +163,7 @@ class Colony():
 		q = [[self.nodes[self.start].name]]
 		
 		while q:
+			print(f"Current queue: {q}")
 			path = q.pop(0)
 			node = self.nodes[path[-1]]
 			if not node.visited:

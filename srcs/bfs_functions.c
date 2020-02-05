@@ -36,16 +36,15 @@ void	bfs(t_node *start, t_node *end)
 		{
 			path = enqueue(path, current);
 			i = 0;
+			if (current->end)
+			{
+				ft_putstr("\nShorthest path:\n");
+				print_queue(path);
+				return ;
+			}
 			while (current->ngb && current->ngb[i])
 			{
 				q = enqueue(q, current->ngb[i]);
-				if (current->ngb[i]->end)
-				{
-					path = enqueue(path, current->ngb[i]);
-					ft_putstr("\nShorthest path:\n");
-					print_queue(path);
-					return ;
-				}
 				i++;
 			}
 		}

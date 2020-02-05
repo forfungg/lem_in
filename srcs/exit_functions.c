@@ -19,6 +19,7 @@
 
 void	error_exit(char *msg)
 {
+	perror("Error: ");
 	ft_printf("{RED}{B}ERROR:{EOC} %s\n", msg);
 	exit(-1);
 }
