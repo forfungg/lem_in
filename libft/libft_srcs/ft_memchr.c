@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 14:01:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 16:25:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/05 17:28:53 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (((unsigned const char*)s)[i] == (unsigned char)c)
-			return ((void*)&s[i]);
+			// return ((void*)&s[i]); linux bs doesn't like this
+			return ((void *)(s + i));
 		i = i + 1;
 	}
 	return (NULL);
