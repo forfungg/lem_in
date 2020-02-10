@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 17:06:09 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 18:24:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ int		is_number(char *str)
 	return (1);
 }
 
+int		is_ants(char *str, t_prop *xt)
+{
+	if (is_number(str) == 1)
+		return (1);
+	return (0);
+}
+
+/*
+** check_link
+*/
+
 int		is_link(char *line, t_prop *xt)
 {
 	int		cnt;
@@ -48,6 +59,10 @@ int		is_link(char *line, t_prop *xt)
 		return (0);
 	return (1);
 }
+
+/*
+** check_room
+*/
 
 int		is_room(char *line, t_prop *xt)
 {
@@ -62,6 +77,10 @@ int		is_room(char *line, t_prop *xt)
 		return (0);
 }
 
+/*
+** prepend node
+*/
+
 void	prepend_node(char **props, t_prop *xt)
 {
 	t_node *new;
@@ -70,8 +89,8 @@ void	prepend_node(char **props, t_prop *xt)
 	new->name = props[0];
 	new->x = ft_atoi(props[1]);
 	new->y = ft_atoi(props[2]);
-	new->ngb = NULL;
-	xt->elems->visited = 0;
+	new->visited = 0;
+	new->ngb = 0;
 	if (xt->f_start == 1)
 	{
 		new->start = 1;
@@ -86,6 +105,10 @@ void	prepend_node(char **props, t_prop *xt)
 	xt->elems = new;
 }
 
+/*
+** saves new room/ call prepend
+*/
+
 void	save_room(char *line, t_prop *xt)
 {
 	char **props;
@@ -95,7 +118,8 @@ void	save_room(char *line, t_prop *xt)
 	{
 		ft_putstr("saving first\n");
 		xt->elems = (t_node *)malloc(sizeof(t_node));
-		ft_bzero(xt->elems, sizeof(t_node *));
+		xt->elems->visited = 0;
+		xt->elems->ngb = 0;
 		xt->elems->name = props[0];
 		xt->elems->x = ft_atoi(props[1]);
 		xt->elems->y = ft_atoi(props[2]);
@@ -119,12 +143,16 @@ void	save_room(char *line, t_prop *xt)
 	}
 }
 
+/*
+** saves link: kudos Jiri
+*/
+
 void	save_link(char *line, t_prop *xt)
 {
 	char	**props;
 	char	*match;
-	t_node *node1;
-	t_node *node2;
+	t_node	*node1;
+	t_node	*node2;
 
 	match = 0;
 	props = ft_strsplit(line, '-');
@@ -139,13 +167,33 @@ void	save_link(char *line, t_prop *xt)
 	add_neighbor(node2, node1);
 }
 
+/*
+** turns start/end flags and keeps count of occurences
+*/
+
 void	save_commands(char *str, t_prop *xt)
 {
 	if (ft_strequ(str, "##start") == 1)
+	{
 		xt->f_start = 1;
+		xt->n_start += 1;
+	}
 	if (ft_strequ(str, "##end") == 1)
+	{
 		xt->f_end = 1;
+		xt->n_end += 1;
+	}
 }
+
+void	save_ants(char *str, t_prop *xt)
+{
+	xt->f_ants = ft_atoi(str);
+	xt->n_ants += 1;
+}
+
+/*
+** reads commands, rooms and links, cuts out crap and launches compliance check
+*/
 
 void	read_input(t_prop *xt)
 {
@@ -155,16 +203,17 @@ void	read_input(t_prop *xt)
 	{
 		if (line[0] == '#')
 			save_commands(line, xt);
+		else if (is_ants(line, xt) == 1)
+			save_ants(line, xt);
 		else if (is_room(line, xt) == 1)
 			save_room(line, xt);
 		else if (is_link(line, xt) == 1)
 			save_link(line, xt);
 		else
-		{
-			ft_putstr("It's something else11!1\n");
-			exit(0);
-		}
+			error_exit("Wrong input, bitch");
 	}
+	check_input(xt);
 	print_list(xt->elems);
+	ft_printf("N of ANTS: %d\n", xt->f_ants);
 	ft_printf("done\n");
 }

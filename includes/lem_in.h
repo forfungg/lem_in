@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 17:08:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:13:18 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct		s_paths
 
 void				check_flags(int argc, char **argv, t_prop *xt);
 void				read_input(t_prop *xt);
+void				check_input(t_prop *xt);
 
 /*
 ** Nodes Management

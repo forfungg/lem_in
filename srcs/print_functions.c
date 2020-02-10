@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 17:07:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:25:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void	print_list(t_node *head)
 			ft_printf("END\n");
 		i = 0;
 		ft_printf("NGB:");
-		while (head->ngb[i])
-			ft_printf(" %s", head->ngb[i++]->name);
+		if (head->ngb != 0)
+		{
+			while (head->ngb[i])
+				ft_printf(" %s", head->ngb[i++]->name);
+		}
 		ft_printf("\n\n");
 		head = head->next;
 	}

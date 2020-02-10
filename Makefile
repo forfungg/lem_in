@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/10 17:09:06 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/10 17:11:28 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LEM_IN_SRCS			= main.c\
 					input_process.c\
 					print_functions.c \
 					nodes_management.c\
+					input_check.c\
 					exit_functions.c
 
 JIRIS_LEM			= jiris_test_main.c \
