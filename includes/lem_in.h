@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 13:52:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 15:54:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,18 @@ typedef struct		s_prop
 	t_node		*path;
 	int			r_start;
 	int			r_end;
-}				t_prop;
+}					t_prop;
+
+
+/*
+** BFS pathing
+*/
+
+typedef struct		s_paths
+{
+	t_que			*path;
+	struct s_paths	*next;
+}					t_paths;
 
 /*
 ** Input Processing
@@ -100,12 +111,17 @@ t_node				*find_end(t_node *list);
 
 t_que				*enqueue(t_que *head, t_node *node);
 t_node				*que_getnext(t_que **queue);
+t_que				*que_copy(t_que *node);
+void				que_delete(t_que *head);
+t_node				*que_getlast(t_que *head);
 
 /*
 ** Breath First Search for paths
 */
 
-void				bfs(t_node *start, t_node *end);
+void				bfs(t_node *start, t_node *end, t_paths **all_paths);
+t_paths				*append_path(t_paths *head, t_que *path);
+t_que				*pop_path(t_paths **all_paths);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
@@ -113,6 +129,7 @@ void				bfs(t_node *start, t_node *end);
 
 void				print_list(t_node *head);
 void				print_queue(t_que *queue);
+void				print_paths(t_paths *paths);
 
 /*
 **	Program functionality support tools
