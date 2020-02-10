@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/31 15:55:22 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:47:10 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_node
 {
 	char			*name;
 	struct s_node	**ngb;
-	struct s_ndoe	*next;
+	struct s_node	*next;
 	int				x;
 	int				y;
 	int				start;
@@ -51,6 +51,7 @@ typedef struct	s_readdata
 
 typedef struct	s_prop
 {
+	t_node		*elems;
 	t_node		*path;
 	int			r_start;
 	int			r_end;
