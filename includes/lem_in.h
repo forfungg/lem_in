@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 15:54:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:45:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ t_node				*que_getlast(t_que *head);
 void				bfs(t_node *start, t_node *end, t_paths **all_paths);
 t_paths				*append_path(t_paths *head, t_que *path);
 t_que				*pop_path(t_paths **all_paths);
+void				delete_paths(t_paths *all_paths);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!

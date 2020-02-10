@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 15:54:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:47:21 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	bfs(t_node *start, t_node *end, t_paths **all_paths)
 			}
 		}
 		current->visited = TRUE;
-		print_queue(path);
+		que_delete(path);
 	}
 }

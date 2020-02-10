@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 15:52:01 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:44:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,21 @@ t_que		*pop_path(t_paths **all_paths)
 	path = tmp->path;
 	free(tmp);
 	return (path);
+}
+
+/*
+** Delete paths
+*/
+
+void	delete_paths(t_paths *all_paths)
+{
+	t_paths *tmp;
+
+	while (all_paths)
+	{
+		tmp = all_paths;
+		all_paths = all_paths->next;
+		que_delete(tmp->path);
+		free(tmp);
+	}
 }
