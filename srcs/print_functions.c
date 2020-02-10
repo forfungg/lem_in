@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/02 12:02:45 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:02:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 #include <stdio.h>
 
 void	print_list(t_node *head)
@@ -19,16 +19,16 @@ void	print_list(t_node *head)
 
 	while (head)
 	{
-		printf("%s\n", head->name);
+		ft_printf("Elem: %s\n", head->name);
 		if (head->start)
-			printf("START\n");
+			ft_printf("START\n");
 		if (head->end)
-			printf("END\n");
+			ft_printf("END\n");
 		i = 0;
-		printf("NGB:");
+		ft_printf("NGB:");
 		while (head->ngb[i])
-			printf(" %s", head->ngb[i++]->name);
-		printf("\n\n");
+			ft_printf(" %s", head->ngb[i++]->name);
+		ft_printf("\n\n");
 		head = head->next;
 	}
 }

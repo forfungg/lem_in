@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 13:52:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:48:46 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ typedef struct		s_prop
 	t_node		*path;
 	int			r_start;
 	int			r_end;
+	int			f_start;
+	int			f_end;
+	int			f_ants;
+
+	int			n_start;
+	int			n_end;
+	int			n_ants;
 }				t_prop;
 
 /*

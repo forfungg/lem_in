@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/02 11:59:54 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/10 16:47:07 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ RED			=	\033[0;31m
 NAME				= lem_in
 
 LEM_IN_SRCS			= main.c\
-					input_process.c
+					input_process.c\
+					print_functions.c \
+					nodes_management.c\
+					exit_functions.c
 
 JIRIS_LEM			= jiris_test_main.c \
 					nodes_management.c \
