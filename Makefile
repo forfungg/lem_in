@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/31 16:17:03 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/02 11:59:54 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,14 @@ NAME				= lem_in
 LEM_IN_SRCS			= main.c\
 					input_process.c
 
+JIRIS_LEM			= jiris_test_main.c \
+					nodes_management.c \
+					print_functions.c \
+					bfs_functions.c \
+					queue_functions.c
+
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
+JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
 # Directories
 
@@ -38,6 +45,9 @@ LIBFT_NAME			= libft.a
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 MLX_LNK				= /usr/local/lib/ -l mlx -framework OpenGL -framework AppKit
 MLX_HOME			= /usr/local/lib -lmlx -I /usr/local/X11/include -L/usr/X11/lib -lX11 -lXext -framework OpenGL -framework Appkit
+
+# Includes
+INCLUDES			= -I includes/ -I libft/
 
 .PHONY: all clean fclean re
 
@@ -52,6 +62,11 @@ $(LIBFT_NAME):
 	@echo "$(RED)Compiling Library$(RES)"
 	@Make all -C $(LIBFT_DIR)
 	@echo "$(GREEN)Done.$(RES)"
+
+jiri:
+	@rm -f jiris_test
+	@gcc -o jiris_test $(CFLAGS) $(INCLUDES) $(JIRIS_IN) $(LIBFT_A)
+	@echo "$(GREENB)Jiri's test file created$(RES)"
 
 clean:
 	@echo "$(RED)Removing Object Files...$(RES)"
