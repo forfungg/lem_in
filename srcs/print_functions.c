@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 17:02:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:07:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,17 @@ void	print_queue(t_que *queue)
 		queue = queue->next;
 	}
 	printf("\n");
+}
+
+/*
+** Print Paths
+*/
+
+void	print_paths(t_paths *paths)
+{
+	while (paths)
+	{
+		print_queue(paths->path);
+		paths = paths->next;
+	}
 }

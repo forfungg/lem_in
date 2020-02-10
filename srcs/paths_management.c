@@ -5,75 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 11:02:11 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/03 12:01:48 by jnovotny         ###   ########.fr       */
+/*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
+/*   Updated: 2020/02/10 16:44:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Initializes all paths array
+** Enqueue path
 */
 
-t_que	**all_paths_init(t_que *new)
+t_paths		*append_path(t_paths *head, t_que *path)
 {
-	t_que **ret;
+	t_paths *new;
+	t_paths *tmp;
 
-	ret = (t_que **)malloc(sizeof(t_que *) * 2);
-	if (!ret)
-		error_exit("Malloc failure @all_paths_init");
-	ret[0] = new;
-	ret[1] = NULL;
-	return (ret);
+	if (!(new = (t_paths *)malloc(sizeof(t_paths))))
+		error_exit("Malloc at append_path()");
+	new->path = path;
+	new->next = NULL;
+	if (!head)
+		return (new);
+	tmp = head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (head);
 }
 
 /*
-** Adds given path to the array of all_paths
+** Pop first path
 */
 
-static int		copy_paste(t_que **src, t_que **dest)
+t_que		*pop_path(t_paths **all_paths)
 {
-	int i;
+	t_paths *tmp;
+	t_que	*path;
 
-	i = 0;
-	while (src[i])
+	if (!all_paths || !*all_paths)
+		return (NULL);
+	tmp = *all_paths;
+	*all_paths = (*all_paths)->next;
+	path = tmp->path;
+	free(tmp);
+	return (path);
+}
+
+/*
+** Delete paths
+*/
+
+void	delete_paths(t_paths *all_paths)
+{
+	t_paths *tmp;
+
+	while (all_paths)
 	{
-		dest[i] = src[i];
-		i++;
+		tmp = all_paths;
+		all_paths = all_paths->next;
+		que_delete(tmp->path);
+		free(tmp);
 	}
-	return (i);
-}
-
-static int		resize_patharray(t_que **all)
-{
-	int		c;
-	int		i;
-	t_que	**tmp;
-
-	c = 0;
-	while (all[c])
-		c++;
-	tmp = (t_que **)malloc(sizeof(t_que *) * (c + 1));
-	if (!tmp)
-		error_exit(" Tmp malloc failure @resize_patharray");
-	i = copy_paste(all, tmp);
-	tmp[i] = NULL;
-	free(all);
-	all = (t_que **)malloc(sizeof(t_que *) * (c + 2));
-	if (!tmp)
-		error_exit("All malloc failure @resize_patharray");
-	i = copy_paste(tmp, all);
-	return (i);
-}
-
-void	append_path(t_que **all, t_que *new)
-{
-	int i;
-
-	if (!all)
-		all = all_paths_init(new);
-	i = resize_patharray(all);
-	all[i] = new;
-	all[i + 1] = NULL;
 }

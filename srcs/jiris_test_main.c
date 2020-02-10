@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 20:37:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/03 09:42:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:47:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,15 @@ t_node	*generate_stuff(void)
 int		main(void)
 {
 	t_node *my_list;
+	t_paths *all_paths;
 
+	my_list = NULL;
+	all_paths = NULL;
 	my_list = generate_stuff();
 	print_list(my_list);
-	bfs(find_start(my_list), find_end(my_list));
+	bfs(find_start(my_list), find_end(my_list), &all_paths);
+	print_paths(all_paths);
 	delete_list(my_list);
+	delete_paths(all_paths);
 	return (0);
 }
