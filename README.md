@@ -1,4 +1,16 @@
-## Lem_In
+# Lem_In
+
+## C version
+
+### To-Do
+	- check unique paths
+		- limit the BFS search? min(start->ngb, end->ngb)
+	- test bfs consistency
+
+### Done
+	- prototype BFS that should return all shortest paths.
+
+## Random notes
 the starting (ending) amount of paths will determine the mode
 	- one path means only one ant can exit the starting node at the time
 		-> shortest path (BFS)
@@ -11,7 +23,7 @@ the starting (ending) amount of paths will determine the mode
 Amount of turns required for N ants
 Distribute ants
 
-# Constrains/ General
+## Constrains/ General
 - no memory leaks
 - Allowed:
 		malloc
@@ -23,7 +35,7 @@ Distribute ants
 		exit
 	- plus whatever for bonus
 
-# Mandatory part
+## Mandatory part
 - Quickest way for N ants to move across
 	- from start to end
 	- least number of lines (turns)
@@ -44,7 +56,7 @@ Distribute ants
 - 4000 rooms. 2 or 3 seconds is great, 9 seconds is mediocre, 15 seconds is too much.
 	- 10k+ lines
 
-# Eval 2018
+## Eval 2018
 
 - author file
 - reading on the standard output
@@ -74,7 +86,7 @@ Distribute ants
 	- Graphic visualiser (if well made can be worth more than 1 point)
 
 
-# Python Version
+## Python Version
 Plotting graph
 Finds all unique shortest paths that can be utilized
 Assigns Ants to correct paths
