@@ -3,6 +3,7 @@
 ## C version
 
 ### To-Do
+Add Artem's other account as contributor
 	- check unique paths
 		- limit the BFS search? min(start->ngb, end->ngb)
 	- test bfs consistency
