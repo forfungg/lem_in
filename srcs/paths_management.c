@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   paths_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 16:44:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:31:28 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 /*
 ** Enqueue path

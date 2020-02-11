@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 18:33:47 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:32:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	check_input(t_prop *xt)
 	err = 0;
 	err += check_n_start_end(xt);
 	err += check_ants(xt);
-	err += check_duplicate_ngb(xt);
+	//err += check_duplicate_ngb(xt);
 	if (err != 0)
 		error_exit("Input is shit");
 }

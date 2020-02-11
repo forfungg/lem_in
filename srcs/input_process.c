@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 18:24:03 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:30:56 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,9 @@ void	save_ants(char *str, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
+	t_paths *all_paths;
 
+	all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		if (line[0] == '#')
@@ -216,4 +218,5 @@ void	read_input(t_prop *xt)
 	print_list(xt->elems);
 	ft_printf("N of ANTS: %d\n", xt->f_ants);
 	ft_printf("done\n");
+	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
 }
