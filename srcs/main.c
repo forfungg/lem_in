@@ -3,27 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/12 15:25:50 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:36:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	main(int argc, char **argv)
+static void		clear_memory(t_prop *xt)
 {
-	t_prop *xt;
-	t_paths *paths;
+	delete_paths(xt->all_paths);
+	free(xt);
+}
+
+static t_prop	*initialize_lemin(void)
+{
+	t_prop	*xt;
 
 	xt = (t_prop *)malloc(sizeof(t_prop));
-	xt->elems = 0;
+	ft_bzero(xt, sizeof(xt));
+	xt->elems = NULL;
+	xt->all_paths = NULL;
 	xt->n_start = 0;
 	xt->n_end = 0;
 	xt->n_ants = 0;
 	xt->ant_cnt = 1;
-	paths = read_input(xt);
-	assign_ants(xt, paths);
-	free(xt);
+	return (xt);
+}
+
+int				main(int argc, char **argv)
+{
+	t_prop	*xt;
+
+	xt = initialize_lemin();
+	read_input(xt);
+	assign_ants(xt);
+	clear_memory(xt);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 15:25:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:46:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,6 @@ typedef struct		s_readdata
 }					t_readdata;
 
 /*
-** LEM_IN Struct
-*/
-
-typedef struct		s_prop
-{
-	t_node		*elems;
-	t_node		*path;
-	int			r_start;
-	int			r_end;
-	int			f_start;
-	int			f_end;
-	int			f_ants;
-
-	int			n_start;
-	int			n_end;
-	int			n_ants;
-	int			ant_cnt;
-}					t_prop;
-
-
-/*
 ** BFS pathing
 */
 
@@ -93,11 +72,31 @@ typedef struct		s_paths
 }					t_paths;
 
 /*
+** LEM_IN Struct
+*/
+
+typedef struct		s_prop
+{
+	t_node		*elems;
+	t_paths		*all_paths;
+	int			r_start;
+	int			r_end;
+	int			f_start;
+	int			f_end;
+	int			f_ants;
+
+	int			n_start;
+	int			n_end;
+	int			n_ants;
+	int			ant_cnt;
+}					t_prop;
+
+/*
 ** Input Processing
 */
 
 void				check_flags(int argc, char **argv, t_prop *xt);
-t_paths				*read_input(t_prop *xt);
+void				read_input(t_prop *xt);
 void				check_input(t_prop *xt);
 
 /*
@@ -154,7 +153,9 @@ void				error_exit(char *msg);
 **	Moving ants
 */
 
-void				assign_ants(t_prop *xt, t_paths *paths);
+void				assign_ants(t_prop *xt);
 void				move_ants(t_prop *xt, t_paths *paths);
+int					get_t_len(t_paths *paths);
+void				print_paths2(t_paths *paths);
 
 #endif

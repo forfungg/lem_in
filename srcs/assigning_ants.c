@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigning_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 15:36:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:21:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,33 @@ int		get_len(t_que *list)
 void	print_paths2(t_paths *paths)
 {
 	t_paths *temp;
+	int i, len;
+	int total;
 
 	temp = paths;
+	// while (temp)
+	// {
+	// 	printf("len of path: %d\n", get_len(temp->path));
+	// 	printf("Ants assigned to path: %d\n", temp->ants);
+	// 	while (temp->path)
+	// 	{
+	// 		printf("%s - ", temp->path->node->name);
+	// 		temp->path = temp->path->next;
+	// 	}
+	// 	printf("\n\n");
+	// 	temp = temp->next;
+	// }
+	ft_printf("\nIndex | Path Length | Amount of Ants | Total\n");
+	i = 0;
+	total = 0;
 	while (temp)
 	{
-		printf("len of path: %d\n", get_len(temp->path));
-		printf("Ants assigned to path: %d\n", temp->ants);
-		while (temp->path)
-		{
-			printf("%s - ", temp->path->node->name);
-			temp->path = temp->path->next;
-		}
-		printf("\n\n");
+		len = get_len(temp->path);
+		ft_printf("%5d | %11d | %14d | %5d\n", i, len, temp->ants, len + temp->ants);
+		total += temp->ants;
 		temp = temp->next;
 	}
+	ft_printf("Total Ants Assigned: %d\n", total);
 }
 
 int		get_t_len(t_paths *paths)
@@ -111,12 +124,12 @@ void	several(int ants, t_paths *paths)
 	}
 }
 
-void	assign_ants(t_prop *xt, t_paths *paths)
+void	assign_ants(t_prop *xt)
 {
-	if (paths->next)
-		several(xt->f_ants, paths);
+	if (xt->all_paths->next)
+		several(xt->f_ants, xt->all_paths);
 	else
-		paths->ants = xt->f_ants;
-	print_paths2(paths);
-	//move_ants(xt, paths);
+		xt->all_paths->ants = xt->f_ants;
+	print_paths2(xt->all_paths);
+	move_ants(xt, xt->all_paths);
 }

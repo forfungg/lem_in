@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 13:07:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:07:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,12 +206,12 @@ void	save_ants(char *str, t_prop *xt)
 ** reads commands, rooms and links, cuts out crap and launches compliance check
 */
 
-t_paths	*read_input(t_prop *xt)
+void	read_input(t_prop *xt)
 {
 	char	*line;
 	t_paths *all_paths;
 
-	all_paths = NULL;
+	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		if (line[0] == '#')
@@ -230,7 +230,10 @@ t_paths	*read_input(t_prop *xt)
 	// print_list(xt->elems);
 	// ft_printf("N of ANTS: %d\n", xt->f_ants);
 	// ft_printf("done\n");
-	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
-	all_paths = path_parsing(all_paths);
-	return (all_paths);
+	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
+	ft_printf("All Paths\n");
+	print_paths(xt->all_paths);
+	xt->all_paths = path_parsing(xt->all_paths);
+	ft_printf("Unique Paths\n");
+	print_paths(xt->all_paths);
 }
