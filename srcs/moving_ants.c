@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 12:34:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 12:37:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		get_len(t_que *list)
 	return (cnt);
 }
 
-void	print_paths(t_paths *paths)
+void	print_paths2(t_paths *paths)
 {
 	while (paths)
 	{
