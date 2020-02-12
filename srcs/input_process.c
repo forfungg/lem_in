@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/11 12:30:56 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 10:22:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,4 +219,6 @@ void	read_input(t_prop *xt)
 	ft_printf("N of ANTS: %d\n", xt->f_ants);
 	ft_printf("done\n");
 	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
+	delete_list(xt->elems);
+	delete_paths(all_paths);
 }

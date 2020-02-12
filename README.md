@@ -4,9 +4,22 @@
 
 ### To-Do
 Add Artem's other account as contributor
+	- error management
+		- coordinates over int range
+		- duplicate paths (error or ignore)
+		- not enough data error
+			- mandatory start and end (done)
+			- number of ants and only once(done)
+		- no solution
 	- check unique paths
 		- limit the BFS search? min(start->ngb, end->ngb)
+			- once the limit of unique path is reached, stop bfs
+	- split ants among the paths
+		- figure out whether we make the ants literally or just abstract somehow
+	- output
+	- memory leaks check
 	- test bfs consistency
+	- test environment
 
 ### Done
 	- prototype BFS that should return all shortest paths.
