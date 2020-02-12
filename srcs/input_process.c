@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 12:39:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 13:07:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ void	save_ants(char *str, t_prop *xt)
 ** reads commands, rooms and links, cuts out crap and launches compliance check
 */
 
-void	read_input(t_prop *xt)
+t_paths	*read_input(t_prop *xt)
 {
 	char	*line;
 	t_paths *all_paths;
@@ -231,11 +231,6 @@ void	read_input(t_prop *xt)
 	// ft_printf("N of ANTS: %d\n", xt->f_ants);
 	// ft_printf("done\n");
 	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
-	ft_printf("All Paths:\n");
-	print_paths(all_paths);
 	all_paths = path_parsing(all_paths);
-	ft_printf("Unique Paths:\n");
-	print_paths(all_paths);
-	delete_list(xt->elems);
-	delete_paths(all_paths);
+	return (all_paths);
 }

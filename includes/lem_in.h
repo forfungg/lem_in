@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 12:40:03 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:25:58 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_node
 typedef struct		s_queue
 {
 	t_node			*node;
+	int				curr_ant;
 	struct s_queue	*next;
 }					t_que;
 
@@ -75,6 +76,7 @@ typedef struct		s_prop
 	int			n_start;
 	int			n_end;
 	int			n_ants;
+	int			ant_cnt;
 }					t_prop;
 
 
@@ -86,7 +88,6 @@ typedef struct		s_paths
 {
 	t_que			*path;
 	int				ants;
-	int				hold_total;
 	int				im_min;
 	struct s_paths	*next;
 }					t_paths;
@@ -96,7 +97,7 @@ typedef struct		s_paths
 */
 
 void				check_flags(int argc, char **argv, t_prop *xt);
-void				read_input(t_prop *xt);
+t_paths				*read_input(t_prop *xt);
 void				check_input(t_prop *xt);
 
 /*
@@ -148,5 +149,12 @@ void				print_paths(t_paths *paths);
 */
 
 void				error_exit(char *msg);
+
+/*
+**	Moving ants
+*/
+
+void				assign_ants(t_prop *xt, t_paths *paths);
+void				move_ants(t_prop *xt, t_paths *paths);
 
 #endif

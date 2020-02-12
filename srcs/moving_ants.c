@@ -5,124 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 12:37:41 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/12 15:31:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	print_sum_ants(t_paths *paths)
+int		get_n_strings(t_paths *paths)
 {
-	int total;
-
-	total = 0;
-	while (paths)
-	{
-		total += paths->ants;
-		paths = paths->next;
-	}
-	printf("--TOTAL ANTS: %d\n\n", total);
-}
-
-int		get_len(t_que *list)
-{
-	int cnt;
-
-	cnt = 0;
-	while (list)
-	{
-		cnt += 1;
-		list = list->next;
-	}
-	return (cnt);
-}
-
-void	print_paths2(t_paths *paths)
-{
-	while (paths)
-	{
-		printf("len of path: %d\n", get_len(paths->path));
-		printf("Ants assigned to path: %d\n", paths->ants);
-		while (paths->path)
-		{
-			printf("%s - ", paths->path->node->name);
-			paths->path = paths->path->next;
-		}
-		printf("\n\n");
-		paths = paths->next;
-	}
-}
-
-int		get_t_len(t_paths *paths)
-{
-	int total;
-
-	total = 0;
-	total += get_len(paths->path);
-	total += paths->ants;
-	return (total);
-}
-
-void	get_min_path(t_paths *paths)
-{
-	int		min;
+	int		max;
 	t_paths	*head;
 
-	min = get_t_len(paths);
-	paths->im_min = 1;
+	max = get_t_len(paths);
 	head = paths;
 	while (paths->next)
 	{
-		if (get_t_len(paths->next) < min)
+		if (get_t_len(paths->next) > max)
 		{
-			paths->next->im_min = 1;
-			head->im_min = 0;
 			head = paths->next;
-			min = get_t_len(head);
+			max = get_t_len(head);
 		}
 		paths = paths->next;
 	}
+	return (max + 1);
 }
 
-void	several(int ants, t_paths *paths)
+void	str_append(char *str, int nb, char *name)
 {
-	t_paths *head;
+	
+}
 
+void	move_ants(t_prop *xt, t_paths *paths)
+{
+	char	**out;
+	int		cnt;
+	int		len;
+	t_que	*tmp;
+	t_paths	*head;
+
+	print_paths2(paths);
+	if (!paths)
+		return ;
+	len = get_n_strings(paths);
+	out = malloc(len * sizeof(char *));
 	head = paths;
-	while (ants > 0)
+	if (xt->ant_cnt <= xt->f_ants)
 	{
-		paths = head;
-		get_min_path(paths);
-		while (paths)
+		if (paths->ants)
 		{
-			if (paths->im_min == 1)
+			cnt = 0;
+			tmp = paths->path->next;
+			if (tmp)
 			{
-				paths->ants += 1;
-				ants -= 1;
-				paths->im_min = 0;
-				break ;
+				str_append(out[cnt], xt->ant_cnt, tmp->node->name);
+				cnt++;
+				tmp = tmp->next;
 			}
-			paths = paths->next;
+			xt->ant_cnt += 1;
+			paths->ants--;
 		}
+		paths = paths->next;
+		if (!paths)
+			paths = head;
 	}
-}
-
-void	do_ants(int ants, t_paths *paths)
-{
-	if (paths->next)
-		several(ants, paths);
-	else
-	{
-		paths->ants = ants;
-		ants = 0;
-	}
-	print_sum_ants(paths);
-}
-
-void	assign_ants(t_prop *xt, t_paths *all_paths)
-{
-	//printf("TOTAL ANTS: %d\n\n", xt->f_ants);
-	do_ants(xt->f_ants, all_paths);
-	print_paths(all_paths);
 }

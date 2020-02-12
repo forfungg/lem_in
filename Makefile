@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/12 10:59:43 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/12 13:04:11 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ LEM_IN_SRCS			= main.c\
 					queue_functions.c \
 					paths_management.c \
 					exit_functions.c \
-					moving_ants.c
+					moving_ants.c\
+					assigning_ants.c
 
 JIRIS_LEM			= jiris_test_main.c \
 					nodes_management.c \
