@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 10:22:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/12 11:11:15 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	save_room(char *line, t_prop *xt)
 	props = ft_strsplit(line, ' ');
 	if (xt->elems == 0)
 	{
-		ft_putstr("saving first\n");
 		xt->elems = (t_node *)malloc(sizeof(t_node));
 		xt->elems->visited = 0;
 		xt->elems->ngb = 0;
@@ -137,10 +136,7 @@ void	save_room(char *line, t_prop *xt)
 		xt->elems->ngb = NULL;
 	}
 	else
-	{
-		ft_putstr("saving next\n");
 		prepend_node(props, xt);
-	}
 }
 
 /*
@@ -215,10 +211,9 @@ void	read_input(t_prop *xt)
 			error_exit("Wrong input, bitch");
 	}
 	check_input(xt);
-	print_list(xt->elems);
-	ft_printf("N of ANTS: %d\n", xt->f_ants);
-	ft_printf("done\n");
+	//print_list(xt->elems);
 	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
+	assign_ants(xt, all_paths);
 	delete_list(xt->elems);
 	delete_paths(all_paths);
 }

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 17:13:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 11:57:39 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ typedef struct		s_prop
 typedef struct		s_paths
 {
 	t_que			*path;
+	int				ants;
+	int				hold_total;
+	int				im_min;
 	struct s_paths	*next;
 }					t_paths;
 
