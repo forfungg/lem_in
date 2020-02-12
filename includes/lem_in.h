@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/10 17:13:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 11:09:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_node				*que_getnext(t_que **queue);
 t_que				*que_copy(t_que *node);
 void				que_delete(t_que *head);
 t_node				*que_getlast(t_que *head);
-
+t_paths				*path_parsing(t_paths *all_paths);
 /*
 ** Breath First Search for paths
 */
