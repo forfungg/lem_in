@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/11 12:29:19 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 11:10:23 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	bfs(t_node *start, t_node *end, t_paths **all_paths)
 		current = que_getlast(path);
 		if (current->end)
 		{
-			ft_putstr("\nPath Found:\n");
-			print_queue(path);
+			// ft_putstr("\nPath Found:\n");
+			// print_queue(path);
 			*all_paths = append_path(*all_paths, path);
 			continue ;
 		}
