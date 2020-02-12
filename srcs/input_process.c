@@ -6,13 +6,26 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 11:11:15 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 12:39:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #define NAME xt->elems->name
 #include "../includes/lem_in.h"
+
+void	clear_props(char **props)
+{
+	int i;
+
+	i = 0;
+	while (props[i])
+	{
+		free(props[i]);
+		i++;
+	}
+	free(props);
+}
 
 int		count_elems(char **array)
 {
@@ -55,9 +68,9 @@ int		is_link(char *line, t_prop *xt)
 	char	**props;
 
 	props = ft_strsplit(line, '-');
-	if (count_elems(props) != 2)
-		return (0);
-	return (1);
+	cnt = count_elems(props);
+	clear_props(props);
+	return (cnt != 2 ? FALSE : TRUE);
 }
 
 /*
@@ -67,14 +80,14 @@ int		is_link(char *line, t_prop *xt)
 int		is_room(char *line, t_prop *xt)
 {
 	char	**props;
+	int		ret;
 
+	ret = 0;
 	props = ft_strsplit(line, ' ');
-	if (count_elems(props) != 3)
-		return (0);
-	if (is_number(props[1]) && is_number(props[2]))
-		return (1);
-	else
-		return (0);
+	if (count_elems(props) == 3 && (is_number(props[1]) && is_number(props[2])))
+		ret = 1;
+	clear_props(props);
+	return (ret);
 }
 
 /*
@@ -86,7 +99,7 @@ void	prepend_node(char **props, t_prop *xt)
 	t_node *new;
 
 	new = malloc(sizeof(t_node));
-	new->name = props[0];
+	new->name = ft_strdup(props[0]);
 	new->x = ft_atoi(props[1]);
 	new->y = ft_atoi(props[2]);
 	new->visited = 0;
@@ -116,10 +129,11 @@ void	save_room(char *line, t_prop *xt)
 	props = ft_strsplit(line, ' ');
 	if (xt->elems == 0)
 	{
+		// ft_putstr("saving first\n");
 		xt->elems = (t_node *)malloc(sizeof(t_node));
 		xt->elems->visited = 0;
 		xt->elems->ngb = 0;
-		xt->elems->name = props[0];
+		xt->elems->name = ft_strdup(props[0]);
 		xt->elems->x = ft_atoi(props[1]);
 		xt->elems->y = ft_atoi(props[2]);
 		xt->elems->next = NULL;
@@ -154,6 +168,7 @@ void	save_link(char *line, t_prop *xt)
 	props = ft_strsplit(line, '-');
 	node1 = find_node(xt->elems, props[0]);
 	node2 = find_node(xt->elems, props[1]);
+	clear_props(props);
 	if (node1 == 0 || node2 == 0)
 	{
 		ft_putstr("Nothing found, suka\n");
@@ -209,11 +224,18 @@ void	read_input(t_prop *xt)
 			save_link(line, xt);
 		else
 			error_exit("Wrong input, bitch");
+		free(line);
 	}
 	check_input(xt);
-	//print_list(xt->elems);
+	// print_list(xt->elems);
+	// ft_printf("N of ANTS: %d\n", xt->f_ants);
+	// ft_printf("done\n");
 	bfs(find_start(xt->elems), find_end(xt->elems), &all_paths);
-	assign_ants(xt, all_paths);
+	ft_printf("All Paths:\n");
+	print_paths(all_paths);
+	all_paths = path_parsing(all_paths);
+	ft_printf("Unique Paths:\n");
+	print_paths(all_paths);
 	delete_list(xt->elems);
 	delete_paths(all_paths);
 }

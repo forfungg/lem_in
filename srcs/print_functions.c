@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/12 12:37:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 12:40:28 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ void	print_list(t_node *head)
 
 void	print_queue(t_que *queue)
 {
+	if (!queue)
+		return;
+	ft_printf("%s", queue->node->name);
+	queue = queue->next;
 	while (queue)
 	{
-		printf(" - %s", queue->node->name);
+		ft_printf(" - %s", queue->node->name);
 		queue = queue->next;
 	}
 	printf("\n");
@@ -52,9 +56,14 @@ void	print_queue(t_que *queue)
 
 void	print_paths(t_paths *paths)
 {
+	int i;
+
+	i = 1;
 	while (paths)
 	{
+		ft_printf("%8d:\t", i);
 		print_queue(paths->path);
 		paths = paths->next;
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 11:57:39 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/12 12:40:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ t_node				*que_getnext(t_que **queue);
 t_que				*que_copy(t_que *node);
 void				que_delete(t_que *head);
 t_node				*que_getlast(t_que *head);
-
+t_paths				*path_parsing(t_paths *all_paths);
 /*
 ** Breath First Search for paths
 */
