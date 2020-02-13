@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 12:35:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:38:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #define NAME xt->elems->name
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
 void	clear_props(char **props)
 {
@@ -230,6 +230,8 @@ void	read_input(t_prop *xt)
 			save_link(line, xt);
 		else
 			error_exit("Wrong input, bitch");
+		ft_printf(line); // THIS LOOKS SHIT
+		ft_printf("\n");
 		free(line);
 	}
 	check_input(xt);

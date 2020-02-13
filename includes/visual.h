@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_functions.c                                   :+:      :+:    :+:   */
+/*   visual.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 11:05:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 16:46:43 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/13 14:45:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#ifndef VISUAL_H
+#define VISUAL_H
 
-/*
-**	Exits the program with an error message
-** Clear mememory?
-*/
+# include "mlx.h"
+# include "../libft/includes/libft.h"
 
-void	error_exit(char *msg)
+typedef struct	s_prop
 {
-	perror("Error: ");
-	ft_printf("{RED}{B}ERROR:{EOC} %s\n", msg);
-	exit(-1);
-}
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+}				t_prop;
+
+#endif

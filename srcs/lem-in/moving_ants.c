@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 13:19:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:38:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
 int		get_n_strings(t_paths *paths)
 {
@@ -64,6 +64,25 @@ char	*str_append(char *str, int nb, char *name)
 	return (temp);
 }
 
+void	print_output(char **out)
+{
+	int cnt;
+	char *line;
+
+	cnt = 0;
+	ft_printf("\n");
+	while (out[cnt])
+	{
+		if (out[cnt + 1] == 0)
+			ft_printf("%s\n", out[cnt]);
+		else
+			ft_printf("%s\n", out[cnt]);
+		free(out[cnt]);
+		cnt++;
+	}
+	free(out);
+}
+
 void	move_ants(t_prop *xt, t_paths *paths)
 {
 	char	**out;
@@ -109,15 +128,5 @@ void	move_ants(t_prop *xt, t_paths *paths)
 			paths = head;
 		}
 	}
-	cnt = 0;
-	while (out[cnt])
-	{
-		if (out[cnt + 1] == 0)
-			ft_printf("%s\n", out[cnt]);
-		else
-			ft_printf("%s\n", out[cnt]);
-		free(out[cnt]);
-		cnt++;
-	}
-	free(out);
+	print_output(out);
 }

@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:30:55 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 11:52:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:29:36 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
 /*
 ** Creates queue node

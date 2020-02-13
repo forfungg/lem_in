@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   jiris_test_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 20:37:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 16:47:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:29:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../../includes/lem_in.h"
 #include <stdio.h>
 
 /*

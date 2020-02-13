@@ -6,12 +6,12 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/10 16:11:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:29:39 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "lem_in.h"
-#include "../includes/lem_in.h"
+#include "../../includes/lem_in.h"
 
 /*
 ** Create node

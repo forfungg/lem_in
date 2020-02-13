@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2020/01/21 13:21:11 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/13 14:37:55 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,14 +143,11 @@ $(OBJS):
 $(NAME): $(OBJS)
 	@ar rcs $@ $^
 	@ranlib $@
-	@echo "$(C_GREEN)[Library Created!]$(C_RES)"
 
 clean:
 	@/bin/rm -rf $(O_DIR)
-	@echo "$(C_RED)[Objects deleted!]$(C_RES)"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "$(C_RED)[Removed $(NAME)]$(C_RES)"
 
 re: fclean all
