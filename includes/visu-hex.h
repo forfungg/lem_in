@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:49:09 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 16:58:27 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct		s_img
 	void			*bg;
 	int				*bgdat;
 	
-	void			*frame;
-	int				*framedat;
+	void			*sand;
+	int				*sanddat;
 	
 	void			*room;
 	int				*roomdat;
@@ -106,8 +106,9 @@ void				read_input(t_prop *xt);
 ** Images Create
 */
 
-void				fill_image(int *img_data, int img_w, int img_h, int color);
+void				fill_rectangle(int *img_data, int img_w, int img_h, int color);
 void				create_background(t_prop *xt);
+void				create_sand(t_prop *xt);
 
 /*
 ** Images Draw
