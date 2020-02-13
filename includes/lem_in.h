@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 16:46:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 11:51:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_node
 	int				empty;
 	int				visited;
 	int				lvl;
+	int				shift;
 }					t_node;
 
 /*
@@ -44,6 +45,7 @@ typedef struct		s_queue
 {
 	t_node			*node;
 	int				curr_ant;
+	int 			shift;
 	struct s_queue	*next;
 }					t_que;
 

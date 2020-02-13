@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:30:55 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/11 12:31:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 11:52:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_que	*create_quenode(t_node *node)
 		return (NULL);
 	new_q->next = NULL;
 	new_q->node = node;
+	new_q->shift = 0;
 	return (new_q);
 }
 
