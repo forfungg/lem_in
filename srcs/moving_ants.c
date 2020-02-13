@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_ants.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 17:18:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 10:01:06 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,24 @@ void	move_ants(t_prop *xt, t_paths *paths)
 			tmp = paths->path->next;
 			while (tmp)
 			{
-				new = str_append(out[cnt], xt->ant_cnt, tmp->node->name);
-				free(out[cnt]);
-				out[cnt] = ft_strdup(new);
-				free(new);
-				cnt++;
+				if (tmp->node->empty == 1)
+				{
+					new = str_append(out[cnt], xt->ant_cnt, tmp->node->name);
+					free(out[cnt]);
+					tmp->node->empty = 0;
+					out[cnt] = ft_strdup(new);
+					free(new);
+					cnt++;
+				}
+				else if (tmp->node->empty == 0)
+				{
+					new = str_append(out[cnt + 1], xt->ant_cnt, tmp->node->name);
+					free(out[cnt + 1]);
+					tmp->node->empty = 0;
+					out[cnt + 1] = ft_strdup(new);
+					free(new);
+					cnt++;
+				}
 				tmp = tmp->next;
 			}
 			xt->ant_cnt += 1;
@@ -98,7 +111,10 @@ void	move_ants(t_prop *xt, t_paths *paths)
 		}
 		paths = paths->next;
 		if (!paths)
+		{
 			paths = head;
+		}
+
 	}
 	cnt = 0;
 	ft_printf("Results:\n");

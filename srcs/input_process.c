@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 17:07:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 09:33:57 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	prepend_node(char **props, t_prop *xt)
 	t_node *new;
 
 	new = malloc(sizeof(t_node));
+	new->empty = 1;
 	new->name = ft_strdup(props[0]);
 	new->x = ft_atoi(props[1]);
 	new->y = ft_atoi(props[2]);
@@ -131,6 +132,7 @@ void	save_room(char *line, t_prop *xt)
 	{
 		// ft_putstr("saving first\n");
 		xt->elems = (t_node *)malloc(sizeof(t_node));
+		xt->elems->empty = 1;
 		xt->elems->visited = 0;
 		xt->elems->ngb = 0;
 		xt->elems->name = ft_strdup(props[0]);
