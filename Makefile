@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/13 15:09:24 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/13 15:12:40 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))
 LEM_IN_DIR			= ./srcs/lem-in/
 VISU_HEX_DIR		= ./srcs/visu-hex/
 LIBFT_DIR			= ./libs/libft/
-LIB_MLX_DIR			= ./libs/libmlx/
+LIB_MLX_DIR			= ./libs/libmlx
 
 # Libraries
 
@@ -66,7 +66,7 @@ LIBFT_NAME			= libft.a
 MLX_NAME			= libmlx.a
 MLX_A				= $(addprefix $(LIB_MLX_DIR), $(MLX_NAME))
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
-LIBMLXFLAGS			= -I$(MLX_A) -L$(MLX_A) -lmlx -framework OpenGL -framework Appkit
+LIBMLXFLAGS			= -I$(LIB_MLX_DIR) -L$(LIB_MLX_DIR) -lmlx -framework OpenGL -framework Appkit
 
 # Includes
 INCLUDES			= includes
