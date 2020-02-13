@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 11:59:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:00:10 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,37 @@ int		get_n_strings(t_paths *paths)
 	return (max - 1);
 }
 
+void	ft_safestrjoin(char **str, char *add, int pos)
+{
+	char	*temp;
+
+	if (pos == 0)
+		temp = ft_strjoin(*str, add);
+	else
+		temp = ft_strjoin(add, *str);
+	ft_strdel(str);
+	*str = temp;
+}
+
 char	*str_append(char *str, int nb, char *name)
 {
-	char	*new;
-	char	*index;
-	char	*tmp;
+	char	*ret;
+	char	*temp;
+	char	*num;
 
-	new = ft_strnew(1);
-	new[0] = 'L';
-	index = ft_itoa(nb);
-	tmp = ft_strjoin(new, index);
-	free(new);
-	new = ft_strjoin(tmp, "-");
-	free(tmp);
-	tmp = ft_strjoin(new, name);
-	free(new);
-	new = ft_strjoin(tmp, " ");
-	free(tmp);
+	ret = ft_strnew(1);
+	ret[0] = 'L';
+	num = ft_itoa(nb);
+	ft_safestrjoin(&ret, num, 0);
+	free(num);
+	ft_safestrjoin(&ret, "-", 0);
+	ft_safestrjoin(&ret, name, 0);
+	ft_safestrjoin(&ret, " ", 0);
 	if (!str)
-	{
-		// *str = new;
-		return (new);
-	}
-	tmp = ft_strjoin(str, new);
-	free(new);
-	return (tmp);
+		return (ret);
+	temp = ft_strjoin(str, ret);
+	free(ret);
+	return (temp);
 }
 
 void	move_ants(t_prop *xt, t_paths *paths)
@@ -66,7 +72,6 @@ void	move_ants(t_prop *xt, t_paths *paths)
 	t_que	*tmp;
 	t_paths	*head;
 	char	*new;
-	int cnt2;
 
 	if (!paths)
 		return ;
@@ -103,13 +108,16 @@ void	move_ants(t_prop *xt, t_paths *paths)
 		{
 			paths = head;
 		}
-
 	}
 	cnt = 0;
-	ft_printf("Results:\n");
-	while (cnt < len)
+	while (out[cnt])
 	{
-		ft_printf("%s\n\n", out[cnt]);
+		if (out[cnt + 1] == 0)
+			ft_printf("%s\n", out[cnt]);
+		else
+			ft_printf("%s\n\n", out[cnt]);
+		free(out[cnt]);
 		cnt++;
 	}
+	free(out);
 }

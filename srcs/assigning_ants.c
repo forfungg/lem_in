@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigning_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/12 17:21:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 12:38:27 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ void	print_paths2(t_paths *paths)
 	// 	printf("\n\n");
 	// 	temp = temp->next;
 	// }
-	ft_printf("\nIndex | Path Length | Amount of Ants | Total\n");
-	i = 0;
-	total = 0;
-	while (temp)
-	{
-		len = get_len(temp->path);
-		ft_printf("%5d | %11d | %14d | %5d\n", i, len, temp->ants, len + temp->ants);
-		total += temp->ants;
-		temp = temp->next;
-	}
-	ft_printf("Total Ants Assigned: %d\n", total);
+	// ft_printf("\nIndex | Path Length | Amount of Ants | Total\n");
+	// i = 0;
+	// total = 0;
+	// while (temp)
+	// {
+	// 	len = get_len(temp->path);
+	// 	ft_printf("%5d | %11d | %14d | %5d\n", i, len, temp->ants, len + temp->ants);
+	// 	total += temp->ants;
+	// 	temp = temp->next;
+	// }
+	// ft_printf("Total Ants Assigned: %d\n", total);
 }
 
 int		get_t_len(t_paths *paths)
@@ -130,6 +130,5 @@ void	assign_ants(t_prop *xt)
 		several(xt->f_ants, xt->all_paths);
 	else
 		xt->all_paths->ants = xt->f_ants;
-	print_paths2(xt->all_paths);
 	move_ants(xt, xt->all_paths);
 }

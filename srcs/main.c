@@ -3,17 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/12 16:36:32 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/13 12:38:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
+void			delete_elems(t_node **elems)
+{
+	t_node *temp;
+
+	while (*elems)
+	{
+		temp = (*elems)->next;
+		free((*elems)->name);
+		free((*elems)->ngb);
+		free(*elems);
+		(*elems) = temp;
+	}
+	free(*elems);
+	*elems = NULL;
+}
+
 static void		clear_memory(t_prop *xt)
 {
+	delete_elems(&xt->elems);
 	delete_paths(xt->all_paths);
 	free(xt);
 }
@@ -41,4 +58,8 @@ int				main(int argc, char **argv)
 	read_input(xt);
 	assign_ants(xt);
 	clear_memory(xt);
+	while (1)
+	{
+		
+	}
 }
