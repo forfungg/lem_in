@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   images_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:46:08 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/13 16:47:51 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
-void	init_xt(t_prop *xt)
+void	fill_image(int *img_data, int img_w, int img_h, int color)
 {
-	ft_bzero(xt, sizeof(xt));
-	xt->elems = NULL;
-	xt->n_start = 0;
-	xt->n_end = 0;
-	xt->n_ants = 0;
-	xt->imgs = (t_img *)malloc(sizeof(t_img));
-	MLX_PTR = mlx_init();
-	WIN_PTR = mlx_new_window(xt->mlx_ptr, W_W, W_H, W_NAME);
-}
+	int count_h;
+	int count_w;
 
-int	main(int argc, char **argv)
-{
-	t_prop	*xt;
-
-	if (!(xt = (t_prop *)malloc(sizeof(t_prop))))
-		error_exit("Malloc (xt)");
-	init_xt(xt);
-	read_input(xt);
-	draw_farm(xt);
+	count_h = -1;
+	while (++count_h < img_h)
+	{
+		count_w = -1;
+		while (++count_w < img_w)
+			img_data[count_h * img_w + count_w] = color;
+	}
 }

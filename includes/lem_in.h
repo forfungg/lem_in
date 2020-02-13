@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:49 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:16:58 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define TRUE 1
 # define FALSE 0
+# define NAME xt->elems->name
 
 /*
 ** Node Struct

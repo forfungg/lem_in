@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 13:29:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:16:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 static int	check_n_start_end(t_prop *xt)
 {

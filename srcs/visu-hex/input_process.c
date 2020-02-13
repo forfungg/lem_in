@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:12:51 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/13 16:13:13 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu-hex.h"
 
 void	clear_props(char **props)
 {
@@ -204,16 +204,11 @@ void	save_ants(char *str, t_prop *xt)
 	xt->n_ants += 1;
 }
 
-/*
-** reads commands, rooms and links, cuts out crap and launches compliance check
-*/
 
 void	read_input(t_prop *xt)
 {
 	char	*line;
-	t_paths *all_paths;
 
-	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		if (line[0] == '#' || line[0] == 'L')
@@ -224,20 +219,6 @@ void	read_input(t_prop *xt)
 			save_room(line, xt);
 		else if (is_link(line, xt) == 1)
 			save_link(line, xt);
-		else
-			error_exit("Wrong input, bitch");
-		ft_printf(line); // THIS LOOKS SHIT
-		ft_printf("\n");
 		free(line);
 	}
-	check_input(xt);
-	// print_list(xt->elems);
-	// ft_printf("N of ANTS: %d\n", xt->f_ants);
-	// ft_printf("done\n");
-	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
-	// ft_printf("All Paths\n");
-	// print_paths(xt->all_paths);
-	xt->all_paths = path_parsing(xt->all_paths);
-	// ft_printf("Unique Paths\n");
-	// print_paths(xt->all_paths);
 }

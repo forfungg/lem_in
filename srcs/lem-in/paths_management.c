@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 13:29:38 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:17:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 /*
 ** Enqueue path

@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   images_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:46:08 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/13 16:46:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
-void	init_xt(t_prop *xt)
+void		create_background(t_prop *xt)
 {
-	ft_bzero(xt, sizeof(xt));
-	xt->elems = NULL;
-	xt->n_start = 0;
-	xt->n_end = 0;
-	xt->n_ants = 0;
-	xt->imgs = (t_img *)malloc(sizeof(t_img));
-	MLX_PTR = mlx_init();
-	WIN_PTR = mlx_new_window(xt->mlx_ptr, W_W, W_H, W_NAME);
-}
+	int		bpp;
+	int		size;
+	int		endian;
 
-int	main(int argc, char **argv)
-{
-	t_prop	*xt;
-
-	if (!(xt = (t_prop *)malloc(sizeof(t_prop))))
-		error_exit("Malloc (xt)");
-	init_xt(xt);
-	read_input(xt);
-	draw_farm(xt);
+	xt->imgs->bg = mlx_new_image(MLX_PTR, W_W, W_H);
+	IMGS->bgdat = (int *)mlx_get_data_addr(IMGS->bg, &bpp, &size, &endian);
+	fill_image(IMGS->bgdat, W_W, W_H, 0xFFFFFF);
 }

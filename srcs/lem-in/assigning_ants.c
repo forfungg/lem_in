@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 13:29:44 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:16:37 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 void	print_sum_ants(t_paths *paths)
 {

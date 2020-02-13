@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 13:29:46 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:16:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/lem_in.h"
+#include "lem_in.h"
 
 /*
 ** Breath First Search of All pathways

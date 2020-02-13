@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/13 15:12:40 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/13 16:49:21 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,14 @@ JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 VISU_HEX			= visu-hex
 
 VISU_HEX_SRCS		= main.c\
+					input_process.c\
+					exit_functions.c\
+					images_create.c\
+					images_draw.c\
+					images_tools.c\
+					controls.c\
+					nodes_management.c
+					
 
 VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))
 
