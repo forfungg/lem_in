@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 11:58:38 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 11:59:51 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_n_strings(t_paths *paths)
 		}
 		paths = paths->next;
 	}
-	return (max + 1);
+	return (max - 1);
 }
 
 char	*str_append(char *str, int nb, char *name)
