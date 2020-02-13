@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 13:00:10 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:19:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ char	*str_append(char *str, int nb, char *name)
 	free(num);
 	ft_safestrjoin(&ret, "-", 0);
 	ft_safestrjoin(&ret, name, 0);
-	ft_safestrjoin(&ret, " ", 0);
 	if (!str)
 		return (ret);
+	ft_safestrjoin(&ret, " ", 1);
 	temp = ft_strjoin(str, ret);
 	free(ret);
 	return (temp);
@@ -115,7 +115,7 @@ void	move_ants(t_prop *xt, t_paths *paths)
 		if (out[cnt + 1] == 0)
 			ft_printf("%s\n", out[cnt]);
 		else
-			ft_printf("%s\n\n", out[cnt]);
+			ft_printf("%s\n", out[cnt]);
 		free(out[cnt]);
 		cnt++;
 	}

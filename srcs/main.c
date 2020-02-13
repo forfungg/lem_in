@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 12:38:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 13:01:19 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,4 @@ int				main(int argc, char **argv)
 	read_input(xt);
 	assign_ants(xt);
 	clear_memory(xt);
-	while (1)
-	{
-		
-	}
 }

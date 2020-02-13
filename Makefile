@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/12 13:04:11 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/13 13:04:14 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RED			=	\033[0;31m
 
 # LEM_IN files
 
-NAME				= lem_in
+NAME				= lem-in
 
 LEM_IN_SRCS			= main.c\
 					input_process.c\
