@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual.h                                           :+:      :+:    :+:   */
+/*   ft_vector_mag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ohakola <ohakola@student.helsinki.fi>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:42 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 14:06:39 by ohakola           #+#    #+#             */
+/*   Updated: 2019/12/18 17:15:42 by ohakola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-#define VISUAL_H
+#include "libmatrix.h"
 
-# include <mlx.h>
-# include "../libs/libft/includes/libft.h"
-
-typedef struct	s_prop
+double	ft_vector_mag(t_vector *vec)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-}				t_prop;
+	size_t		i;
+	double		res;
 
-#endif
+	i = 0;
+	res = 0;
+	while (i < vec->size)
+	{
+		res += vec->v[i] * vec->v[i];
+		i++;
+	}
+	return (sqrt(res));
+}

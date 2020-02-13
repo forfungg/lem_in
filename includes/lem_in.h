@@ -6,14 +6,14 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 11:51:25 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:08:49 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "../libft/includes/libft.h"
+# include "../libs/libft/includes/libft.h"
 
 # define TRUE 1
 # define FALSE 0

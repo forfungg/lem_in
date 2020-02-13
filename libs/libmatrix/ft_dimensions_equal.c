@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual.h                                           :+:      :+:    :+:   */
+/*   ft_dimensions_equal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ohakola <ohakola@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:42 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/17 14:30:44 by ohakola           #+#    #+#             */
+/*   Updated: 2019/12/17 15:26:42 by ohakola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-#define VISUAL_H
+#include "libmatrix.h"
 
-# include <mlx.h>
-# include "../libs/libft/includes/libft.h"
-
-typedef struct	s_prop
+int		ft_dimensions_equal(const t_matrix *m1, const t_matrix *m2)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-}				t_prop;
-
-#endif
+	return ((m1->cols == m2->cols && m1->rows == m2->rows));
+}

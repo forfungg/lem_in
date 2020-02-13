@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual.h                                           :+:      :+:    :+:   */
+/*   ft_vector_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ohakola <ohakola@student.helsinki.fi>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:42 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/17 17:59:53 by ohakola           #+#    #+#             */
+/*   Updated: 2020/01/29 14:30:31 by ohakola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-#define VISUAL_H
+#include "libmatrix.h"
 
-# include <mlx.h>
-# include "../libs/libft/includes/libft.h"
-
-typedef struct	s_prop
+void	ft_vector_free(t_vector *vec)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-}				t_prop;
-
-#endif
+	if (!vec)
+	{
+		ft_puterror("Invalid input in ft_vector_free\n.");
+		return ;
+	}
+	free(vec->v);
+	free(vec);
+	vec = NULL;
+}

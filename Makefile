@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/13 14:48:54 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/13 15:09:24 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,19 +57,19 @@ VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))
 
 LEM_IN_DIR			= ./srcs/lem-in/
 VISU_HEX_DIR		= ./srcs/visu-hex/
-LIBFT_DIR			= ./libft/
-LIB_MLX_DIR			= ./libmlx/
+LIBFT_DIR			= ./libs/libft/
+LIB_MLX_DIR			= ./libs/libmlx/
 
 # Libraries
 
 LIBFT_NAME			= libft.a
-MLX_NAME			= libmlx
-MLX_A				= $(addprefix $(LIN_MLX_DIR), $(MLX_NAME))
+MLX_NAME			= libmlx.a
+MLX_A				= $(addprefix $(LIB_MLX_DIR), $(MLX_NAME))
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
-LIBMLXFLAGS			= -I$(LIBMLX) -L$(LIBMLX) -lmlx -framework OpenGL -framework Appkit
+LIBMLXFLAGS			= -I$(MLX_A) -L$(MLX_A) -lmlx -framework OpenGL -framework Appkit
 
 # Includes
-INCLUDES			= -I includes/ -I libft/
+INCLUDES			= includes
 
 .PHONY: all clean fclean re
 
@@ -77,12 +77,12 @@ all: $(NAME)
 
 $(NAME): $(VISU_HEX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
-	@gcc -o $(NAME) $(CFLAGS) $(LIBFT_A) $(LEM_IN_FILES)
+	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(LEM_IN_FILES)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
 $(VISU_HEX) : $(LIBFT_NAME)
 	@echo "$(RED)Compiling visu-hex...$(RES)"
-	@gcc -o $(VISU_HEX) $(CFLAGS) $(LIBFT_A) $(VISU_HEX_FILES) $(LIBMLXFLAGS)
+	@gcc -o $(VISU_HEX) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(VISU_HEX_FILES) $(LIBMLXFLAGS)
 	@echo "$(GREENB)$(VISU_HEX) $(GREEN)done.$(RES)"
 
 $(LIBFT_NAME):
@@ -90,7 +90,7 @@ $(LIBFT_NAME):
 	@Make all -C $(LIBFT_DIR)
 	@echo "$(GREEN)Done.$(RES)"
 	@echo "$(RED)Compiling MLX Library$(RES)"
-	@Make all -C $(MLX_A)
+	@Make all -C $(LIB_MLX_DIR)
 	@echo "$(GREEN)Done.$(RES)"
 
 jiri:

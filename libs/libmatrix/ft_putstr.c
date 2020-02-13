@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual.h                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ohakola <ohakola@student.helsinki.fi>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:42 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/17 14:36:57 by ohakola           #+#    #+#             */
+/*   Updated: 2019/12/22 16:03:35 by ohakola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-#define VISUAL_H
+#include "libmatrix.h"
 
-# include <mlx.h>
-# include "../libs/libft/includes/libft.h"
+/*
+** ft_putstr() writes a given string into stdout.
+*/
 
-typedef struct	s_prop
+void	ft_putstr(char const *str)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-}				t_prop;
+	int len;
 
-#endif
+	if (!str)
+		return ;
+	len = ft_strlen(str);
+	write(1, str, len);
+}

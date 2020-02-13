@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visual.h                                           :+:      :+:    :+:   */
+/*   ft_matrix_set_all.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ohakola <ohakola@student.helsinki.fi>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:42 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/17 15:22:18 by ohakola           #+#    #+#             */
+/*   Updated: 2019/12/22 16:27:35 by ohakola          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-#define VISUAL_H
+#include "libmatrix.h"
 
-# include <mlx.h>
-# include "../libs/libft/includes/libft.h"
-
-typedef struct	s_prop
+int		ft_matrix_set_all(t_matrix *mat, double nb)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-}				t_prop;
+	int len;
+	int i;
 
-#endif
+	len = mat->cols * mat->rows;
+	i = 0;
+	while (i < len)
+		mat->m[i++] = nb;
+	return (1);
+}
