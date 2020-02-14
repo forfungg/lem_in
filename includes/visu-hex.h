@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:58:27 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:23:52 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIN_PTR		xt->win_ptr
 # define TRUE 1
 # define FALSE 0
-# define W_W 1920
-# define W_H 1080
+# define W_W 1440
+# define W_H 720
 # define W_NAME "VISU-HEXX"
 
 # include <mlx.h>
@@ -37,12 +37,15 @@ typedef struct		s_img
 	
 	void			*room;
 	int				*roomdat;
+	double			roomsize;
 
 	void			*ant;
 	int				*antdat;
 
 	void			*name;
 	int				*namedat;
+
+	int				disp_names;
 }					t_img;
 
 typedef struct		s_node
@@ -67,6 +70,7 @@ typedef struct	s_prop
 	int				n_ants;
 	int				n_start;
 	int				n_end;
+	int				n_rooms;
 
 	t_node			*elems;
 	t_img			*imgs;
@@ -75,6 +79,13 @@ typedef struct	s_prop
 	void			*win_ptr;
 	void			*img_ptr;
 	int				*img_data;
+
+	int				max_y;
+	int				min_y;
+	int				max_x;
+	int				min_x;
+	int				x_coef;
+	int				y_coef;
 }				t_prop;
 
 /*
@@ -105,9 +116,12 @@ void				read_input(t_prop *xt);
 /*
 ** Images Create
 */
-
+void				get_minmax_xy(t_prop *xt);
+void				fill_frame(int *img_data, int img_w, int img_h, int color);
+void				fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, int color_2);
 void				fill_rectangle(int *img_data, int img_w, int img_h, int color);
 void				create_background(t_prop *xt);
+void				create_room(t_prop *xt);
 void				create_sand(t_prop *xt);
 
 /*
@@ -115,6 +129,7 @@ void				create_sand(t_prop *xt);
 */
 
 void				draw_farm(t_prop *xt);
+void				redraw(t_prop *xt);
 
 /*
 ** Controls

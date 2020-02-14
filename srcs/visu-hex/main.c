@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:46:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/14 11:20:17 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_xt(t_prop *xt)
 	xt->n_start = 0;
 	xt->n_end = 0;
 	xt->n_ants = 0;
+	xt->n_rooms = 0;
 	xt->imgs = (t_img *)malloc(sizeof(t_img));
 	MLX_PTR = mlx_init();
 	WIN_PTR = mlx_new_window(xt->mlx_ptr, W_W, W_H, W_NAME);
@@ -32,5 +33,6 @@ int	main(int argc, char **argv)
 		error_exit("Malloc (xt)");
 	init_xt(xt);
 	read_input(xt);
+	ft_printf("Number of rooms: %d", xt->n_rooms);
 	draw_farm(xt);
 }
