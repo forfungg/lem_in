@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 14:36:40 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/14 17:16:01 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	display_background(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->sand, 0, W_H / 6);
 	mlx_string_put(MLX_PTR, WIN_PTR, 500, 50, 0xff00ff, "Artem's and Jiri's ANT FARM");
 }
-
-//hard code max coordinates and get others by coefficient;
 
 int		get_cor_x(int coord, t_prop *xt)
 {
@@ -46,20 +44,17 @@ int		get_cor_y(int coord, t_prop *xt)
 void	display_rooms(t_prop *xt)
 {
 	t_node	*temp;
-	int		cor_x;
-	int		cor_y;
 
 	temp = xt->elems;
 	while (temp)
 	{
-		cor_x = get_cor_x(temp->x, xt);
-		cor_y = get_cor_y(temp->y, xt);
+		temp->nx = get_cor_x(temp->x, xt);
+		temp->ny = get_cor_y(temp->y, xt);
 		if (IMGS->disp_names == 1)
-			mlx_string_put(MLX_PTR, WIN_PTR, cor_x - 15, cor_y - 20, 0xff00ff, temp->name);
-		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, cor_x, cor_y);
+			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 15, temp->ny - 20, 0xff00ff, temp->name);
+		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, temp->nx, temp->ny);
 		temp = temp->next;
 	}
-	
 }
 
 void	redraw(t_prop *xt)
@@ -67,6 +62,7 @@ void	redraw(t_prop *xt)
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	display_background(xt);
 	display_rooms(xt);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->line, 0, 0);
 }
 
 void	draw_farm(t_prop *xt)
@@ -78,6 +74,8 @@ void	draw_farm(t_prop *xt)
 	create_room(xt);
 	display_background(xt);
 	display_rooms(xt);
+	create_lines(xt);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->line, 0, 0);
 	mlx_hook(xt->win_ptr, 2, 0, key_hook_press, xt);
 	mlx_loop(MLX_PTR);
 }

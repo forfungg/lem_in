@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 14:23:52 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/14 15:34:39 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct		s_img
 	int				*roomdat;
 	double			roomsize;
 
+	void			*line;
+	int				*linedat;
+	
 	void			*ant;
 	int				*antdat;
 
@@ -53,6 +56,8 @@ typedef struct		s_node
 	char			*name;
 	int				x;
 	int				y;
+	int				nx;
+	int				ny;
 	int				start;
 	int				end;
 	struct s_node	**ngb;
@@ -86,7 +91,18 @@ typedef struct	s_prop
 	int				min_x;
 	int				x_coef;
 	int				y_coef;
+
+	int				dx;
+	int				dy;
+	int				stpx;
+	int				stpy;
 }				t_prop;
+
+typedef struct	s_pcur
+{
+	int				x;
+	int				y;
+}				t_pcur;
 
 /*
 ** Nodes Management
@@ -123,6 +139,7 @@ void				fill_rectangle(int *img_data, int img_w, int img_h, int color);
 void				create_background(t_prop *xt);
 void				create_room(t_prop *xt);
 void				create_sand(t_prop *xt);
+void				create_lines(t_prop *xt);
 
 /*
 ** Images Draw
@@ -130,6 +147,7 @@ void				create_sand(t_prop *xt);
 
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
+void				connect_rooms(t_prop *xt, t_node *beg, t_node *end);
 
 /*
 ** Controls

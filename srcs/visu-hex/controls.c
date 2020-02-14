@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 13:25:03 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/14 14:46:58 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	key_hook_press(int keycode, t_prop *xt)
 		IMGS->disp_names = 1;
 		redraw(xt);
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 14:15:04 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/14 14:54:57 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,3 +89,4 @@ void	fill_rectangle(int *img_data, int img_w, int img_h, int color)
 			img_data[count_h * img_w + count_w] = color;
 	}
 }
+
