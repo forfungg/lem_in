@@ -3,7 +3,6 @@
 ## C version
 
 ### To-Do
-Add Artem's other account as contributor
 	- error management
 		- coordinates over int range
 		- duplicate paths (error or ignore)
