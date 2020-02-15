@@ -33,6 +33,8 @@ the starting (ending) amount of paths will determine the mode
 
 [Unit test](https://github.com/TBouder/lem-in_test)
 
+[Python Test?](https://www.geeksforgeeks.org/python-clustering-connectivity-and-other-graph-properties-using-networkx/)
+
 Amount of turns required for N ants
 Distribute ants
 
