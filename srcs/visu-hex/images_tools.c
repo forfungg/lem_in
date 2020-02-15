@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 14:54:57 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/15 09:34:59 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	get_minmax_xy(t_prop *xt)
 			xt->min_x = temp->next->x;
 		temp = temp->next;
 	}
-	printf("MAX X: %d\n", xt->max_x);
-	printf("MAX Y: %d\n", xt->max_y);
 }
 
 void	fill_frame(int *img_data, int img_w, int img_h, int color)

@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 15:34:39 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/15 10:00:06 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct		s_img
 	int				*namedat;
 
 	int				disp_names;
+	int				disp_all;
+	int				disp_path;
+	int				disp_unique;
 }					t_img;
 
 typedef struct		s_node
@@ -132,6 +135,8 @@ void				read_input(t_prop *xt);
 /*
 ** Images Create
 */
+int					get_cor_x(int coord, t_prop *xt);
+int					get_cor_y(int coord, t_prop *xt);
 void				get_minmax_xy(t_prop *xt);
 void				fill_frame(int *img_data, int img_w, int img_h, int color);
 void				fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, int color_2);

@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/14 17:16:39 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/14 17:28:25 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	increment_x(t_prop *xt, t_node *beg, t_node *end, int cnt)
 	error = (2 * xt->dy) - xt->dx;
 	pcur->y = beg->ny;
 	pcur->x = beg->nx + xt->stpx;
-	IMGS->linedat[beg->ny * W_W + beg->nx] = 0x00ff00;
+	IMGS->linedat[beg->ny * W_W + beg->nx] = 0x000000;
 	while (cnt++ <= xt->dx - 1)
 	{
 		if (error > 0)
@@ -31,7 +31,7 @@ static void	increment_x(t_prop *xt, t_node *beg, t_node *end, int cnt)
 		}
 		else
 			error = error + 2 * xt->dy;
-		IMGS->linedat[pcur->y * W_W + pcur->x] = 0x00ff00;
+		IMGS->linedat[pcur->y * W_W + pcur->x] = 0x000000;
 		pcur->x += xt->stpx;
 	}
 	free(pcur);
@@ -46,7 +46,7 @@ static void	increment_y(t_prop *xt, t_node *beg, t_node *end, int cnt)
 	error = (2 * xt->dx) - xt->dy;
 	pcur->x = beg->nx;
 	pcur->y = beg->ny + xt->stpy;
-	IMGS->linedat[beg->ny * W_W + beg->nx] = 0x00ff00;
+	IMGS->linedat[beg->ny * W_W + beg->nx] = 0x000000;
 	while (cnt++ <= xt->dy - 1)
 	{
 		if (error > 0)
@@ -56,7 +56,7 @@ static void	increment_y(t_prop *xt, t_node *beg, t_node *end, int cnt)
 		}
 		else
 			error = error + 2 * xt->dx;
-		IMGS->linedat[pcur->y * W_W + pcur->x] = 0x00ff00;
+		IMGS->linedat[pcur->y * W_W + pcur->x] = 0x000000;
 		pcur->y += xt->stpy;
 	}
 	free(pcur);

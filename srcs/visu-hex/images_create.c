@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 17:16:59 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/15 10:00:54 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,23 @@ void		create_room(t_prop *xt)
 	int		bpp;
 	int		size;
 	int		endian;
+	t_node	*temp;
 
+	temp = xt->elems;
 	IMGS->roomsize = get_size(W_W, W_H, xt->n_rooms);
+	while (temp)
+	{
+		temp->nx = get_cor_x(temp->x, xt);
+		temp->ny = get_cor_y(temp->y, xt);
+		temp = temp->next;
+	}
 	if (xt->n_rooms != 0)
 	{
 		IMGS->room = mlx_new_image(MLX_PTR, IMGS->roomsize, IMGS->roomsize);
 		IMGS->roomdat = (int *)mlx_get_data_addr(IMGS->room, &bpp, &size, &endian);
 		fill_frame(IMGS->roomdat, IMGS->roomsize, IMGS->roomsize, 0x996633);
 	}
+
 }
 
 void		create_background(t_prop *xt)

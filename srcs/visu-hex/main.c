@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 11:20:17 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/15 09:35:16 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int	main(int argc, char **argv)
 		error_exit("Malloc (xt)");
 	init_xt(xt);
 	read_input(xt);
-	ft_printf("Number of rooms: %d", xt->n_rooms);
 	draw_farm(xt);
 }
