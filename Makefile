@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
+#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/14 15:12:36 by solopov          ###   ########.fr        #
+#    Updated: 2020/02/15 14:18:49 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ all: $(NAME)
 
 $(NAME): $(VISU_HEX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
-	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(LEM_IN_FILES)
+	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(LIBFT_A)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
 $(VISU_HEX) : $(LIBFT_NAME)
