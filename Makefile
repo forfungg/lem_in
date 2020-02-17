@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/17 11:20:29 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/17 11:33:22 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ NAME				= lem-in
 
 LEM_IN_SRCS			= main.c \
 					input_process.c \
+					input_process2.c \
+					input_process3.c \
 					print_functions.c \
 					nodes_management.c \
 					nodes_management2.c \

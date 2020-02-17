@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 10:46:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:27:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,18 @@ typedef struct		s_prop
 void				check_flags(int argc, char **argv, t_prop *xt);
 void				read_input(t_prop *xt);
 void				check_input(t_prop *xt);
+void				clear_props(char **props);
+int					count_elems(char **array);
+int					is_number(char *str);
+int					is_ants(char *str, t_prop *xt);
+int					is_link(char *line, t_prop *xt);
+int					is_room(char *line, t_prop *xt);
+void				new_node(char **props, t_prop *xt);
+void				prepend_node(char **props, t_prop *xt);
+void				save_room(char *line, t_prop *xt);
+void				save_link(char *line, t_prop *xt);
+void				save_commands(char *str, t_prop *xt);
+void				save_ants(char *str, t_prop *xt);
 
 /*
 ** Nodes Management
