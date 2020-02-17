@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 11:49:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:02:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_queue
 {
 	t_node			*node;
 	int				curr_ant;
-	int 			shift;
+	int				shift;
 	struct s_queue	*next;
 }					t_que;
 
