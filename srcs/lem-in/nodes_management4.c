@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 11:19:32 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:12:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int		create_neighbor(t_node *node, t_node *neighbor)
 {
 	node->ngb = (t_node **)malloc(sizeof(t_node *) * 2);
 	if (!node->ngb)
-		return (FALSE);
+		error_exit("malloc at create_neighbor");
 	node->ngb[0] = neighbor;
 	node->ngb[1] = NULL;
 	return (TRUE);
@@ -70,17 +70,32 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 	return (TRUE);
 }
 
+static int		already_exists(t_node *node, char *new)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strequ(node->name, new))
+		return (TRUE);
+	while (node->ngb[i])
+	{
+		if (ft_strequ(node->ngb[i]->name, new))
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
 int				add_neighbor(t_node *node, t_node *neighbor)
 {
 	if (!node || !neighbor)
 		return (FALSE);
 	if (node->ngb == NULL)
-	{
-		if (!create_neighbor(node, neighbor))
-			return (FALSE);
-	}
+		create_neighbor(node, neighbor);
 	else
 	{
+		if (already_exists(node, neighbor->name))
+			return (TRUE);
 		if (!append_neighbor(node, neighbor))
 			return (FALSE);
 	}

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 12:00:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:11:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ void	print_edges(t_node *head)
 
 	while (head)
 	{
-		i = 0;
-		while (head->ngb[i])
+		if (head->ngb)
 		{
-			ft_printf("%s-%s\n", head->name, head->ngb[i]->name);
-			i++;
+			i = 0;
+			while (head->ngb[i])
+			{
+				ft_printf("%s-%s\n", head->name, head->ngb[i]->name);
+				i++;
+			}
 		}
 		head = head->next;
 	}
