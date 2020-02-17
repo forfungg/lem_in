@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 11:27:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:49:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,8 @@ void				delete_paths(t_paths *all_paths);
 */
 
 void				print_list(t_node *head);
-void				print_queue(t_que *queue);
-void				print_paths(t_paths *paths);
+void				print_edges(t_node *head);
+void				print_colony(t_prop *xt);
 
 /*
 **	Program functionality support tools

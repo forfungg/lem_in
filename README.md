@@ -5,7 +5,6 @@
 ### To-Do
 	17.2.
 		- printing output -> the colony information
-
 	- error management
 		- coordinates over int range
 		- duplicate paths (error or ignore)

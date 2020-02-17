@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 11:32:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:50:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	read_input(t_prop *xt)
 			save_link(line, xt);
 		else
 			error_exit("Wrong Input");
-		ft_printf(line);
-		ft_printf("\n");
 		free(line);
 	}
 	check_input(xt);
