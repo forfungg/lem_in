@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:30:55 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 15:17:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:05:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,33 +89,4 @@ t_que			*que_copy(t_que *node)
 		node = node->next;
 	}
 	return (new);
-}
-
-/*
-** Deletes the queue
-*/
-
-void			que_delete(t_que *head)
-{
-	t_que *tmp;
-
-	while (head)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-}
-
-/*
-** Returns pointer to the last graph_node of the queue
-*/
-
-t_node			*que_getlast(t_que *head)
-{
-	if (!head)
-		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head->node);
 }

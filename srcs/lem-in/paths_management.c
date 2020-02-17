@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 15:17:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:03:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,6 @@ t_que		*pop_path(t_paths **all_paths)
 	path = tmp->path;
 	free(tmp);
 	return (path);
-}
-
-/*
-** Delete paths
-*/
-
-void	delete_paths(t_paths *all_paths)
-{
-	t_paths *tmp;
-
-	while (all_paths)
-	{
-		tmp = all_paths;
-		all_paths = all_paths->next;
-		que_delete(tmp->path);
-		free(tmp);
-	}
 }
 
 /*
