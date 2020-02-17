@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:19:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:14:28 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	create_connections_lines(t_prop *xt)
 			cnt = 0;
 			while (temp->ngb[cnt] != 0)
 			{
-				connect_rooms(xt, temp, temp->ngb[cnt]);
+				connect_nodes(IMGS->linedat, xt, temp, temp->ngb[cnt]);
 				cnt += 1;
 			}
 		}
@@ -57,7 +57,7 @@ void	create_connections_paths(t_prop *xt)
 		xt->color = rand() % (16777215 + 162478 - 0) + 0;
 		while (temp->path->next)
 		{
-			connect_rooms_path(xt, temp->path->node, temp->path->next->node);
+			connect_nodes(IMGS->pathdat, xt, temp->path->node, temp->path->next->node);
 			temp->path = temp->path->next;
 		}
 		temp = temp->next;

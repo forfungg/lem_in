@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 15:59:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:14:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,8 +203,7 @@ void				create_path(t_prop *xt);
 
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
-void				connect_rooms(t_prop *xt, t_node *beg, t_node *end);
-void				connect_rooms_path(t_prop *xt, t_node *beg, t_node *end);
+void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
 
 /*
 ** Controls
