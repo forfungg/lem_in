@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 15:02:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:59:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef struct		s_img
 	void			*room;
 	int				*roomdat;
 	int				roomsize;
+
+	void			*start;
+	int				*startdat;
+
+	void			*end;
+	int				*enddat;
 
 	void			*line;
 	int				*linedat;

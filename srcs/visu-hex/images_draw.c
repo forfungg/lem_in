@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 15:09:01 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:06:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,12 @@ void	display_rooms(t_prop *xt)
 	temp = xt->elems;
 	while (temp)
 	{
-		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, temp->nx, temp->ny);
+		if (temp->start == 1)
+			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->start, temp->nx, temp->ny);
+		else if (temp->end == 1)
+			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->end, temp->nx, temp->ny);
+		else
+			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, temp->nx, temp->ny);
 		temp = temp->next;
 	}
 }
@@ -99,15 +104,21 @@ void	redraw(t_prop *xt)
 {
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	if (IMGS->disp_all == 1)
-	{
-		printf("all\n");
 		display_all(xt);
-	}
 	if (IMGS->disp_path == 1)
-	{
-		printf("paths\n");
 		display_paths(xt);
-	}
+}
+
+void	create_stuff(t_prop *xt)
+{
+	get_minmax_xy(xt);
+	create_background(xt);
+	create_sand(xt);
+	create_room(xt);
+	create_start(xt);
+	create_end(xt);
+	create_lines(xt);
+	create_path(xt);
 }
 
 void	draw_farm(t_prop *xt)
@@ -115,12 +126,7 @@ void	draw_farm(t_prop *xt)
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;
 	IMGS->disp_all = 1;
-	get_minmax_xy(xt);
-	create_background(xt);
-	create_sand(xt);
-	create_room(xt);
-	create_lines(xt);
-	create_path(xt);
+	create_stuff(xt);
 	display_all(xt);
 	mlx_hook(xt->win_ptr, 2, 0, key_hook_press, xt);
 	mlx_loop(MLX_PTR);
