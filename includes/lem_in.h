@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:16:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:46:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,8 @@ void				error_exit(char *msg);
 void				assign_ants(t_prop *xt);
 void				move_ants(t_prop *xt, t_paths *paths);
 int					get_t_len(t_paths *paths);
-void				print_paths2(t_paths *paths);
-
+int					get_n_strings(t_paths *paths);
+void				ft_safestrjoin(char **str, char *add, int pos);
+char				*str_append(char *str, int nb, char *name);
+void				print_output(char **out);
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/15 14:18:49 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/17 10:47:22 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ LEM_IN_SRCS			= main.c\
 					paths_management.c \
 					exit_functions.c \
 					moving_ants.c\
+					moving_ants_tools.c \
 					assigning_ants.c
 
 JIRIS_LEM			= jiris_test_main.c \

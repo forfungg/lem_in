@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 15:17:39 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:44:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_list(t_node *head)
 void	print_queue(t_que *queue)
 {
 	if (!queue)
-		return;
+		return ;
 	ft_printf("%s", queue->node->name);
 	queue = queue->next;
 	while (queue)

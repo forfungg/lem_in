@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:16:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:44:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int	check_n_start_end(t_prop *xt)
+static int		check_n_start_end(t_prop *xt)
 {
 	t_node *temp;
 
@@ -28,7 +28,7 @@ static int	check_n_start_end(t_prop *xt)
 	return (0);
 }
 
-static int	check_ants(t_prop *xt)
+static int		check_ants(t_prop *xt)
 {
 	if (xt->n_ants != 1)
 		return (1);
@@ -37,7 +37,7 @@ static int	check_ants(t_prop *xt)
 	return (0);
 }
 
-static int	get_len(t_node **array)
+static int		get_len(t_node **array)
 {
 	int cnt;
 
@@ -49,7 +49,7 @@ static int	get_len(t_node **array)
 	return (cnt);
 }
 
-static int	check_duplicate(t_node **array)
+static int		check_duplicate(t_node **array)
 {
 	int x;
 	int y;
@@ -73,30 +73,13 @@ static int	check_duplicate(t_node **array)
 	return (0);
 }
 
-static int	check_duplicate_ngb(t_prop *xt)
-{
-	int cnt;
-	int len;
-	t_node *temp;
-
-	temp = xt->elems;
-	while (temp != 0)
-	{
-		if (check_duplicate(temp->ngb) == 1)
-			return (1);
-		temp = temp->next;
-	}
-	return (0);
-}
-
-void	check_input(t_prop *xt)
+void			check_input(t_prop *xt)
 {
 	int err;
 
 	err = 0;
 	err += check_n_start_end(xt);
 	err += check_ants(xt);
-	//err += check_duplicate_ngb(xt);
 	if (err != 0)
 		error_exit("Input is shit");
 }
