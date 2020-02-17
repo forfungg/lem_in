@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   assigning_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 15:16:37 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:06:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-void	print_sum_ants(t_paths *paths)
-{
-	int total;
-
-	total = 0;
-	while (paths)
-	{
-		total += paths->ants;
-		paths = paths->next;
-	}
-	printf("--TOTAL ANTS: %d\n\n", total);
-}
 
 int		get_len(t_que *list)
 {
@@ -36,38 +23,6 @@ int		get_len(t_que *list)
 		list = list->next;
 	}
 	return (cnt);
-}
-
-void	print_paths2(t_paths *paths)
-{
-	t_paths *temp;
-	int i, len;
-	int total;
-
-	temp = paths;
-	// while (temp)
-	// {
-	// 	printf("len of path: %d\n", get_len(temp->path));
-	// 	printf("Ants assigned to path: %d\n", temp->ants);
-	// 	while (temp->path)
-	// 	{
-	// 		printf("%s - ", temp->path->node->name);
-	// 		temp->path = temp->path->next;
-	// 	}
-	// 	printf("\n\n");
-	// 	temp = temp->next;
-	// }
-	// ft_printf("\nIndex | Path Length | Amount of Ants | Total\n");
-	// i = 0;
-	// total = 0;
-	// while (temp)
-	// {
-	// 	len = get_len(temp->path);
-	// 	ft_printf("%5d | %11d | %14d | %5d\n", i, len, temp->ants, len + temp->ants);
-	// 	total += temp->ants;
-	// 	temp = temp->next;
-	// }
-	// ft_printf("Total Ants Assigned: %d\n", total);
 }
 
 int		get_t_len(t_paths *paths)
