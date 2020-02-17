@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:27:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 18:03:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ t_paths				*path_parsing(t_paths *all_paths);
 ** Breath First Search for paths
 */
 
-void				bfs(t_node *start, t_node *end, t_paths **all_paths);
+void				bfs(t_node *start, t_node *end, t_paths **all_paths,\
+						int ants);
 t_paths				*append_path(t_paths *head, t_que *path);
 t_que				*pop_path(t_paths **all_paths);
 void				delete_paths(t_paths *all_paths);
@@ -159,6 +160,8 @@ void				delete_paths(t_paths *all_paths);
 void				print_list(t_node *head);
 void				print_edges(t_node *head);
 void				print_colony(t_prop *xt);
+void				print_paths(t_paths *paths);
+void				print_queue(t_que *queue);
 
 /*
 **	Program functionality support tools

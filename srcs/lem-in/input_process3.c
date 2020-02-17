@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:00:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 18:04:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	save_ants(char *str, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
-	t_paths *all_paths;
 
 	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
@@ -61,8 +60,9 @@ void	read_input(t_prop *xt)
 		free(line);
 	}
 	check_input(xt);
-	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
-	xt->all_paths = path_parsing(xt->all_paths);
+	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths), xt->f_ants);
+	print_paths(xt->all_paths);
+	// xt->all_paths = path_parsing(xt->all_paths);
 }
 
 /*

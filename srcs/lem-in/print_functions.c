@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 15:11:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:44:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,37 @@ void	print_edges(t_node *head)
 			}
 		}
 		head = head->next;
+	}
+}
+
+void	print_queue(t_que *queue)
+{
+	if (!queue)
+		return ;
+	ft_printf("%s", queue->node->name);
+	queue = queue->next;
+	while (queue)
+	{
+		ft_printf(" - %s", queue->node->name);
+		queue = queue->next;
+	}
+	ft_printf("\n");
+}
+
+/*
+** Print Paths
+*/
+
+void	print_paths(t_paths *paths)
+{
+	int i;
+
+	i = 1;
+	while (paths)
+	{
+		ft_printf("%8d:\t", i);
+		print_queue(paths->path);
+		paths = paths->next;
+		i++;
 	}
 }

@@ -17,35 +17,3 @@ static int	check_duplicate_ngb(t_prop *xt)
 	}
 	return (0);
 }
-
-void	print_queue(t_que *queue)
-{
-	if (!queue)
-		return ;
-	ft_printf("%s", queue->node->name);
-	queue = queue->next;
-	while (queue)
-	{
-		ft_printf(" - %s", queue->node->name);
-		queue = queue->next;
-	}
-	ft_printf("\n");
-}
-
-/*
-** Print Paths
-*/
-
-void	print_paths(t_paths *paths)
-{
-	int i;
-
-	i = 1;
-	while (paths)
-	{
-		ft_printf("%8d:\t", i);
-		print_queue(paths->path);
-		paths = paths->next;
-		i++;
-	}
-}
