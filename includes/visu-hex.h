@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/15 10:00:06 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/17 15:02:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIN_PTR		xt->win_ptr
 # define TRUE 1
 # define FALSE 0
-# define W_W 1440
-# define W_H 720
+# define W_W 1920
+# define W_H 1080
 # define W_NAME "VISU-HEXX"
 
 # include <mlx.h>
@@ -37,21 +37,20 @@ typedef struct		s_img
 	
 	void			*room;
 	int				*roomdat;
-	double			roomsize;
+	int				roomsize;
 
 	void			*line;
 	int				*linedat;
 	
+	void			*path;
+	int				*pathdat;
+
 	void			*ant;
 	int				*antdat;
-
-	void			*name;
-	int				*namedat;
 
 	int				disp_names;
 	int				disp_all;
 	int				disp_path;
-	int				disp_unique;
 }					t_img;
 
 typedef struct		s_node
@@ -70,6 +69,22 @@ typedef struct		s_node
 
 }					t_node;
 
+typedef struct		s_queue
+{
+	t_node			*node;
+	int				curr_ant;
+	int 			shift;
+	struct s_queue	*next;
+}					t_que;
+
+typedef struct		s_paths
+{
+	t_que			*path;
+	int				ants;
+	int				im_min;
+	struct s_paths	*next;
+}					t_paths;
+
 typedef struct	s_prop
 {
 	int				f_ants;
@@ -79,6 +94,7 @@ typedef struct	s_prop
 	int				n_start;
 	int				n_end;
 	int				n_rooms;
+	t_paths			*all_paths;
 
 	t_node			*elems;
 	t_img			*imgs;
@@ -99,6 +115,7 @@ typedef struct	s_prop
 	int				dy;
 	int				stpx;
 	int				stpy;
+	int				color;
 }				t_prop;
 
 typedef struct	s_pcur
@@ -124,6 +141,33 @@ int					count_neighbors(t_node **neighbors);
 t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
 
+/*
+** Queue Management
+*/
+
+t_que				*enqueue(t_que *head, t_node *node);
+t_node				*que_getnext(t_que **queue);
+t_que				*que_copy(t_que *node);
+void				que_delete(t_que *head);
+t_node				*que_getlast(t_que *head);
+t_paths				*path_parsing(t_paths *all_paths);
+/*
+** Breath First Search for paths
+*/
+
+/*
+**	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
+*/
+
+void				print_list(t_node *head);
+void				print_queue(t_que *queue);
+void				print_paths(t_paths *paths);
+
+void				bfs(t_node *start, t_node *end, t_paths **all_paths);
+t_paths				*append_path(t_paths *head, t_que *path);
+t_que				*pop_path(t_paths **all_paths);
+void				delete_paths(t_paths *all_paths);
+
 void				error_exit(char *msg);
 
 /*
@@ -145,6 +189,7 @@ void				create_background(t_prop *xt);
 void				create_room(t_prop *xt);
 void				create_sand(t_prop *xt);
 void				create_lines(t_prop *xt);
+void				create_path(t_prop *xt);
 
 /*
 ** Images Draw
@@ -153,11 +198,17 @@ void				create_lines(t_prop *xt);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_rooms(t_prop *xt, t_node *beg, t_node *end);
+void				connect_rooms_path(t_prop *xt, t_node *beg, t_node *end);
 
 /*
 ** Controls
 */
 
 int					key_hook_press(int keycode, t_prop *xt);
+void				bfs(t_node *start, t_node *end, t_paths **all_paths);
+
+
+void				print_queue(t_que *queue);
+void				print_paths(t_paths *paths);
 
 #endif

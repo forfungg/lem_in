@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/14 11:13:06 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/17 14:32:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	new_node(char **props, t_prop *xt)
 	xt->elems->empty = 1;
 	xt->elems->visited = 0;
 	xt->elems->ngb = 0;
+	xt->elems->start = 0;
+	xt->elems->end = 0;
 	xt->elems->name = ft_strdup(props[0]);
 	xt->elems->x = ft_atoi(props[1]);
 	xt->elems->y = ft_atoi(props[2]);
@@ -127,6 +129,8 @@ void	prepend_node(char **props, t_prop *xt)
 	new->y = ft_atoi(props[2]);
 	new->visited = 0;
 	new->ngb = 0;
+	new->start = 0;
+	new->end = 0;
 	if (xt->f_start == 1)
 	{
 		new->start = 1;
@@ -205,11 +209,11 @@ void	save_ants(char *str, t_prop *xt)
 	xt->n_ants += 1;
 }
 
-
 void	read_input(t_prop *xt)
 {
 	char	*line;
 
+	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		if (line[0] == '#' || line[0] == 'L')
@@ -220,6 +224,9 @@ void	read_input(t_prop *xt)
 			save_room(line, xt);
 		else if (is_link(line, xt) == 1)
 			save_link(line, xt);
+		ft_printf("%s\n", line);
 		free(line);
 	}
+	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
+	xt->all_paths = path_parsing(xt->all_paths);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images_draw.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/15 10:06:46 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/17 15:09:01 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		get_cor_x(int coord, t_prop *xt)
 	int	ret;
 	double coef;
 
-	coef = (W_W - IMGS->roomsize - 20) / xt->max_x;
+	coef = (W_W - IMGS->roomsize - 20) / (double)xt->max_x;
 	ret = 10 + coord * coef;
 	return (ret);
 }
@@ -36,7 +36,7 @@ int		get_cor_y(int coord, t_prop *xt)
 	int		allowed_len;
 
 	allowed_len = (W_H - (W_H / 6)) - IMGS->roomsize - 20;
-	coef = allowed_len / (xt->max_y);
+	coef = allowed_len / (double)xt->max_y;
 	ret = 10 + (W_H / 6) + (coord * coef);
 	return (ret);
 }
@@ -69,45 +69,58 @@ void	display_lines(t_prop *xt)
 	}
 }
 
+void	display_path(t_prop *xt)
+{
+	int		shift;
+
+	shift = IMGS->roomsize / 2;
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift + 1, shift);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift + 1);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift - 1, shift);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift - 1);
+}
+
 void	display_all(t_prop *xt)
 {
-	create_lines(xt);
 	display_background(xt);
-	display_rooms(xt);
 	display_lines(xt);
+	display_rooms(xt);
 }
 
 void	display_paths(t_prop *xt)
 {
-	
-}
-
-void	display_unique(t_prop *xt)
-{
-	
+	display_background(xt);
+	display_path(xt);
+	display_rooms(xt);
 }
 
 void	redraw(t_prop *xt)
 {
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	if (IMGS->disp_all == 1)
+	{
+		printf("all\n");
 		display_all(xt);
+	}
 	if (IMGS->disp_path == 1)
+	{
+		printf("paths\n");
 		display_paths(xt);
-	if (IMGS->disp_unique == 1)
-		display_unique(xt);
+	}
 }
 
 void	draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;
-	IMGS->disp_unique = 0;
 	IMGS->disp_all = 1;
 	get_minmax_xy(xt);
 	create_background(xt);
 	create_sand(xt);
 	create_room(xt);
+	create_lines(xt);
+	create_path(xt);
 	display_all(xt);
 	mlx_hook(xt->win_ptr, 2, 0, key_hook_press, xt);
 	mlx_loop(MLX_PTR);

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/13 16:12:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 14:28:49 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int		is_room(char *line, t_prop *xt)
 void	new_node(char **props, t_prop *xt)
 {
 	xt->elems = (t_node *)malloc(sizeof(t_node));
+	xt->elems->start = 0;
+	xt->elems->end = 0;
 	xt->elems->empty = 1;
 	xt->elems->visited = 0;
 	xt->elems->ngb = 0;
@@ -122,7 +124,8 @@ void	prepend_node(char **props, t_prop *xt)
 	new = malloc(sizeof(t_node));
 	new->empty = 1;
 	new->name = ft_strdup(props[0]);
-
+	new->start = 0;
+	new->end = 0;
 	new->x = ft_atoi(props[1]);
 	new->y = ft_atoi(props[2]);
 	new->visited = 0;
@@ -211,7 +214,6 @@ void	save_ants(char *str, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
-	t_paths *all_paths;
 
 	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
@@ -236,8 +238,8 @@ void	read_input(t_prop *xt)
 	// ft_printf("done\n");
 	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	// ft_printf("All Paths\n");
-	// print_paths(xt->all_paths);
+	//print_paths(xt->all_paths);
 	xt->all_paths = path_parsing(xt->all_paths);
 	// ft_printf("Unique Paths\n");
-	// print_paths(xt->all_paths);
+	//print_paths(xt->all_paths);
 }

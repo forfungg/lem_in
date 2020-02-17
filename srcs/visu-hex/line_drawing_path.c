@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_drawing.c                                     :+:      :+:    :+:   */
+/*   line_drawing_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/17 12:07:39 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 13:07:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	increment_x(t_prop *xt, t_node *beg, t_node *end, int cnt)
 	error = (2 * xt->dy) - xt->dx;
 	pcur->y = beg->ny;
 	pcur->x = beg->nx + xt->stpx;
-	IMGS->linedat[beg->ny * W_W + beg->nx] = xt->color;
+	IMGS->pathdat[beg->ny * W_W + beg->nx] = xt->color;
 	while (cnt++ <= xt->dx - 1)
 	{
 		if (error > 0)
@@ -31,7 +31,7 @@ static void	increment_x(t_prop *xt, t_node *beg, t_node *end, int cnt)
 		}
 		else
 			error = error + 2 * xt->dy;
-		IMGS->linedat[pcur->y * W_W + pcur->x] = xt->color;
+		IMGS->pathdat[pcur->y * W_W + pcur->x] = xt->color;
 		pcur->x += xt->stpx;
 	}
 	free(pcur);
@@ -46,7 +46,7 @@ static void	increment_y(t_prop *xt, t_node *beg, t_node *end, int cnt)
 	error = (2 * xt->dx) - xt->dy;
 	pcur->x = beg->nx;
 	pcur->y = beg->ny + xt->stpy;
-	IMGS->linedat[beg->ny * W_W + beg->nx] = xt->color;
+	IMGS->pathdat[beg->ny * W_W + beg->nx] = xt->color;
 	while (cnt++ <= xt->dy - 1)
 	{
 		if (error > 0)
@@ -56,7 +56,7 @@ static void	increment_y(t_prop *xt, t_node *beg, t_node *end, int cnt)
 		}
 		else
 			error = error + 2 * xt->dx;
-		IMGS->linedat[pcur->y * W_W + pcur->x] = xt->color;
+		IMGS->pathdat[pcur->y * W_W + pcur->x] = xt->color;
 		pcur->y += xt->stpy;
 	}
 	free(pcur);
@@ -67,7 +67,7 @@ static int	ft_abs(int x)
 	return (x > 0 ? x : -x);
 }
 
-void	connect_rooms(t_prop *xt, t_node *beg, t_node *end)
+void	connect_rooms_path(t_prop *xt, t_node *beg, t_node *end)
 {
 	int cnt;
 

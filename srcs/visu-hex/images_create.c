@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/15 10:00:54 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/17 14:41:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	create_connections(t_prop *xt)
 	int cnt;
 
 	temp = xt->elems;
+	xt->color = 0x000000;
 	while (temp)
 	{
 		cnt = 0;
@@ -109,4 +110,33 @@ void	create_lines(t_prop *xt)
 	IMGS->linedat = (int *)mlx_get_data_addr(IMGS->line, &bpp, &size, &endian);
 	fill_rectangle(IMGS->linedat, W_W, W_H, 0xff000000);
 	create_connections(xt);
+}
+
+void	connect_path(t_prop *xt)
+{
+	t_paths	*temp;
+
+	temp = xt->all_paths;
+	while (temp)
+	{
+		xt->color = rand() % (16777215 + 162478 - 0) + 0;
+		while (temp->path->next)
+		{
+			connect_rooms_path(xt, temp->path->node, temp->path->next->node);
+			temp->path = temp->path->next;
+		}
+		temp = temp->next;
+	}
+}
+
+void	create_path(t_prop *xt)
+{
+	int		bpp;
+	int		size;
+	int		endian;
+
+	IMGS->path = mlx_new_image(MLX_PTR, W_W, W_H);
+	IMGS->pathdat = (int *)mlx_get_data_addr(IMGS->path, &bpp, &size, &endian);
+	fill_rectangle(IMGS->pathdat, W_W, W_H, 0xff000000);
+	connect_path(xt);
 }

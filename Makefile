@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/15 14:18:49 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/17 14:10:57 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,11 @@ VISU_HEX_SRCS		= main.c\
 					images_tools.c\
 					controls.c\
 					line_drawing.c\
+					line_drawing_path.c\
+					bfs_functions.c\
+					paths_management.c\
+					print_functions.c\
+					queue_functions.c\
 					nodes_management.c
 					
 
