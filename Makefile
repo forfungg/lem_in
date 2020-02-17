@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/17 14:10:57 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/17 15:15:26 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,25 +22,25 @@ RED			=	\033[0;31m
 
 NAME				= lem-in
 
-LEM_IN_SRCS			= main.c\
-					input_process.c\
+LEM_IN_SRCS			= main.c \
+					input_process.c \
+					input_process2.c \
+					input_process3.c \
 					print_functions.c \
-					nodes_management.c\
-					input_check.c\
-					bfs_functions.c\
+					nodes_management.c \
+					nodes_management2.c \
+					nodes_management3.c \
+					nodes_management4.c \
+					input_check.c \
+					bfs_functions.c \
+					clear_memory.c \
 					queue_functions.c \
+					queue_functions2.c \
 					paths_management.c \
 					exit_functions.c \
-					moving_ants.c\
+					moving_ants.c \
+					moving_ants_tools.c \
 					assigning_ants.c
-
-JIRIS_LEM			= jiris_test_main.c \
-					nodes_management.c \
-					print_functions.c \
-					bfs_functions.c \
-					queue_functions.c \
-					paths_management.c \
-					exit_functions.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
@@ -106,11 +106,6 @@ $(LIBFT_NAME):
 	@echo "$(RED)Compiling MLX Library$(RES)"
 	@Make all -C $(LIB_MLX_DIR)
 	@echo "$(GREEN)Done.$(RES)"
-
-jiri:
-	@rm -f jiris_test
-	@gcc -o jiris_test $(CFLAGS) $(INCLUDES) $(JIRIS_IN) $(LIBFT_A)
-	@echo "$(GREENB)Jiri's test file created$(RES)"
 
 clean:
 	@echo "$(RED)Removing Object Files...$(RES)"

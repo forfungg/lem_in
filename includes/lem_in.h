@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/02/17 13:27:37 by asolopov         ###   ########.fr       */
+=======
+/*   Updated: 2020/02/17 12:02:15 by jnovotny         ###   ########.fr       */
+>>>>>>> 4250ff023952160d54edd38405860065bb23888e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +50,7 @@ typedef struct		s_queue
 {
 	t_node			*node;
 	int				curr_ant;
-	int 			shift;
+	int				shift;
 	struct s_queue	*next;
 }					t_que;
 
@@ -101,6 +105,18 @@ typedef struct		s_prop
 void				check_flags(int argc, char **argv, t_prop *xt);
 void				read_input(t_prop *xt);
 void				check_input(t_prop *xt);
+void				clear_props(char **props);
+int					count_elems(char **array);
+int					is_number(char *str);
+int					is_ants(char *str, t_prop *xt);
+int					is_link(char *line, t_prop *xt);
+int					is_room(char *line, t_prop *xt);
+void				new_node(char **props, t_prop *xt);
+void				prepend_node(char **props, t_prop *xt);
+void				save_room(char *line, t_prop *xt);
+void				save_link(char *line, t_prop *xt);
+void				save_commands(char *str, t_prop *xt);
+void				save_ants(char *str, t_prop *xt);
 
 /*
 ** Nodes Management
@@ -143,8 +159,8 @@ void				delete_paths(t_paths *all_paths);
 */
 
 void				print_list(t_node *head);
-void				print_queue(t_que *queue);
-void				print_paths(t_paths *paths);
+void				print_edges(t_node *head);
+void				print_colony(t_prop *xt);
 
 /*
 **	Program functionality support tools
@@ -159,6 +175,8 @@ void				error_exit(char *msg);
 void				assign_ants(t_prop *xt);
 void				move_ants(t_prop *xt, t_paths *paths);
 int					get_t_len(t_paths *paths);
-void				print_paths2(t_paths *paths);
-
+int					get_n_strings(t_paths *paths);
+void				ft_safestrjoin(char **str, char *add, int pos);
+char				*str_append(char *str, int nb, char *name);
+void				print_output(char **out);
 #endif
