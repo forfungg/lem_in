@@ -1,5 +1,5 @@
 {
-	"python.pythonPath": "C:\\Users\\ForFunGG\\Anaconda3\\python.exe",
+	"python.pythonPath": "/Users/jnovotny/.brew/bin/python3",
 	"python.linting.pylintEnabled": true,
 	"python.linting.enabled": true,
 	"files.associations": {

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 11:50:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:00:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ void	read_input(t_prop *xt)
 	check_input(xt);
 	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	xt->all_paths = path_parsing(xt->all_paths);
+}
+
+/*
+** Checks if given string containes valid coordinate, and returns it as int.
+*/
+
+int		get_coord(char *str)
+{
+	long	nb;
+
+	nb = ft_latoi(str);
+	if (nb > INT_MAX || nb < INT_MIN)
+		error_exit("Coordinates out of int range");
+	return ((int)nb);
 }
