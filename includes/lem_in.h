@@ -6,11 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/02/17 13:27:37 by asolopov         ###   ########.fr       */
-=======
-/*   Updated: 2020/02/17 12:02:15 by jnovotny         ###   ########.fr       */
->>>>>>> 4250ff023952160d54edd38405860065bb23888e
+/*   Updated: 2020/02/17 16:10:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +14,7 @@
 # define LEM_IN_H
 
 # include "../libs/libft/includes/libft.h"
+# include <errno.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -117,6 +114,7 @@ void				save_room(char *line, t_prop *xt);
 void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
 void				save_ants(char *str, t_prop *xt);
+int					get_coord(char *str);
 
 /*
 ** Nodes Management
