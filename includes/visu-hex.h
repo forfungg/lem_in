@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 13:41:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:05:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define FALSE 0
 # define W_W 1920
 # define W_H 1080
+# define FRAMES 200
 # define W_NAME "VISU-HEXX"
 
 # include <mlx.h>
@@ -102,6 +103,10 @@ typedef struct		s_ant
 	int				cnt;
 	int				x;
 	int				y;
+	int				dx;
+	int				dy;
+	int				stpx;
+	int				stpy;
 	t_node			*curpos;
 	t_node			*nextpos;
 	struct s_ant	*next;
@@ -244,5 +249,6 @@ void				print_paths(t_paths *paths);
 void				create_ant_list(t_prop *xt);
 void				update_ant_positions(t_prop *xt, char *line);
 void				move_ants(t_prop *xt);
+void				modify_ant_location(t_prop *xt);
 
 #endif

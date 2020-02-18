@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 13:36:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:38:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	key_hook_press(int keycode, t_prop *xt)
 	}
 	else if (keycode == 124)
 	{
-		move_ants(xt);
-		if (xt->lines)
-			update_ant_positions(xt, xt->lines->str);
+		print_ant_data(xt);
+		ant_drawing_algo(xt);
 		print_ant_data(xt);
 		redraw(xt);
 	}

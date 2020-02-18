@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 13:36:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:06:00 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,73 @@ void	update_ant_positions(t_prop *xt, char *line)
 			cnt += 1;
 		}
 		free_line(xt);
+	}
+}
+
+int		is_antfinished(t_prop *xt)
+{
+	t_ant *temp;
+	t_node *end;
+
+	end = find_end(xt->elems);
+	temp = xt->ants;
+	while (temp)
+	{
+		if (temp->nextpos)
+		{
+			if (temp->x >= temp->nextpos->nx)
+			{
+				if (temp->y >= temp->nextpos->ny)
+				{
+					if (temp->curpos != end)
+						return (1);
+				}
+			}
+		}
+
+		temp = temp->next;
+	}
+	return (0);
+}
+
+void	get_ant_steps(t_prop *xt)
+{
+	t_ant *temp;
+
+	temp = xt->ants;
+	while (temp)
+	{
+		if (temp->nextpos)
+		{
+			temp->stpx = (temp->nextpos->nx - temp->curpos->nx) / FRAMES;
+			temp->stpy = (temp->nextpos->ny - temp->curpos->ny) / FRAMES;
+		}
+		temp = temp->next;
+	}
+}
+
+void	ant_drawing_algo(t_prop *xt)
+{
+	t_ant *temp;
+
+	temp = xt->ants;
+	if (is_antfinished(xt) == 1)
+	{
+		move_ants(xt);
+		if (xt->lines)
+			update_ant_positions(xt, xt->lines->str);
+	}
+	else
+	{
+		get_ant_steps(xt);
+		while (temp)
+		{
+			if (temp->nextpos)
+			{
+				temp->x += temp->stpx;
+				temp->y += temp->stpy;
+			}
+			temp = temp->next;
+		}
 	}
 }

@@ -4,6 +4,7 @@
 	"python.linting.enabled": true,
 	"files.associations": {
 		"lem_in.h": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"visu-hex.h": "c"
 	}
 }
