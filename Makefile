@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/17 16:18:53 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/17 17:14:41 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ VISU_HEX_SRCS		= main.c\
 					images_tools.c\
 					controls.c\
 					line_drawing.c\
-					line_drawing_path.c\
 					bfs_functions.c\
 					paths_management.c\
 					print_functions.c\

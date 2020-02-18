@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:06:45 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:28:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,18 @@ void	display_path(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift - 1);
 }
 
+void	display_ant(t_prop *xt)
+{
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, 100, 100);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, 110, 110);
+}
+
 void	display_all(t_prop *xt)
 {
 	display_background(xt);
 	display_lines(xt);
 	display_rooms(xt);
+	display_ant(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -119,6 +126,7 @@ void	create_stuff(t_prop *xt)
 	create_end(xt);
 	create_lines(xt);
 	create_path(xt);
+	create_ant(xt);
 }
 
 void	draw_farm(t_prop *xt)
