@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/17 17:14:41 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/18 11:23:10 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,9 @@ VISU_HEX_SRCS		= main.c\
 					create_rooms.c\
 					create_ant.c\
 					create_back.c\
-					create_lines.c
+					create_lines.c\
+					lines_management.c\
+					move_ants.c
 					
 
 VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))

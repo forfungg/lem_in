@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 15:23:01 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:29:36 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static t_prop	*init_visuhex(void)
 int				main(int argc, char **argv)
 {
 	t_prop *xt;
+	char *line;
 
 	xt = init_visuhex();
 	read_input(xt);

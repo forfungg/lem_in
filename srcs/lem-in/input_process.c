@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 15:14:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 12:11:12 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		is_number(char *str)
 
 int		is_ants(char *str, t_prop *xt)
 {
-	if (is_number(str) == 1)
+	if (is_number(str) == 1 && strlen(str) != 0)
 		return (1);
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 17:28:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 13:37:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
+#include <math.h>
 
 void	display_background(t_prop *xt)
 {
@@ -86,10 +87,17 @@ void	display_path(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift - 1);
 }
 
-void	display_ant(t_prop *xt)
+void	display_ants(t_prop *xt)
 {
-	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, 100, 100);
-	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, 110, 110);
+	t_ant *ant;
+
+	ant = xt->ants;
+	while (ant->next)
+	{
+		mlx_string_put(MLX_PTR, WIN_PTR, ant->x + 50, ant->y - 20, 0x00ffff, ft_itoa(ant->cnt));
+		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, ant->x, ant->y);
+		ant = ant->next;
+	}
 }
 
 void	display_all(t_prop *xt)
@@ -97,7 +105,7 @@ void	display_all(t_prop *xt)
 	display_background(xt);
 	display_lines(xt);
 	display_rooms(xt);
-	display_ant(xt);
+	display_ants(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -105,6 +113,7 @@ void	display_paths(t_prop *xt)
 	display_background(xt);
 	display_path(xt);
 	display_rooms(xt);
+	display_ants(xt);
 }
 
 void	redraw(t_prop *xt)
@@ -127,6 +136,7 @@ void	create_stuff(t_prop *xt)
 	create_lines(xt);
 	create_path(xt);
 	create_ant(xt);
+	create_ant_list(xt);
 }
 
 void	draw_farm(t_prop *xt)
