@@ -43,6 +43,8 @@ class Node():
 		self.empty = True
 		self.lvl = 2147483646
 		self.visited = False
+		self.flow = 0
+		self.capacity = 1
 	
 	def __str__(self):
 		str = f"Node: {self.name}\nCoords: {self.point}\nNeighbors: {self.neighbors}\nEmpty: {self.empty}\nParam: "
@@ -59,6 +61,15 @@ class Node():
 		if v not in self.neighbors:
 			self.neighbors.append(v)
 			self.neighbors.sort()
+	
+	def mark_start(self, ants):
+		self.start = True
+		self.flow = ants
+		self.capacity = 2147483646
+	
+	def mark_end(self):
+		self.end = True
+		self.capacity = 2147483646
 
 class Colony():
 	def __init__(self):
@@ -131,28 +142,19 @@ class Colony():
 			else:
 				print(f"Couldn't find either node: {edge}")
 
-	def bfs(self, node):
-		if not isinstance(node, Node):
-			print("Trying BFS with no-node type")
-			exit()
-		q = deque()
-		node.lvl = 0
-		node.visited = True
-		for n in node.neighbors:
-			self.nodes[n].lvl = node.lvl + 1
-			q.append(n)
-		
-		while len(q) > 0:
-			u = q.popleft()
-			node_u = self.nodes[u]
-			node_u.visited = True
-
-			for v in node_u.neighbors:
-				node_v = self.nodes[v]
-				if not node_v.visited:
-					q.append(v)
-					if node_v.lvl > node_u.lvl + 1:
-						node_v.lvl = node_u.lvl + 1
+	def bfs_pathexists(self, start, end):
+		self.reset_visit()
+		q = list()
+		q.append(start)
+		while q:
+			current = self.nodes[q.pop(0)]
+			current.visited = True
+			for n in current.neighbors:
+				if n == end:
+					return True
+				if not self.nodes[n].visited and not self.nodes[n].flow:
+					q.append(n)
+		return False
 	
 	def reset_visit(self):
 		for n in self.nodes:
@@ -161,7 +163,6 @@ class Colony():
 	def shortest_path(self):
 		self.reset_visit()
 		q = [[self.nodes[self.start].name]]
-		
 		while q:
 			print(f"Current queue: {q}")
 			path = q.pop(0)
@@ -178,6 +179,79 @@ class Colony():
 							return new_path
 			node.visited = True
 		return None
+	
+	# def ford_fulkerson(self):
+	# 	#find max potential flow
+	# 	limit = self.find_limit()
+	# 	print(limit)
+	# 	flow = 0
+	# 	best = None
+	# 	path = self.bfs_pathexists(self.start, self.end)
+	# 	if not path:
+	# 		print("No path found between start and end")
+	# 		return best
+	# 	while flow < limit:
+	# 		q = list()
+	# 		solution = list(best)
+	# 		self.mark_flows(solution)
+	# 		q.append([self.start])
+	# 		while q:
+	# 			path = q.pop(0)
+	# 			node = self.nodes[path[-1]]
+	# 			if node.end:
+	# 				solution.append(path)
+	# 				break
+	# 			if not node.flow:
+	# 				for n in node.neighbors:
+	# 					new = list(path)
+	# 					new.append(n)
+	# 					q.append(new)
+	# 			elif node.flow and not node.name in path:
+	# 				cta =
+	# 				# find the node in the already existing solution
+	# 				# search for alternative path from all previous nodes
+	# 				# if path exists and new solution would be better than save as best
+	# 				# else delete current and continue?
+	# 				pass
+	# 			node.flow = 1
+	# 		# check the current solution
+	# 		if best == None or self.solution_len(solution, self.ants) < self.solution_len(best, self.ants):
+	# 			best = solution.copy()
+	# 		if not q:
+	# 			break
+	# 		flow = len(best)
+	# 	return best
+
+	def mark_flows(self, paths):
+		for node in self.nodes:
+			if node.start or node.end:
+				continue
+			node.flow = 0
+		for path in paths:
+			for n in path:
+				if n == self.start or n == self.end:
+					continue
+				else:
+					self.nodes[n].flow = 1
+	
+	def solution_len(self, paths, ants):
+		p_len = list()
+		for path in paths:
+			p_len.append(len(path))
+		while ants:
+			i = p_len.index(min(p_len))
+			p_len[i] += 1
+			ants -= 1
+		return max(p_len)
+
+	def find_limit(self):
+		s = len(self.nodes[self.start].neighbors)
+		e = len(self.nodes[self.end].neighbors)
+		return min(s, e, self.ants)
+	
+	def set_start_end(self):
+		self.nodes[self.start].mark_start(self.ants)
+		self.nodes[self.end].mark_end()
 	
 	def search_usefulpaths(self):
 		if len(self.nodes[self.start].neighbors) < len(self.nodes[self.end].neighbors):
@@ -337,10 +411,10 @@ class Colony():
 
 if __name__ == "__main__":
 	my_colony = Colony()
-	with open("../../resources/lem_map_100", "r") as f:
+	with open("../../resources/lem_map_4k_01", "r") as f:
 		ret = f.read()
 	my_colony.read_colony(ret)
 	my_colony.pars_pathways()
-	my_colony.bfs(my_colony.nodes[my_colony.start])
-	print(my_colony)
-	print(my_colony.shortest_path())
+	res = my_colony.bfs_pathexists(my_colony.start, my_colony.end)
+	print(res)
+	# my_colony.ford_fulkerson()
