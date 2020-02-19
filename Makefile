@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/18 15:53:00 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/19 15:15:48 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,24 +49,27 @@ JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
 VISU_HEX			= visu-hex
 
-VISU_HEX_SRCS		= main.c\
-					input_process.c\
-					exit_functions.c\
-					images_draw.c\
-					images_tools.c\
+VISU_HEX_SRCS		=bfs_functions.c\
 					controls.c\
-					line_drawing.c\
-					bfs_functions.c\
+					create_ant_nodes.c\
+					exit_functions.c\
+					images_tools.c\
+					img_create_ant.c\
+					img_create_back.c\
+					img_create_lines.c\
+					img_create_rooms.c\
+					img_draw_ants.c\
+					img_draw_lines.c\
+					img_draw_visu-hexx.c\
+					input_process.c\
+					lines_management.c\
+					main.c\
+					move_ants.c\
+					nodes_management.c\
 					paths_management.c\
 					print_functions.c\
 					queue_functions.c\
-					nodes_management.c\
-					create_rooms.c\
-					create_ant.c\
-					create_back.c\
-					create_lines.c\
-					lines_management.c\
-					move_ants.c
+					update_ant_position.c
 					
 
 VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))

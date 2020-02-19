@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 12:02:59 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:36:58 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define FALSE 0
 # define W_W 1920
 # define W_H 1080
-# define FRAMES 30
+# define FRAMES 60
 # define W_NAME "VISU-HEXX"
 
 # include <mlx.h>
@@ -101,8 +101,8 @@ typedef struct		s_lines
 typedef struct		s_ant
 {
 	int				cnt;
-	int				x;
-	int				y;
+	double			x;
+	double			y;
 	int				dx;
 	int				dy;
 	double			stpx;
