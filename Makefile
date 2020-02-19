@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/19 17:07:46 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/19 21:14:17 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ INCLUDES			= includes
 
 all: $(NAME)
 
-$(NAME): $(VISU_HEX)
+$(NAME): #$(VISU_HEX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
 	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(LIBFT_A)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"

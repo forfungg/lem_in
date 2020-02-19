@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 17:06:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 21:17:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	read_input(t_prop *xt)
 	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
 	// bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	// print_paths(xt->all_paths);
-	ft_printf("Max Flow: %d\n", maxflow);
-	ft_printf("Flow Paths:\n");
-	print_paths(xt->all_paths);
+	// ft_printf("Max Flow: %d\n", maxflow);
+	// ft_printf("Flow Paths:\n");
+	// print_paths(xt->all_paths);
 	// xt->all_paths = path_parsing(xt->all_paths);
 }
 
