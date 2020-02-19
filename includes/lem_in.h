@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:37:28 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/19 13:47:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define TRUE 1
 # define FALSE 0
 # define NAME xt->elems->name
+# define CAPACITY 1
 
 /*
 ** Node Struct
@@ -29,6 +30,7 @@ typedef struct		s_node
 	char			*name;
 	struct s_node	**ngb;
 	struct s_node	*next;
+	int				*cap;
 	int				x;
 	int				y;
 	int				start;
@@ -132,6 +134,8 @@ int					add_neighbor(t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
 t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
+void				reset_visits(t_node *list);
+void				capacitize_ngbs(t_node *list);
 
 /*
 ** Queue Management
@@ -143,15 +147,22 @@ t_que				*que_copy(t_que *node);
 void				que_delete(t_que *head);
 t_node				*que_getlast(t_que *head);
 t_paths				*path_parsing(t_paths *all_paths);
+
 /*
 ** Breath First Search for paths
 */
 
-void				bfs(t_node *start, t_node *end, t_paths **all_paths,\
-						int ants);
+int					bfs(t_node *start, t_node *end, t_paths **all_paths);
 t_paths				*append_path(t_paths *head, t_que *path);
 t_que				*pop_path(t_paths **all_paths);
 void				delete_paths(t_paths *all_paths);
+
+/*
+** Ford-Fulkerson max flow algorithm
+*/
+
+int					ford_fulkerson(t_node *graph, t_paths **all_paths);
+void				get_flow_paths(t_node *start, t_node *end, t_paths **all_paths);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
@@ -162,6 +173,7 @@ void				print_edges(t_node *head);
 void				print_colony(t_prop *xt);
 void				print_paths(t_paths *paths);
 void				print_queue(t_que *queue);
+void				print_graph(t_node *graph);
 
 /*
 **	Program functionality support tools

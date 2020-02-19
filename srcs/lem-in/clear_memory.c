@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:02:47 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 11:03:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 13:48:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void		delete_paths(t_paths *all_paths)
 		all_paths = all_paths->next;
 		que_delete(tmp->path);
 		free(tmp);
+		tmp = NULL;
 	}
 }

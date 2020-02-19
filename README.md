@@ -1,9 +1,11 @@
 # Lem_In
 
 ## C version
+	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
 	- error management
+		- DUPLICATE rooms?
 		- coordinates over int range (done)
 		- duplicate paths (ignore)
 		- not enough data error

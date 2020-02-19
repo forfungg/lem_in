@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/17 17:14:41 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/19 13:47:25 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ LEM_IN_SRCS			= main.c \
 					nodes_management2.c \
 					nodes_management3.c \
 					nodes_management4.c \
+					nodes_management5.c \
 					input_check.c \
 					bfs_functions.c \
 					clear_memory.c \
@@ -40,7 +41,9 @@ LEM_IN_SRCS			= main.c \
 					exit_functions.c \
 					moving_ants.c \
 					moving_ants_tools.c \
-					assigning_ants.c
+					assigning_ants.c \
+					ford_fulkerson.c \
+					 flow_paths.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))

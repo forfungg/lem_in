@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 10:44:01 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 11:32:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void			check_input(t_prop *xt)
 	err += check_ants(xt);
 	if (err != 0)
 		error_exit("Input is shit");
+	capacitize_ngbs(xt->elems);
 }

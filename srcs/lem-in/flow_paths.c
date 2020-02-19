@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bfs_functions.c                                    :+:      :+:    :+:   */
+/*   flow_paths.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 14:21:39 by jnovotny         ###   ########.fr       */
+/*   Created: 2020/02/19 13:45:35 by jnovotny          #+#    #+#             */
+/*   Updated: 2020/02/19 14:23:53 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Breath First Search of All pathways
-** Might change to bfs(start node, end node) ?
+** Checks graph and returns those paths that have flow (BFS)
 */
-
-static int		path_len(t_que *list)
-{
-	int cnt;
-
-	cnt = 0;
-	while (list)
-	{
-		cnt += 1;
-		list = list->next;
-	}
-	return (cnt);
-}
 
 static int	not_in_path(t_que *path, t_node *node)
 {
@@ -49,9 +35,10 @@ static void	explore_ngbs(t_node *current, t_que *path, t_paths **q)
 	i = 0;
 	while (current->ngb && current->ngb[i])
 	{
-		if (!(current->ngb[i]->visited) && current->cap[i] > 0)
+		if (!(current->ngb[i]->visited) && current->cap[i] == 0)
 		{
-			current->ngb[i]->visited = TRUE;
+			if (!(current->ngb[i]->end))
+				current->ngb[i]->visited = TRUE;
 			new_path = NULL;
 			new_path = que_copy(path);
 			new_path = enqueue(new_path, current->ngb[i]);
@@ -62,7 +49,7 @@ static void	explore_ngbs(t_node *current, t_que *path, t_paths **q)
 	}
 }
 
-int		bfs(t_node *start, t_node *end, t_paths **all_paths)
+void		get_flow_paths(t_node *start, t_node *end, t_paths **all_paths)
 {
 	t_paths	*q;
 	t_node	*current;
@@ -71,9 +58,8 @@ int		bfs(t_node *start, t_node *end, t_paths **all_paths)
 	q = NULL;
 	path = NULL;
 	if (!start || !end)
-		return (FALSE);
+		return ;
 	q = append_path(q, enqueue(path, start));
-	start->visited = TRUE;
 	while (q)
 	{
 		path = pop_path(&q);
@@ -86,5 +72,4 @@ int		bfs(t_node *start, t_node *end, t_paths **all_paths)
 		explore_ngbs(current, path, &q);
 		que_delete(path);
 	}
-	return (end->visited);
 }

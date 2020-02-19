@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 15:15:29 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/19 11:36:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ t_node	*create_node(char *name, int x, int y)
 {
 	t_node	*node;
 
-	node = (t_node *)malloc(sizeof(t_node));
+	node = (t_node *)ft_memalloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	ft_bzero(node, sizeof(t_node));
 	node->name = ft_strdup(name);
 	node->x = x;
 	node->y = y;
 	node->ngb = NULL;
+	node->cap = NULL;
+	node->empty = 1;
 	return (node);
 }
 
@@ -47,6 +48,8 @@ void	delete_node(t_node *node)
 		while (node->ngb[i])
 			node->ngb[i++] = NULL;
 		free(node->ngb);
+		i = 0;
+		free(node->cap);
 	}
 	free(node->name);
 	free(node);

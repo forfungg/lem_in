@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 17:44:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 12:34:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	print_edges(t_node *head)
 
 void	print_queue(t_que *queue)
 {
+	int i;
+
 	if (!queue)
 		return ;
 	ft_printf("%s", queue->node->name);
@@ -92,4 +94,38 @@ void	print_paths(t_paths *paths)
 		paths = paths->next;
 		i++;
 	}
+}
+
+/*
+** Print Graph
+*/
+
+void	print_graph(t_node *graph)
+{
+	t_node	*tmp;
+	int		i;
+
+	tmp = graph;
+	while (tmp)
+	{
+		ft_printf("%15s |", tmp->name);
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
+	tmp = graph;
+	while (tmp)
+	{
+		if (tmp->ngb)
+		{
+			i = 0;
+			while (tmp->ngb[i])
+			{
+				ft_printf("%s: %d, ", tmp->ngb[i]->name, tmp->cap[i]);
+				i++;
+			}
+		}
+		ft_printf("| ");
+		tmp = tmp->next;
+	}
+	ft_printf("\n");
 }

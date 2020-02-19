@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:02:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 11:37:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,7 @@ int		is_room(char *line, t_prop *xt)
 
 void	new_node(char **props, t_prop *xt)
 {
-	xt->elems = (t_node *)ft_memalloc(sizeof(t_node));
-	xt->elems->empty = 1;
-	xt->elems->visited = 0;
-	xt->elems->ngb = NULL;
-	xt->elems->name = ft_strdup(props[0]);
-	xt->elems->x = get_coord(props[1]);
-	xt->elems->y = get_coord(props[2]);
-	xt->elems->next = NULL;
+	xt->elems = create_node(props[0], get_coord(props[1]), get_coord(props[2]));
 	if (xt->f_start == 1)
 	{
 		xt->elems->start = 1;
@@ -60,13 +53,7 @@ void	prepend_node(char **props, t_prop *xt)
 {
 	t_node *new;
 
-	new = (t_node *)ft_memalloc(sizeof(t_node));
-	new->empty = 1;
-	new->name = ft_strdup(props[0]);
-	new->x = get_coord(props[1]);
-	new->y = get_coord(props[2]);
-	new->visited = 0;
-	new->ngb = 0;
+	new = create_node(props[0], get_coord(props[1]), get_coord(props[2]));
 	if (xt->f_start == 1)
 	{
 		new->start = 1;
