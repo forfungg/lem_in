@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 16:06:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/19 12:17:37 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_ant	*new_ant_node(t_node *start, int nb)
 	new->y = start->ny;
 	new->next = 0;
 	new->nextpos = 0;
+	new->error = 0;
 	return (new);
 }
 
@@ -135,6 +136,21 @@ void	update_ant_positions(t_prop *xt, char *line)
 	}
 }
 
+int		is_around(int num, int val)
+{
+	if (num < val)
+	{
+		if (num >= val * 0.98)
+			return (1);
+	}
+	if (num > val)
+	{
+		if (num <= val * 1.02)
+			return (1);
+	}
+	return (0);
+}
+
 int		is_antfinished(t_prop *xt)
 {
 	t_ant *temp;
@@ -146,9 +162,9 @@ int		is_antfinished(t_prop *xt)
 	{
 		if (temp->nextpos)
 		{
-			if (temp->x >= temp->nextpos->nx)
+			if (is_around(temp->x, temp->nextpos->nx))
 			{
-				if (temp->y >= temp->nextpos->ny)
+				if (is_around(temp->y, temp->nextpos->ny))
 				{
 					if (temp->curpos != end)
 						return (1);
@@ -177,6 +193,42 @@ void	get_ant_steps(t_prop *xt)
 	}
 }
 
+static int	ft_abs(int x)
+{
+	return (x > 0 ? x : -x);
+}
+
+void	ant_algo(t_ant *ant)
+{
+	int	dx;
+	int dy;
+
+	dx = ft_abs(ant->nextpos->nx - ant->curpos->nx);
+	dy = ft_abs(ant->nextpos->ny - ant->curpos->ny);
+	if (dx > dy)
+	{
+		if (ant->error >= 0)
+		{
+			ant->error = ant->error - ant->stpy * (dy - dx);
+			ant->y += ant->stpy;
+		}
+		else
+			ant->error = ant->error + ant->stpy * dy;
+		ant->x += ant->stpx;
+	}
+	else
+	{
+		if (ant->error >= 0)
+		{
+			ant->x += ant->stpx;
+			ant->error = ant->error - ant->stpx * (dx - dy);
+		}
+		else
+			ant->error = ant->error + ant->stpx * dx;
+		ant->y += ant->stpy;
+	}
+}
+
 void	ant_drawing_algo(t_prop *xt)
 {
 	t_ant *temp;
@@ -195,8 +247,7 @@ void	ant_drawing_algo(t_prop *xt)
 		{
 			if (temp->nextpos)
 			{
-				temp->x += temp->stpx;
-				temp->y += temp->stpy;
+				ant_algo(temp);
 			}
 			temp = temp->next;
 		}

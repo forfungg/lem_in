@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 13:37:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/19 12:14:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	display_ants(t_prop *xt)
 	t_ant *ant;
 
 	ant = xt->ants;
-	while (ant->next)
+	while (ant)
 	{
-		mlx_string_put(MLX_PTR, WIN_PTR, ant->x + 50, ant->y - 20, 0x00ffff, ft_itoa(ant->cnt));
+		mlx_string_put(MLX_PTR, WIN_PTR, ant->x, ant->y, 0x00ffff, ft_itoa(ant->cnt));
 		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, ant->x, ant->y);
 		ant = ant->next;
 	}
