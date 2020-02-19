@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 12:34:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:15:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ void	print_paths(t_paths *paths)
 	int i;
 
 	i = 1;
+	if (!paths)
+	{
+		ft_printf("Empty PATH!\n");
+		return ;
+	}
 	while (paths)
 	{
 		ft_printf("%8d:\t", i);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 14:25:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:06:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,10 @@ void	read_input(t_prop *xt)
 	}
 	check_input(xt);
 	// print_graph(xt->elems);
-	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths));
+	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
 	// bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	// print_paths(xt->all_paths);
 	ft_printf("Max Flow: %d\n", maxflow);
-	delete_paths(xt->all_paths);
-	xt->all_paths = NULL;
-	reset_visits(xt->elems);
-	get_flow_paths(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	ft_printf("Flow Paths:\n");
 	print_paths(xt->all_paths);
 	// xt->all_paths = path_parsing(xt->all_paths);

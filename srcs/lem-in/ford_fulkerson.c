@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 14:23:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:52:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,35 @@ static void	augment_path(t_que *path)
 ** while bfs paths exits
 */
 
-int		ford_fulkerson(t_node *graph, t_paths **all_paths)
+int		ford_fulkerson(t_node *graph, t_paths **all_paths, int ants)
 {
 	int		max_flow;
 	t_que	*i;
+	t_paths	*parents;
+	t_paths	*best;
 
 	max_flow = 0;
-	while (bfs(find_start(graph), find_end(graph), all_paths))
+	parents = NULL;
+	best = NULL;
+	while (bfs(find_start(graph), find_end(graph), &parents))
 	{
-		i = get_p_last(*all_paths);
+		i = get_p_last(parents);
 		if (i == NULL)
 			error_exit("FUCK THIS SHIT FUCK!");
 		max_flow += CAPACITY;
 		augment_path(i);
 		reset_visits(graph);
-		// print_graph(graph);
+		delete_paths(*all_paths);
+		*all_paths = NULL;
+		get_flow_paths(find_start(graph), find_end(graph), all_paths);
+		if (len_solution(best, ants) > len_solution(*all_paths, ants))
+			new_solution(&best, all_paths);
+		else if (!FF_ALL)
+			break ;
+		reset_visits(graph);
 	}
+	delete_paths(parents);
+	delete_paths(*all_paths);
+	*all_paths = best;
 	return (max_flow);
 }

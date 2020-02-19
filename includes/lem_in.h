@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 13:47:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:52:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define FALSE 0
 # define NAME xt->elems->name
 # define CAPACITY 1
+# define FF_ALL 1
 
 /*
 ** Node Struct
@@ -161,8 +162,11 @@ void				delete_paths(t_paths *all_paths);
 ** Ford-Fulkerson max flow algorithm
 */
 
-int					ford_fulkerson(t_node *graph, t_paths **all_paths);
-void				get_flow_paths(t_node *start, t_node *end, t_paths **all_paths);
+int					ford_fulkerson(t_node *graph, t_paths **all_paths, int ants);
+void				get_flow_paths(t_node *start, t_node *end,\
+						t_paths **all_paths);
+int					len_solution(t_paths *paths, int ants);
+void				new_solution(t_paths **storage, t_paths **new);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!

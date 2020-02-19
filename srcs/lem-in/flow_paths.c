@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 13:45:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 14:23:53 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:50:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	explore_ngbs(t_node *current, t_que *path, t_paths **q)
 			new_path = NULL;
 			new_path = que_copy(path);
 			new_path = enqueue(new_path, current->ngb[i]);
-			// print_queue(new_path);
 			*q = append_path(*q, new_path);
 		}
 		i++;
