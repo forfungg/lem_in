@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 11:54:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:16:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void		move_ants(t_prop *xt, t_paths *paths)
 		if (!paths)
 			paths = head;
 	}
-	print_colony(xt);
+	// print_colony(xt);
 	print_output(out);
 }

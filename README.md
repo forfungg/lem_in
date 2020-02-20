@@ -4,6 +4,7 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
+	- visuhex -> pathdrawing vs ants movement
 	- error management
 		- DUPLICATE rooms?
 		- coordinates over int range (done)

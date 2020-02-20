@@ -47,25 +47,25 @@ while i < max_e + 1:
 	x = randint(0, n-1)
 	y = randint(0, n-1)
 	s = f"{x}-{y}"
-	# sr = f"{y}-{x}"
-	# if not s in edges and not sr in edges:
-	edges.append(s)
-	i += 1
+	sr = f"{y}-{x}"
+	if not s in edges and not sr in edges:
+		edges.append(s)
+		i += 1
 i = 0
 m = randint(1, int(d/100 * n))
 while i < m:
 	y = randint(0, n-1)
 	s = f"S-{y}"
-	# if s not in edges:
-	edges.append(s)
+	if s not in edges:
+		edges.append(s)
 	i += 1
 i = 0
 while i < m:
 	y = randint(0, n-1)
 	s = f"E-{y}"
-	# if s not in edges:
-	edges.append(s)
-	i += 1
+	if s not in edges:
+		edges.append(s)
+		i += 1
 with open(filename, "w+") as f:
 	ant = randint(1, 100)
 	f.write(f"#Given {n} nodes, {d}% density\n#ANTS\n{ant}\n##start\nS 6 6\n##end\nE 495 495\n")
