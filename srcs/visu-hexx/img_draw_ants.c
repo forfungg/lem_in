@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 15:01:35 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:48:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ void	increment_y(t_ant *ant, int dx, int dy)
 	ant->y += ant->stpy;
 }
 
-void	draw_ant_algo(t_ant *ant)
+void	*draw_ant_algo(void *arg)
 {
-	int	dx;
-	int	dy;
+	int		dx;
+	int		dy;
+	t_ant	*ant;
 
+	ant = (t_ant *)arg;
 	dx = ft_abs(ant->nextpos->nx - ant->curpos->nx);
 	dy = ft_abs(ant->nextpos->ny - ant->curpos->ny);
 	if (dx > dy)

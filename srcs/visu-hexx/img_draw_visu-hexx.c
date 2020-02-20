@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 12:28:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:56:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,6 @@ int		get_cor_y(int coord, t_prop *xt)
 	coef = allowed_len / (double)xt->max_y;
 	ret = 10 + (W_H / 6) + (coord * coef);
 	return (ret);
-}
-
-void	display_rooms(t_prop *xt)
-{
-	t_node	*temp;
-
-	temp = xt->elems;
-	while (temp)
-	{
-		if (temp->start == 1)
-			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->start, temp->nx, temp->ny);
-		else if (temp->end == 1)
-			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->end, temp->nx, temp->ny);
-		else
-			mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->room, temp->nx, temp->ny);
-		temp = temp->next;
-	}
 }
 
 void	display_lines(t_prop *xt)

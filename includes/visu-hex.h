@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 12:39:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:52:56 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define W_W 1920
 # define W_H 1080
 # define FRAMES 120
+# define THREADS 5
 # define W_NAME "VISU-HEXX"
 
 # include <pthread.h>
@@ -33,10 +34,10 @@ typedef struct		s_img
 {
 	void			*bg;
 	int				*bgdat;
-	
+
 	void			*sand;
 	int				*sanddat;
-	
+
 	void			*room;
 	int				*roomdat;
 	int				roomsize;
@@ -49,7 +50,7 @@ typedef struct		s_img
 
 	void			*line;
 	int				*linedat;
-	
+
 	void			*path;
 	int				*pathdat;
 
@@ -233,7 +234,7 @@ void				create_ant(t_prop *xt);
 ** Images Draw
 */
 
-void				draw_ant_algo(t_ant *ant);
+void				*draw_ant_algo(void *arg);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);

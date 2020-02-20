@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 12:32:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:55:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int		is_antfinished(t_prop *xt)
 	return (0);
 }
 
-void	get_ant_steps(t_prop *xt)
+void	get_ant_steps(t_ant *ant)
 {
 	t_ant *temp;
 
-	temp = xt->ants;
+	temp = ant;
 	while (temp)
 	{
 		if (temp->nextpos)
@@ -81,7 +81,7 @@ void	recalc_ant_movement(t_prop *xt)
 	}
 	else
 	{
-		get_ant_steps(xt);
+		get_ant_steps(temp);
 		while (temp)
 		{
 			if (temp->nextpos)
