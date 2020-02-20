@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/20 12:21:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:13:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ int		ford_fulkerson(t_node *graph, t_paths **all_paths, int ants)
 		*all_paths = NULL;
 		get_flow_paths(find_start(graph), find_end(graph), all_paths);
 		if (len_solution(best, ants) > len_solution(*all_paths, ants))
-		{
 			new_solution(&best, all_paths);
-			print_paths(best);
-		}
 		else if (!FF_ALL)
 			break ;
 		reset_visits(graph);
