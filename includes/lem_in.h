@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 15:37:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:51:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
 void				save_ants(char *str, t_prop *xt);
 int					get_coord(char *str);
-
+void				is_valid_room(t_node *list, char *name, int x, int y);
 /*
 ** Nodes Management
 */

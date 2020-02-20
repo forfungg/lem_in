@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 11:37:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:52:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	save_room(char *line, t_prop *xt)
 	char **props;
 
 	props = ft_strsplit(line, ' ');
+	is_valid_room(xt->elems, props[0], get_coord(props[1]), get_coord(props[2]));
 	if (xt->elems == 0)
 		new_node(props, xt);
 	else
@@ -100,8 +101,7 @@ void	save_link(char *line, t_prop *xt)
 	clear_props(props);
 	if (node1 == 0 || node2 == 0)
 	{
-		ft_putstr("Nothing found, suka\n");
-		exit(0);
+		error_exit("Wrong Input");
 	}
 	add_neighbor(node1, node2);
 	add_neighbor(node2, node1);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/20 16:07:09 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/20 17:53:45 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ LEM_IN_SRCS			= main.c \
 					nodes_management4.c \
 					nodes_management5.c \
 					input_check.c \
+					input_check2.c \
 					bfs_functions.c \
 					clear_memory.c \
 					queue_functions.c \
