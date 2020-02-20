@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/19 15:15:48 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/20 12:03:20 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ GREENB		=	\033[1;32m
 RES			=	\033[0m
 RED			=	\033[0;31m
 
-# LEM_IN files
+# LEM-IN files
 
 NAME				= lem-in
 
@@ -45,11 +45,11 @@ LEM_IN_SRCS			= main.c \
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
-# VISUAL files
+# VISU-HEXX files
 
-VISU_HEX			= visu-hex
+VISU_HEXX			= visu-hexx
 
-VISU_HEX_SRCS		=bfs_functions.c\
+VISU_HEXX_SRCS		=bfs_functions.c\
 					controls.c\
 					create_ant_nodes.c\
 					exit_functions.c\
@@ -72,12 +72,12 @@ VISU_HEX_SRCS		=bfs_functions.c\
 					update_ant_position.c
 					
 
-VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))
+VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))
 
 # Directories
 
 LEM_IN_DIR			= ./srcs/lem-in/
-VISU_HEX_DIR		= ./srcs/visu-hex/
+VISU_HEXX_DIR		= ./srcs/visu-hexx/
 LIBFT_DIR			= ./libs/libft/
 LIB_MLX_DIR			= ./libs/libmlx
 
@@ -96,15 +96,15 @@ INCLUDES			= includes
 
 all: $(NAME)
 
-$(NAME): $(VISU_HEX)
+$(NAME): $(VISU_HEXX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
 	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(LIBFT_A)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
-$(VISU_HEX) : $(LIBFT_NAME)
-	@echo "$(RED)Compiling visu-hex...$(RES)"
-	@gcc -o $(VISU_HEX) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(VISU_HEX_FILES) $(LIBMLXFLAGS)
-	@echo "$(GREENB)$(VISU_HEX) $(GREEN)done.$(RES)"
+$(VISU_HEXX) : $(LIBFT_NAME)
+	@echo "$(RED)Compiling visu-hexx...$(RES)"
+	@gcc -o $(VISU_HEXX) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(VISU_HEXX_FILES) $(LIBMLXFLAGS) -lpthread
+	@echo "$(GREENB)$(VISU_HEXX) $(GREEN)done.$(RES)"
 
 $(LIBFT_NAME):
 	@echo "$(RED)Compiling Libft Library$(RES)"
@@ -123,7 +123,7 @@ clean:
 fclean: clean
 	@echo "$(RED)Removing Executables & Library...$(RES)"
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f $(VISU_HEX)
+	@/bin/rm -f $(VISU_HEXX)
 	@/bin/rm -f $(CHECKER_EXE)
 	@Make fclean -C $(LIBFT_DIR)
 	@Make fclean -C $(LIB_MLX_DIR)

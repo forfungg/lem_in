@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 14:36:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:39:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # define FALSE 0
 # define W_W 1920
 # define W_H 1080
-# define FRAMES 60
+# define FRAMES 120
 # define W_NAME "VISU-HEXX"
 
+# include <pthread.h>
 # include <mlx.h>
 # include "../libs/libft/includes/libft.h"
 
@@ -58,6 +59,7 @@ typedef struct		s_img
 	int				disp_names;
 	int				disp_all;
 	int				disp_path;
+	int				pause;
 }					t_img;
 
 typedef struct		s_node
@@ -231,6 +233,7 @@ void				create_ant(t_prop *xt);
 ** Images Draw
 */
 
+void				draw_ant_algo(t_ant *ant);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
@@ -251,5 +254,7 @@ void				create_ant_list(t_prop *xt);
 void				update_ant_positions(t_prop *xt, char *line);
 void				move_ants(t_prop *xt);
 void				modify_ant_location(t_prop *xt);
+
+void				recalc_ant_movement(t_prop *xt);
 
 #endif

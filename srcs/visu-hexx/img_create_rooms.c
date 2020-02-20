@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_rooms.c                                     :+:      :+:    :+:   */
+/*   img_create_rooms.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:00:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:06:05 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 10:58:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	create_start(t_prop *xt)
 	{
 		IMGS->start = mlx_new_image(MLX_PTR, IMGS->roomsize, IMGS->roomsize);
 		IMGS->startdat = (int *)mlx_get_data_addr(IMGS->start, &bpp, &size, &endian);
-		fill_frame(IMGS->startdat, IMGS->roomsize, IMGS->roomsize, 0x99ffcc);
+		fill_frame(IMGS->startdat, IMGS->roomsize, IMGS->roomsize, 0x00ff40);
 	}
 }
 
@@ -83,6 +83,6 @@ void	create_end(t_prop *xt)
 	{
 		IMGS->end = mlx_new_image(MLX_PTR, IMGS->roomsize, IMGS->roomsize);
 		IMGS->enddat = (int *)mlx_get_data_addr(IMGS->end, &bpp, &size, &endian);
-		fill_frame(IMGS->enddat, IMGS->roomsize, IMGS->roomsize, 0xff99cc);
+		fill_frame(IMGS->enddat, IMGS->roomsize, IMGS->roomsize, 0xff4000);
 	}
 }

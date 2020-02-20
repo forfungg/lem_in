@@ -6,15 +6,23 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:09:09 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 15:09:59 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:17:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
+int		get_rand(int one, int two)
+{
+	int ret;
+
+	ret = rand() % (one + 1 - two) + two;
+	return (ret);
+}
+
 t_ant	*new_ant_node(t_node *start, int nb)
 {
-	t_ant *new;
+	t_ant	*new;
 
 	new = (t_ant *)malloc(sizeof(t_ant));
 	new->cnt = nb;

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 15:09:15 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:14:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ int	key_hook_press(int keycode, t_prop *xt)
 		IMGS->disp_path = 1;
 		IMGS->disp_all = 0;
 		redraw(xt);
+	}
+	else if (keycode == 49 && IMGS->pause == 0)
+	{
+		IMGS->pause = 1;
+	}
+	else if (keycode == 49 && IMGS->pause == 1)
+	{
+		IMGS->pause = 0;
 	}
 
 	return (0);

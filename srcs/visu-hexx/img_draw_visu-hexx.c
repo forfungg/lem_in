@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images_draw.c                                      :+:      :+:    :+:   */
+/*   img_draw_visu-hexx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 12:14:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:28:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	display_rooms(t_prop *xt)
 
 void	display_lines(t_prop *xt)
 {
-	t_node *temp;
+	t_node	*temp;
 	int		shift;
 
 	shift = IMGS->roomsize / 2;
@@ -70,13 +70,14 @@ void	display_lines(t_prop *xt)
 	while (temp)
 	{
 		if (IMGS->disp_names == 1)
-			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 15, temp->ny - 20, 0xff00ff, temp->name);
+			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10, temp->ny - 20, 0x000000, temp->name);
 		temp = temp->next;
 	}
 }
 
 void	display_path(t_prop *xt)
 {
+	t_node	*temp;
 	int		shift;
 
 	shift = IMGS->roomsize / 2;
@@ -85,6 +86,13 @@ void	display_path(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift + 1);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift - 1, shift);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift - 1);
+	temp = xt->elems;
+	while (temp)
+	{
+		if (IMGS->disp_names == 1)
+			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10, temp->ny - 20, 0x000000, temp->name);
+		temp = temp->next;
+	}
 }
 
 void	display_ants(t_prop *xt)
@@ -94,7 +102,8 @@ void	display_ants(t_prop *xt)
 	ant = xt->ants;
 	while (ant)
 	{
-		mlx_string_put(MLX_PTR, WIN_PTR, ant->x, ant->y, 0x00ffff, ft_itoa(ant->cnt));
+		if (IMGS->disp_names == 1)
+			mlx_string_put(MLX_PTR, WIN_PTR, ant->x + 15, ant->y - 20, 0x000000, ft_itoa(ant->cnt));
 		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, ant->x, ant->y);
 		ant = ant->next;
 	}
@@ -139,13 +148,25 @@ void	create_stuff(t_prop *xt)
 	create_ant_list(xt);
 }
 
+int		onupdate(t_prop *xt)
+{
+	if (IMGS->pause == 0)
+	{
+		recalc_ant_movement(xt);
+		redraw(xt);
+	}
+	return (0);
+}
+
 void	draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;
 	IMGS->disp_all = 1;
+	IMGS->pause = 1;
 	create_stuff(xt);
 	display_all(xt);
+	mlx_loop_hook(MLX_PTR, &onupdate, xt);
 	mlx_hook(xt->win_ptr, 2, 0, key_hook_press, xt);
 	mlx_loop(MLX_PTR);
 }

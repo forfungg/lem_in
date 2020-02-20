@@ -103,6 +103,14 @@ Distribute ants
 	- Graphic visualiser (if well made can be worth more than 1 point)
 
 
+## VISU-HEXX controls
+
+1- show all connections
+2- show valid paths (not necessarily used)
+arrow right- (if not paused move ants one step)
+space- play/ pause button (ants will move automatically)
+arrow left- toggle room and ant names
+
 ## Python Version
 Plotting graph
 Finds all unique shortest paths that can be utilized
