@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:06:46 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:58:20 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct		s_node
 	int				end;
 	struct s_node	**ngb;
 	struct s_node	*next;
+	struct s_node	*path;
 	int				*cap;
 	int				empty;
 	int				visited;
@@ -92,9 +93,7 @@ typedef struct		s_queue
 
 typedef struct		s_paths
 {
-	t_que			*path;
-	int				ants;
-	int				im_min;
+	t_node			*node;
 	struct s_paths	*next;
 }					t_paths;
 
@@ -276,5 +275,7 @@ void				move_ants(t_prop *xt);
 void				modify_ant_location(t_prop *xt);
 
 void				recalc_ant_movement(t_prop *xt);
+
+void	create_path_list(t_prop *xt, t_lines *lines);
 
 #endif

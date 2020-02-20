@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/20 15:54:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:16:39 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,21 @@ void	print_queue(t_que *queue)
 
 void	print_paths(t_paths *paths)
 {
-	int i;
+	// int i;
 
-	i = 1;
-	if (!paths)
-	{
-		ft_printf("Empty PATH!\n");
-		return ;
-	}
-	while (paths)
-	{
-		ft_printf("%8d:\t", i);
-		print_queue(paths->path);
-		paths = paths->next;
-		i++;
-	}
+	// i = 1;
+	// if (!paths)
+	// {
+	// 	ft_printf("Empty PATH!\n");
+	// 	return ;
+	// }
+	// while (paths)
+	// {
+	// 	ft_printf("%8d:\t", i);
+	// 	print_queue(paths->path);
+	// 	paths = paths->next;
+	// 	i++;
+	// }
 }
 
 /*

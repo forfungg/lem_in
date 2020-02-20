@@ -6,6 +6,8 @@
 		"lem_in.h": "c",
 		"iterator": "c",
 		"visu-hex.h": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"__tuple": "c",
+		"array": "c"
 	}
 }

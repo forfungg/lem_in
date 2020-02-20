@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 10:56:36 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:39:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,22 @@ void	create_lines(t_prop *xt)
 
 void	create_connections_paths(t_prop *xt)
 {
-	t_paths	*temp;
+	t_paths *path;
+	t_node	*tmp;
+	t_node	*start;
 
-	temp = xt->all_paths;
-	while (temp)
+	path = xt->all_paths;
+	while (path)
 	{
+		tmp = path->node;
 		xt->color = get_line_color(255, 25);
-		while (temp->path->next)
+		connect_nodes(IMGS->pathdat, xt, find_start(xt->elems), tmp);
+		while (tmp->path)
 		{
-			connect_nodes(IMGS->pathdat, xt, temp->path->node, temp->path->next->node);
-			temp->path = temp->path->next;
+			connect_nodes(IMGS->pathdat, xt, tmp, tmp->path);
+			tmp = tmp->path;
 		}
-		temp = temp->next;
+		path = path->next;
 	}
 }
 

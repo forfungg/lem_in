@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:34:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 19:01:59 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,11 +212,7 @@ void	read_input(t_prop *xt)
 		free(line);
 	}
 	capacitize_ngbs(xt->elems);
-	// print_graph(xt->elems);
-	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
-	// bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
-	// xt->all_paths = path_parsing(xt->all_paths);
-	print_paths(xt->all_paths);
+	create_path_list(xt, xt->lines);
 }
 
 /*

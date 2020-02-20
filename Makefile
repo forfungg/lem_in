@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/20 16:07:09 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/20 17:16:04 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,7 @@ JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
 VISU_HEXX			= visu-hexx
 
-VISU_HEXX_SRCS		=bfs_functions.c\
-					controls.c\
+VISU_HEXX_SRCS		= controls.c\
 					create_ant_nodes.c\
 					exit_functions.c\
 					images_tools.c\
@@ -71,13 +70,10 @@ VISU_HEXX_SRCS		=bfs_functions.c\
 					main.c\
 					move_ants.c\
 					nodes_management.c\
-					paths_management.c\
+					paths_receive.c\
 					print_functions.c\
 					queue_functions.c\
 					update_ant_position.c \
-					ford_fulkerson.c \
-					ford_fulkerson_tools.c \
-					flow_paths.c \
 					assigning_ants.c \
 					
 
