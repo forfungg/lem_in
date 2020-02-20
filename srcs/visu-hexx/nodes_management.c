@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 14:08:21 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:57:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ t_node	*create_node(char *name, int x, int y)
 {
 	t_node	*node;
 
-	node = (t_node *)malloc(sizeof(t_node));
+	node = (t_node *)ft_memalloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	ft_bzero(node, sizeof(t_node));
 	node->name = ft_strdup(name);
 	node->x = x;
 	node->y = y;
 	node->ngb = NULL;
+	node->cap = NULL;
+	node->empty = 1;
 	return (node);
 }
 
@@ -47,6 +48,8 @@ void	delete_node(t_node *node)
 		while (node->ngb[i])
 			node->ngb[i++] = NULL;
 		free(node->ngb);
+		i = 0;
+		free(node->cap);
 	}
 	free(node->name);
 	free(node);
@@ -159,10 +162,24 @@ static int		create_neighbor(t_node *node, t_node *neighbor)
 {
 	node->ngb = (t_node **)malloc(sizeof(t_node *) * 2);
 	if (!node->ngb)
-		return (FALSE);
+		error_exit("malloc at create_neighbor");
 	node->ngb[0] = neighbor;
 	node->ngb[1] = NULL;
 	return (TRUE);
+}
+
+static int		copy_pasta(t_node **src, t_node **dest)
+{
+	int		i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = NULL;
+	return (i);
 }
 
 static int		append_neighbor(t_node *node, t_node *neighbor)
@@ -173,42 +190,46 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 	tmp = (t_node **)malloc(sizeof(t_node *) *\
 		(count_neighbors(node->ngb) + 2));
 	if (!tmp)
-		return (FALSE);
-	i = 0;
-	while (node->ngb[i])
-	{
-		tmp[i] = node->ngb[i];
-		i++;
-	}
+		error_exit("tmp malloc at append_neighbor");
+	i = copy_pasta(node->ngb, tmp);
 	tmp[i] = neighbor;
 	tmp[i + 1] = NULL;
 	free(node->ngb);
 	node->ngb = (t_node **)malloc(sizeof(t_node *) *\
 		(count_neighbors(tmp) + 1));
 	if (!node->ngb)
-		return (FALSE);
-	i = 0;
-	while (tmp[i])
-	{
-		node->ngb[i] = tmp[i];
-		i++;
-	}
-	node->ngb[i] = NULL;
+		error_exit("node->ngb malloc at append_neighbor");
+	i = copy_pasta(tmp, node->ngb);
 	free(tmp);
 	return (TRUE);
 }
 
-int		add_neighbor(t_node *node, t_node *neighbor)
+static int		already_exists(t_node *node, char *new)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strequ(node->name, new))
+		return (TRUE);
+	while (node->ngb[i])
+	{
+		if (ft_strequ(node->ngb[i]->name, new))
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+int				add_neighbor(t_node *node, t_node *neighbor)
 {
 	if (!node || !neighbor)
 		return (FALSE);
 	if (node->ngb == NULL)
-	{
-		if (!create_neighbor(node, neighbor))
-			return (FALSE);
-	}
+		create_neighbor(node, neighbor);
 	else
 	{
+		if (already_exists(node, neighbor->name))
+			return (TRUE);
 		if (!append_neighbor(node, neighbor))
 			return (FALSE);
 	}
@@ -257,4 +278,42 @@ t_node	*find_end(t_node *list)
 		list = list->next;
 	}
 	return (NULL);
+}
+
+/*
+** Resets "visited" value of all nodes in the list
+*/
+
+void			reset_visits(t_node *list)
+{
+	while (list)
+	{
+		list->visited = FALSE;
+		list = list->next;
+	}
+}
+
+/*
+** Create capacities for edges
+*/
+
+void			capacitize_ngbs(t_node *list)
+{
+	int i;
+	int	cnt;
+
+	while (list)
+	{
+		if (list->ngb)
+		{
+			cnt = count_neighbors(list->ngb);
+			list->cap = (int *)ft_memalloc(sizeof(int) * cnt);
+			if (!(list->cap))
+				error_exit("Malloc at capacitize_ngbs");
+			i = 0;
+			while (i < cnt)
+				list->cap[i++] = CAPACITY;
+		}
+		list = list->next;
+	}
 }

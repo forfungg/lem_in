@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/20 14:10:12 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/20 15:26:26 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,11 @@ VISU_HEXX_SRCS		=bfs_functions.c\
 					paths_management.c\
 					print_functions.c\
 					queue_functions.c\
-					update_ant_position.c
+					update_ant_position.c \
+					ford_fulkerson.c \
+					ford_fulkerson_tools.c \
+					flow_paths.c \
+					assigning_ants.c \
 					
 
 VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))

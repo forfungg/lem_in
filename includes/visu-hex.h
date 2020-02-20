@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 12:39:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:55:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define WIN_PTR		xt->win_ptr
 # define TRUE 1
 # define FALSE 0
+# define CAPACITY 1
+# define FF_ALL 1
 # define W_W 1920
 # define W_H 1080
 # define FRAMES 120
@@ -73,6 +75,7 @@ typedef struct		s_node
 	int				end;
 	struct s_node	**ngb;
 	struct s_node	*next;
+	int				*cap;
 	int				empty;
 	int				visited;
 
@@ -173,6 +176,8 @@ int					add_neighbor(t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
 t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
+void				reset_visits(t_node *list);
+void				capacitize_ngbs(t_node *list);
 
 /*
 ** Queue Management
@@ -184,9 +189,26 @@ t_que				*que_copy(t_que *node);
 void				que_delete(t_que *head);
 t_node				*que_getlast(t_que *head);
 t_paths				*path_parsing(t_paths *all_paths);
+
 /*
 ** Breath First Search for paths
 */
+
+int					bfs(t_node *start, t_node *end, t_paths **all_paths);
+t_paths				*append_path(t_paths *head, t_que *path);
+t_que				*pop_path(t_paths **all_paths);
+void				delete_paths(t_paths *all_paths);
+
+/*
+** Ford-Fulkerson max flow algorithm
+*/
+
+int					ford_fulkerson(t_node *graph, t_paths **all_paths, int ants);
+void				get_flow_paths(t_node *start, t_node *end,\
+						t_paths **all_paths);
+int					len_solution(t_paths *paths, int ants);
+void				new_solution(t_paths **storage, t_paths **new);
+int					get_t_len(t_paths *paths);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
@@ -196,11 +218,8 @@ void				print_list(t_node *head);
 void				print_queue(t_que *queue);
 void				print_paths(t_paths *paths);
 void				print_ant_data(t_prop *xt);
-
-void				bfs(t_node *start, t_node *end, t_paths **all_paths);
-t_paths				*append_path(t_paths *head, t_que *path);
-t_que				*pop_path(t_paths **all_paths);
-void				delete_paths(t_paths *all_paths);
+void				print_graph(t_node *graph);
+void				print_edges(t_node *head);
 
 void				error_exit(char *msg);
 
@@ -210,6 +229,7 @@ void				error_exit(char *msg);
 
 void				read_input(t_prop *xt);
 void				save_line(t_prop *xt, char *line);
+int					get_coord(char *str);
 
 /*
 ** Images Create
@@ -243,7 +263,6 @@ void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
 */
 
 int					key_hook_press(int keycode, t_prop *xt);
-void				bfs(t_node *start, t_node *end, t_paths **all_paths);
 
 
 void				print_queue(t_que *queue);

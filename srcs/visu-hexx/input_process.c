@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 12:11:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:58:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,7 @@ int		is_room(char *line, t_prop *xt)
 
 void	new_node(char **props, t_prop *xt)
 {
-	xt->elems = (t_node *)malloc(sizeof(t_node));
-	xt->elems->empty = 1;
-	xt->elems->visited = 0;
-	xt->elems->ngb = 0;
-	xt->elems->start = 0;
-	xt->elems->end = 0;
-	xt->elems->name = ft_strdup(props[0]);
-	xt->elems->x = ft_atoi(props[1]);
-	xt->elems->y = ft_atoi(props[2]);
-	xt->elems->next = NULL;
+	xt->elems = create_node(props[0], get_coord(props[1]), get_coord(props[2]));
 	if (xt->f_start == 1)
 	{
 		xt->elems->start = 1;
@@ -121,16 +112,7 @@ void	prepend_node(char **props, t_prop *xt)
 {
 	t_node *new;
 
-	new = malloc(sizeof(t_node));
-	new->empty = 1;
-	new->name = ft_strdup(props[0]);
-
-	new->x = ft_atoi(props[1]);
-	new->y = ft_atoi(props[2]);
-	new->visited = 0;
-	new->ngb = 0;
-	new->start = 0;
-	new->end = 0;
+	new = create_node(props[0], get_coord(props[1]), get_coord(props[2]));
 	if (xt->f_start == 1)
 	{
 		new->start = 1;
@@ -214,6 +196,7 @@ void	save_ants(char *str, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
+	int		maxflow;
 
 	xt->all_paths = NULL;
 	while (get_next_line(0, &line) > 0)
@@ -228,6 +211,23 @@ void	read_input(t_prop *xt)
 			save_link(line, xt);
 		free(line);
 	}
-	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
-	xt->all_paths = path_parsing(xt->all_paths);
+	capacitize_ngbs(xt->elems);
+	// print_graph(xt->elems);
+	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
+	// bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
+	// xt->all_paths = path_parsing(xt->all_paths);
+}
+
+/*
+** Checks if given string containes valid coordinate, and returns it as int.
+*/
+
+int		get_coord(char *str)
+{
+	long	nb;
+
+	nb = ft_latoi(str);
+	if (nb > INT_MAX || nb < INT_MIN)
+		error_exit("Coordinates out of int range");
+	return ((int)nb);
 }
