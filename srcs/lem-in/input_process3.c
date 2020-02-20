@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:31:19 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:39:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ void	read_input(t_prop *xt)
 	check_input(xt);
 	// print_graph(xt->elems);
 	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
+	if (maxflow == 0)
+	{
+		// print_colony(xt);
+		error_exit("");
+	}
 	// bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));
 	// print_paths(xt->all_paths);
 	// ft_printf("Max Flow: %d\n", maxflow);
