@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 17:14:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:39:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # define FALSE 0
 # define W_W 1920
 # define W_H 1080
+# define FRAMES 120
 # define W_NAME "VISU-HEXX"
 
+# include <pthread.h>
 # include <mlx.h>
 # include "../libs/libft/includes/libft.h"
 
@@ -57,6 +59,7 @@ typedef struct		s_img
 	int				disp_names;
 	int				disp_all;
 	int				disp_path;
+	int				pause;
 }					t_img;
 
 typedef struct		s_node
@@ -91,6 +94,27 @@ typedef struct		s_paths
 	struct s_paths	*next;
 }					t_paths;
 
+typedef struct		s_lines
+{
+	char			*str;
+	struct s_lines	*next;
+}					t_lines;
+
+typedef struct		s_ant
+{
+	int				cnt;
+	double			x;
+	double			y;
+	int				dx;
+	int				dy;
+	double			stpx;
+	double			stpy;
+	t_node			*curpos;
+	t_node			*nextpos;
+	int				error;
+	struct s_ant	*next;
+}					t_ant;
+
 typedef struct	s_prop
 {
 	int				f_ants;
@@ -101,6 +125,9 @@ typedef struct	s_prop
 	int				n_end;
 	int				n_rooms;
 	t_paths			*all_paths;
+	t_lines			*lines;
+	t_ant			*ants;
+	char			**moves;
 
 	t_node			*elems;
 	t_img			*imgs;
@@ -168,6 +195,7 @@ t_paths				*path_parsing(t_paths *all_paths);
 void				print_list(t_node *head);
 void				print_queue(t_que *queue);
 void				print_paths(t_paths *paths);
+void				print_ant_data(t_prop *xt);
 
 void				bfs(t_node *start, t_node *end, t_paths **all_paths);
 t_paths				*append_path(t_paths *head, t_que *path);
@@ -181,6 +209,7 @@ void				error_exit(char *msg);
 */
 
 void				read_input(t_prop *xt);
+void				save_line(t_prop *xt, char *line);
 
 /*
 ** Images Create
@@ -193,14 +222,18 @@ void				fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, i
 void				fill_rectangle(int *img_data, int img_w, int img_h, int color);
 void				create_background(t_prop *xt);
 void				create_room(t_prop *xt);
+void				create_start(t_prop *xt);
+void				create_end(t_prop *xt);
 void				create_sand(t_prop *xt);
 void				create_lines(t_prop *xt);
 void				create_path(t_prop *xt);
+void				create_ant(t_prop *xt);
 
 /*
 ** Images Draw
 */
 
+void				draw_ant_algo(t_ant *ant);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
@@ -215,5 +248,13 @@ void				bfs(t_node *start, t_node *end, t_paths **all_paths);
 
 void				print_queue(t_que *queue);
 void				print_paths(t_paths *paths);
+
+
+void				create_ant_list(t_prop *xt);
+void				update_ant_positions(t_prop *xt, char *line);
+void				move_ants(t_prop *xt);
+void				modify_ant_location(t_prop *xt);
+
+void				recalc_ant_movement(t_prop *xt);
 
 #endif

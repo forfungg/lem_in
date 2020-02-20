@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 14:32:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 12:11:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		is_number(char *str)
 
 int		is_ants(char *str, t_prop *xt)
 {
-	if (is_number(str) == 1)
+	if (is_number(str) == 1 && strlen(str) != 0)
 		return (1);
 	return (0);
 }
@@ -196,11 +196,13 @@ void	save_commands(char *str, t_prop *xt)
 		xt->f_start = 1;
 		xt->n_start += 1;
 	}
-	if (ft_strequ(str, "##end") == 1)
+	else if (ft_strequ(str, "##end") == 1)
 	{
 		xt->f_end = 1;
 		xt->n_end += 1;
 	}
+	else if (str[0] == 'L')
+		save_line(xt, str);
 }
 
 void	save_ants(char *str, t_prop *xt)
@@ -224,7 +226,6 @@ void	read_input(t_prop *xt)
 			save_room(line, xt);
 		else if (is_link(line, xt) == 1)
 			save_link(line, xt);
-		ft_printf("%s\n", line);
 		free(line);
 	}
 	bfs(find_start(xt->elems), find_end(xt->elems), &(xt->all_paths));

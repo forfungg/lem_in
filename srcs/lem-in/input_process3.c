@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_process3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/02/20 12:17:11 by jnovotny         ###   ########.fr       */
+=======
+/*   Updated: 2020/02/18 12:08:27 by asolopov         ###   ########.fr       */
+>>>>>>> origin/master
 /*                                                                            */
 /* ************************************************************************** */
 

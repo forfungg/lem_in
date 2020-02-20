@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/17 17:13:27 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/18 15:20:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	increment_x(int *img, t_prop *xt, t_node *beg, t_node *end)
 {
 	int		error;
 	t_pcur	*pcur;
-	int cnt;
+	int		cnt;
 
 	cnt = 0;
 	pcur = (t_pcur *)malloc(sizeof(t_pcur));
@@ -73,9 +73,6 @@ static int	ft_abs(int x)
 
 void	connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end)
 {
-	int cnt;
-
-	cnt = 0;
 	xt->dx = ft_abs(end->nx - beg->nx);
 	xt->dy = ft_abs(end->ny - beg->ny);
 	xt->stpx = end->nx >= beg->nx ? 1 : -1;

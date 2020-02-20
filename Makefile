@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/20 12:10:01 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/20 14:10:12 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ GREENB		=	\033[1;32m
 RES			=	\033[0m
 RED			=	\033[0;31m
 
-# LEM_IN files
+# LEM-IN files
 
 NAME				= lem-in
 
@@ -49,34 +49,39 @@ LEM_IN_SRCS			= main.c \
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
-# VISUAL files
+# VISU-HEXX files
 
-VISU_HEX			= visu-hex
+VISU_HEXX			= visu-hexx
 
-VISU_HEX_SRCS		= main.c\
-					input_process.c\
-					exit_functions.c\
-					images_draw.c\
-					images_tools.c\
+VISU_HEXX_SRCS		=bfs_functions.c\
 					controls.c\
-					line_drawing.c\
-					bfs_functions.c\
+					create_ant_nodes.c\
+					exit_functions.c\
+					images_tools.c\
+					img_create_ant.c\
+					img_create_back.c\
+					img_create_lines.c\
+					img_create_rooms.c\
+					img_draw_ants.c\
+					img_draw_lines.c\
+					img_draw_visu-hexx.c\
+					input_process.c\
+					lines_management.c\
+					main.c\
+					move_ants.c\
+					nodes_management.c\
 					paths_management.c\
 					print_functions.c\
 					queue_functions.c\
-					nodes_management.c\
-					create_rooms.c\
-					create_ant.c\
-					create_back.c\
-					create_lines.c
+					update_ant_position.c
 					
 
-VISU_HEX_FILES		= $(addprefix $(VISU_HEX_DIR), $(VISU_HEX_SRCS))
+VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))
 
 # Directories
 
 LEM_IN_DIR			= ./srcs/lem-in/
-VISU_HEX_DIR		= ./srcs/visu-hex/
+VISU_HEXX_DIR		= ./srcs/visu-hexx/
 LIBFT_DIR			= ./libs/libft/
 LIB_MLX_DIR			= ./libs/libmlx
 
@@ -95,15 +100,15 @@ INCLUDES			= includes
 
 all: $(NAME)
 
-$(NAME): $(VISU_HEX)
+$(NAME): $(VISU_HEXX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
 	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(LIBFT_A)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
-$(VISU_HEX) : $(LIBFT_NAME)
-	@echo "$(RED)Compiling visu-hex...$(RES)"
-	@gcc -o $(VISU_HEX) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(VISU_HEX_FILES) $(LIBMLXFLAGS)
-	@echo "$(GREENB)$(VISU_HEX) $(GREEN)done.$(RES)"
+$(VISU_HEXX) : $(LIBFT_NAME)
+	@echo "$(RED)Compiling visu-hexx...$(RES)"
+	@gcc -o $(VISU_HEXX) $(CFLAGS) -I $(INCLUDES) $(LIBFT_A) $(VISU_HEXX_FILES) $(LIBMLXFLAGS) -lpthread
+	@echo "$(GREENB)$(VISU_HEXX) $(GREEN)done.$(RES)"
 
 $(LIBFT_NAME):
 	@echo "$(RED)Compiling Libft Library$(RES)"
@@ -122,7 +127,7 @@ clean:
 fclean: clean
 	@echo "$(RED)Removing Executables & Library...$(RES)"
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f $(VISU_HEX)
+	@/bin/rm -f $(VISU_HEXX)
 	@/bin/rm -f $(CHECKER_EXE)
 	@Make fclean -C $(LIBFT_DIR)
 	@Make fclean -C $(LIB_MLX_DIR)

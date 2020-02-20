@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_lines.c                                     :+:      :+:    :+:   */
+/*   img_create_lines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 17:14:28 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 10:56:36 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 #include <math.h>
+
+int		get_line_color(int max, int min)
+{
+	int r;
+	int g;
+	int b;
+
+	r = rand() % (max + 1 - min) + min;
+	g = rand() % (max + 1 - min) + min;
+	b = rand() % (max + 1 - min) + min;
+	return ((r << 16) | (g << 8) | (b));
+}
 
 void	create_connections_lines(t_prop *xt)
 {
@@ -54,7 +66,7 @@ void	create_connections_paths(t_prop *xt)
 	temp = xt->all_paths;
 	while (temp)
 	{
-		xt->color = rand() % (16777215 + 162478 - 0) + 0;
+		xt->color = get_line_color(255, 25);
 		while (temp->path->next)
 		{
 			connect_nodes(IMGS->pathdat, xt, temp->path->node, temp->path->next->node);
