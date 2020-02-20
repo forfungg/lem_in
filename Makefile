@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/20 14:10:12 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/20 16:07:09 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ VISU_HEXX_SRCS		=bfs_functions.c\
 					img_create_rooms.c\
 					img_draw_ants.c\
 					img_draw_lines.c\
+					img_draw_rooms.c\
 					img_draw_visu-hexx.c\
 					input_process.c\
 					lines_management.c\
@@ -73,7 +74,11 @@ VISU_HEXX_SRCS		=bfs_functions.c\
 					paths_management.c\
 					print_functions.c\
 					queue_functions.c\
-					update_ant_position.c
+					update_ant_position.c \
+					ford_fulkerson.c \
+					ford_fulkerson_tools.c \
+					flow_paths.c \
+					assigning_ants.c \
 					
 
 VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))

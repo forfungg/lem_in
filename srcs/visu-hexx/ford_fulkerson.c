@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ford_fulkerson.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/20 15:42:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:33:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu-hex.h"
 
 /*
 ** Get pointer to the last path
@@ -86,6 +86,7 @@ int		ford_fulkerson(t_node *graph, t_paths **all_paths, int ants)
 		delete_paths(*all_paths);
 		*all_paths = NULL;
 		get_flow_paths(find_start(graph), find_end(graph), all_paths);
+		// ft_printf("found\n");
 		if (len_solution(best, ants) > len_solution(*all_paths, ants))
 			new_solution(&best, all_paths);
 		else if (!FF_ALL)
@@ -94,7 +95,6 @@ int		ford_fulkerson(t_node *graph, t_paths **all_paths, int ants)
 	}
 	delete_paths(parents);
 	delete_paths(*all_paths);
-	// print_paths(best);
 	*all_paths = best;
 	return (max_flow);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigning_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:32:37 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:06:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ void	assign_ants(t_prop *xt)
 		several(xt->f_ants, xt->all_paths);
 	else
 		xt->all_paths->ants = xt->f_ants;
-	// print_paths(xt->all_paths);
 	move_ants(xt, xt->all_paths);
 }

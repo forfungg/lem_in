@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 15:08:45 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:12:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	update_positions(t_prop *xt, char *set)
 		if (temp->curpos != end)
 		{
 			if (temp->cnt == ft_atoi(&section[0][1]))
+			{
 				temp->nextpos = find_node(xt->elems, section[1]);
+				ft_printf("L%s to %s\n", &section[0][1], temp->nextpos->name);
+			}
 		}
 		temp = temp->next;
 	}

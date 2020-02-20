@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 14:13:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:37:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FALSE 0
 # define NAME xt->elems->name
 # define CAPACITY 1
-# define FF_ALL 0
+# define FF_ALL 1
 
 /*
 ** Node Struct

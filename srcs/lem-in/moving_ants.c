@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_ants.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 14:13:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:32:35 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	move_one(t_prop *xt, t_que *tmp, char **out)
 
 	new = NULL;
 	cnt = 0;
+	// print_queue(tmp);
 	while (tmp)
 	{
 		new = str_append(out[cnt + tmp->shift], xt->ant_cnt, tmp->node->name);
@@ -50,6 +51,7 @@ void		move_ants(t_prop *xt, t_paths *paths)
 	if (!out)
 		error_exit("Malloc at move_ants");
 	head = paths;
+	// print_paths(paths);
 	while (xt->ant_cnt <= xt->f_ants)
 	{
 		if (paths->ants)
