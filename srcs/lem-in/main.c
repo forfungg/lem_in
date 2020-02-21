@@ -3,34 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 21:15:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/21 22:19:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			delete_elems(t_node **elems)
-{
-	t_node *temp;
-
-	while (*elems)
-	{
-		temp = (*elems)->next;
-		free((*elems)->name);
-		free((*elems)->ngb);
-		free(*elems);
-		(*elems) = temp;
-	}
-	free(*elems);
-	*elems = NULL;
-}
-
 static void		clear_memory(t_prop *xt)
 {
-	delete_elems(&xt->elems);
+	delete_list(xt->elems);
 	delete_paths(xt->all_paths);
 	free(xt);
 }
@@ -39,7 +23,7 @@ static t_prop	*initialize_lemin(void)
 {
 	t_prop	*xt;
 
-	xt = (t_prop *)malloc(sizeof(t_prop));
+	xt = (t_prop *)ft_memalloc(sizeof(t_prop));
 	ft_bzero(xt, sizeof(xt));
 	xt->elems = NULL;
 	xt->all_paths = NULL;
@@ -58,4 +42,5 @@ int				main(int argc, char **argv)
 	read_input(xt);
 	assign_ants(xt);
 	clear_memory(xt);
+	while(1);
 }
