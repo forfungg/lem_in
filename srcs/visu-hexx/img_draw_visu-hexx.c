@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 15:56:05 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/21 19:01:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	display_paths(t_prop *xt)
 {
 	display_background(xt);
 	display_path(xt);
-	display_rooms(xt);
+	//display_rooms(xt);
 	display_ants(xt);
 }
 

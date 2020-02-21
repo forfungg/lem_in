@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:47:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 19:37:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:51:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,17 @@ char	*receive_name(char *line, int cnt)
 	char	**array;
 	char	**section;
 	char	*ret;
+	char	*tmp;
+	int		i;
 
+	i = 0;
 	array = ft_strsplit(line, ' ');
-	section = ft_strsplit(array[cnt], '-');
+	tmp = ft_strjoin(ft_strdup("L"), ft_itoa(cnt));
+	while (!strstr(array[i], tmp))
+		i++;
+	section = ft_strsplit(array[i], '-');
 	ret = section[1];
+	free(tmp);
 	return (ret);
 }
 
@@ -113,10 +120,10 @@ void	create_path_list(t_prop *xt, t_lines *lines)
 	int		len;
 	t_paths	*ret;
 
-	cnt = 0;
+	cnt = 1;
 	len = split_line(lines->str);
 	xt->all_paths = new_path_to_list(xt, lines, cnt);
-	while (++cnt < len)
+	while (++cnt <= len)
 		append_path_to_list(xt, lines, cnt);
 	print_pathss(xt->all_paths);
 }
