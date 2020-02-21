@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/02/21 19:08:48 by jnovotny         ###   ########.fr       */
-=======
-/*   Updated: 2020/02/21 22:06:01 by asolopov         ###   ########.fr       */
->>>>>>> b9d239ded0294a5b8d2420395796c95c4acb17dd
+/*   Updated: 2020/02/21 22:26:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +60,7 @@ void	read_input(t_prop *xt)
 			error_exit("Wrong Input");
 		free(line);
 	}
-	ft_printf("Reading done\n");
 	check_input(xt);
-	ft_printf("Checking input done\n");
 	// print_graph(xt->elems);
 	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
 	if (maxflow == 0)

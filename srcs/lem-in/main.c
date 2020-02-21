@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/21 22:19:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/21 22:25:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int				main(int argc, char **argv)
 	read_input(xt);
 	assign_ants(xt);
 	clear_memory(xt);
-	while(1);
+	// while(1);
 }

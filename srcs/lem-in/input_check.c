@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/19 11:32:45 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/21 22:38:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		check_n_start_end(t_prop *xt)
 	while (temp)
 	{
 		if (temp->start == 1 && temp->end == 1)
-			error_exit("WHAT DO I DO???");
+			error_exit("Wrong Input - Start == End");
 		temp = temp->next;
 	}
 	return (0);
@@ -81,6 +81,6 @@ void			check_input(t_prop *xt)
 	err += check_n_start_end(xt);
 	err += check_ants(xt);
 	if (err != 0)
-		error_exit("Input is shit");
+		error_exit("Wrong Input");
 	capacitize_ngbs(xt->elems);
 }
