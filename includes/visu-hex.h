@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 19:58:20 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:43:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,8 +252,7 @@ void				create_ant(t_prop *xt);
 /*
 ** Images Draw
 */
-
-void				*draw_ant_algo(void *arg);
+void			*draw_ant_algo(t_ant *ant);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);

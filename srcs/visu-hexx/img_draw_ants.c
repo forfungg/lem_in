@@ -6,13 +6,14 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 13:48:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:51:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
+#include <math.h>
 
-static int	ft_abs(int x)
+static double	ft_abs(double x)
 {
 	return (x > 0 ? x : -x);
 }
@@ -36,41 +37,18 @@ void	move_ants(t_prop *xt)
 	}
 }
 
-void	increment_x(t_ant *ant, int dx, int dy)
+void	*draw_ant_algo(t_ant *ant)
 {
-	if (ant->error >= 0)
-	{
-		ant->error = ant->error - ant->stpy * (dy - dx);
-		ant->y += ant->stpy;
-	}
-	else
-		ant->error = ant->error - ant->stpy * dy;
-	ant->x += ant->stpx;
-}
+	double		dx;
+	double		dy;
+	double		err;
+	double		direction;
+	double		speed;
 
-void	increment_y(t_ant *ant, int dx, int dy)
-{
-	if (ant->error >= 0)
-	{
-		ant->error = ant->error - ant->stpx * (dx - dy);
-		ant->x += ant->stpx;
-	}
-	else
-		ant->error = ant->error - ant->stpx * dx;
-	ant->y += ant->stpy;
-}
-
-void	*draw_ant_algo(void *arg)
-{
-	int		dx;
-	int		dy;
-	t_ant	*ant;
-
-	ant = (t_ant *)arg;
-	dx = ft_abs(ant->nextpos->nx - ant->curpos->nx);
-	dy = ft_abs(ant->nextpos->ny - ant->curpos->ny);
-	if (dx > dy)
-		increment_x(ant, dx, dy);
-	else
-		increment_y(ant, dx, dy);
+	dx = (ant->nextpos->nx - ant->curpos->nx);
+	dy = (ant->nextpos->ny - ant->curpos->ny);
+	direction = atan2(dy, dx);
+	speed = sqrt(ant->stpx * ant->stpx + ant->stpy * ant->stpy);
+	ant->x = ant->x + (speed * cos(direction));
+	ant->y = ant->y + (speed * sin(direction));
 }

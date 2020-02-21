@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_check2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:47:17 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/20 17:51:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/21 19:01:19 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 void		is_valid_room(t_node *list, char *name, int x, int y)
 {
-	while (list)
-	{
-		if (ft_strequ(list->name, name) || (x == list->x && y == list->y))
-			error_exit("Wrong Input");
-		list = list->next;
-	}
+	// while (list)
+	// {
+	// 	if (/*ft_strequ(list->name, name) || */(x == list->x && y == list->y))
+	// 		error_exit("Wrong Input");
+	// 	list = list->next;
+	// }
 }
