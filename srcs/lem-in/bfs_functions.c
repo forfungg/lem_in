@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 20:34:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:40:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_que		*bfs(t_node *start, t_node *end)
 		current = que_getlast(path);
 		if (current->end)
 		{
-			// *all_paths = append_path(*all_paths, path);
 			delete_paths(q);
 			return (path);
 		}

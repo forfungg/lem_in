@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 20:36:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:38:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int		ford_fulkerson(t_prop *xt)
 	best = NULL;
 	while ((i = bfs(START, END)))
 	{
-		ft_printf("FF new augment path: ");
-		print_queue(i);
 		max_flow += CAPACITY;
 		augment_path(i);
 		reset_visits(START);

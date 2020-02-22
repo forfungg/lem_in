@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:03:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 17:50:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:42:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static void		reset_ants(t_paths *paths)
 		paths = paths->next;
 	}
 }
+
+// static int		check_square(int a, int b, int ants)
+// {
+
+// }
 
 int				len_solution(t_paths *paths, int ants)
 {

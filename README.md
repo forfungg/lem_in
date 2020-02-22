@@ -12,7 +12,7 @@
 	| lem_map_1kd10 | 10000	| 2.788		|
 	| lem_map_4k_01 | 100	| 1.570		|
 	| lem_map_4k_01 | 1000	| 1.788		|
-	| lem_map_4k_01 | 10000	| 2.646		| <- Solution iteration? or printing?
+	| lem_map_4k_01 | 10000	| 2.610		| <- Solution iteration? or printing?
 	| lem_map_4kd5	| 100	| 59.307*	| 
 	| lem_map_4kd5	| 1000	| 50.248	|
 	| lem_map_4kd5	| 10000	| |
@@ -29,8 +29,10 @@
 		- bfs and ford-fulkerson tidy up
 			- return and runtime of bfs
 			- memory optimization in total
-
-		- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
+			- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
+		
+		- SEGFAULT ON 4kd5!!!!!
+		
 		- optional
 			- flags
 				- debug
