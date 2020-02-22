@@ -4,6 +4,23 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
+	- branch refactor1_0
+		- Change xt->elems order
+			- start 1st node
+			- end last node
+			- keep pointer to both ends
+		
+		- bfs and ford-fulkerson tidy up
+			- return and runtime of bfs
+			- memory optimization in total
+
+		- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
+		- optional
+			- flags
+				- debug
+				- multithread?
+			- introduce room_id so we dont have to care about identical names of rooms, coords must be identical
+
 	- visuhex -> pathdrawing vs ants movement
 	- error management
 		- DUPLICATE rooms?
