@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 20:10:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:36:47 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	augment_path(t_que *path)
 		b->cap[i] = 1;
 		tmp = tmp->next;
 	}
+	que_delete(path);
 }
 
 /*
@@ -77,9 +78,10 @@ int		ford_fulkerson(t_prop *xt)
 	max_flow = 0;
 	parents = NULL;
 	best = NULL;
-	while (bfs(START, END, &parents))
+	while ((i = bfs(START, END)))
 	{
-		i = get_p_last(parents);
+		ft_printf("FF new augment path: ");
+		print_queue(i);
 		max_flow += CAPACITY;
 		augment_path(i);
 		reset_visits(START);
