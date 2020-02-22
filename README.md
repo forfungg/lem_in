@@ -19,12 +19,12 @@
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
-	- branch refactor1_0
-		- Change xt->elems order
-			- start 1st node
-			- end last node
-			- keep pointer to both ends
-			- could save time if sorted?
+#### branch refactor1_0
+	- Change xt->elems order 
+		[x] start 1st node
+		[x] end last node
+		[x] keep pointer to both ends
+		[] could save time if sorted?
 		
 		- bfs and ford-fulkerson tidy up
 			- return and runtime of bfs
