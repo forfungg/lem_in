@@ -21,10 +21,10 @@
 
 #### branch refactor1_0
 	- Change xt->elems order 
-		[x] start 1st node
-		[x] end last node
-		[x] keep pointer to both ends
-		[] could save time if sorted?
+		- [x] start 1st node
+		- [x] end last node
+		- [x] keep pointer to both ends
+		- [ ] could save time if sorted?
 		
 		- bfs and ford-fulkerson tidy up
 			- return and runtime of bfs
