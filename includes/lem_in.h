@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/22 19:57:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:10:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define CAPACITY 1
 # define FF_ALL 1
 # define DEBUG 1
+# define START xt->elems
+# define END xt->end_node
+# define ANTS xt->f_ants
 
 /*
 ** Node Struct
@@ -164,7 +167,7 @@ void				delete_paths(t_paths *all_paths);
 ** Ford-Fulkerson max flow algorithm
 */
 
-int					ford_fulkerson(t_node *graph, t_paths **all_paths, int ants);
+int					ford_fulkerson(t_prop *xt);
 void				get_flow_paths(t_node *start, t_node *end,\
 						t_paths **all_paths);
 int					len_solution(t_paths *paths, int ants);

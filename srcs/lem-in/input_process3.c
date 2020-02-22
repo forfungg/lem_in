@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/22 19:56:17 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 20:11:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	read_input(t_prop *xt)
 		free(line);
 		// ft_printf("Read line: %d\n", counter++);
 	}
-	ft_printf("Reading done\n");
+	// ft_printf("Reading done\n");
 	// debug_print(xt->elems);
 	check_input(xt);
-	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
+	maxflow = ford_fulkerson(xt);
 	if (maxflow == 0)
 		error_exit("No solution found");
 }

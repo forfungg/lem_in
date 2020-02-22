@@ -12,7 +12,7 @@
 	| lem_map_1kd10 | 10000	| 2.788		|
 	| lem_map_4k_01 | 100	| 1.570		|
 	| lem_map_4k_01 | 1000	| 1.788		|
-	| lem_map_4k_01 | 10000	| 2.685		| <- Solution iteration? or printing?
+	| lem_map_4k_01 | 10000	| 2.646		| <- Solution iteration? or printing?
 	| lem_map_4kd5	| 100	| 59.307*	| 
 	| lem_map_4kd5	| 1000	| 50.248	|
 	| lem_map_4kd5	| 10000	| |
