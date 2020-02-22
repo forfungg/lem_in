@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 17:51:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 19:57:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define NAME xt->elems->name
 # define CAPACITY 1
 # define FF_ALL 1
+# define DEBUG 1
 
 /*
 ** Node Struct
@@ -85,6 +86,7 @@ typedef struct		s_paths
 typedef struct		s_prop
 {
 	t_node		*elems;
+	t_node		*end_node;
 	t_paths		*all_paths;
 	int			r_start;
 	int			r_end;
@@ -111,8 +113,7 @@ int					is_number(char *str);
 int					is_ants(char *str, t_prop *xt);
 int					is_link(char *line, t_prop *xt);
 int					is_room(char *line, t_prop *xt);
-void				new_node(char **props, t_prop *xt);
-void				prepend_node(char **props, t_prop *xt);
+void				attach_room(char **props, t_prop *xt);
 void				save_room(char *line, t_prop *xt);
 void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
@@ -137,6 +138,7 @@ t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
 void				reset_visits(t_node *list);
 void				capacitize_ngbs(t_node *list);
+t_node				*add_default_room(t_node *head, t_node *node);
 
 /*
 ** Queue Management
@@ -178,6 +180,7 @@ void				print_colony(t_prop *xt);
 void				print_paths(t_paths *paths);
 void				print_queue(t_que *queue);
 void				print_graph(t_node *graph);
+void				debug_print(t_node *lst);
 
 /*
 **	Program functionality support tools

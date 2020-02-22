@@ -4,11 +4,27 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
+	Current performance (22.2.):
+	| Map			| Ants	| Time		|
+	|---------------|-------|----------:|
+	| lem_map_1kd10 | 100	| 2.146		|
+	| lem_map_1kd10 | 1000	| 2.370		|
+	| lem_map_1kd10 | 10000	| 2.788		|
+	| lem_map_4k_01 | 100	| 1.570		|
+	| lem_map_4k_01 | 1000	| 1.788		|
+	| lem_map_4k_01 | 10000	| 2.685		| <- Solution iteration? or printing?
+	| lem_map_4kd5	| 100	| 59.307*	| 
+	| lem_map_4kd5	| 1000	| 50.248	|
+	| lem_map_4kd5	| 10000	| |
+
+	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
+
 	- branch refactor1_0
 		- Change xt->elems order
 			- start 1st node
 			- end last node
 			- keep pointer to both ends
+			- could save time if sorted?
 		
 		- bfs and ford-fulkerson tidy up
 			- return and runtime of bfs
@@ -134,3 +150,4 @@ Plotting graph
 Finds all unique shortest paths that can be utilized
 Assigns Ants to correct paths
 Prints desired output for moving ants across the graph
+

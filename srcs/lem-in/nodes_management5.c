@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:52:11 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 12:16:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 19:44:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,23 @@ void			capacitize_ngbs(t_node *list)
 		}
 		list = list->next;
 	}
+}
+
+/*
+** Adds common room
+** if 1st node is starting node, the room will be created
+** on 2nd position.
+** else the node will be prepended
+*/
+
+t_node	*add_default_room(t_node *head, t_node *node)
+{
+	if (head && head->start)
+	{
+		node->next = head->next;
+		head->next = node;
+		return (head);
+	}
+	else
+		return (add_front(head, node));
 }

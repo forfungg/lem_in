@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 17:15:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/22 19:53:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,22 @@ void	print_graph(t_node *graph)
 		}
 		ft_printf("| ");
 		tmp = tmp->next;
+	}
+	ft_printf("\n");
+}
+
+/*
+** Print Debug stuff
+*/
+
+void	debug_print(t_node *lst)
+{
+	if (!lst)
+		ft_printf("No fucking list");
+	while (lst)
+	{
+		ft_printf("- %s (%d, %d)", lst->name, lst->x, lst->y);
+		lst = lst->next;
 	}
 	ft_printf("\n");
 }
