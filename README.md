@@ -18,19 +18,19 @@
 	| lem_map_4kd5	| 10000	| 56.705	|
 	| lem_map_4kd5	| 100000| 1:08.28	|
 
-	New Solution Checking (24.2.):
+	New Solution Checking & Reading/Output(unorg) (24.2.):
 	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
 	|---------------|-------|----------:|----------:|-------------------:|
-	| lem_map_1kd10 | 100	| 2.146		|
-	| lem_map_1kd10 | 1000	| 2.370		|
-	| lem_map_1kd10 | 10000	| 2.788		|
-	| lem_map_4k_01 | 100	| 1.570		|
-	| lem_map_4k_01 | 1000	| 1.788		|
-	| lem_map_4k_01 | 10000	| 2.514		|
-	| lem_map_4kd5	| 100	| 50.347	| 
-	| lem_map_4kd5	| 1000	| 51.767	|
-	| lem_map_4kd5	| 10000	| 51.842	| 38.799
-	| lem_map_4kd5	| 100000| 55.413	|
+	| lem_map_1kd10 | 100	| 1.672		|
+	| lem_map_1kd10 | 1000	| 1.625		|
+	| lem_map_1kd10 | 10000	| 2.025		|
+	| lem_map_4k_01 | 100	| 1.564		|
+	| lem_map_4k_01 | 1000	| 1.616		|
+	| lem_map_4k_01 | 10000	| 2.417		|
+	| lem_map_4kd5	| 100	| 45.039	| 
+	| lem_map_4kd5	| 1000	| 45.804	|
+	| lem_map_4kd5	| 10000	| 45.801	| 38.799
+	| lem_map_4kd5	| 100000| 52.968	|
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 

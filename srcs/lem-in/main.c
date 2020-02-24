@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 13:34:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:59:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void		clear_memory(t_prop *xt)
 {
 	delete_list(xt->elems);
 	delete_paths(xt->all_paths);
+	free(xt->input);
 	free(xt);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:06:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 16:36:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:58:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*lem_getnextline(t_prop *xt)
 	char	*ret;
 	size_t	i;
 
-	if (xt->input == NULL)
+	if (xt->input == NULL || xt->input[xt->in_point] == '\0')
 		return (NULL);
 	i = xt->in_point;
 	while (xt->input[i] != '\n' && xt->input[i] != '\0')
@@ -58,9 +58,6 @@ char	*lem_getnextline(t_prop *xt)
 	if (xt->input[i] != '\0')
 		xt->in_point = i + 1;
 	else
-	{
-		free(xt->input);
-		xt->input = NULL;
-	}
+		xt->in_point = i;
 	return (ret);
 }
