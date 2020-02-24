@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 11:36:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:30:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*create_node(char *name, int x, int y)
 	node = (t_node *)ft_memalloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	node->name = ft_strdup(name);
+	node->name = name;
 	node->x = x;
 	node->y = y;
 	node->ngb = NULL;
@@ -51,7 +51,6 @@ void	delete_node(t_node *node)
 		i = 0;
 		free(node->cap);
 	}
-	free(node->name);
 	free(node);
 }
 

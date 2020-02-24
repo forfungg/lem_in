@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 13:31:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:08:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int		is_room(char *line, t_prop *xt)
 ** otherwise it'll be attached in 2nd position if available.
 */
 
-void	attach_room(char **props, t_prop *xt)
+void	attach_room(t_prop *xt, char *name, int x, int y)
 {
 	t_node *new;
 
-	new = create_node(props[0], get_coord(props[1]), get_coord(props[2]));
+	new = create_node(name, x, y);
 	if (xt->f_start == 1)
 	{
 		xt->elems = add_front(xt->elems, new);
@@ -66,9 +66,8 @@ void	save_room(char *line, t_prop *xt)
 	char **props;
 
 	props = ft_strsplit(line, ' ');
-	is_valid_room(xt->elems, props[0], get_coord(props[1]),\
+	is_valid_room(xt, props[0], get_coord(props[1]),\
 		get_coord(props[2]));
-	attach_room(props, xt);
 	clear_props(props);
 }
 

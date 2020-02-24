@@ -30,7 +30,7 @@
 	| lem_map_4kd5	| 100	| 45.039	| 
 	| lem_map_4kd5	| 1000	| 45.804	|
 	| lem_map_4kd5	| 10000	| 45.801	| 38.799
-	| lem_map_4kd5	| 100000| 52.968	|
+	| lem_map_4kd5	| 100000| 52.506	|
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 

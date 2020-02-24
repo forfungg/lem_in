@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 17:47:01 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:05:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define START xt->elems
 # define END xt->end_node
 # define ANTS xt->f_ants
+# define I xt->in_point
 
 /*
 ** Node Struct
@@ -93,6 +94,7 @@ typedef struct		s_prop
 	t_node		*end_node;
 	t_paths		*all_paths;
 	char		*input;
+	char		*pathways;
 	size_t		in_point;
 	int			r_start;
 	int			r_end;
@@ -119,15 +121,16 @@ int					is_number(char *str);
 int					is_ants(char *str, t_prop *xt);
 int					is_link(char *line, t_prop *xt);
 int					is_room(char *line, t_prop *xt);
-void				attach_room(char **props, t_prop *xt);
+void				attach_room(t_prop *xt, char *name, int x, int y);
 void				save_room(char *line, t_prop *xt);
 void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
 void				save_ants(char *str, t_prop *xt);
 int					get_coord(char *str);
-void				is_valid_room(t_node *list, char *name, int x, int y);
+void				is_valid_room(t_prop *xt, char *name, int x, int y);
 void				load_input(t_prop *xt, int fd);
 char				*lem_getnextline(t_prop *xt);
+void				process_input(t_prop *xt);
 
 /*
 ** Nodes Management

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 13:34:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:20:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@
 
 void	print_colony(t_prop *xt)
 {
-	t_node *start;
-	t_node *end;
-
 	ft_printf("#Amount of ants\n%d\n", xt->f_ants);
-	start = find_start(xt->elems);
-	ft_printf("##start\n%s %d %d\n", start->name, start->x, start->y);
-	end = find_end(xt->elems);
-	ft_printf("##end\n%s %d %d\n", end->name, end->x, end->y);
+	ft_printf("##start\n%s %d %d\n", xt->elems->name, xt->elems->x,\
+		xt->elems->y);
+	ft_printf("##end\n%s %d %d\n", xt->end_node->name, xt->end_node->x,\
+		xt->end_node->y);
 	ft_printf("#Other Rooms\n");
 	print_list(xt->elems);
 	ft_printf("#Edges\n");
-	print_edges(xt->elems);
+	ft_putendl(xt->pathways);
 }
 
 void	print_list(t_node *head)
