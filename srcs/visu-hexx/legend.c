@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/24 12:56:01 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/24 13:47:02 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	dispay_stats(t_prop *xt)
 {
 	char	*rooms;
+	char	*temp;
 
 	char	*ants;
 
@@ -25,15 +26,19 @@ void	dispay_stats(t_prop *xt)
 
 	char	*paths;
 	int		n_paths;
-	t_paths	*temp;
+	t_paths	*temppath;
 
 	rooms = ft_strdup("Total number of rooms: ");
-	rooms = ft_strjoin(rooms, ft_itoa(xt->n_rooms));
-	mlx_string_put(MLX_PTR, WIN_PTR, 10, 10, 0xffffff, rooms);
+	temp = ft_strjoin(rooms, ft_itoa(xt->n_rooms));
+	mlx_string_put(MLX_PTR, WIN_PTR, 10, 10, 0xffffff, temp);
+	free(temp);
+	free(rooms);
 	
 	ants = ft_strdup("Total number of ants: ");
-	ants = ft_strjoin(ants, ft_itoa(xt->f_ants));
-	mlx_string_put(MLX_PTR, WIN_PTR, 10, 25, 0xffffff, ants);
+	temp = ft_strjoin(ants, ft_itoa(xt->f_ants));
+	mlx_string_put(MLX_PTR, WIN_PTR, 10, 25, 0xffffff, temp);
+	free(temp);
+	free(ants);
 
 	cnt = 0;
 	n_links = 0;
@@ -49,17 +54,21 @@ void	dispay_stats(t_prop *xt)
 		tempnode = tempnode->next;
 	}
 	links = ft_strdup("Total number of links: ");
-	links = ft_strjoin(links, ft_itoa(n_links / 2));
-	mlx_string_put(MLX_PTR, WIN_PTR, 10, 40, 0xffffff, links);
+	temp = ft_strjoin(links, ft_itoa(n_links / 2));
+	mlx_string_put(MLX_PTR, WIN_PTR, 10, 40, 0xffffff, temp);
+	free(temp);
+	free(links);
 
 	n_paths = 0;
-	temp = xt->all_paths;
-	while (temp)
+	temppath = xt->all_paths;
+	while (temppath)
 	{
 		n_paths += 1;
-		temp = temp->next;
+		temppath = temppath->next;
 	}
 	paths = ft_strdup("Total number of paths: ");
-	paths = ft_strjoin(paths, ft_itoa(n_paths));
-	mlx_string_put(MLX_PTR, WIN_PTR, 10, 55, 0xffffff, paths);
+	temp = ft_strjoin(paths, ft_itoa(n_paths));
+	mlx_string_put(MLX_PTR, WIN_PTR, 10, 55, 0xffffff, temp);
+	free(temp);
+	free(paths);
 }

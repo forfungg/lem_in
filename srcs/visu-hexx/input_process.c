@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 19:01:59 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/24 14:55:20 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
-void	clear_props(char **props)
+void	clear_split(char **props)
 {
 	int i;
 
@@ -67,7 +67,7 @@ int		is_link(char *line, t_prop *xt)
 
 	props = ft_strsplit(line, '-');
 	cnt = count_elems(props);
-	clear_props(props);
+	clear_split(props);
 	return (cnt != 2 ? FALSE : TRUE);
 }
 
@@ -84,7 +84,7 @@ int		is_room(char *line, t_prop *xt)
 	props = ft_strsplit(line, ' ');
 	if (count_elems(props) == 3 && (is_number(props[1]) && is_number(props[2])))
 		ret = 1;
-	clear_props(props);
+	clear_split(props);
 	return (ret);
 }
 
@@ -141,7 +141,7 @@ void	save_room(char *line, t_prop *xt)
 	else
 		prepend_node(props, xt);
 	xt->n_rooms += 1;
-	clear_props(props);
+	clear_split(props);
 }
 
 /*
@@ -157,7 +157,7 @@ void	save_link(char *line, t_prop *xt)
 	props = ft_strsplit(line, '-');
 	node1 = find_node(xt->elems, props[0]);
 	node2 = find_node(xt->elems, props[1]);
-	clear_props(props);
+	clear_split(props);
 	if (node1 == 0 || node2 == 0)
 	{
 		ft_putstr("Nothing found, suka\n");
