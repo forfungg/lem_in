@@ -4,7 +4,7 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
-	Current performance (22.2.):
+	Current performance (24.2.):
 	| Map			| Ants	| Time		|
 	|---------------|-------|----------:|
 	| lem_map_1kd10 | 100	| 2.146		|
@@ -12,10 +12,10 @@
 	| lem_map_1kd10 | 10000	| 2.788		|
 	| lem_map_4k_01 | 100	| 1.570		|
 	| lem_map_4k_01 | 1000	| 1.788		|
-	| lem_map_4k_01 | 10000	| 2.610		| <- Solution iteration? or printing?
-	| lem_map_4kd5	| 100	| 59.307*	| 
-	| lem_map_4kd5	| 1000	| 50.248	|
-	| lem_map_4kd5	| 10000	| |
+	| lem_map_4k_01 | 10000	| 2.610		|
+	| lem_map_4kd5	| 100	| 54.103	| 
+	| lem_map_4kd5	| 1000	| 52.648	|
+	| lem_map_4kd5	| 10000	| 56.705	|
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
@@ -27,7 +27,7 @@
 		- [ ] could save time if sorted?
 		
 		- bfs and ford-fulkerson tidy up
-			- return and runtime of bfs
+			-[x] return and runtime of bfs
 			- memory optimization in total
 			- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
 		
@@ -41,7 +41,8 @@
 
 	- visuhex -> pathdrawing vs ants movement
 	- error management
-		- DUPLICATE rooms?
+		- **ROOMS starting or including char "-" ?**
+		- DUPLICATE rooms (done)
 		- coordinates over int range (done)
 		- duplicate paths (ignore)
 		- not enough data error

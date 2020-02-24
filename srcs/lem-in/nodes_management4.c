@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 18:43:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:23:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				add_neighbor(t_node *node, t_node *neighbor)
 	if (node->ngb == NULL)
 	{
 		create_neighbor(node, neighbor);
-		// ft_printf("First Neighbor");
+		// ft_printf("First Neighbor\n");
 	}
 	else
 	{
@@ -109,5 +109,6 @@ int				add_neighbor(t_node *node, t_node *neighbor)
 			return (FALSE);
 		}
 	}
+	// ft_printf("Done!\n");
 	return (TRUE);
 }

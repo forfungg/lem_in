@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 17:46:11 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 14:34:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:39:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ size_t	ft_wrdcnt(char const *s, char c)
 
 	i = 0;
 	cnt = 0;
-	if (s[i] != c && s[i] != '\0')
+	if (s[i] == '\0')
+		return (cnt);
+	if (s[i] != c)
 		cnt = cnt + 1;
+	i++;
 	while (s[i] != '\0')
 	{
 		if ((s[i] != c) && (s[i - 1] == c))
@@ -48,7 +51,7 @@ char	**ft_strsplit(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(res = (char**)malloc((sizeof(char*) * ft_wrdcnt(s, c)) + 1)))
+	if (!(res = (char**)malloc(sizeof(char*) * (ft_wrdcnt(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	wrd_i = 0;
