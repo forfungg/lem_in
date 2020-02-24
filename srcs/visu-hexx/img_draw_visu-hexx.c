@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 11:13:38 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/24 12:45:38 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	display_all(t_prop *xt)
 	display_lines(xt);
 	display_uniroom(xt);
 	display_ants(xt);
+	dispay_stats(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -113,8 +114,15 @@ void	display_paths(t_prop *xt)
 	display_path(xt);
 	display_uniroom(xt);
 	display_ants(xt);
+	dispay_stats(xt);
 }
 
+void	display_80s(t_prop *xt)
+{
+	display_path(xt);
+	display_ants(xt);
+	dispay_stats(xt);
+}
 void	redraw(t_prop *xt)
 {
 	mlx_clear_window(MLX_PTR, WIN_PTR);
@@ -122,6 +130,8 @@ void	redraw(t_prop *xt)
 		display_all(xt);
 	if (IMGS->disp_path == 1)
 		display_paths(xt);
+	if (IMGS->disp_80s == 1)
+		display_80s(xt);
 }
 
 void	create_stuff(t_prop *xt)
@@ -150,6 +160,7 @@ void	draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;
+	IMGS->disp_80s = 0;
 	IMGS->disp_all = 1;
 	IMGS->pause = 1;
 	create_stuff(xt);

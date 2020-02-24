@@ -6,7 +6,7 @@
 #    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/24 11:13:11 by solopov          ###   ########.fr        #
+#    Updated: 2020/02/24 12:36:09 by solopov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ VISU_HEXX_SRCS		= controls.c\
 					img_draw_lines.c\
 					img_draw_visu-hexx.c\
 					input_process.c\
+					legend.c\
 					lines_management.c\
 					main.c\
 					move_ants.c\

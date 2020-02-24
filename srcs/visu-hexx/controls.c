@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 11:14:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:19:25 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,20 @@ int	key_hook_press(int keycode, t_prop *xt)
 	{
 		IMGS->disp_all = 1;
 		IMGS->disp_path = 0;
+		IMGS->disp_80s = 0;
 		redraw(xt);
 	}
 	else if (keycode == 19 && IMGS->disp_path == 0)
 	{
 		IMGS->disp_path = 1;
+		IMGS->disp_all = 0;
+		IMGS->disp_80s = 0;
+		redraw(xt);
+	}
+	else if (keycode == 20 && IMGS->disp_80s == 0)
+	{
+		IMGS->disp_80s = 1;
+		IMGS->disp_path = 0;
 		IMGS->disp_all = 0;
 		redraw(xt);
 	}

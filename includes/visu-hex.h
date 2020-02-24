@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 11:02:44 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/24 11:20:47 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct		s_img
 	int				disp_names;
 	int				disp_all;
 	int				disp_path;
+	int				disp_80s;
 	int				pause;
 }					t_img;
 
