@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_visu-hexx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/21 19:01:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:13:38 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,18 @@ void	display_ants(t_prop *xt)
 	}
 }
 
+void	display_uniroom(t_prop *xt)
+{
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 0, 1);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 1, 0);
+	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 1, 1);
+}
+
 void	display_all(t_prop *xt)
 {
 	display_background(xt);
 	display_lines(xt);
-	display_rooms(xt);
+	display_uniroom(xt);
 	display_ants(xt);
 }
 
@@ -104,7 +111,7 @@ void	display_paths(t_prop *xt)
 {
 	display_background(xt);
 	display_path(xt);
-	//display_rooms(xt);
+	display_uniroom(xt);
 	display_ants(xt);
 }
 
@@ -122,9 +129,7 @@ void	create_stuff(t_prop *xt)
 	get_minmax_xy(xt);
 	create_background(xt);
 	create_sand(xt);
-	create_room(xt);
-	create_start(xt);
-	create_end(xt);
+	create_uniroom(xt);
 	create_lines(xt);
 	create_path(xt);
 	create_ant(xt);

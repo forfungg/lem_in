@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/21 21:43:05 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:02:44 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define FALSE 0
 # define CAPACITY 1
 # define FF_ALL 1
-# define W_W 1920
-# define W_H 1080
+# define W_W 1080
+# define W_H 720
 # define FRAMES 120
 # define THREADS 5
 # define W_NAME "VISU-HEXX"
@@ -43,6 +43,9 @@ typedef struct		s_img
 	void			*room;
 	int				*roomdat;
 	int				roomsize;
+
+	void			*uniroom;
+	int				*uniroomdat;
 
 	void			*start;
 	int				*startdat;

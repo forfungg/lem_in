@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/21 22:22:07 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/24 11:13:11 by solopov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,6 @@ VISU_HEXX_SRCS		= controls.c\
 					img_create_rooms.c\
 					img_draw_ants.c\
 					img_draw_lines.c\
-					img_draw_rooms.c\
 					img_draw_visu-hexx.c\
 					input_process.c\
 					lines_management.c\
