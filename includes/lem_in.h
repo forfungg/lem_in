@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 13:31:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:27:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libs/libft/includes/libft.h"
 # include <errno.h>
 
+# define LEM_BUF 50000000
 # define TRUE 1
 # define FALSE 0
 # define NAME xt->elems->name
@@ -91,6 +92,8 @@ typedef struct		s_prop
 	t_node		*elems;
 	t_node		*end_node;
 	t_paths		*all_paths;
+	char		*input;
+	size_t		in_point;
 	int			r_start;
 	int			r_end;
 	int			f_start;
@@ -123,6 +126,8 @@ void				save_commands(char *str, t_prop *xt);
 void				save_ants(char *str, t_prop *xt);
 int					get_coord(char *str);
 void				is_valid_room(t_node *list, char *name, int x, int y);
+void				load_input(t_prop *xt, int fd);
+char				*lem_getnextline(t_prop *xt);
 
 /*
 ** Nodes Management

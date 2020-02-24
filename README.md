@@ -26,11 +26,11 @@
 	| lem_map_1kd10 | 10000	| 2.788		|
 	| lem_map_4k_01 | 100	| 1.570		|
 	| lem_map_4k_01 | 1000	| 1.788		|
-	| lem_map_4k_01 | 10000	| 2.514	|
-	| lem_map_4kd5	| 100	| 54.252	| 
+	| lem_map_4k_01 | 10000	| 2.514		|
+	| lem_map_4kd5	| 100	| 50.347	| 
 	| lem_map_4kd5	| 1000	| 51.767	|
-	| lem_map_4kd5	| 10000	| 51.842	|
-	| lem_map_4kd5	| 100000| 59.636	|
+	| lem_map_4kd5	| 10000	| 51.842	| 38.799
+	| lem_map_4kd5	| 100000| 55.413	|
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 

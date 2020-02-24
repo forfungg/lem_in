@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 13:30:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:50:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ void	read_input(t_prop *xt)
 {
 	char	*line;
 	int		maxflow;
+	// int		cnt;
 
 	xt->all_paths = NULL;
-	while (get_next_line(0, &line) > 0)
+	load_input(xt, 0);
+	// ft_printf("Input loading done\n");
+	// cnt = 0;
+	while ((line = lem_getnextline(xt)))
 	{
+		// ft_printf("Read (%d): %s\n", cnt++, line);
 		if (line[0] == '#' || line[0] == 'L')
 			save_commands(line, xt);
 		else if (is_link(line, xt) == 1)
