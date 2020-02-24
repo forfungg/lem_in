@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/22 20:34:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:40:10 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ void				get_flow_paths(t_node *start, t_node *end,\
 						t_paths **all_paths);
 int					len_solution(t_paths *paths, int ants);
 void				new_solution(t_paths **storage, t_paths **new);
+int					first_square(t_paths *paths, int ants);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!

@@ -4,9 +4,9 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
-	Current performance (24.2.):
-	| Map			| Ants	| Time		|
-	|---------------|-------|----------:|
+	Current performance without identical rooms check (24.2.):
+	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
+	|---------------|-------|----------:|----------:|-------------------:|
 	| lem_map_1kd10 | 100	| 2.146		|
 	| lem_map_1kd10 | 1000	| 2.370		|
 	| lem_map_1kd10 | 10000	| 2.788		|
@@ -14,8 +14,23 @@
 	| lem_map_4k_01 | 1000	| 1.788		|
 	| lem_map_4k_01 | 10000	| 2.610		|
 	| lem_map_4kd5	| 100	| 54.103	| 
-	| lem_map_4kd5	| 1000	| 52.648	|
+	| lem_map_4kd5	| 1000	| 52.648	| 41.620	| 42.243			|
 	| lem_map_4kd5	| 10000	| 56.705	|
+	| lem_map_4kd5	| 100000| 1:08.28	|
+
+	New Solution Checking (24.2.):
+	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
+	|---------------|-------|----------:|----------:|-------------------:|
+	| lem_map_1kd10 | 100	| 2.146		|
+	| lem_map_1kd10 | 1000	| 2.370		|
+	| lem_map_1kd10 | 10000	| 2.788		|
+	| lem_map_4k_01 | 100	| 1.570		|
+	| lem_map_4k_01 | 1000	| 1.788		|
+	| lem_map_4k_01 | 10000	| 2.610		|
+	| lem_map_4kd5	| 100	| 54.252	| 
+	| lem_map_4kd5	| 1000	| 51.767	|
+	| lem_map_4kd5	| 10000	| 51.842	|
+	| lem_map_4kd5	| 100000| 59.636	|
 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
@@ -31,7 +46,7 @@
 			- memory optimization in total
 			- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
 		
-		- SEGFAULT ON 4kd5!!!!!
+		- SEGFAULT ON 4kd5!!!!! (solved)
 		
 		- optional
 			- flags

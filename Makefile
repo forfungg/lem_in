@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/21 22:22:07 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/24 12:40:38 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ LEM_IN_SRCS			= main.c \
 					assigning_ants.c \
 					ford_fulkerson.c \
 					ford_fulkerson_tools.c \
+					ford_fulkerson_tools2.c \
 					flow_paths.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))

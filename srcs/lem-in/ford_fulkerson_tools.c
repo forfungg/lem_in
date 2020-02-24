@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:03:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 20:42:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:49:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static t_paths	*shortest_path(t_paths *paths)
 	return (min);
 }
 
+static t_paths	*longest_path(t_paths *paths)
+{
+	t_paths		*max;
+
+	max = paths;
+	while (paths)
+	{
+		if (get_t_len(paths) > get_t_len(max))
+			max = paths;
+		paths = paths->next;
+	}
+	return (max);
+}
+
 static void		reset_ants(t_paths *paths)
 {
 	while (paths)
@@ -39,11 +53,6 @@ static void		reset_ants(t_paths *paths)
 	}
 }
 
-// static int		check_square(int a, int b, int ants)
-// {
-
-// }
-
 int				len_solution(t_paths *paths, int ants)
 {
 	t_paths	*tmp;
@@ -51,6 +60,7 @@ int				len_solution(t_paths *paths, int ants)
 
 	if (!paths)
 		return (INT_MAX);
+	ants = first_square(paths, ants);
 	while (ants > 0)
 	{
 		tmp = shortest_path(paths);
