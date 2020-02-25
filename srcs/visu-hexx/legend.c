@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   legend.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/24 13:47:02 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:36:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
-void	dispay_stats(t_prop *xt)
+void	display_stats(t_prop *xt)
 {
 	char	*rooms;
 	char	*temp;
@@ -33,7 +33,7 @@ void	dispay_stats(t_prop *xt)
 	mlx_string_put(MLX_PTR, WIN_PTR, 10, 10, 0xffffff, temp);
 	free(temp);
 	free(rooms);
-	
+
 	ants = ft_strdup("Total number of ants: ");
 	temp = ft_strjoin(ants, ft_itoa(xt->f_ants));
 	mlx_string_put(MLX_PTR, WIN_PTR, 10, 25, 0xffffff, temp);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/24 12:36:09 by solopov          ###   ########.fr        #
+#    Updated: 2020/02/25 12:02:33 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,6 @@ VISU_HEXX_SRCS		= controls.c\
 					nodes_management.c\
 					paths_receive.c\
 					print_functions.c\
-					queue_functions.c\
 					update_ant_position.c \
 					assigning_ants.c \
 					

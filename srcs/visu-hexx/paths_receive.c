@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths_receive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:47:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 15:13:31 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:33:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ char	*receive_name(char *line, int cnt)
 	while (array[i] && !strstr(array[i], tmp))
 		i++;
 	section = ft_strsplit(array[i], '-');
-	ret = section[1];
+	ret = ft_strdup(section[1]);
 	x = 0;
-	clear_split(section);
 	clear_split(array);
+	clear_split(section);
 	free(tmp);
 	free(one);
 	free(two);
@@ -74,14 +74,17 @@ t_paths	*new_path_to_list(t_prop *xt, t_lines *line, int cnt)
 	new = (t_paths *)malloc(sizeof(t_paths));
 	new->node = find_node(xt->elems, name);
 	line = line->next;
+	free(name);
 	while (line)
 	{
-		//name = receive_name(line->str, cnt);
-		// new_node_to_path(xt, new->node, name);
-		// if (ft_strequ(name, find_end(xt->elems)->name))
-		// 	break ;
+		name = receive_name(line->str, cnt);
+		new_node_to_path(xt, new->node, name);
+		if (ft_strequ(name, find_end(xt->elems)->name))
+			break ;
+		free(name);
 		line = line->next;
 	}
+	free(name);
 	new->next = 0;
 	return (new);
 }

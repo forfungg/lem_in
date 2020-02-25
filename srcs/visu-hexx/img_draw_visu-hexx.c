@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_visu-hexx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 12:45:38 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:57:18 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	display_all(t_prop *xt)
 	display_lines(xt);
 	display_uniroom(xt);
 	display_ants(xt);
-	dispay_stats(xt);
+	//display_stats(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -114,14 +114,14 @@ void	display_paths(t_prop *xt)
 	display_path(xt);
 	display_uniroom(xt);
 	display_ants(xt);
-	dispay_stats(xt);
+	//display_stats(xt);
 }
 
 void	display_80s(t_prop *xt)
 {
 	display_path(xt);
 	display_ants(xt);
-	dispay_stats(xt);
+	//dispay_stats(xt);
 }
 void	redraw(t_prop *xt)
 {

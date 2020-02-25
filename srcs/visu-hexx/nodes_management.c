@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nodes_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 14:28:35 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 11:41:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	delete_node(t_node *node)
 		while (node->ngb[i])
 			node->ngb[i++] = NULL;
 		free(node->ngb);
-		i = 0;
 		free(node->cap);
 		free(node->path);
+		i = 0;
 	}
 	free(node->name);
 	free(node);

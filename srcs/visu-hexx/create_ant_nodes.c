@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:09:09 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 20:05:19 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 12:55:24 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,25 @@ void	append_ant_node(t_prop *xt, t_node *start, int nb)
 	temp->next = new_ant_node(start, nb);
 }
 
-void	print_ant_data(t_prop *xt)
-{
-	t_ant *a;
+// void	print_ant_data(t_prop *xt)
+// {
+// 	t_ant *a;
 
-	a = xt->ants;
-	while (a)
-	{
-		ft_printf("ANT NO: %d\n", a->cnt);
-		ft_printf("curr X: %f	curr Y: %f\n", a->x, a->y);
-		ft_printf("curr node: %s\n", a->curpos->name);
-		if (a->nextpos)
-		{
-			ft_printf("next node: %s\n", a->nextpos->name);
-			ft_printf("next X: %f	next Y: %f\n", a->nextpos->nx, a->nextpos->ny);
-		}
+// 	a = xt->ants;
+// 	while (a)
+// 	{
+// 		ft_printf("ANT NO: %d\n", a->cnt);
+// 		ft_printf("curr X: %f	curr Y: %f\n", a->x, a->y);
+// 		ft_printf("curr node: %s\n", a->curpos->name);
+// 		if (a->nextpos)
+// 		{
+// 			ft_printf("next node: %s\n", a->nextpos->name);
+// 			ft_printf("next X: %f	next Y: %f\n", a->nextpos->nx, a->nextpos->ny);
+// 		}
 
-		a = a->next;
-	}
-}
+// 		a = a->next;
+// 	}
+// }
 
 void	create_ant_list(t_prop *xt)
 {

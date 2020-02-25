@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 15:11:28 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:59:11 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
 
-static t_prop	*init_visuhex(void)
+void	clear_split(char **props)
+{
+	int i;
+
+	i = 0;
+	while (props[i])
+	{
+		if (props[i])
+			free(props[i]);
+		i += 1;
+	}
+	free(props);
+}
+
+static t_prop	*init_visuhexx(void)
 {
 	t_prop	*xt;
 
@@ -30,7 +44,7 @@ static t_prop	*init_visuhex(void)
 	return (xt);
 }
 
-static void		delete_lines (t_lines *lines)
+static void		delete_lines(t_lines *lines)
 {
 	t_lines *temp;
 
@@ -54,6 +68,8 @@ static void		delete_ants(t_ant *ants)
 	while (temp)
 	{
 		temp = ants->next;
+		free(ants->curpos);
+		free(ants->nextpos);
 		free(ants);
 		ants = temp;
 	}
@@ -67,31 +83,31 @@ static void		delete_pathss(t_paths *paths)
 	while (paths)
 	{
 		temp = paths->next;
+		free(paths->node);
 		free(paths);
 		paths = temp;
 	}
-}	
+}
 
 static void		clear_memory(t_prop *xt)
 {
 	delete_list(xt->elems);
 	delete_lines(xt->lines);
 	delete_pathss(xt->all_paths);
+	mlx_destroy_window(MLX_PTR, WIN_PTR);
 	free(xt->imgs);
-	free(xt);
+	free(xt->moves);
+	free(xt->ants);
+	free(MLX_PTR);
+	free(xt); 
 }
 
 int				main(int argc, char **argv)
 {
-	t_prop *xt;
-	char *line;
+	t_prop	*xt;
 
-	xt = init_visuhex();
+	xt = init_visuhexx();
 	read_input(xt);
-	//draw_farm(xt);
+	draw_farm(xt);
 	clear_memory(xt);
-	while (1)
-	{
-		
-	}
 }

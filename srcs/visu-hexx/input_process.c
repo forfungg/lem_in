@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 14:55:20 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:19:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu-hex.h"
-
-void	clear_split(char **props)
-{
-	int i;
-
-	i = 0;
-	while (props[i])
-	{
-		free(props[i]);
-		i++;
-	}
-	free(props);
-}
 
 int		count_elems(char **array)
 {

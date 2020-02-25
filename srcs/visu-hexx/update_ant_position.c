@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 20:05:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 12:56:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	free_line(t_prop *xt)
 		temp = xt->lines->next;
 	else
 		temp = 0;
+	free(xt->lines->str);
 	free(xt->lines);
 	xt->lines = temp;
 }
@@ -40,12 +41,11 @@ void	update_positions(t_prop *xt, char *set)
 			if (temp->cnt == ft_atoi(&section[0][1]))
 			{
 				temp->nextpos = find_node(xt->elems, section[1]);
-				ft_printf("L%s to %s\n", &section[0][1], temp->nextpos->name);
-				ft_printf("NEXTPOS X: %d, NEXTPOS Y: %d\n", temp->nextpos->nx, temp->nextpos->ny);
 			}
 		}
 		temp = temp->next;
 	}
+	clear_split(section);
 }
 
 void	update_ant_positions(t_prop *xt, char *line)
@@ -61,6 +61,7 @@ void	update_ant_positions(t_prop *xt, char *line)
 			update_positions(xt, array[cnt]);
 			cnt += 1;
 		}
+		clear_split(array);
 		free_line(xt);
 	}
 }

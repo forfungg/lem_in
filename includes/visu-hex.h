@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 14:59:31 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:36:49 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VISUAL_H
-#define VISUAL_H
+# define VISUAL_H
 
-#define IMGS			xt->imgs
+# define IMGS			xt->imgs
 # define IMG_PTR		xt->img_ptr
 # define MLX_PTR		xt->mlx_ptr
 # define IMG_DAT		xt->img_data
@@ -87,14 +87,6 @@ typedef struct		s_node
 
 }					t_node;
 
-typedef struct		s_queue
-{
-	t_node			*node;
-	int				curr_ant;
-	int 			shift;
-	struct s_queue	*next;
-}					t_que;
-
 typedef struct		s_paths
 {
 	t_node			*node;
@@ -131,18 +123,16 @@ typedef struct	s_prop
 	int				n_start;
 	int				n_end;
 	int				n_rooms;
-	t_paths			*all_paths;
-	t_lines			*lines;
-	t_ant			*ants;
-	char			**moves;
+	t_paths			*all_paths; //freed
+	t_lines			*lines; //freed
+	t_ant			*ants; //freed
+	char			**moves; //freed
 
-	t_node			*elems;
-	t_img			*imgs;
+	t_node			*elems; //freed
+	t_img			*imgs; //freed
 
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	int				*img_data;
+	void			*mlx_ptr; //freed
+	void			*win_ptr; //freed
 
 	int				max_y;
 	int				min_y;
@@ -187,20 +177,12 @@ void				capacitize_ngbs(t_node *list);
 ** Queue Management
 */
 
-t_que				*enqueue(t_que *head, t_node *node);
-t_node				*que_getnext(t_que **queue);
-t_que				*que_copy(t_que *node);
-void				que_delete(t_que *head);
-t_node				*que_getlast(t_que *head);
 t_paths				*path_parsing(t_paths *all_paths);
 
 /*
 ** Breath First Search for paths
 */
 
-int					bfs(t_node *start, t_node *end, t_paths **all_paths);
-t_paths				*append_path(t_paths *head, t_que *path);
-t_que				*pop_path(t_paths **all_paths);
 void				delete_paths(t_paths *all_paths);
 
 /*
@@ -219,7 +201,6 @@ int					get_t_len(t_paths *paths);
 */
 
 void				print_list(t_node *head);
-void				print_queue(t_que *queue);
 void				print_paths(t_paths *paths);
 void				print_ant_data(t_prop *xt);
 void				print_graph(t_node *graph);
@@ -261,6 +242,7 @@ void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
 
+
 /*
 ** Controls
 */
@@ -268,7 +250,6 @@ void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
 int					key_hook_press(int keycode, t_prop *xt);
 
 
-void				print_queue(t_que *queue);
 void				print_paths(t_paths *paths);
 
 
@@ -280,5 +261,9 @@ void				modify_ant_location(t_prop *xt);
 void				recalc_ant_movement(t_prop *xt);
 
 void	create_path_list(t_prop *xt, t_lines *lines);
+
+void	clear_split(char **props);
+
+void	display_stats(t_prop *xt);
 
 #endif

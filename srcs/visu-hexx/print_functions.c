@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/20 17:16:39 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 11:45:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,6 @@ void	print_edges(t_node *head)
 		}
 		head = head->next;
 	}
-}
-
-void	print_queue(t_que *queue)
-{
-	int i;
-
-	if (!queue)
-		return ;
-	ft_printf("%s", queue->node->name);
-	queue = queue->next;
-	while (queue)
-	{
-		ft_printf(" - %s", queue->node->name);
-		queue = queue->next;
-	}
-	ft_printf("\n");
 }
 
 /*
