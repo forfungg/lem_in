@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 19:20:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:46:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	print_paths(t_paths *paths)
 	i = 1;
 	if (!paths)
 	{
-		ft_printf("Empty PATH!\n");
+		ft_printf("Empty PATHS!\n");
 		return ;
 	}
 	while (paths)
 	{
-		ft_printf("%8d:\t", i);
+		ft_printf("%4d | Ants %6d |\t", i);
 		print_queue(paths->path);
 		paths = paths->next;
 		i++;
@@ -136,14 +136,9 @@ void	print_graph(t_node *graph)
 ** Print Debug stuff
 */
 
-void	debug_print(t_node *lst)
+void	print_debug(t_prop *xt)
 {
-	if (!lst)
-		ft_printf("No fucking list");
-	while (lst)
-	{
-		ft_printf("- %s (%d, %d)", lst->name, lst->x, lst->y);
-		lst = lst->next;
-	}
-	ft_printf("\n");
+	ft_printf("{GREEN}{B}{U}Lem-In Stats{EOC}\n");
+	ft_printf("Ants:\t%d\n", xt->f_ants);
+	print_paths(xt->all_paths);
 }

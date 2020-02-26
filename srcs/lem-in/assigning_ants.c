@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigning_ants.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:32:37 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:47:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,47 +35,19 @@ int		get_t_len(t_paths *paths)
 	return (total);
 }
 
-void	get_min_path(t_paths *paths)
-{
-	int		min;
-	t_paths	*head;
-
-	min = get_t_len(paths);
-	paths->im_min = 1;
-	head = paths;
-	while (paths->next)
-	{
-		if (get_t_len(paths->next) < min)
-		{
-			paths->next->im_min = 1;
-			head->im_min = 0;
-			head = paths->next;
-			min = get_t_len(head);
-		}
-		paths = paths->next;
-	}
-}
-
 void	several(int ants, t_paths *paths)
 {
-	t_paths *head;
+	t_paths	*tmp;
+	int		len;
 
-	head = paths;
+	if (!paths)
+		return ;
+	ants = first_square(paths, ants);
 	while (ants > 0)
 	{
-		paths = head;
-		get_min_path(paths);
-		while (paths)
-		{
-			if (paths->im_min == 1)
-			{
-				paths->ants += 1;
-				ants -= 1;
-				paths->im_min = 0;
-				break ;
-			}
-			paths = paths->next;
-		}
+		tmp = shortest_path(paths);
+		tmp->ants += 1;
+		ants--;
 	}
 }
 
@@ -85,6 +57,5 @@ void	assign_ants(t_prop *xt)
 		several(xt->f_ants, xt->all_paths);
 	else
 		xt->all_paths->ants = xt->f_ants;
-	// print_paths(xt->all_paths);
 	move_ants(xt, xt->all_paths);
 }

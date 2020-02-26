@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 11:47:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:41:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ static void	move_one(t_prop *xt, t_que *tmp, char **out)
 	xt->ant_cnt += 1;
 }
 
+static void	print_results(t_prop *xt, char **out)
+{
+	if (DEBUG)
+		print_debug(xt);
+	else
+	{
+		print_colony(xt);
+		print_output(out);
+	}
+}
+
 void		move_ants(t_prop *xt, t_paths *paths)
 {
 	char	**out;
@@ -51,7 +62,6 @@ void		move_ants(t_prop *xt, t_paths *paths)
 	if (!out)
 		error_exit("Malloc at move_ants");
 	head = paths;
-	// print_paths(paths);
 	while (xt->ant_cnt <= xt->f_ants)
 	{
 		if (paths->ants)
@@ -63,7 +73,5 @@ void		move_ants(t_prop *xt, t_paths *paths)
 		if (!paths)
 			paths = head;
 	}
-	print_colony(xt);
-	// ft_putendl(xt->input);
-	print_output(out);
+	print_results(xt, out);
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:19:47 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 13:10:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:34:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	second_square(t_paths *paths, int cnt, int ants)
 	while (paths)
 	{
 		paths->ants += d;
-		ants -= paths->ants;
+		ants -= d;
 		paths = paths->next;
 	}
 	return (ants);

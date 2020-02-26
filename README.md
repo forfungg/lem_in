@@ -5,6 +5,7 @@
 
 ### To-Do
 	26.2 Motherfucker
+	- neighbors malloc optimization size based on nodes?
 	- norm
 	- flags
 		- file
@@ -12,8 +13,6 @@
 		- usage
 		- info
 	- ant distribute
-	- merge branches
-	- 
 
 	Current performance without identical rooms check (24.2.):
 	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
@@ -43,6 +42,20 @@
 	| lem_map_4kd5	| 10000	| 45.801	| 38.799
 	| lem_map_4kd5	| 100000| 52.506	|
 
+	New Malloc system for creating links (26.2.):
+	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
+	|---------------|-------|----------:|----------:|-------------------:|
+	| lem_map_1kd10 | 100	| 1.500		|
+	| lem_map_1kd10 | 1000	| 1.544		|
+	| lem_map_1kd10 | 10000	| 1.886		|
+	| lem_map_4k_01 | 100	| 1.520		|
+	| lem_map_4k_01 | 1000	| 1.584		|
+	| lem_map_4k_01 | 10000	| 2.300		|
+	| lem_map_4kd5	| 100	| 43.738	| 
+	| lem_map_4kd5	| 1000	| 43.198	|
+	| lem_map_4kd5	| 10000	| 44.018	| 36.616
+	| lem_map_4kd5	| 100000| 51.130	|
+	| lem_map_10k25d| 100000| 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
 #### branch refactor1_0
@@ -67,6 +80,7 @@
 
 	- visuhex -> pathdrawing vs ants movement
 	- error management
+		- if p[0] == 'L' error
 		- order error (ants->rooms->links)
 		- **ROOMS starting or including char "-" ?**
 		- DUPLICATE rooms (done)

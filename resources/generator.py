@@ -124,9 +124,9 @@ with open(filename, "w+") as f:
 	i = 0
 	for l in res:
 		f.write(f"{l}\n")
-	# while i < len(edges) - 1:
-	# 	f.write(f"{edges[i]}\n")
-	# 	i += 1
-	# f.write(f"{edges[i]}")
+	while i < len(edges) - 1:
+		f.write(f"{edges[i]}\n")
+		i += 1
+	f.write(f"{edges[i]}")
 
 	

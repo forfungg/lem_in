@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 19:05:11 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:41:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <errno.h>
 
 # define LEM_BUF 50000000
+# define NGB_BUF 1000
 # define TRUE 1
 # define FALSE 0
 # define NAME xt->elems->name
 # define CAPACITY 1
 # define FF_ALL 1
-# define DEBUG 1
+# define DEBUG xt->flags.debug
+# define FILE xt->flags.fd
 # define START xt->elems
 # define END xt->end_node
 # define ANTS xt->f_ants
@@ -85,6 +87,16 @@ typedef struct		s_paths
 }					t_paths;
 
 /*
+** Flags Struct
+*/
+
+typedef struct		s_lem_flags
+{
+	int				fd;
+	int				debug;
+}					t_lflg;
+
+/*
 ** LEM_IN Struct
 */
 
@@ -96,16 +108,17 @@ typedef struct		s_prop
 	char		*input;
 	char		*pathways;
 	size_t		in_point;
+	t_lflg		flags;
 	int			r_start;
 	int			r_end;
 	int			f_start;
 	int			f_end;
 	int			f_ants;
-
 	int			n_start;
 	int			n_end;
 	int			n_ants;
 	int			ant_cnt;
+	int			paths_cnt;
 }					t_prop;
 
 /*
@@ -193,7 +206,7 @@ void				print_colony(t_prop *xt);
 void				print_paths(t_paths *paths);
 void				print_queue(t_que *queue);
 void				print_graph(t_node *graph);
-void				debug_print(t_node *lst);
+void				print_debug(t_prop *xt);
 
 /*
 **	Program functionality support tools
@@ -212,4 +225,14 @@ int					get_n_strings(t_paths *paths);
 void				ft_safestrjoin(char **str, char *add, int pos);
 char				*str_append(char *str, int nb, char *name);
 void				print_output(char **out);
+t_paths				*shortest_path(t_paths *paths);
+
+/*
+** Bonus Stuff
+*/
+
+void				open_graph_file(t_prop *xt, char *filename);
+void				close_graph_file(t_prop *xt);
+void				show_usage(void);
+void				show_product_info(void);
 #endif

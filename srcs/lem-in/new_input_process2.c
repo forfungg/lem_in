@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 18:47:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:21:27 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int		process_room(t_prop *xt, char *p, int i)
 	while (ft_isdigit(p[i]))
 		i++;
 	if (p[i] != ' ')
+	{
+		ft_printf("Debug: room = %s, x = %s, char = '%c'\n", name, x, p[i]);
 		error_exit("Invalid X-coordinate");
+	}
 	p[i] = '\0';
 	i++;
 	y = p + i;
@@ -38,6 +41,7 @@ int		process_room(t_prop *xt, char *p, int i)
 	else
 		p[i] = '\0';
 	is_valid_room(xt, name, get_coord(x), get_coord(y));
+	// ft_printf("Room '%s' Done\n", name);
 	return (i + 1);
 }
 
@@ -46,7 +50,10 @@ static void	add_link(t_prop *xt, t_node *node1, t_node *node2)
 	if (node1 == NULL || node2 == NULL)
 		error_exit("Wrong Input");
 	if (!add_neighbor(node1, node2) || !add_neighbor(node2, node1))
-		error_exit("Failed to create a link");
+	{
+		ft_printf("Failed to create link:\n%s - %s\n", node1->name, node2->name);
+		error_exit("");
+	}
 }
 
 int		process_link(t_prop *xt, char *p, int i)
@@ -72,9 +79,13 @@ int		process_link(t_prop *xt, char *p, int i)
 		p[i] = '\0';
 	node2 = find_node(xt->elems, p + tmp);
 	add_link(xt, node1, node2);
+	// ft_printf("Added Link %s -> %s\n", node1->name, node2->name);
 	if (!end)
+	{
 		p[i] = '\n';
-	return (end ? i : i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int		process_ant(t_prop *xt, char *p, int i)
@@ -82,6 +93,7 @@ int		process_ant(t_prop *xt, char *p, int i)
 	xt->f_ants = ft_latoi(p);
 	if (xt->f_ants > INT_MAX)
 		error_exit("Amount of ants is beyond integer range");
+	// nft_pritf("Saved Ants = %d\n", xt->f_ants);
 	xt->n_ants += 1;
 	if (p[i] == '\0')
 		return (i);

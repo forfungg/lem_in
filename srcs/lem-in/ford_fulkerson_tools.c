@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:03:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 12:49:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:36:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Returns the solution lenght (amount of lines) for given set of paths
 */
 
-static t_paths	*shortest_path(t_paths *paths)
+t_paths	*shortest_path(t_paths *paths)
 {
 	t_paths		*min;
 
@@ -67,7 +67,7 @@ int				len_solution(t_paths *paths, int ants)
 		tmp->ants += 1;
 		ants--;
 	}
-	len = get_t_len(shortest_path(paths));
+	len = get_t_len(longest_path(paths));
 	reset_ants(paths);
 	return (len);
 }

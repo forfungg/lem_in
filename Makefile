@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/26 12:50:02 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/26 16:22:03 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ LEM_IN_SRCS			= main.c \
 					ford_fulkerson_tools2.c \
 					flow_paths.c \
 					read_input.c \
-					new_input_process.c
+					new_input_process.c \
+					file_tools.c \
+					flag_tools.c 
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))

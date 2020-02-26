@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 11:23:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 15:32:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 static int		create_neighbor(t_node *node, t_node *neighbor)
 {
-	node->ngb = (t_node **)malloc(sizeof(t_node *) * 2);
+	node->ngb = (t_node **)malloc(sizeof(t_node *) * NGB_BUF);
 	if (!node->ngb)
 		error_exit("malloc at create_neighbor");
 	node->ngb[0] = neighbor;
@@ -48,7 +48,7 @@ static int		copy_pasta(t_node **src, t_node **dest)
 	return (i);
 }
 
-static int		append_neighbor(t_node *node, t_node *neighbor)
+static int		resize_neighbor(t_node *node, t_node *neighbor)
 {
 	t_node	**tmp;
 	int		i;
@@ -62,11 +62,12 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 	tmp[i + 1] = NULL;
 	free(node->ngb);
 	node->ngb = (t_node **)malloc(sizeof(t_node *) *\
-		(count_neighbors(tmp) + 1));
+		(count_neighbors(tmp) + NGB_BUF));
 	if (!node->ngb)
 		error_exit("node->ngb malloc at append_neighbor");
 	i = copy_pasta(tmp, node->ngb);
 	free(tmp);
+	// ft_printf("Ngb array remalloced\n");
 	return (TRUE);
 }
 
@@ -84,6 +85,24 @@ static int		already_exists(t_node *node, char *new)
 		i++;
 	}
 	return (FALSE);
+}
+
+static int		append_neighbor(t_node *node, t_node *neighbor)
+{
+	int i;
+
+	if ((count_neighbors(node->ngb) + 1) % NGB_BUF < 2)
+		return (resize_neighbor(node, neighbor));
+	else
+	{
+		i = 0;
+		while (node->ngb[i])
+			i++;
+		node->ngb[i] = neighbor;
+		node->ngb[i + 1] = NULL;
+		// ft_printf("Added %d-th ngb to %s\n", i + 1, node->name);
+	}
+	return (TRUE);
 }
 
 int				add_neighbor(t_node *node, t_node *neighbor)
