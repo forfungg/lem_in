@@ -8,6 +8,7 @@
 		"visu-hex.h": "c",
 		"__locale": "c",
 		"__tuple": "c",
-		"array": "c"
+		"array": "c",
+		"__node_handle": "c"
 	}
 }

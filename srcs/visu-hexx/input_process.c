@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:19:38 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:49:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,8 @@ void	save_link(char *line, t_prop *xt)
 		ft_putstr("Nothing found, suka\n");
 		exit(0);
 	}
-	add_neighbor(node1, node2);
-	add_neighbor(node2, node1);
+	add_neighbor(xt, node1, node2);
+	add_neighbor(xt, node2, node1);
 }
 
 /*

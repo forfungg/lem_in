@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/25 12:36:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:47:10 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,8 @@ void	display_stats(t_prop *xt)
 	free(temp);
 	free(ants);
 
-	cnt = 0;
-	n_links = 0;
-	tempnode = xt->elems;
-	while (tempnode)
-	{
-		cnt = 0;
-		while (tempnode->ngb[cnt])
-		{
-			n_links += 1;
-			cnt += 1;
-		}
-		tempnode = tempnode->next;
-	}
 	links = ft_strdup("Total number of links: ");
-	temp = ft_strjoin(links, ft_itoa(n_links / 2));
+	temp = ft_strjoin(links, ft_itoa(xt->n_links));
 	mlx_string_put(MLX_PTR, WIN_PTR, 10, 40, 0xffffff, temp);
 	free(temp);
 	free(links);

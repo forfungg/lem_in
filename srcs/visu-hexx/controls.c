@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 11:19:25 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/25 13:24:11 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,8 @@ int	key_hook_press(int keycode, t_prop *xt)
 		redraw(xt);
 	}
 	else if (keycode == 49 && IMGS->pause == 0)
-	{
 		IMGS->pause = 1;
-	}
 	else if (keycode == 49 && IMGS->pause == 1)
-	{
 		IMGS->pause = 0;
-	}
-
 	return (0);
 }

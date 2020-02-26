@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:57:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:25:58 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	display_ants(t_prop *xt)
 void	display_uniroom(t_prop *xt)
 {
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 0, 1);
-	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 1, 0);
-	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 1, 1);
 }
 
 void	display_all(t_prop *xt)
@@ -105,7 +103,7 @@ void	display_all(t_prop *xt)
 	display_lines(xt);
 	display_uniroom(xt);
 	display_ants(xt);
-	//display_stats(xt);
+	display_stats(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -114,15 +112,16 @@ void	display_paths(t_prop *xt)
 	display_path(xt);
 	display_uniroom(xt);
 	display_ants(xt);
-	//display_stats(xt);
+	display_stats(xt);
 }
 
 void	display_80s(t_prop *xt)
 {
 	display_path(xt);
 	display_ants(xt);
-	//dispay_stats(xt);
+	display_stats(xt);
 }
+
 void	redraw(t_prop *xt)
 {
 	mlx_clear_window(MLX_PTR, WIN_PTR);

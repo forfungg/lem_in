@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/25 11:41:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:49:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,18 +222,21 @@ static int		already_exists(t_node *node, char *new)
 	return (FALSE);
 }
 
-int				add_neighbor(t_node *node, t_node *neighbor)
+int				add_neighbor(t_prop *xt, t_node *node, t_node *neighbor)
 {
 	if (!node || !neighbor)
 		return (FALSE);
 	if (node->ngb == NULL)
+	{
 		create_neighbor(node, neighbor);
+		xt->n_links += 1;
+	}
 	else
 	{
 		if (already_exists(node, neighbor->name))
 			return (TRUE);
-		if (!append_neighbor(node, neighbor))
-			return (FALSE);
+		append_neighbor(node, neighbor);
+		xt->n_links += 1;
 	}
 	return (TRUE);
 }

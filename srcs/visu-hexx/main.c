@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:59:11 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:20:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,21 @@ static void		clear_memory(t_prop *xt)
 	free(xt); 
 }
 
+static void		check_flag(char *argv)
+{
+	if (ft_strequ(argv, "-u"))
+		ft_putstr("Visualiser supports following commands: kek kek kek\n");
+	else
+		ft_putstr("Usage: kek\n");
+	exit(0);
+}
+
 int				main(int argc, char **argv)
 {
 	t_prop	*xt;
 
+	if (argc > 1)
+		check_flag(argv[1]);
 	xt = init_visuhexx();
 	read_input(xt);
 	draw_farm(xt);

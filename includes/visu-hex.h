@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:36:49 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/25 13:49:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define FALSE 0
 # define CAPACITY 1
 # define FF_ALL 1
-# define W_W 1080
-# define W_H 720
+# define W_W 1920
+# define W_H 1080
 # define FRAMES 120
 # define THREADS 5
 # define W_NAME "VISU-HEXX"
@@ -123,16 +123,17 @@ typedef struct	s_prop
 	int				n_start;
 	int				n_end;
 	int				n_rooms;
-	t_paths			*all_paths; //freed
-	t_lines			*lines; //freed
-	t_ant			*ants; //freed
-	char			**moves; //freed
+	int				n_links;
+	t_paths			*all_paths;
+	t_lines			*lines;
+	t_ant			*ants;
+	char			**moves;
 
-	t_node			*elems; //freed
-	t_img			*imgs; //freed
+	t_node			*elems;
+	t_img			*imgs;
 
-	void			*mlx_ptr; //freed
-	void			*win_ptr; //freed
+	void			*mlx_ptr;
+	void			*win_ptr;
 
 	int				max_y;
 	int				min_y;
@@ -166,7 +167,7 @@ t_node				*create_back(t_node *head, char *name, int x, int y);
 t_node				*add_front(t_node *head, t_node *node);
 t_node				*add_back(t_node *head, t_node *node);
 t_node				*find_node(t_node *head, char *name);
-int					add_neighbor(t_node *node, t_node *neighbor);
+int					add_neighbor(t_prop *xt, t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
 t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
