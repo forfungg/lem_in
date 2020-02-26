@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 12:11:12 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/24 11:32:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		count_elems(char **array)
 {
 	int cnt;
 
+	if (!array)
+		error_exit("count_elems: No elems to be counted!");
 	cnt = 0;
 	while (array[cnt] != 0)
 		cnt++;
@@ -65,6 +67,7 @@ int		is_link(char *line, t_prop *xt)
 	int		cnt;
 	char	**props;
 
+	cnt = 0;
 	props = ft_strsplit(line, '-');
 	cnt = count_elems(props);
 	clear_props(props);

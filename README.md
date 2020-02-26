@@ -4,9 +4,72 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
+	26.2 Motherfucker
+	- norm
+	- flags
+		- file
+		- debug
+		- usage
+		- info
+	- ant distribute
+	- merge branches
+	- 
+
+	Current performance without identical rooms check (24.2.):
+	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
+	|---------------|-------|----------:|----------:|-------------------:|
+	| lem_map_1kd10 | 100	| 2.146		|
+	| lem_map_1kd10 | 1000	| 2.370		|
+	| lem_map_1kd10 | 10000	| 2.788		|
+	| lem_map_4k_01 | 100	| 1.570		|
+	| lem_map_4k_01 | 1000	| 1.788		|
+	| lem_map_4k_01 | 10000	| 2.610		|
+	| lem_map_4kd5	| 100	| 54.103	| 
+	| lem_map_4kd5	| 1000	| 52.648	| 41.620	| 42.243			|
+	| lem_map_4kd5	| 10000	| 56.705	|
+	| lem_map_4kd5	| 100000| 1:08.28	|
+
+	New Solution Checking & Reading/Output(unorg) (24.2.):
+	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
+	|---------------|-------|----------:|----------:|-------------------:|
+	| lem_map_1kd10 | 100	| 1.672		|
+	| lem_map_1kd10 | 1000	| 1.625		|
+	| lem_map_1kd10 | 10000	| 2.025		|
+	| lem_map_4k_01 | 100	| 1.564		|
+	| lem_map_4k_01 | 1000	| 1.616		|
+	| lem_map_4k_01 | 10000	| 2.417		|
+	| lem_map_4kd5	| 100	| 45.039	| 
+	| lem_map_4kd5	| 1000	| 45.804	|
+	| lem_map_4kd5	| 10000	| 45.801	| 38.799
+	| lem_map_4kd5	| 100000| 52.506	|
+
+	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
+
+#### branch refactor1_0
+	- Change xt->elems order 
+		- [x] start 1st node
+		- [x] end last node
+		- [x] keep pointer to both ends
+		- [ ] could save time if sorted?
+		
+		- bfs and ford-fulkerson tidy up
+			-[x] return and runtime of bfs
+			- memory optimization in total
+			- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
+		
+		- SEGFAULT ON 4kd5!!!!! (solved)
+		
+		- optional
+			- flags
+				- debug
+				- multithread?
+			- introduce room_id so we dont have to care about identical names of rooms, coords must be identical
+
 	- visuhex -> pathdrawing vs ants movement
 	- error management
-		- DUPLICATE rooms?
+		- order error (ants->rooms->links)
+		- **ROOMS starting or including char "-" ?**
+		- DUPLICATE rooms (done)
 		- coordinates over int range (done)
 		- duplicate paths (ignore)
 		- not enough data error
@@ -117,3 +180,4 @@ Plotting graph
 Finds all unique shortest paths that can be utilized
 Assigns Ants to correct paths
 Prints desired output for moving ants across the graph
+

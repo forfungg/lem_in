@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/21 22:26:30 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:09:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** turns start/end flags and keeps count of occurences
+** !Add dealing with other comments!
 */
 
 void	save_commands(char *str, t_prop *xt)
@@ -23,7 +24,7 @@ void	save_commands(char *str, t_prop *xt)
 		xt->f_start = 1;
 		xt->n_start += 1;
 	}
-	if (ft_strequ(str, "##end") == 1)
+	else if (ft_strequ(str, "##end") == 1)
 	{
 		xt->f_end = 1;
 		xt->n_end += 1;
@@ -44,29 +45,36 @@ void	read_input(t_prop *xt)
 {
 	char	*line;
 	int		maxflow;
+	// int		cnt;
 
 	xt->all_paths = NULL;
-	while (get_next_line(0, &line) > 0)
-	{
-		if (line[0] == '#' || line[0] == 'L')
-			save_commands(line, xt);
-		else if (is_ants(line, xt) == 1)
-			save_ants(line, xt);
-		else if (is_room(line, xt) == 1)
-			save_room(line, xt);
-		else if (is_link(line, xt) == 1)
-			save_link(line, xt);
-		else
-			error_exit("Wrong Input");
-		free(line);
-	}
+	load_input(xt, 0);
+	// ft_printf("Input loading done\n");
+	// cnt = 0;
+	// while ((line = lem_getnextline(xt)))
+	// {
+	// 	// ft_printf("Read (%d): %s\n", cnt++, line);
+	// 	if (line[0] == '#' || line[0] == 'L')
+	// 		save_commands(line, xt);
+	// 	else if (is_link(line, xt) == 1)
+	// 		save_link(line, xt);
+	// 	else if (is_ants(line, xt) == 1)
+	// 		save_ants(line, xt);
+	// 	else if (is_room(line, xt) == 1)
+	// 		save_room(line, xt);
+	// 	else
+	// 		error_exit("Wrong Input");
+	// 	free(line);
+	// }
+	process_input(xt);
+	// ft_printf("Reading done\n");
+	// debug_print(xt->elems);
 	check_input(xt);
-	// print_graph(xt->elems);
-	maxflow = ford_fulkerson(xt->elems, &(xt->all_paths), xt->f_ants);
+	// exit(0);
+	maxflow = ford_fulkerson(xt);
+	// ft_printf("%d\n", maxflow);
 	if (maxflow == 0)
-	{
-		error_exit("");
-	}
+		error_exit("No solution found");
 }
 
 /*
@@ -78,7 +86,7 @@ int		get_coord(char *str)
 	long	nb;
 
 	nb = ft_latoi(str);
-	if (nb > INT_MAX || nb < INT_MIN)
+	if (nb > INT_MAX || nb < 0)
 		error_exit("Coordinates out of int range");
 	return ((int)nb);
 }

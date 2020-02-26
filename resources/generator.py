@@ -40,59 +40,66 @@ def process_data(tid, q):
 			qlock.release()
 		# sleep(0.1)
 
-# n = int(input("Amount of nodes: "))
-n = 1024
+n = int(input("Amount of nodes: "))
+# n = 1024
 # density = (2 * edge) / (vertices)(vertices-1)
 # (d * n * (n -1)) / 2 = edges
-# d = int(input("Desired density (%, 1-100): "))
-d = 20
-# filename = input("Filename?\n")
-filename = "test_speed"
+d = int(input("Desired density (%, 1-100): "))
+# d = 20
+filename = input("Filename?\n")
+# filename = "test_speed"
 # l = int(input("Min amount of edges (1 < e < #nodes): "))
 # m = int(input("Max amount of edges (1 < e < #nodes): "))
 # queue = Queue()
 
 res = list()
 i = 0
+used_coords = list()
 while i < n:
-	x = randint(10, 490)
-	y = randint(10, 490)
+	x = randint(5, 990)
+	y = randint(5, 990)
 	if x == 1 and y == 1:
 		continue
-	s = f"{i} {x} {y}"
-	res.append(s)
-	i += 1
+	if (x, y) in used_coords:
+		continue
+	else:
+		used_coords.append((x, y))
+		s = f"{i} {x} {y}"
+		res.append(s)
+		i += 1
+
 edges = list()
 max_e = ((d / 100) * n * (n - 1)) / 2
 max_e += 1
-print (f"Starting to generate {max_e} edges")
-qlock = Lock()
-workq = Queue()
-threads = list()
-t_count = 8
-for i in range(t_count):
-	t = GenerateRand(i, workq)
-	t.start()
-	threads.append(t)
-qlock.acquire()
-i = 0
-alle = list()
-while i < max_e:
-	new = list()
-	alle.append(new)
-	workq.put([128, n, new])
-	i += 128
-qlock.release()
-while not workq.empty():
-	pass
-exitFlag = 1
-for t in threads:
-	t.join()
 
-print("Done generating")
-print(len(alle))
+# print (f"Starting to generate {max_e} edges")
+# qlock = Lock()
+# workq = Queue()
+# threads = list()
+# t_count = 8
+# for i in range(t_count):
+# 	t = GenerateRand(i, workq)
+# 	t.start()
+# 	threads.append(t)
+# qlock.acquire()
+# i = 0
+# alle = list()
+# while i < max_e:
+# 	new = list()
+# 	alle.append(new)
+# 	workq.put([128, n, new])
+# 	i += 128
+# qlock.release()
+# while not workq.empty():
+# 	pass
+# exitFlag = 1
+# for t in threads:
+# 	t.join()
 
-exit()
+# print("Done generating")
+# print(len(alle))
+
+# exit()
 
 create_edges(max_e, n, edges)
 
@@ -112,14 +119,14 @@ while i < m:
 		edges.append(s)
 		i += 1
 with open(filename, "w+") as f:
-	ant = randint(1, 100)
-	f.write(f"#Given {n} nodes, {d}% density\n#ANTS\n{ant}\n##start\nS 6 6\n##end\nE 495 495\n")
+	ant = randint(1, 1000)
+	f.write(f"#Given {n} nodes, {d}% density\n#ANTS\n{ant}\n##start\nS 1 1\n##end\nE 1000 1000\n")
 	i = 0
 	for l in res:
 		f.write(f"{l}\n")
-	while i < len(edges) - 1:
-		f.write(f"{edges[i]}\n")
-		i += 1
-	f.write(f"{edges[i]}")
+	# while i < len(edges) - 1:
+	# 	f.write(f"{edges[i]}\n")
+	# 	i += 1
+	# f.write(f"{edges[i]}")
 
 	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_ants.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 16:32:35 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 11:47:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void		move_ants(t_prop *xt, t_paths *paths)
 			paths = head;
 	}
 	print_colony(xt);
+	// ft_putendl(xt->input);
 	print_output(out);
 }

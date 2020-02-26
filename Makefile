@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/25 12:02:33 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/26 12:50:02 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,10 @@ LEM_IN_SRCS			= main.c \
 					assigning_ants.c \
 					ford_fulkerson.c \
 					ford_fulkerson_tools.c \
-					flow_paths.c
+					ford_fulkerson_tools2.c \
+					flow_paths.c \
+					read_input.c \
+					new_input_process.c
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/20 17:51:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:05:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 # include "../libs/libft/includes/libft.h"
 # include <errno.h>
 
+# define LEM_BUF 50000000
 # define TRUE 1
 # define FALSE 0
 # define NAME xt->elems->name
 # define CAPACITY 1
 # define FF_ALL 1
+# define DEBUG 1
+# define START xt->elems
+# define END xt->end_node
+# define ANTS xt->f_ants
+# define I xt->in_point
 
 /*
 ** Node Struct
@@ -85,7 +91,11 @@ typedef struct		s_paths
 typedef struct		s_prop
 {
 	t_node		*elems;
+	t_node		*end_node;
 	t_paths		*all_paths;
+	char		*input;
+	char		*pathways;
+	size_t		in_point;
 	int			r_start;
 	int			r_end;
 	int			f_start;
@@ -111,14 +121,17 @@ int					is_number(char *str);
 int					is_ants(char *str, t_prop *xt);
 int					is_link(char *line, t_prop *xt);
 int					is_room(char *line, t_prop *xt);
-void				new_node(char **props, t_prop *xt);
-void				prepend_node(char **props, t_prop *xt);
+void				attach_room(t_prop *xt, char *name, int x, int y);
 void				save_room(char *line, t_prop *xt);
 void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
 void				save_ants(char *str, t_prop *xt);
 int					get_coord(char *str);
-void				is_valid_room(t_node *list, char *name, int x, int y);
+void				is_valid_room(t_prop *xt, char *name, int x, int y);
+void				load_input(t_prop *xt, int fd);
+char				*lem_getnextline(t_prop *xt);
+void				process_input(t_prop *xt);
+
 /*
 ** Nodes Management
 */
@@ -137,6 +150,7 @@ t_node				*find_start(t_node *list);
 t_node				*find_end(t_node *list);
 void				reset_visits(t_node *list);
 void				capacitize_ngbs(t_node *list);
+t_node				*add_default_room(t_node *head, t_node *node);
 
 /*
 ** Queue Management
@@ -153,7 +167,7 @@ t_paths				*path_parsing(t_paths *all_paths);
 ** Breath First Search for paths
 */
 
-int					bfs(t_node *start, t_node *end, t_paths **all_paths);
+t_que				*bfs(t_node *start, t_node *end);
 t_paths				*append_path(t_paths *head, t_que *path);
 t_que				*pop_path(t_paths **all_paths);
 void				delete_paths(t_paths *all_paths);
@@ -162,11 +176,12 @@ void				delete_paths(t_paths *all_paths);
 ** Ford-Fulkerson max flow algorithm
 */
 
-int					ford_fulkerson(t_node *graph, t_paths **all_paths, int ants);
+int					ford_fulkerson(t_prop *xt);
 void				get_flow_paths(t_node *start, t_node *end,\
 						t_paths **all_paths);
 int					len_solution(t_paths *paths, int ants);
 void				new_solution(t_paths **storage, t_paths **new);
+int					first_square(t_paths *paths, int ants);
 
 /*
 **	Print Functions NEEDS TO CHANGE TO FT_PRINTF!!!
@@ -178,6 +193,7 @@ void				print_colony(t_prop *xt);
 void				print_paths(t_paths *paths);
 void				print_queue(t_que *queue);
 void				print_graph(t_node *graph);
+void				debug_print(t_node *lst);
 
 /*
 **	Program functionality support tools
