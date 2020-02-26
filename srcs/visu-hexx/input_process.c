@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 13:49:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:27:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ void	read_input(t_prop *xt)
 	int		maxflow;
 
 	xt->all_paths = NULL;
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(xt->fd, &line) > 0)
 	{
 		if (line[0] == '#' || line[0] == 'L')
 			save_commands(line, xt);
@@ -211,7 +211,7 @@ int		get_coord(char *str)
 	long	nb;
 
 	nb = ft_latoi(str);
-	if (nb > INT_MAX || nb < INT_MIN)
+	if (nb > INT_MAX || nb < 0)
 		error_exit("Coordinates out of int range");
 	return ((int)nb);
 }

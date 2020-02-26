@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 13:49:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:20:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct	s_prop
 	int				stpx;
 	int				stpy;
 	int				color;
+	int				fd;
 }				t_prop;
 
 typedef struct	s_pcur

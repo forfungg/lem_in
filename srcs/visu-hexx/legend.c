@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/25 13:47:10 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:33:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	display_stats(t_prop *xt)
 	char	*paths;
 	int		n_paths;
 	t_paths	*temppath;
+	char *x;
 
 	rooms = ft_strdup("Total number of rooms: ");
 	temp = ft_strjoin(rooms, ft_itoa(xt->n_rooms));
@@ -41,7 +42,7 @@ void	display_stats(t_prop *xt)
 	free(ants);
 
 	links = ft_strdup("Total number of links: ");
-	temp = ft_strjoin(links, ft_itoa(xt->n_links));
+	temp = ft_strjoin(links, ft_itoa(xt->n_links / 2));
 	mlx_string_put(MLX_PTR, WIN_PTR, 10, 40, 0xffffff, temp);
 	free(temp);
 	free(links);
