@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 18:41:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 20:07:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		move_ants(t_prop *xt, t_paths *paths)
 	if (!paths)
 		return ;
 	len = get_n_strings(paths);
+	xt->out_len = len;
 	out = (char **)ft_memalloc(len * sizeof(char *));
 	if (!out)
 		error_exit("Malloc at move_ants");

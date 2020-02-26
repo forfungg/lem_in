@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 19:04:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 20:56:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,10 @@ void	print_debug(t_prop *xt)
 	ft_printf("Ants:\t%d\n", xt->f_ants);
 	ft_printf("Potentional Flow: %d\n", xt->pot_flow);
 	ft_printf("Utilized Flow: %d\n", count_paths(xt->all_paths));
+	ft_printf("Solution Lenght: %d\n", xt->out_len);
+	ft_printf("Time to Process Input: %f sec\n", ft_time_lapsed(xt->stopwatch.start, xt->stopwatch.marks[0]->timestamp));
+	ft_printf("Ford-Fulkerson Time: %f sec\n", ft_time_lapsed(xt->stopwatch.marks[0]->timestamp, xt->stopwatch.marks[1]->timestamp));
+	ft_stop_timer(&(xt->stopwatch));
+	ft_printf("Total Time: %f sec\n", ft_time_lapsed(xt->stopwatch.start, xt->stopwatch.end));
 	print_paths(xt->all_paths);
 }

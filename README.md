@@ -4,6 +4,8 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
+	Check Why lem_map_1kd10 with 1000 ants utilises only 63 out of 64 paths
+	
 	26.2 Motherfucker
 	- neighbors malloc optimization size based on nodes?
 	- norm

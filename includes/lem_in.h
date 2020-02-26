@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 19:01:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 20:19:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libs/libft/includes/libft.h"
 # include <errno.h>
+#include "ft_time_code.h"
 
 # define LEM_BUF 50000000
 # define NGB_BUF 1000
@@ -106,10 +107,11 @@ typedef struct		s_prop
 	t_node		*elems;
 	t_node		*end_node;
 	t_paths		*all_paths;
+	t_tstamp	stopwatch;
+	t_lflg		flags;
 	char		*input;
 	char		*pathways;
 	size_t		in_point;
-	t_lflg		flags;
 	int			r_start;
 	int			r_end;
 	int			f_start;
@@ -120,6 +122,7 @@ typedef struct		s_prop
 	int			n_ants;
 	int			ant_cnt;
 	int			pot_flow;
+	int			out_len;
 }					t_prop;
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 14:08:36 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/17 15:15:12 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:42:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_paths		*append_path(t_paths *head, t_que *path)
 	t_paths *new;
 	t_paths *tmp;
 
-	if (!(new = (t_paths *)malloc(sizeof(t_paths))))
+	if (!(new = (t_paths *)ft_memalloc(sizeof(t_paths))))
 		error_exit("Malloc at append_path()");
 	new->ants = 0;
 	new->im_min = 0;

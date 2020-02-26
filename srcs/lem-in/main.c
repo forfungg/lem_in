@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 17:18:19 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 21:00:10 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_prop	*initialize_lemin(void)
 	xt->ant_cnt = 1;
 	FILE = 0;
 	DEBUG = 0;
+	ft_stopwatch_init(&(xt->stopwatch));
 	return (xt);
 }
 

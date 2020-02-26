@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/26 16:22:03 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/26 21:00:30 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ LEM_IN_SRCS			= main.c \
 					flag_tools.c 
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
-JIRIS_IN			= $(addprefix $(LEM_IN_DIR), $(JIRIS_LEM))
 
 # VISU-HEXX files
 
@@ -84,10 +83,21 @@ VISU_HEXX_SRCS		= controls.c\
 
 VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))
 
+# Time Files
+
+TIME_SRCS			= ft_start_timer.c \
+					ft_stop_timer.c \
+					ft_time_lapsed.c \
+					ft_markdown.c \
+					ft_stopwatch_init.c
+
+
+TIME_FILES		= $(addprefix $(TIME_DIR), $(TIME_SRCS))
 # Directories
 
 LEM_IN_DIR			= ./srcs/lem-in/
 VISU_HEXX_DIR		= ./srcs/visu-hexx/
+TIME_DIR			= ./srcs/time/
 LIBFT_DIR			= ./libs/libft/
 LIB_MLX_DIR			= ./libs/libmlx
 
@@ -108,7 +118,7 @@ all: $(NAME)
 
 $(NAME): $(VISU_HEXX)
 	@echo "$(RED)Compiling lem_in...$(RES)"
-	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(LIBFT_A)
+	@gcc -o $(NAME) $(CFLAGS) -I $(INCLUDES) $(LEM_IN_FILES) $(TIME_FILES) $(LIBFT_A)
 	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
 $(VISU_HEXX) : $(LIBFT_NAME)

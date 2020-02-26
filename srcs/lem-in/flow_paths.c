@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 13:45:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/19 17:50:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:55:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void		get_flow_paths(t_node *start, t_node *end, t_paths **all_paths)
 		explore_ngbs(current, path, &q);
 		que_delete(path);
 	}
+	*all_paths = path_parsing(*all_paths);
 }
