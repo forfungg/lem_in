@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 19:21:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 12:09:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	read_input(t_prop *xt)
 	check_input(xt);
 	// exit(0);
 	maxflow = ford_fulkerson(xt);
+	// ft_printf("%d\n", maxflow);
 	if (maxflow == 0)
 		error_exit("No solution found");
 }
@@ -85,7 +86,7 @@ int		get_coord(char *str)
 	long	nb;
 
 	nb = ft_latoi(str);
-	if (nb > INT_MAX || nb < INT_MIN)
+	if (nb > INT_MAX || nb < 0)
 		error_exit("Coordinates out of int range");
 	return ((int)nb);
 }
