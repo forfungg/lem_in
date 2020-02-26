@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 18:46:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:04:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	print_paths(t_paths *paths)
 	}
 	while (paths)
 	{
-		ft_printf("%4d | Ants %6d |\t", i);
+		ft_printf("%4d | Ants %6d |\t", i, paths->dbg_a);
 		print_queue(paths->path);
 		paths = paths->next;
 		i++;
@@ -136,9 +136,24 @@ void	print_graph(t_node *graph)
 ** Print Debug stuff
 */
 
+static int	count_paths(t_paths *p)
+{
+	int i;
+
+	i = 0;
+	while (p)
+	{
+		i++;
+		p = p->next;
+	}
+	return (i);
+}
+
 void	print_debug(t_prop *xt)
 {
 	ft_printf("{GREEN}{B}{U}Lem-In Stats{EOC}\n");
 	ft_printf("Ants:\t%d\n", xt->f_ants);
+	ft_printf("Potentional Flow: %d\n", xt->pot_flow);
+	ft_printf("Utilized Flow: %d\n", count_paths(xt->all_paths));
 	print_paths(xt->all_paths);
 }

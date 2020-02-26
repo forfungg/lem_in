@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 18:41:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:01:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct		s_paths
 {
 	t_que			*path;
 	int				ants;
+	int				dbg_a;
 	int				im_min;
 	struct s_paths	*next;
 }					t_paths;
@@ -118,7 +119,7 @@ typedef struct		s_prop
 	int			n_end;
 	int			n_ants;
 	int			ant_cnt;
-	int			paths_cnt;
+	int			pot_flow;
 }					t_prop;
 
 /*

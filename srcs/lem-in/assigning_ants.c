@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 10:59:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 18:47:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:59:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void	several(int ants, t_paths *paths)
 		tmp = shortest_path(paths);
 		tmp->ants += 1;
 		ants--;
+	}
+	tmp = paths;
+	while (tmp)
+	{
+		tmp->dbg_a = tmp->ants;
+		tmp = tmp->next;
 	}
 }
 

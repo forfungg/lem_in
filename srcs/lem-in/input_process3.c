@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 18:42:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:01:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	save_ants(char *str, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
-	int		maxflow;
 
 	xt->all_paths = NULL;
 	load_input(xt, FILE);
@@ -56,10 +55,10 @@ void	read_input(t_prop *xt)
 	// debug_print(xt->elems);
 	check_input(xt);
 	// exit(0);
-	maxflow = ford_fulkerson(xt);
+	xt-> pot_flow = ford_fulkerson(xt);
 	// ft_printf("%d\n", maxflow);
 	// print_paths(xt->all_paths);
-	if (maxflow == 0)
+	if (xt->pot_flow == 0)
 		error_exit("No solution found");
 }
 
