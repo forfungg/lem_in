@@ -1,4 +1,87 @@
 # Lem_In
+## Project Introduction
+This project is a part of algorithmic branch within 42 cursus at [Hive Helsinki](https://www.hive.fi/en/).
+
+The project's objective is to teach the participant about a graph design in C, graph traversal and graph flow and pathing algorithms. 
+You are given an ant colony in a form of file which specifies amount of ants inhabiting the colony's starting room, amount of rooms 
+(vertices) within the colony and the pathways connecting given rooms (edges). The goal is to figure out a way for all ants to cross 
+the colony into the End Room in an efficient manner.
+
+### Input
+
+The input file structure is following:
+```
+	number_of_ants
+	the_rooms
+	the_links
+```
+
+With allowed input lines as follows
+```
+	Ants are defined: ant_number
+	The rooms are defined by: name coord_x coord_y
+	The links are defined by: name1-name2
+	Comments are defined by: #comment
+	Commands are defined by: ##command
+```
+
+The room name can contain any printable symbols except ' ', '-', and cannot start with '#' or 'L'.
+
+### Ants movement restrictions
+One ant can move to a different room only once per turn (output line) and the room it is moving to has to be empty. Thus capacity of every room is 1 ant 
+except the start and end rooms where the capacity is unlimited. Ants cannot cross over each other in a room nor in a corridor (pathway).
+
+If there's multiple paths, they must be utilized as long as the output is more efficient.
+
+### Goal and Output Format
+The goal is to output the shortest possible (amount of lines) set of instructions that make all given ants to cross the colony from start to the end.
+
+The output has to follow this format:
+```
+	number_of_ants
+	the_rooms
+	the_links
+
+	Lx-y Lz-w Lr-o ...
+```
+
+Where x, z, r represents the ant number (from 1 to N) and y, w, o represent rooms' names.
+
+The program should have reasonable execution time, e.g. for 4000 rooms ideally under 3 seconds, over 15 seconds is too much.
+(@jnovotny's note: This line is not very accurate and I strongly disagree with it. Since there's no mention about the graph density, 
+on which the input size depends greatly. You can have 4k rooms with density 0.1% which results in 8000 lines of input, or with density 5% 
+and 400k lines of input or with density 20% and 1,6 million lines of input.)
+
+### Restrictions
+Within the mandatory part of this project only following functions of the standard library are allowed to be used:
+```
+	malloc
+	free
+	read
+	write
+	strerror
+	perror
+	exit
+```
+
+For bonus parts any function is allowed as far as their use can be justified.
+
+In no way can the program quit in an unexpected manner (Segmentation fault, bus error, double free, etc).
+
+The program cannot have memory leaks.
+
+All files have to correspond with 42 norm. In brief:
+```
+	Function can contain maximum of 25 lines
+	There can be only 5 function in a .c file
+	If a function is used only within one file, it should be defined as static
+	Variables have to be defined at the beginning of a function
+	Variables cannot be initialized at the same line as their definition
+	Max 5 variables per function
+	Max 4 parametres per function
+	Forbidden stuff: for, do .. while, switch, case, goto
+	No Global variables allowed (unless absolutely necessary)
+```
 
 ## C version
 	BFS + Ford-Fulkerson => Edmond-Karp
