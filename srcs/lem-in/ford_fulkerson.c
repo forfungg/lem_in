@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 19:58:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:16:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,36 +28,42 @@ static t_que	*get_p_last(t_paths *paths)
 	return (tmp->path);
 }
 
-static void	augment_path(t_que *path)
+static void		adjust_capacities(t_que *tmp)
 {
-	t_que	*tmp;
 	t_node	*a;
 	t_node	*b;
 	int		i;
+
+	a = tmp->node;
+	b = tmp->next->node;
+	i = 0;
+	while (a->ngb[i])
+	{
+		if (ft_strequ(a->ngb[i]->name, b->name))
+			break ;
+		i++;
+	}
+	a->cap[i] = 0;
+	i = 0;
+	while (b->ngb[i])
+	{
+		if (ft_strequ(b->ngb[i]->name, a->name))
+			break ;
+		i++;
+	}
+	b->cap[i] = 1;
+}
+
+static void		augment_path(t_que *path)
+{
+	t_que	*tmp;
 
 	if (!path)
 		return ;
 	tmp = path;
 	while (tmp && tmp->next)
 	{
-		a = tmp->node;
-		b = tmp->next->node;
-		i = 0;
-		while (a->ngb[i])
-		{
-			if (ft_strequ(a->ngb[i]->name, b->name))
-				break ;
-			i++;
-		}
-		a->cap[i] = 0;
-		i = 0;
-		while (b->ngb[i])
-		{
-			if (ft_strequ(b->ngb[i]->name, a->name))
-				break ;
-			i++;
-		}
-		b->cap[i] = 1;
+		adjust_capacities(tmp);
 		tmp = tmp->next;
 	}
 	que_delete(path);
@@ -68,7 +74,7 @@ static void	augment_path(t_que *path)
 ** while bfs paths exits
 */
 
-int		ford_fulkerson(t_prop *xt)
+int				ford_fulkerson(t_prop *xt)
 {
 	int		max_flow;
 	t_que	*i;
@@ -88,13 +94,10 @@ int		ford_fulkerson(t_prop *xt)
 		get_flow_paths(START, END, &(xt->all_paths));
 		if (len_solution(best, ANTS) > len_solution(xt->all_paths, ANTS))
 			new_solution(&best, &(xt->all_paths));
-		else if (!FF_ALL)
-			break ;
 		reset_visits(START);
 	}
 	delete_paths(parents);
 	delete_paths(xt->all_paths);
-	// print_paths(best);
 	xt->all_paths = best;
 	return (max_flow);
 }

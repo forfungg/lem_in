@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   images_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/15 09:34:59 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 void	get_minmax_xy(t_prop *xt)

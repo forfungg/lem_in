@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_ant_position.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:56:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:27:21 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 void	free_line(t_prop *xt)
 {

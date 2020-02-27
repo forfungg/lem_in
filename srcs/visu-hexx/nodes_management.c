@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   nodes_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/25 13:49:45 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:27:10 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 /*
 ** Create node

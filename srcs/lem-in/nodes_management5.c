@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:52:11 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/22 19:44:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:11:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			capacitize_ngbs(t_node *list)
 ** else the node will be prepended
 */
 
-t_node	*add_default_room(t_node *head, t_node *node)
+t_node			*add_default_room(t_node *head, t_node *node)
 {
 	if (head && head->start)
 	{
@@ -67,4 +67,24 @@ t_node	*add_default_room(t_node *head, t_node *node)
 	}
 	else
 		return (add_front(head, node));
+}
+
+/*
+**	Checks whether new neighbor is already in the array of neighbors
+*/
+
+int				already_exists(t_node *node, char *new)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strequ(node->name, new))
+		return (TRUE);
+	while (node->ngb[i])
+	{
+		if (ft_strequ(node->ngb[i]->name, new))
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_ant_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:09:09 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:55:24 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:25:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 int		get_rand(int one, int two)
 {

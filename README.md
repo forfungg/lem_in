@@ -4,7 +4,8 @@
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
-	Check Why lem_map_1kd10 with 1000 ants utilises only 63 out of 64 paths
+	Before Final Upload
+		- What do we do with other comments and commands
 	
 	26.2 Motherfucker
 	- neighbors malloc optimization size based on nodes?

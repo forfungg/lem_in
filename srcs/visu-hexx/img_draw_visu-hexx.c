@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_visu-hexx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 13:25:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:47 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 void	display_background(t_prop *xt)

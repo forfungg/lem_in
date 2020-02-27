@@ -1,6 +1,6 @@
 #Given 100 nodes, 50% density
 #ANTS
-100000
+1000
 ##start
 S 15 15
 ##end

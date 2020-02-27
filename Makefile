@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/27 12:44:55 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/27 13:19:51 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ RED			=	\033[0;31m
 NAME				= lem-in
 
 LEM_IN_SRCS			= main.c \
-					input_process.c \
 					input_process2.c \
 					input_process3.c \
 					print_functions.c \
+					print_functions2.c \
 					nodes_management.c \
 					nodes_management2.c \
 					nodes_management3.c \
@@ -46,9 +46,11 @@ LEM_IN_SRCS			= main.c \
 					ford_fulkerson.c \
 					ford_fulkerson_tools.c \
 					ford_fulkerson_tools2.c \
+					ford_fulkerson_tools3.c \
 					flow_paths.c \
 					read_input.c \
 					new_input_process.c \
+					new_input_process2.c \
 					file_tools.c \
 					flag_tools.c 
 

@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_tools.c                                       :+:      :+:    :+:   */
+/*   ford_fulkerson_tools3.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 16:16:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 13:20:47 by jnovotny         ###   ########.fr       */
+/*   Created: 2020/02/27 13:19:18 by jnovotny          #+#    #+#             */
+/*   Updated: 2020/02/27 13:19:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	show_usage(void)
+/*
+** Replaces current set of solution paths with new one
+*/
+
+static t_paths	*copy_paths(t_paths *paths)
 {
-	ft_printf("{GREEN}{U}Lem_In Usage{EOC}\n");
-	ft_printf("./lem-in [flags] < [graph file]\n");
-	exit(0);
+	t_paths *new;
+
+	new = NULL;
+	while (paths)
+	{
+		new = append_path(new, que_copy(paths->path));
+		paths = paths->next;
+	}
+	return (new);
 }
 
-void	show_product_info(void)
+void			new_solution(t_paths **storage, t_paths **new)
 {
-	system("cat README.md");
-	exit(0);
+	if (!storage)
+		*storage = copy_paths(*new);
+	else
+	{
+		delete_paths(*storage);
+		*storage = copy_paths(*new);
+	}
 }

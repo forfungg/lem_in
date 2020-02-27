@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_back.c                                      :+:      :+:    :+:   */
+/*   img_create_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:08:30 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 16:08:37 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 void		create_background(t_prop *xt)

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 12:50:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:52:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	move_one(t_prop *xt, t_que *tmp, char **out)
 
 	new = NULL;
 	cnt = 0;
-	// print_queue(tmp);
 	while (tmp)
 	{
 		new = str_append(out[cnt + tmp->shift], xt->ant_cnt, tmp->node->name);

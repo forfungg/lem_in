@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:03:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 19:58:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:20:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Returns the solution lenght (amount of lines) for given set of paths
 */
 
-t_paths	*shortest_path(t_paths *paths)
+t_paths			*shortest_path(t_paths *paths)
 {
 	t_paths		*min;
 
@@ -70,32 +70,4 @@ int				len_solution(t_paths *paths, int ants)
 	len = get_t_len(longest_path(paths));
 	reset_ants(paths);
 	return (len);
-}
-
-/*
-** Replaces current set of solution paths with new one
-*/
-
-static t_paths	*copy_paths(t_paths *paths)
-{
-	t_paths *new;
-
-	new = NULL;
-	while (paths)
-	{
-		new = append_path(new, que_copy(paths->path));
-		paths = paths->next;
-	}
-	return (new);
-}
-
-void	new_solution(t_paths **storage, t_paths **new)
-{
-	if (!storage)
-		*storage = copy_paths(*new);
-	else
-	{
-		delete_paths(*storage);
-		*storage = copy_paths(*new);
-	}
 }

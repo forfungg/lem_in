@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:05:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/13 15:31:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 /*
 **	Exits the program with an error message

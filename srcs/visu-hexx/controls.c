@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 13:24:11 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:25:59 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 int	key_hook_press(int keycode, t_prop *xt)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_ant.c                                       :+:      :+:    :+:   */
+/*   img_create_ant.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:10:18 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 17:40:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 void	create_head(int *img_data, int size, int color)
 {

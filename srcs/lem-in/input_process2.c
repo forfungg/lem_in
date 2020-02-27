@@ -6,28 +6,11 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 19:08:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:02:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-/*
-** check_room
-*/
-
-int		is_room(char *line, t_prop *xt)
-{
-	char	**props;
-	int		ret;
-
-	ret = 0;
-	props = ft_strsplit(line, ' ');
-	if (count_elems(props) == 3 && (is_number(props[1]) && is_number(props[2])))
-		ret = 1;
-	clear_props(props);
-	return (ret);
-}
 
 /*
 ** Adds node to the list. If the node is starting point of given graph,
@@ -55,41 +38,4 @@ void	attach_room(t_prop *xt, char *name, int x, int y)
 	}
 	else
 		xt->elems = add_default_room(xt->elems, new);
-}
-
-/*
-** saves new room/ call prepend
-*/
-
-void	save_room(char *line, t_prop *xt)
-{
-	char **props;
-
-	props = ft_strsplit(line, ' ');
-	is_valid_room(xt, props[0], get_coord(props[1]),\
-		get_coord(props[2]));
-	clear_props(props);
-}
-
-/*
-** saves link: kudos Jiri
-*/
-
-void	save_link(char *line, t_prop *xt)
-{
-	char	**props;
-	t_node	*node1;
-	t_node	*node2;
-
-	props = ft_strsplit(line, '-');
-	node1 = find_node(xt->elems, props[0]);
-	node2 = find_node(xt->elems, props[1]);
-	clear_props(props);
-	if (node1 == NULL || node2 == NULL)
-		error_exit("Wrong Input");
-	if (!add_neighbor(node1, node2) || !add_neighbor(node2, node1))
-	{
-		ft_printf("Failed to create link:\n%s - %s\n", node1->name, node2->name);
-		error_exit("");
-	}
 }

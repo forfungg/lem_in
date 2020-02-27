@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/21 21:51:29 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 static double	ft_abs(double x)

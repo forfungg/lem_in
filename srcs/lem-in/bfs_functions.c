@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 11:25:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 19:58:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:20:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ t_que		*bfs(t_node *start, t_node *end)
 		if (current->end)
 		{
 			delete_paths(q);
-			// ft_printf("BFS found augmenting path: ");
-			// print_queue(path);
 			return (path);
 		}
 		explore_ngbs(current, path, &q);

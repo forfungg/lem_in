@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   legend.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/26 12:33:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 void	display_stats(t_prop *xt)
 {

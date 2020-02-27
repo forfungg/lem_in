@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/21 20:09:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 static void	increment_x(int *img, t_prop *xt, t_node *beg, t_node *end)
 {

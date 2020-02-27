@@ -6,13 +6,13 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 18:47:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:08:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		process_room(t_prop *xt, char *p, int i)
+int			process_room(t_prop *xt, char *p, int i)
 {
 	char *name;
 	char *x;
@@ -49,7 +49,7 @@ static void	add_link(t_prop *xt, t_node *node1, t_node *node2)
 		error_exit("Failed to create a link");
 }
 
-int		process_link(t_prop *xt, char *p, int i)
+int			process_link(t_prop *xt, char *p, int i)
 {
 	t_node	*node1;
 	t_node	*node2;
@@ -77,7 +77,7 @@ int		process_link(t_prop *xt, char *p, int i)
 	return (end ? i : i + 1);
 }
 
-int		process_ant(t_prop *xt, char *p, int i)
+int			process_ant(t_prop *xt, char *p, int i)
 {
 	xt->f_ants = ft_latoi(p);
 	if (xt->f_ants > INT_MAX)
@@ -92,7 +92,11 @@ int		process_ant(t_prop *xt, char *p, int i)
 	}
 }
 
-int		process_comment(t_prop *xt, char *p)
+/*
+** Needs To Deal with Other comments and commands!
+*/
+
+int			process_comment(t_prop *xt, char *p)
 {
 	int		i;
 	int		end;
@@ -118,40 +122,4 @@ int		process_comment(t_prop *xt, char *p)
 	if (!end)
 		p[i++] = '\n';
 	return (i);
-}
-
-static int	process_info(t_prop *xt, char *p, int i)
-{
-	int		digit;
-	int		ret;
-
-	digit = 1;
-	while (p[i] != ' ' && p[i] != '\n' && p[i] != '-')
-	{
-		digit = ft_isdigit(p[i]) && digit ? 1 : 0;
-		i++;
-	}
-	if (p[i] == ' ')
-		ret = process_room(xt, p, i);
-	else if (p[i] == '-')
-		ret = process_link(xt, p, i);
-	else if (p[i] == '\n' && digit)
-		ret = process_ant(xt, p, i);
-	else
-		error_exit("Wrong Input");
-	return (ret);
-}
-
-void	process_input(t_prop *xt)
-{
-	char	*p;
-
-	p = xt->input;
-	while (p[0] != '\0')
-	{
-		if (p[0] == '#' || p[0] == 'L')
-			p += process_comment(xt, p);
-		else
-			p += process_info(xt, p, 0);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 20:30:03 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 21:03:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:52:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_tmd	**add_size_marks(t_tmd **marks, int *slot)
 	return (tmp);
 }
 
-void	ft_markdown(t_tstamp *stopwatch, char *name)
+void			ft_markdown(t_tstamp *stopwatch, char *name)
 {
 	int		i;
 	clock_t	now;

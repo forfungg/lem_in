@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   visu-hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 12:20:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:25:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISUAL_H
-# define VISUAL_H
+#ifndef VISU_HEX_H
+# define VISU_HEX_H
 
-# define IMGS			xt->imgs
-# define IMG_PTR		xt->img_ptr
-# define MLX_PTR		xt->mlx_ptr
-# define IMG_DAT		xt->img_data
-# define WIN_PTR		xt->win_ptr
+# define IMGS xt->imgs
+# define IMG_PTR xt->img_ptr
+# define MLX_PTR xt->mlx_ptr
+# define IMG_DAT xt->img_data
+# define WIN_PTR xt->win_ptr
 # define TRUE 1
 # define FALSE 0
 # define CAPACITY 1
@@ -114,7 +114,7 @@ typedef struct		s_ant
 	struct s_ant	*next;
 }					t_ant;
 
-typedef struct	s_prop
+typedef struct		s_prop
 {
 	int				f_ants;
 	int				f_start;
@@ -148,13 +148,13 @@ typedef struct	s_prop
 	int				stpy;
 	int				color;
 	int				fd;
-}				t_prop;
+}					t_prop;
 
-typedef struct	s_pcur
+typedef struct		s_pcur
 {
 	int				x;
 	int				y;
-}				t_pcur;
+}					t_pcur;
 
 /*
 ** Nodes Management
@@ -191,7 +191,8 @@ void				delete_paths(t_paths *all_paths);
 ** Ford-Fulkerson max flow algorithm
 */
 
-int					ford_fulkerson(t_node *graph, t_paths **all_paths, int ants);
+int					ford_fulkerson(t_node *graph, t_paths **all_paths,\
+						int ants);
 void				get_flow_paths(t_node *start, t_node *end,\
 						t_paths **all_paths);
 int					len_solution(t_paths *paths, int ants);
@@ -225,8 +226,10 @@ int					get_cor_x(int coord, t_prop *xt);
 int					get_cor_y(int coord, t_prop *xt);
 void				get_minmax_xy(t_prop *xt);
 void				fill_frame(int *img_data, int img_w, int img_h, int color);
-void				fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, int color_2);
-void				fill_rectangle(int *img_data, int img_w, int img_h, int color);
+void				fill_rectangle_pattern(int *img_data, int img_w,\
+						int img_h, int color, int color_2);
+void				fill_rectangle(int *img_data, int img_w, int img_h,\
+						int color);
 void				create_background(t_prop *xt);
 void				create_room(t_prop *xt);
 void				create_start(t_prop *xt);
@@ -239,33 +242,25 @@ void				create_ant(t_prop *xt);
 /*
 ** Images Draw
 */
-void			*draw_ant_algo(t_ant *ant);
+void				*draw_ant_algo(t_ant *ant);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
-void				connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end);
-
+void				connect_nodes(int *image, t_prop *xt,\
+						t_node *beg, t_node *end);
 
 /*
 ** Controls
 */
 
 int					key_hook_press(int keycode, t_prop *xt);
-
-
 void				print_paths(t_paths *paths);
-
-
 void				create_ant_list(t_prop *xt);
 void				update_ant_positions(t_prop *xt, char *line);
 void				move_ants(t_prop *xt);
 void				modify_ant_location(t_prop *xt);
-
 void				recalc_ant_movement(t_prop *xt);
-
-void	create_path_list(t_prop *xt, t_lines *lines);
-
-void	clear_split(char **props);
-
-void	display_stats(t_prop *xt);
+void				create_path_list(t_prop *xt, t_lines *lines);
+void				clear_split(char **props);
+void				display_stats(t_prop *xt);
 
 #endif

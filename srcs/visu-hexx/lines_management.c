@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lines_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:15:51 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/18 11:27:09 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:59 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 
 void		print_lines(t_prop *xt)
 {

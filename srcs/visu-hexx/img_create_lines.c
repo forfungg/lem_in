@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   img_create_lines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/25 12:11:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 int		get_line_color(int max, int min)

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 12:38:53 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:22:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../libs/libft/includes/libft.h"
 # include <errno.h>
-#include "ft_time_code.h"
+# include "ft_time_code.h"
 
 # define LEM_BUF 50000000
 # define NGB_BUF 1000
@@ -23,7 +23,6 @@
 # define FALSE 0
 # define NAME xt->elems->name
 # define CAPACITY 1
-# define FF_ALL 1
 # define DEBUG xt->flags.debug
 # define FILE xt->flags.fd
 # define START xt->elems
@@ -132,21 +131,15 @@ typedef struct		s_prop
 void				check_flags(int argc, char **argv, t_prop *xt);
 void				read_input(t_prop *xt);
 void				check_input(t_prop *xt);
-void				clear_props(char **props);
-int					count_elems(char **array);
-int					is_number(char *str);
-int					is_ants(char *str, t_prop *xt);
-int					is_link(char *line, t_prop *xt);
-int					is_room(char *line, t_prop *xt);
 void				attach_room(t_prop *xt, char *name, int x, int y);
-void				save_room(char *line, t_prop *xt);
-void				save_link(char *line, t_prop *xt);
 void				save_commands(char *str, t_prop *xt);
-void				save_ants(char *str, t_prop *xt);
 int					get_coord(char *str);
 void				is_valid_room(t_prop *xt, char *name, int x, int y);
 void				load_input(t_prop *xt, int fd);
-char				*lem_getnextline(t_prop *xt);
+int					process_room(t_prop *xt, char *p, int i);
+int					process_link(t_prop *xt, char *p, int i);
+int					process_ant(t_prop *xt, char *p, int i);
+int					process_comment(t_prop *xt, char *p);
 void				process_input(t_prop *xt);
 
 /*
@@ -161,6 +154,7 @@ t_node				*create_back(t_node *head, char *name, int x, int y);
 t_node				*add_front(t_node *head, t_node *node);
 t_node				*add_back(t_node *head, t_node *node);
 t_node				*find_node(t_node *head, char *name);
+int					already_exists(t_node *node, char *new);
 int					add_neighbor(t_node *node, t_node *neighbor);
 int					count_neighbors(t_node **neighbors);
 t_node				*find_start(t_node *list);

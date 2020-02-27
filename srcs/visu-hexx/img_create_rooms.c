@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   img_create_rooms.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:00:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/24 11:12:56 by solopov          ###   ########.fr       */
+/*   Updated: 2020/02/27 13:26:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visu-hex.h"
+#include "visu_hex.h"
 #include <math.h>
 
 double		get_size(int x, int y, int nb)

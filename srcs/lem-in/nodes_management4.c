@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 15:32:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:10:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,7 @@ static int		resize_neighbor(t_node *node, t_node *neighbor)
 		error_exit("node->ngb malloc at append_neighbor");
 	i = copy_pasta(tmp, node->ngb);
 	free(tmp);
-	// ft_printf("Ngb array remalloced\n");
 	return (TRUE);
-}
-
-static int		already_exists(t_node *node, char *new)
-{
-	int		i;
-
-	i = 0;
-	if (ft_strequ(node->name, new))
-		return (TRUE);
-	while (node->ngb[i])
-	{
-		if (ft_strequ(node->ngb[i]->name, new))
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
 }
 
 static int		append_neighbor(t_node *node, t_node *neighbor)
@@ -100,7 +83,6 @@ static int		append_neighbor(t_node *node, t_node *neighbor)
 			i++;
 		node->ngb[i] = neighbor;
 		node->ngb[i + 1] = NULL;
-		// ft_printf("Added %d-th ngb to %s\n", i + 1, node->name);
 	}
 	return (TRUE);
 }
@@ -109,25 +91,14 @@ int				add_neighbor(t_node *node, t_node *neighbor)
 {
 	if (!node || !neighbor)
 		return (FALSE);
-	// ft_printf("Creating neighbor %s to %s - ", node->name, neighbor->name);
 	if (node->ngb == NULL)
-	{
 		create_neighbor(node, neighbor);
-		// ft_printf("First Neighbor\n");
-	}
 	else
 	{
 		if (already_exists(node, neighbor->name))
-		{
-			// ft_printf("Already exists\n");
 			return (TRUE);
-		}
 		if (!append_neighbor(node, neighbor))
-		{
-			// ft_printf("Failed to Append!\n");
 			return (FALSE);
-		}
 	}
-	// ft_printf("Done!\n");
 	return (TRUE);
 }
