@@ -1,3 +1,9 @@
+# Before Final Upload
+- What do we do with other comments and commands
+# GitHub To-Do
+- readme
+- python plotter/solver
+
 # Lem_In
 ## Project Introduction
 This project is a part of algorithmic branch within 42 cursus at [Hive Helsinki](https://www.hive.fi/en/).
@@ -7,6 +13,7 @@ You are given an ant colony in a form of file which specifies amount of ants inh
 (vertices) within the colony and the pathways connecting given rooms (edges). The goal is to figure out a way for all ants to cross 
 the colony into the End Room in an efficient manner.
 
+[The complete subject's pdf](/resources/lem-in.en.pdf).
 ### Input
 
 The input file structure is following:
@@ -87,18 +94,6 @@ All files have to correspond with 42 norm. In brief:
 	BFS + Ford-Fulkerson => Edmond-Karp
 
 ### To-Do
-	Before Final Upload
-		- What do we do with other comments and commands
-	
-	26.2 Motherfucker
-	- neighbors malloc optimization size based on nodes?
-	- norm
-	- flags
-		- file
-		- debug
-		- usage
-		- info
-	- ant distribute
 
 	Current performance without identical rooms check (24.2.):
 	| Map			| Ants	| Time		| Read Time	| Read & Check Input |
@@ -144,25 +139,6 @@ All files have to correspond with 42 norm. In brief:
 	| lem_map_10k25d| 100000| 
 	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
-#### branch refactor1_0
-	- Change xt->elems order 
-		- [x] start 1st node
-		- [x] end last node
-		- [x] keep pointer to both ends
-		- [ ] could save time if sorted?
-		
-		- bfs and ford-fulkerson tidy up
-			-[x] return and runtime of bfs
-			- memory optimization in total
-			- change checking of solution from assigning one ant per iteration to assign all ants to given path at once
-		
-		- SEGFAULT ON 4kd5!!!!! (solved)
-		
-		- optional
-			- flags
-				- debug
-				- multithread?
-			- introduce room_id so we dont have to care about identical names of rooms, coords must be identical
 
 	- visuhex -> pathdrawing vs ants movement
 	- error management
@@ -186,9 +162,6 @@ All files have to correspond with 42 norm. In brief:
 	- test bfs consistency
 	- test environment
 
-### Done
-	- prototype BFS that should return all shortest paths.
-
 ## Random notes
 the starting (ending) amount of paths will determine the mode
 	- one path means only one ant can exit the starting node at the time
@@ -200,42 +173,6 @@ the starting (ending) amount of paths will determine the mode
 [Unit test](https://github.com/TBouder/lem-in_test)
 
 [Python Test?](https://www.geeksforgeeks.org/python-clustering-connectivity-and-other-graph-properties-using-networkx/)
-
-Amount of turns required for N ants
-Distribute ants
-
-## Constrains/ General
-- no memory leaks
-- Allowed:
-		malloc
-		free
-		read
-		write
-		strerror
-		perror
-		exit
-	- plus whatever for bonus
-
-## Mandatory part
-- Quickest way for N ants to move across
-	- from start to end
-	- least number of lines (turns)
-	- all ants are in ##start at the beginning
-	- Turn
-		- Each turn dispaly only moved ants
-		- each ant can be moved only once and through a tube
-			- receiving room must be empty
-- Output
-'''
-	number_of_ants
-	the_rooms
-	the_links
-
-	Lx-y Lz-w Lr-o ...
-'''
-
-- 4000 rooms. 2 or 3 seconds is great, 9 seconds is mediocre, 15 seconds is too much.
-	- 10k+ lines
 
 ## Eval 2018
 

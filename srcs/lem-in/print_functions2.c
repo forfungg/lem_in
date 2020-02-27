@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 12:56:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:46:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,20 @@ static int	count_paths(t_paths *p)
 
 void		print_debug(t_prop *xt)
 {
-	ft_printf("{GREEN}{B}{U}Lem-In Stats{EOC}\n");
-	ft_printf("Ants:\t%d\n", xt->f_ants);
-	ft_printf("Potentional Flow: %d\n", xt->pot_flow);
-	ft_printf("Utilized Flow: %d\n", count_paths(xt->all_paths));
-	ft_printf("Solution Lenght: %d\n", xt->out_len);
-	ft_printf("Time to Process Input: %f sec\n",\
+	print_logo();
+	ft_printf("{GREEN}{B}{U}Lem-In Stats{EOC}\n\n");
+	ft_printf("{LIGHT}Ants:\t\t\t%d\n{EOC}", xt->f_ants);
+	ft_printf("Potentional Flow:\t%d\n", xt->pot_flow);
+	ft_printf("{LIGHT}Utilized Flow:\t\t%d\n{EOC}", count_paths(xt->all_paths));
+	ft_printf("Solution Lenght:\t%d\n", xt->out_len);
+	ft_printf("{LIGHT}Time to Process Input:\t%f sec\n{EOC}",\
 		ft_time_lapsed(xt->stopwatch->start,\
 		xt->stopwatch->marks[0]->timestamp));
-	ft_printf("Ford-Fulkerson Time: %f sec\n",\
+	ft_printf("Ford-Fulkerson Time:\t%f sec\n",\
 		ft_time_lapsed(xt->stopwatch->marks[0]->timestamp,\
 		xt->stopwatch->marks[1]->timestamp));
 	ft_stop_timer(xt->stopwatch);
-	ft_printf("Total Time: %f sec\n",\
+	ft_printf("{LIGHT}Total Time:\t\t%f sec\n\n{EOC}",\
 		ft_time_lapsed(xt->stopwatch->start, xt->stopwatch->end));
 	print_paths(xt->all_paths);
 }

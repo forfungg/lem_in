@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 12:50:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:22:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void		read_flags(t_prop *xt, int argc, char **argv)
 				show_usage();
 			if (ft_strchr(argv[i], 'i'))
 				show_product_info();
+			if (ft_strchr(argv[i], 't'))
+				xt->flags.time = 1;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 12:58:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:38:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,19 @@ static int	process_info(t_prop *xt, char *p, int i)
 
 void		process_input(t_prop *xt)
 {
-	char	*p;
+	char			*p;
+	unsigned long	i;
 
 	p = xt->input;
+	i = 1;
 	while (p[0] != '\0')
 	{
 		if (p[0] == '#' || p[0] == 'L')
 			p += process_comment(xt, p);
 		else
 			p += process_info(xt, p, 0);
+		if (TFLAG && i % 100 == 1)
+			print_time_stats(xt, i);
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:22:31 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 15:39:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@
 # define CAPACITY 1
 # define DEBUG xt->flags.debug
 # define FILE xt->flags.fd
+# define TFLAG xt->flags.time
 # define START xt->elems
 # define END xt->end_node
 # define ANTS xt->f_ants
 # define I xt->in_point
+# define PRT ft_printf
 
 /*
 ** Node Struct
@@ -95,6 +97,7 @@ typedef struct		s_lem_flags
 {
 	int				fd;
 	int				debug;
+	int				time;
 }					t_lflg;
 
 /*
@@ -233,4 +236,7 @@ void				open_graph_file(t_prop *xt, char *filename);
 void				close_graph_file(t_prop *xt);
 void				show_usage(void);
 void				show_product_info(void);
+void				print_logo(void);
+void				print_time_stats(t_prop *xt, unsigned long i);
+
 #endif

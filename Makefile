@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/27 13:19:51 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/27 15:06:39 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ LEM_IN_SRCS			= main.c \
 					new_input_process.c \
 					new_input_process2.c \
 					file_tools.c \
-					flag_tools.c 
+					flag_tools.c \
+					lem_in_logo.c 
 
 LEM_IN_FILES		= $(addprefix $(LEM_IN_DIR), $(LEM_IN_SRCS))
 
