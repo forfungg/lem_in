@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stopwatch_init.c                                :+:      :+:    :+:   */
+/*   ft_clear_marks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 20:58:00 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 12:46:02 by jnovotny         ###   ########.fr       */
+/*   Created: 2020/02/27 12:23:46 by jnovotny          #+#    #+#             */
+/*   Updated: 2020/02/27 12:26:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_time_code.h"
 
-t_tstamp	*ft_stopwatch_init(void)
+void	ft_clear_marks(t_tmd **marks)
 {
-	t_tstamp *new;
+	int i;
 
-	new = (t_tstamp *)ft_memalloc(sizeof(t_tstamp));
-	if (!new)
-		return (NULL);
-	new->start = 0;
-	new->marks = NULL;
-	new->end = 0;
-	return (new);
+	i = 0;
+	while (marks[i])
+	{
+		free(marks[i]);
+		i++;
+	}
+	free(marks);
 }

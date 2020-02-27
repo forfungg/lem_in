@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 20:07:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:50:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,19 @@ static void	move_one(t_prop *xt, t_que *tmp, char **out)
 
 static void	print_results(t_prop *xt, char **out)
 {
+	int i;
+
 	if (DEBUG)
+	{
 		print_debug(xt);
+		i = 0;
+		while (out[i])
+		{
+			free(out[i]);
+			i++;
+		}
+		free(out);
+	}
 	else
 	{
 		print_colony(xt);

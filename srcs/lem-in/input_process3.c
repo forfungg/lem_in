@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 20:51:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:43:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	read_input(t_prop *xt)
 	char	*line;
 
 	xt->all_paths = NULL;
-	ft_start_timer(&(xt->stopwatch));
+	ft_start_timer(xt->stopwatch);
 	load_input(xt, FILE);
 	// ft_printf("Input Saved to stuct\n");
 	if (FILE > 2)
@@ -55,10 +55,10 @@ void	read_input(t_prop *xt)
 	// ft_printf("Reading done\n");
 	// debug_print(xt->elems);
 	check_input(xt);
-	ft_markdown(&(xt->stopwatch), "INPUT");
+	ft_markdown(xt->stopwatch, "INPUT");
 	// exit(0);
 	xt-> pot_flow = ford_fulkerson(xt);
-	ft_markdown(&(xt->stopwatch), "FF");
+	ft_markdown(xt->stopwatch, "FF");
 	// ft_printf("%d\n", maxflow);
 	// print_paths(xt->all_paths);
 	if (xt->pot_flow == 0)

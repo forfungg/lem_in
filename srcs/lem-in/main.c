@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 21:00:10 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:50:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void		clear_memory(t_prop *xt)
 {
+	ft_stopwatch_del(xt->stopwatch);
 	delete_list(xt->elems);
 	delete_paths(xt->all_paths);
 	free(xt->input);
@@ -34,7 +35,7 @@ static t_prop	*initialize_lemin(void)
 	xt->ant_cnt = 1;
 	FILE = 0;
 	DEBUG = 0;
-	ft_stopwatch_init(&(xt->stopwatch));
+	xt->stopwatch = ft_stopwatch_init();
 	return (xt);
 }
 

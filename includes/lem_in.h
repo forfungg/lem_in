@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/26 20:19:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:38:53 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct		s_prop
 	t_node		*elems;
 	t_node		*end_node;
 	t_paths		*all_paths;
-	t_tstamp	stopwatch;
+	t_tstamp	*stopwatch;
 	t_lflg		flags;
 	char		*input;
 	char		*pathways;

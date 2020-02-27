@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/26 21:00:30 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/02/27 12:44:55 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,9 @@ TIME_SRCS			= ft_start_timer.c \
 					ft_stop_timer.c \
 					ft_time_lapsed.c \
 					ft_markdown.c \
-					ft_stopwatch_init.c
+					ft_stopwatch_init.c \
+					ft_clear_marks.c \
+					ft_stopwatch_del.c
 
 
 TIME_FILES		= $(addprefix $(TIME_DIR), $(TIME_SRCS))
