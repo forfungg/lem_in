@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 15:38:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:16:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void		process_input(t_prop *xt)
 			print_time_stats(xt, i);
 		i++;
 	}
+	xt->input_lines = i;
 }

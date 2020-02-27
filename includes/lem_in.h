@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 10:52:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 15:39:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:24:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define NAME xt->elems->name
 # define CAPACITY 1
 # define DEBUG xt->flags.debug
+# define BFS xt->flags.bfs
 # define FILE xt->flags.fd
 # define TFLAG xt->flags.time
 # define START xt->elems
@@ -97,6 +98,7 @@ typedef struct		s_lem_flags
 {
 	int				fd;
 	int				debug;
+	int				bfs;
 	int				time;
 }					t_lflg;
 
@@ -109,11 +111,13 @@ typedef struct		s_prop
 	t_node		*elems;
 	t_node		*end_node;
 	t_paths		*all_paths;
+	t_paths		*augment_paths;
 	t_tstamp	*stopwatch;
 	t_lflg		flags;
 	char		*input;
 	char		*pathways;
-	size_t		in_point;
+	size_t		input_length;
+	size_t		input_lines;
 	int			r_start;
 	int			r_end;
 	int			f_start;
@@ -238,5 +242,6 @@ void				show_usage(void);
 void				show_product_info(void);
 void				print_logo(void);
 void				print_time_stats(t_prop *xt, unsigned long i);
-
+unsigned long		count_nodes(t_node *head);
+unsigned long		count_edges(t_node *head);
 #endif

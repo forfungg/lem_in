@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 15:46:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:40:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,27 @@ static int	count_paths(t_paths *p)
 	return (i);
 }
 
+static void	print_debug2(t_prop *xt)
+{
+	if (BFS)
+	{
+		ft_printf("Augmenting Paths\n");
+		print_paths(xt->augment_paths);
+	}
+	ft_printf("\nSolution Paths\n");
+	print_paths(xt->all_paths);
+}
+
 void		print_debug(t_prop *xt)
 {
 	print_logo();
 	ft_printf("{GREEN}{B}{U}Lem-In Stats{EOC}\n\n");
+	ft_printf("{LIGHT}Input size (chars):\t%lu\n{EOC}",\
+		(unsigned long)(xt->input_length));
+	ft_printf("Input size (lines):\t%lu\n", (unsigned long)(xt->input_lines));
 	ft_printf("{LIGHT}Ants:\t\t\t%d\n{EOC}", xt->f_ants);
+	ft_printf("Amount of Vertices:\t%lu\n", count_nodes(xt->elems));
+	ft_printf("{LIGHT}Amount of Edges:\t%lu\n{EOC}", count_edges(xt->elems));
 	ft_printf("Potentional Flow:\t%d\n", xt->pot_flow);
 	ft_printf("{LIGHT}Utilized Flow:\t\t%d\n{EOC}", count_paths(xt->all_paths));
 	ft_printf("Solution Lenght:\t%d\n", xt->out_len);
@@ -79,5 +95,5 @@ void		print_debug(t_prop *xt)
 	ft_stop_timer(xt->stopwatch);
 	ft_printf("{LIGHT}Total Time:\t\t%f sec\n\n{EOC}",\
 		ft_time_lapsed(xt->stopwatch->start, xt->stopwatch->end));
-	print_paths(xt->all_paths);
+	print_debug2(xt);
 }
