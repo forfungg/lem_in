@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:23:35 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,7 @@ void	save_link(char *line, t_prop *xt)
 	node2 = find_node(xt->elems, props[1]);
 	clear_split(props);
 	if (node1 == 0 || node2 == 0)
-	{
-		ft_putstr("Nothing found, suka\n");
-		exit(0);
-	}
+		error_exit("Incorrect links");
 	add_neighbor(xt, node1, node2);
 	add_neighbor(xt, node2, node1);
 }
@@ -198,6 +195,8 @@ void	read_input(t_prop *xt)
 			save_link(line, xt);
 		free(line);
 	}
+	check_input(xt);
+	xt->cpy = xt->lines;
 	capacitize_ngbs(xt->elems);
 	create_path_list(xt, xt->lines);
 }

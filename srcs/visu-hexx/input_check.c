@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 20:53:52 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/29 20:46:34 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/29 20:53:59 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu_hex.h"
 
 static int		check_n_start_end(t_prop *xt)
 {

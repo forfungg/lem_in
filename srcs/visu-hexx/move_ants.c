@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:27:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:33:44 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	recalc_ant_movement(t_prop *xt)
 	if (is_antfinished(xt) == 1)
 	{
 		move_ants(xt);
-		if (xt->lines)
-			update_ant_positions(xt, xt->lines->str);
+		if (xt->cpy)
+			update_ant_positions(xt, xt->cpy->str);
 	}
 	else
 	{

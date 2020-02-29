@@ -9,6 +9,7 @@
 		"__locale": "c",
 		"__tuple": "c",
 		"array": "c",
-		"__node_handle": "c"
+		"__node_handle": "c",
+		"visu_hex.h": "c"
 	}
 }

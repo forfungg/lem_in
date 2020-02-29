@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visu-hex.h                                         :+:      :+:    :+:   */
+/*   visu_hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:25:18 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:18:23 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@
 # define FRAMES 120
 # define THREADS 5
 # define W_NAME "VISU-HEXX"
+# define PRT ft_printf
 
 # include <pthread.h>
 # include <mlx.h>
+# include <errno.h>
 # include "../libs/libft/includes/libft.h"
 
 typedef struct		s_img
@@ -65,7 +67,7 @@ typedef struct		s_img
 	int				disp_names;
 	int				disp_all;
 	int				disp_path;
-	int				disp_80s;
+	int				disp_black;
 	int				pause;
 }					t_img;
 
@@ -126,6 +128,7 @@ typedef struct		s_prop
 	int				n_links;
 	t_paths			*all_paths;
 	t_lines			*lines;
+	t_lines			*cpy;
 	t_ant			*ants;
 	char			**moves;
 
@@ -242,7 +245,7 @@ void				create_ant(t_prop *xt);
 /*
 ** Images Draw
 */
-void				*draw_ant_algo(t_ant *ant);
+void				draw_ant_algo(t_ant *ant);
 void				draw_farm(t_prop *xt);
 void				redraw(t_prop *xt);
 void				connect_nodes(int *image, t_prop *xt,\
@@ -262,5 +265,7 @@ void				recalc_ant_movement(t_prop *xt);
 void				create_path_list(t_prop *xt, t_lines *lines);
 void				clear_split(char **props);
 void				display_stats(t_prop *xt);
+
+void				create_uniroom(t_prop *xt);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_visu-hexx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:36:02 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,30 @@ void	display_uniroom(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 0, 1);
 }
 
+void	display_legend(t_prop *xt)
+{
+	char	*one;
+	char	*two;
+	char	*three;
+	char	*four;
+	char	*five;
+	char	*six;
+
+	one = ft_strdup("1 to display all paths");
+	two	= ft_strdup("2 to display paths");
+	three = ft_strdup("3 to display paths on black bg");
+	four = ft_strdup("N to show room/ant numbers");
+	five = ft_strdup("SPACE to play/ pause");
+	six = ft_strdup("RIGHT arrow to move forward one step");
+
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 25, 0xffffff, one);
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 35, 0xffffff, two);
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 45, 0xffffff, three);
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 55, 0xffffff, four);
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 65, 0xffffff, five);
+	mlx_string_put(MLX_PTR, WIN_PTR, 200, 75, 0xffffff, six);
+}
+
 void	display_all(t_prop *xt)
 {
 	display_background(xt);
@@ -104,6 +128,7 @@ void	display_all(t_prop *xt)
 	display_uniroom(xt);
 	display_ants(xt);
 	display_stats(xt);
+	display_legend(xt);
 }
 
 void	display_paths(t_prop *xt)
@@ -113,13 +138,15 @@ void	display_paths(t_prop *xt)
 	display_uniroom(xt);
 	display_ants(xt);
 	display_stats(xt);
+	display_legend(xt);
 }
 
-void	display_80s(t_prop *xt)
+void	display_black(t_prop *xt)
 {
 	display_path(xt);
 	display_ants(xt);
 	display_stats(xt);
+	display_legend(xt);
 }
 
 void	redraw(t_prop *xt)
@@ -129,8 +156,8 @@ void	redraw(t_prop *xt)
 		display_all(xt);
 	if (IMGS->disp_path == 1)
 		display_paths(xt);
-	if (IMGS->disp_80s == 1)
-		display_80s(xt);
+	if (IMGS->disp_black == 1)
+		display_black(xt);
 }
 
 void	create_stuff(t_prop *xt)
@@ -159,7 +186,7 @@ void	draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;
-	IMGS->disp_80s = 0;
+	IMGS->disp_black = 0;
 	IMGS->disp_all = 1;
 	IMGS->pause = 1;
 	create_stuff(xt);

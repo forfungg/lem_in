@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:27:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:24:19 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,10 @@ static void		delete_pathss(t_paths *paths)
 	}
 }
 
-static void		clear_memory(t_prop *xt)
+void		clear_memory(t_prop *xt)
 {
 	delete_list(xt->elems);
 	delete_lines(xt->lines);
-	delete_pathss(xt->all_paths);
 	mlx_destroy_window(MLX_PTR, WIN_PTR);
 	free(xt->imgs);
 	free(xt->moves);
@@ -102,18 +101,35 @@ static void		clear_memory(t_prop *xt)
 	free(xt);
 }
 
-static void		check_flag(t_prop *xt, char **argv)
+static void		read_flags(t_prop *xt, int argc, char **argv)
 {
-	if (ft_strequ(argv[1], "-u"))
-		ft_putstr("Visualiser supports following commands: kek kek kek\n");
-	else if (ft_strequ(argv[1], "-f"))
+	int i;
+
+	i = 1;
+	while (i < argc)
 	{
-		xt->fd = open(argv[2], O_RDONLY);
-		if (xt->fd < 0)
-			error_exit("no file");
+		if (argv[i][0] == '-')
+		{
+			if (ft_strchr(argv[i], 'f') && i + 1 < argc)
+				open_file(xt, argv[i + 1]);
+			else if (ft_strchr(argv[i], 'f') && i + 1 >= argc)
+				error_exit("Failed : no file provided");
+			if (ft_strchr(argv[i], 'u'))
+				show_usage();
+			if (ft_strchr(argv[i], 'i'))
+				show_product_info();
+		}
+		i++;
 	}
-	else
-		ft_putstr("Usage: kek\n");
+}
+
+void			print_liness(t_lines *lines)
+{
+	while (lines)
+	{
+		ft_printf("%s\n", lines->str);
+		lines = lines->next;
+	}
 }
 
 int				main(int argc, char **argv)
@@ -122,8 +138,7 @@ int				main(int argc, char **argv)
 
 	xt = init_visuhexx();
 	if (argc > 1)
-		check_flag(xt, argv);
+		read_flags(xt, argc, argv);
 	read_input(xt);
 	draw_farm(xt);
-	clear_memory(xt);
 }

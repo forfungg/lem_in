@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 19:52:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	move_ants(t_prop *xt)
 	}
 }
 
-void	*draw_ant_algo(t_ant *ant)
+void	draw_ant_algo(t_ant *ant)
 {
 	double		dx;
 	double		dy;

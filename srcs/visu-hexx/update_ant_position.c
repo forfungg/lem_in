@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_ant_position.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:27:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:34:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ void	free_line(t_prop *xt)
 {
 	t_lines *temp;
 
-	if (xt->lines->next)
-		temp = xt->lines->next;
+	if (xt->cpy->next)
+		xt->cpy = xt->cpy->next;
 	else
-		temp = 0;
-	free(xt->lines->str);
-	free(xt->lines);
-	xt->lines = temp;
+		xt->cpy = 0;
 }
 
 void	update_positions(t_prop *xt, char *set)

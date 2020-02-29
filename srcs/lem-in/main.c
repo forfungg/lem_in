@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 15:22:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 20:38:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void		read_flags(t_prop *xt, int argc, char **argv)
 		{
 			if (ft_strchr(argv[i], 'f') && i + 1 < argc)
 				open_graph_file(xt, argv[i + 1]);
+			else if (ft_strchr(argv[i], 'f') && i + 1 >= argc)
+				error_exit("Failed : no file provided");
 			if (ft_strchr(argv[i], 'd'))
 				xt->flags.debug = 1;
 			if (ft_strchr(argv[i], 'u'))
