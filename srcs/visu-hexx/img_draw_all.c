@@ -6,14 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:29:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:02:10 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
-#include <math.h>
 
-void	create_stuff(t_prop *xt)
+static void	create_stuff(t_prop *xt)
 {
 	get_minmax_xy(xt);
 	create_background(xt);
@@ -25,7 +24,7 @@ void	create_stuff(t_prop *xt)
 	create_ant_list(xt);
 }
 
-void	redraw(t_prop *xt)
+void		redraw(t_prop *xt)
 {
 	mlx_clear_window(MLX_PTR, WIN_PTR);
 	if (IMGS->disp_all == 1)
@@ -36,7 +35,7 @@ void	redraw(t_prop *xt)
 		display_black(xt);
 }
 
-int		onupdate(t_prop *xt)
+int			onupdate(t_prop *xt)
 {
 	if (IMGS->pause == 0)
 	{
@@ -46,7 +45,7 @@ int		onupdate(t_prop *xt)
 	return (0);
 }
 
-void	draw_farm(t_prop *xt)
+void		draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
 	IMGS->disp_path = 0;

@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 22:45:05 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:15:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-int				is_around(int num, int val, double step)
+static int		is_around(int num, int val, double step)
 {
 	if (num <= val)
 	{
@@ -27,7 +27,7 @@ int				is_around(int num, int val, double step)
 	return (0);
 }
 
-int				is_antfinished(t_prop *xt)
+static int		is_antfinished(t_prop *xt)
 {
 	t_ant	*temp;
 	t_node	*end;
@@ -57,7 +57,7 @@ static double	ft_abs(double x)
 	return (x > 0 ? x : -x);
 }
 
-void			get_ant_steps(t_ant *ant)
+static void		get_ant_steps(t_ant *ant)
 {
 	t_ant *temp;
 

@@ -6,12 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:08:30 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:57:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:29:28 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
-#include <math.h>
 
 void		create_background(t_prop *xt)
 {
@@ -21,7 +20,7 @@ void		create_background(t_prop *xt)
 
 	IMGS->bg = mlx_new_image(MLX_PTR, W_W, W_H);
 	IMGS->bgdat = (int *)mlx_get_data_addr(IMGS->bg, &bpp, &size, &endian);
-	fill_rectangle(IMGS->bgdat, W_W, W_H, 0x99ccff);
+	fill_rctngl(IMGS->bgdat, W_W, W_H, 0x99ccff);
 }
 
 void		create_sand(t_prop *xt)
@@ -32,5 +31,5 @@ void		create_sand(t_prop *xt)
 
 	IMGS->sand = mlx_new_image(MLX_PTR, W_W, W_H);
 	IMGS->sanddat = (int *)mlx_get_data_addr(IMGS->sand, &bpp, &size, &endian);
-	fill_rectangle_pattern(IMGS->sanddat, W_W, W_H);
+	fill_rctngl_pattern(IMGS->sanddat, W_W, W_H);
 }

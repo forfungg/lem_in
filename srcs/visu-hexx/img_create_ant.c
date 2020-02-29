@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:10:18 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 22:14:09 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:28:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-void	create_head(int *img_data, int size, int color)
+static void	create_head(int *img_data, int size, int color)
 {
 	int cnt_h;
 	int cnt_w;
@@ -39,7 +39,7 @@ void	create_head(int *img_data, int size, int color)
 	}
 }
 
-void	create_body(int *img_data, int size, int color)
+static void	create_body(int *img_data, int size, int color)
 {
 	int ct_h;
 	int ct_w;
@@ -68,7 +68,7 @@ void	create_body(int *img_data, int size, int color)
 	}
 }
 
-void	create_antena(int *img_data, int size, int color)
+static void	create_antena(int *img_data, int size, int color)
 {
 	int cnt_h;
 	int	cnt_wl;
@@ -87,7 +87,7 @@ void	create_antena(int *img_data, int size, int color)
 	}
 }
 
-void	create_ant(t_prop *xt)
+void		create_ant(t_prop *xt)
 {
 	int		bpp;
 	int		size;
@@ -99,7 +99,7 @@ void	create_ant(t_prop *xt)
 	{
 		IMGS->ant = mlx_new_image(MLX_PTR, ant_size, ant_size);
 		IMGS->adat = (int *)mlx_get_data_addr(IMGS->ant, &bpp, &size, &endian);
-		fill_rectangle(IMGS->adat, ant_size, ant_size, 0xff000000);
+		fill_rctngl(IMGS->adat, ant_size, ant_size, 0xff000000);
 		create_head(IMGS->adat, ant_size, 0x660000);
 		create_antena(IMGS->adat, ant_size, 0x660000);
 		create_body(IMGS->adat, ant_size, 0x660000);
@@ -108,6 +108,6 @@ void	create_ant(t_prop *xt)
 	{
 		IMGS->ant = mlx_new_image(MLX_PTR, ant_size * 2, ant_size * 2);
 		IMGS->adat = (int *)mlx_get_data_addr(IMGS->ant, &bpp, &size, &endian);
-		fill_rectangle(IMGS->adat, ant_size * 2, ant_size * 2, 0xff0000);
+		fill_rctngl(IMGS->adat, ant_size * 2, ant_size * 2, 0xff0000);
 	}
 }

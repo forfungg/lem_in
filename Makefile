@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/29 23:47:41 by asolopov         ###   ########.fr        #
+#    Updated: 2020/03/01 00:19:51 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,6 @@ VISU_HEXX_SRCS		= controls.c\
 					flags_out.c\
 					input_check.c\
 					update_ant_position.c \
-					assigning_ants.c \
 					
 
 VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))

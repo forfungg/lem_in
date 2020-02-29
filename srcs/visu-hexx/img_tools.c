@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:29:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:27:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	fill_frame(int *img_data, int img_w, int img_h, int color)
 	}
 }
 
-void	fill_rectangle_pattern(int *img_data, int img_w, int img_h)
+void	fill_rctngl_pattern(int *img_data, int img_w, int img_h)
 {
 	int count_h;
 	int count_w;
@@ -76,7 +76,7 @@ void	fill_rectangle_pattern(int *img_data, int img_w, int img_h)
 	}
 }
 
-void	fill_rectangle(int *img_data, int img_w, int img_h, int color)
+void	fill_rctngl(int *img_data, int img_w, int img_h, int color)
 {
 	int count_h;
 	int count_w;

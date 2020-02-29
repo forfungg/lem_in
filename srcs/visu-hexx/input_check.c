@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 20:46:34 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:36:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 23:54:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,6 @@ static int		get_len(t_node **array)
 	while (array[cnt] != 0)
 		cnt += 1;
 	return (cnt);
-}
-
-static int		check_duplicate(t_node **array)
-{
-	int x;
-	int y;
-	int len;
-
-	if (!array)
-		return (0);
-	x = 0;
-	len = get_len(array);
-	while (x < len)
-	{
-		y = x + 1;
-		while (y < len)
-		{
-			if (ft_strequ(array[x]->name, array[y]->name) == 1)
-				return (1);
-			y += 1;
-		}
-		x += 1;
-	}
-	return (0);
 }
 
 void			check_input(t_prop *xt)

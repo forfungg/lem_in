@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/29 23:04:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:12:49 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	display_ants_rooms_links(t_prop *xt)
 	free_strings(main, num, out);
 }
 
-static void	display_paths(t_prop *xt)
+static void	display_path_str(t_prop *xt)
 {
 	char	*main;
 	char	*num;
@@ -95,5 +95,5 @@ void		display_stats(t_prop *xt)
 {
 	display_ants_rooms_links(xt);
 	display_controls(xt);
-	display_paths(xt);
+	display_path_str(xt);
 }

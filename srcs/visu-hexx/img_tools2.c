@@ -6,11 +6,19 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 23:27:09 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:30:21 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:14:18 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
+
+int				get_rand(int one, int two)
+{
+	int ret;
+
+	ret = rand() % (one + 1 - two) + two;
+	return (ret);
+}
 
 int		get_cor_x(int coord, t_prop *xt)
 {

@@ -6,21 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:09:09 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:55:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:14:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-int		get_rand(int one, int two)
-{
-	int ret;
-
-	ret = rand() % (one + 1 - two) + two;
-	return (ret);
-}
-
-t_ant	*new_ant_node(t_node *start, int nb)
+static t_ant	*new_ant_node(t_node *start, int nb)
 {
 	t_ant	*new;
 
@@ -36,7 +28,7 @@ t_ant	*new_ant_node(t_node *start, int nb)
 	return (new);
 }
 
-void	append_ant_node(t_prop *xt, t_node *start, int nb)
+static void		append_ant_node(t_prop *xt, t_node *start, int nb)
 {
 	t_ant *temp;
 
@@ -46,7 +38,7 @@ void	append_ant_node(t_prop *xt, t_node *start, int nb)
 	temp->next = new_ant_node(start, nb);
 }
 
-void	create_ant_list(t_prop *xt)
+void			create_ant_list(t_prop *xt)
 {
 	t_node	*start;
 	int		cnt;

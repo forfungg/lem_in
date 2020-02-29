@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:34:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:24:02 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-void	free_line(t_prop *xt)
+static void	next_line(t_prop *xt)
 {
 	t_lines *temp;
 
@@ -22,7 +22,7 @@ void	free_line(t_prop *xt)
 		xt->cpy = 0;
 }
 
-void	update_positions(t_prop *xt, char *set)
+static void	update_positions(t_prop *xt, char *set)
 {
 	char	**section;
 	t_ant	*temp;
@@ -45,7 +45,7 @@ void	update_positions(t_prop *xt, char *set)
 	clear_split(section);
 }
 
-void	update_ant_positions(t_prop *xt, char *line)
+void		update_ant_positions(t_prop *xt, char *line)
 {
 	int		cnt;
 	char	**array;
@@ -59,6 +59,6 @@ void	update_ant_positions(t_prop *xt, char *line)
 			cnt += 1;
 		}
 		clear_split(array);
-		free_line(xt);
+		next_line(xt);
 	}
 }

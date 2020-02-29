@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 16:00:07 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 22:12:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:28:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void			create_uniroom(t_prop *xt)
 	IMGS->roomsize = get_size(W_W, W_H, xt->n_rooms);
 	IMGS->uniroom = mlx_new_image(MLX_PTR, W_W, W_H);
 	IMGS->udat = (int *)mlx_get_data_addr(IMGS->uniroom, &bpp, &size, &endian);
-	fill_rectangle(IMGS->udat, W_W, W_H, 0xff000000);
+	fill_rctngl(IMGS->udat, W_W, W_H, 0xff000000);
 	while (temp)
 	{
 		if (temp->start == 1)
