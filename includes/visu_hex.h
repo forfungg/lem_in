@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:27:22 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:30:50 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,13 +284,5 @@ void				clear_split(char **props);
 */
 
 int					key_hook_press(int keycode, t_prop *xt);
-
-/*
-** Input Processing
-*/
-
-/*
-** Input Processing
-*/
 
 #endif

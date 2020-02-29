@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:29:48 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:31:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	create_connections_lines(t_prop *xt)
 	}
 }
 
-void	create_lines(t_prop *xt)
+void		create_lines(t_prop *xt)
 {
 	int		bpp;
 	int		size;
@@ -79,7 +79,7 @@ static void	create_connections_paths(t_prop *xt)
 	}
 }
 
-void	create_path(t_prop *xt)
+void		create_path(t_prop *xt)
 {
 	int		bpp;
 	int		size;
