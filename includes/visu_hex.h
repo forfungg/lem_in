@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 22:14:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 23:41:49 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 # define W_NAME "VISU-HEXX"
 # define PRT ft_printf
 
-# include <pthread.h>
 # include <mlx.h>
 # include <errno.h>
+# include <math.h>
 # include "../libs/libft/includes/libft.h"
 
 typedef struct		s_img
@@ -264,7 +264,8 @@ void				recalc_ant_movement(t_prop *xt);
 void				create_path_list(t_prop *xt, t_lines *lines);
 void				clear_split(char **props);
 void				display_stats(t_prop *xt);
-
+void			check_input(t_prop *xt);
 void				create_uniroom(t_prop *xt);
+char	*receive_name(char *line, int cnt);
 
 #endif

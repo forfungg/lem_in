@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 22:35:27 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 23:35:46 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,68 +37,10 @@ static t_prop	*init_visuhexx(void)
 	xt->n_start = 0;
 	xt->n_end = 0;
 	xt->n_ants = 0;
-	xt->n_rooms = 0;
 	xt->imgs = (t_img *)malloc(sizeof(t_img));
 	MLX_PTR = mlx_init();
 	WIN_PTR = mlx_new_window(xt->mlx_ptr, W_W, W_H, W_NAME);
 	return (xt);
-}
-
-static void		delete_lines(t_lines *lines)
-{
-	t_lines *temp;
-
-	temp = lines;
-	while (lines)
-	{
-		temp = lines->next;
-		free(lines->str);
-		free(lines);
-		lines = temp;
-	}
-}
-
-static void		delete_ants(t_ant *ants)
-{
-	t_ant *temp;
-
-	if (!ants)
-		return ;
-	temp = ants;
-	while (temp)
-	{
-		temp = ants->next;
-		free(ants->curpos);
-		free(ants->nextpos);
-		free(ants);
-		ants = temp;
-	}
-}
-
-static void		delete_pathss(t_paths *paths)
-{
-	t_paths *temp;
-
-	temp = paths;
-	while (paths)
-	{
-		temp = paths->next;
-		free(paths->node);
-		free(paths);
-		paths = temp;
-	}
-}
-
-void			clear_memory(t_prop *xt)
-{
-	delete_list(xt->elems);
-	delete_lines(xt->lines);
-	mlx_destroy_window(MLX_PTR, WIN_PTR);
-	free(xt->imgs);
-	free(xt->moves);
-	free(xt->ants);
-	free(MLX_PTR);
-	free(xt);
 }
 
 static void		read_flags(t_prop *xt, int argc, char **argv)
@@ -120,15 +62,6 @@ static void		read_flags(t_prop *xt, int argc, char **argv)
 				show_product_info();
 		}
 		i++;
-	}
-}
-
-void			print_liness(t_lines *lines)
-{
-	while (lines)
-	{
-		ft_printf("%s\n", lines->str);
-		lines = lines->next;
 	}
 }
 
