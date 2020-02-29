@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/29 21:13:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:47:24 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Create node
 */
 
-t_node	*create_node(char *name, int x, int y)
+t_node			*create_node(char *name, int x, int y)
 {
 	t_node	*node;
 
@@ -37,7 +37,7 @@ t_node	*create_node(char *name, int x, int y)
 ** Deletes node
 */
 
-void	delete_node(t_node *node)
+void			delete_node(t_node *node)
 {
 	int i;
 
@@ -60,7 +60,7 @@ void	delete_node(t_node *node)
 ** Deletes the whole list
 */
 
-void	delete_list(t_node *lst)
+void			delete_list(t_node *lst)
 {
 	t_node *tmp;
 
@@ -76,7 +76,7 @@ void	delete_list(t_node *lst)
 ** Creates node at the begining of given list and returns a pointer to it
 */
 
-t_node	*create_front(t_node *head, char *name, int x, int y)
+t_node			*create_front(t_node *head, char *name, int x, int y)
 {
 	t_node *node;
 
@@ -88,7 +88,7 @@ t_node	*create_front(t_node *head, char *name, int x, int y)
 ** Creates a node at the back of given list and returns pointer to the head
 */
 
-t_node	*create_back(t_node *head, char *name, int x, int y)
+t_node			*create_back(t_node *head, char *name, int x, int y)
 {
 	t_node *node;
 
@@ -100,7 +100,7 @@ t_node	*create_back(t_node *head, char *name, int x, int y)
 ** Adds node to the front of the list and returs a pointer to it
 */
 
-t_node	*add_front(t_node *head, t_node *node)
+t_node			*add_front(t_node *head, t_node *node)
 {
 	if (!node)
 		return (head);
@@ -115,7 +115,7 @@ t_node	*add_front(t_node *head, t_node *node)
 ** Adds the node at the back of the list and returns a pointer to head
 */
 
-t_node	*add_back(t_node *head, t_node *node)
+t_node			*add_back(t_node *head, t_node *node)
 {
 	t_node *tmp;
 
@@ -132,7 +132,7 @@ t_node	*add_back(t_node *head, t_node *node)
 **	Returns pointer to a node with corresponding name, otherwise NULL
 */
 
-t_node	*find_node(t_node *head, char *name)
+t_node			*find_node(t_node *head, char *name)
 {
 	t_node *tmp;
 
@@ -258,7 +258,7 @@ int				count_neighbors(t_node **neighbors)
 ** Returns the starting node of the graph
 */
 
-t_node	*find_start(t_node *list)
+t_node			*find_start(t_node *list)
 {
 	while (list)
 	{
@@ -273,7 +273,7 @@ t_node	*find_start(t_node *list)
 ** Returns the ending node of the graph
 */
 
-t_node	*find_end(t_node *list)
+t_node			*find_end(t_node *list)
 {
 	while (list)
 	{

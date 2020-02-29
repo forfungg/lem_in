@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:34:35 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	ft_abs(int x)
 	return (x > 0 ? x : -x);
 }
 
-void	connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end)
+void		connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end)
 {
 	xt->dx = ft_abs(end->nx - beg->nx);
 	xt->dy = ft_abs(end->ny - beg->ny);

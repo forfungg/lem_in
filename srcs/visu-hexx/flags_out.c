@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 19:58:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 20:35:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:55:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,20 @@ void	show_usage(void)
 	exit(0);
 }
 
-void		show_product_info(void)
+void	show_product_info(void)
 {
 	system("cat README.md");
 	exit(0);
 }
 
-void		open_file(t_prop *xt, char *argv)
+void	open_file(t_prop *xt, char *argv)
 {
 	xt->fd = open(argv, O_RDONLY);
 	if (xt->fd <= 0)
 		error_exit("Failed to open the given file");
 }
 
-void		close_file(t_prop *xt)
+void	close_file(t_prop *xt)
 {
 	if (close(xt->fd) < 0)
 		error_exit("Failed to close the given file");

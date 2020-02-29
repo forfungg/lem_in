@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 21:57:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ void	fill_frame(int *img_data, int img_w, int img_h, int color)
 		count_w = -1;
 		while (++count_w < img_w)
 		{
-			if ((count_w > img_w / 20 && count_h > img_h / 20) && (count_w < img_w * 0.95 && count_h < img_h * 0.95))
-				img_data[count_h * img_w + count_w] = color;
+			if (count_w > img_w / 20 && count_h > img_h / 20)
+			{
+				if (count_w < img_w * 0.95 && count_h < img_h * 0.95)
+					img_data[count_h * img_w + count_w] = color;
+			}
 		}
 	}
 }
 
-void	fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, int color_2)
+void	fill_rectangle_pattern(int *img_data, int img_w, int img_h)
 {
 	int count_h;
 	int count_w;
@@ -67,9 +70,9 @@ void	fill_rectangle_pattern(int *img_data, int img_w, int img_h, int color, int 
 		{
 			x = rand() % (100 + 1 - 0) + 0;
 			if (x < 85)
-				img_data[count_h * img_w + count_w] = color;
+				img_data[count_h * img_w + count_w] = 0xffcc99;
 			else
-				img_data[count_h * img_w + count_w] = color_2;
+				img_data[count_h * img_w + count_w] = 0xcc9966;
 		}
 	}
 }
@@ -87,4 +90,3 @@ void	fill_rectangle(int *img_data, int img_w, int img_h, int color)
 			img_data[count_h * img_w + count_w] = color;
 	}
 }
-

@@ -6,41 +6,15 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:47:23 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:36:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:06:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-int	key_hook_press(int keycode, t_prop *xt)
+static void	mode_selector(int keycode, t_prop *xt)
 {
-	if (keycode == 53)
-	{
-		clear_memory(xt);
-		exit(1);
-	}
-	if (keycode == 15)
-	{
-		xt->cpy = xt->lines;
-		create_ant_list(xt);
-		redraw(xt);
-	}
-	if (keycode == 123 && IMGS->disp_names == 1) // left
-	{
-		IMGS->disp_names = 0;
-		redraw(xt);
-	}
-	else if (keycode == 123 && IMGS->disp_names == 0)
-	{
-		IMGS->disp_names = 1;
-		redraw(xt);
-	}
-	else if (keycode == 124)
-	{
-		recalc_ant_movement(xt);
-		redraw(xt);
-	}
-	else if (keycode == 18 && IMGS->disp_all == 0)
+	if (keycode == 18 && IMGS->disp_all == 0)
 	{
 		IMGS->disp_all = 1;
 		IMGS->disp_path = 0;
@@ -61,9 +35,50 @@ int	key_hook_press(int keycode, t_prop *xt)
 		IMGS->disp_all = 0;
 		redraw(xt);
 	}
-	else if (keycode == 49 && IMGS->pause == 0)
+}
+
+static void	room_ant_information(int keycode, t_prop *xt)
+{
+	if (keycode == 45 && IMGS->disp_names == 1)
+	{
+		IMGS->disp_names = 0;
+		redraw(xt);
+	}
+	else if (keycode == 45 && IMGS->disp_names == 0)
+	{
+		IMGS->disp_names = 1;
+		redraw(xt);
+	}
+}
+
+static void	play_pause_replay(int keycode, t_prop *xt)
+{
+	if (keycode == 15)
+	{
+		xt->cpy = xt->lines;
+		create_ant_list(xt);
+		redraw(xt);
+	}
+	if (keycode == 49 && IMGS->pause == 0)
 		IMGS->pause = 1;
 	else if (keycode == 49 && IMGS->pause == 1)
 		IMGS->pause = 0;
+}
+
+int			key_hook_press(int keycode, t_prop *xt)
+{
+	if (keycode == 53)
+	{
+		clear_memory(xt);
+		exit(1);
+	}
+	else if (keycode == 124)
+	{
+		recalc_ant_movement(xt);
+		redraw(xt);
+	}
+	play_pause_replay(keycode, xt);
+	room_ant_information(keycode, xt);
+	mode_selector(keycode, xt);
 	return (0);
 }

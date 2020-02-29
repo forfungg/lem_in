@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:18:23 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:14:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct		s_img
 	int				roomsize;
 
 	void			*uniroom;
-	int				*uniroomdat;
+	int				*udat;
 
 	void			*start;
 	int				*startdat;
@@ -62,7 +62,7 @@ typedef struct		s_img
 	int				*pathdat;
 
 	void			*ant;
-	int				*antdat;
+	int				*adat;
 
 	int				disp_names;
 	int				disp_all;
@@ -229,8 +229,7 @@ int					get_cor_x(int coord, t_prop *xt);
 int					get_cor_y(int coord, t_prop *xt);
 void				get_minmax_xy(t_prop *xt);
 void				fill_frame(int *img_data, int img_w, int img_h, int color);
-void				fill_rectangle_pattern(int *img_data, int img_w,\
-						int img_h, int color, int color_2);
+void				fill_rectangle_pattern(int *img_data, int img_w, int img_h);
 void				fill_rectangle(int *img_data, int img_w, int img_h,\
 						int color);
 void				create_background(t_prop *xt);

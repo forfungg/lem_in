@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 19:52:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:07:20 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static double	ft_abs(double x)
 	return (x > 0 ? x : -x);
 }
 
-void	move_ants(t_prop *xt)
+void			move_ants(t_prop *xt)
 {
 	t_ant	*temp;
 	t_node	*end;
@@ -37,7 +37,7 @@ void	move_ants(t_prop *xt)
 	}
 }
 
-void	draw_ant_algo(t_ant *ant)
+void			draw_ant_algo(t_ant *ant)
 {
 	double		dx;
 	double		dy;

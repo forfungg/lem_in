@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:36:02 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 23:18:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ void	display_background(t_prop *xt)
 {
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->bg, 0, 0);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->sand, 0, W_H / 6);
-	mlx_string_put(MLX_PTR, WIN_PTR, 500, 50, 0xff00ff, "Artem's and Jiri's ANT FARM");
 }
 
 int		get_cor_x(int coord, t_prop *xt)
 {
-	int	ret;
-	double coef;
+	int		ret;
+	double	coef;
 
 	coef = (W_W - IMGS->roomsize - 20) / (double)xt->max_x;
 	ret = 10 + coord * coef;
@@ -53,13 +52,15 @@ void	display_lines(t_prop *xt)
 	while (temp)
 	{
 		if (IMGS->disp_names == 1)
-			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10, temp->ny - 20, 0x000000, temp->name);
+			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10,\
+				temp->ny - 20, 0x000000, temp->name);
 		temp = temp->next;
 	}
 }
 
 void	display_path(t_prop *xt)
 {
+	t_paths	*tpaths;
 	t_node	*temp;
 	int		shift;
 
@@ -69,12 +70,18 @@ void	display_path(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift + 1);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift - 1, shift);
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->path, shift, shift - 1);
-	temp = xt->elems;
-	while (temp)
+	tpaths = xt->all_paths;
+	while (tpaths)
 	{
-		if (IMGS->disp_names == 1)
-			mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10, temp->ny - 20, 0x000000, temp->name);
-		temp = temp->next;
+		temp = tpaths->node;
+		while (temp)
+		{
+			if (IMGS->disp_names == 1 && IMGS->disp_black != 1)
+				mlx_string_put(MLX_PTR, WIN_PTR, temp->nx - 10,
+					temp->ny - 20, 0x000000, temp->name);
+			temp = temp->path;
+		}
+		tpaths = tpaths->next;
 	}
 }
 
@@ -85,8 +92,12 @@ void	display_ants(t_prop *xt)
 	ant = xt->ants;
 	while (ant)
 	{
-		if (IMGS->disp_names == 1)
-			mlx_string_put(MLX_PTR, WIN_PTR, ant->x + 15, ant->y - 20, 0x000000, ft_itoa(ant->cnt));
+		if (IMGS->disp_names && IMGS->disp_black)
+			mlx_string_put(MLX_PTR, WIN_PTR, ant->x + IMGS->roomsize,\
+				ant->y - 20, 0xffffff, ft_itoa(ant->cnt));
+		else if (IMGS->disp_names)
+			mlx_string_put(MLX_PTR, WIN_PTR, ant->x + IMGS->roomsize,\
+				ant->y - 20, 0x000000, ft_itoa(ant->cnt));
 		mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->ant, ant->x, ant->y);
 		ant = ant->next;
 	}
@@ -97,30 +108,6 @@ void	display_uniroom(t_prop *xt)
 	mlx_put_image_to_window(MLX_PTR, WIN_PTR, IMGS->uniroom, 0, 1);
 }
 
-void	display_legend(t_prop *xt)
-{
-	char	*one;
-	char	*two;
-	char	*three;
-	char	*four;
-	char	*five;
-	char	*six;
-
-	one = ft_strdup("1 to display all paths");
-	two	= ft_strdup("2 to display paths");
-	three = ft_strdup("3 to display paths on black bg");
-	four = ft_strdup("N to show room/ant numbers");
-	five = ft_strdup("SPACE to play/ pause");
-	six = ft_strdup("RIGHT arrow to move forward one step");
-
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 25, 0xffffff, one);
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 35, 0xffffff, two);
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 45, 0xffffff, three);
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 55, 0xffffff, four);
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 65, 0xffffff, five);
-	mlx_string_put(MLX_PTR, WIN_PTR, 200, 75, 0xffffff, six);
-}
-
 void	display_all(t_prop *xt)
 {
 	display_background(xt);
@@ -128,17 +115,15 @@ void	display_all(t_prop *xt)
 	display_uniroom(xt);
 	display_ants(xt);
 	display_stats(xt);
-	display_legend(xt);
 }
 
 void	display_paths(t_prop *xt)
 {
 	display_background(xt);
-	display_path(xt);
 	display_uniroom(xt);
+	display_path(xt);
 	display_ants(xt);
 	display_stats(xt);
-	display_legend(xt);
 }
 
 void	display_black(t_prop *xt)
@@ -146,7 +131,6 @@ void	display_black(t_prop *xt)
 	display_path(xt);
 	display_ants(xt);
 	display_stats(xt);
-	display_legend(xt);
 }
 
 void	redraw(t_prop *xt)

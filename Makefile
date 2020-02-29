@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/29 20:47:00 by asolopov         ###   ########.fr        #
+#    Updated: 2020/02/29 23:20:07 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ VISU_HEXX_SRCS		= controls.c\
 					img_create_rooms.c\
 					img_draw_ants.c\
 					img_draw_lines.c\
-					img_draw_visu-hexx.c\
+					img_draw_all.c\
 					input_process.c\
 					legend.c\
 					lines_management.c\
@@ -79,7 +79,6 @@ VISU_HEXX_SRCS		= controls.c\
 					move_ants.c\
 					nodes_management.c\
 					paths_receive.c\
-					print_functions.c\
 					flags_out.c\
 					input_check.c\
 					update_ant_position.c \

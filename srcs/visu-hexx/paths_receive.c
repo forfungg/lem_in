@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths_receive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:47:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:27:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:42:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,38 @@ int		split_line(char *line)
 	return (ret);
 }
 
+char	*get_ant_str(int cnt)
+{
+	char *out;
+	char *l;
+	char *num;
+
+	l = ft_strdup("L");
+	num = ft_itoa(cnt);
+	out = ft_strjoin(l, num);
+	free(l);
+	free(num);
+	return (out);
+}
+
 char	*receive_name(char *line, int cnt)
 {
 	char	**array;
 	char	**section;
 	char	*ret;
 	char	*tmp;
-	char	*one;
-	char	*two;
 	int		i;
-	int		x;
 
 	i = 0;
 	array = ft_strsplit(line, ' ');
-	tmp = ft_strjoin(one = ft_strdup("L"), two = ft_itoa(cnt));
+	tmp = get_ant_str(cnt);
 	while (array[i] && !strstr(array[i], tmp))
 		i++;
 	section = ft_strsplit(array[i], '-');
 	ret = ft_strdup(section[1]);
-	x = 0;
 	clear_split(array);
 	clear_split(section);
 	free(tmp);
-	free(one);
-	free(two);
 	return (ret);
 }
 

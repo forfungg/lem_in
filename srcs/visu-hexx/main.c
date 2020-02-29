@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 21:24:19 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/29 22:35:27 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-void	clear_split(char **props)
+void			clear_split(char **props)
 {
 	int i;
 
@@ -89,7 +89,7 @@ static void		delete_pathss(t_paths *paths)
 	}
 }
 
-void		clear_memory(t_prop *xt)
+void			clear_memory(t_prop *xt)
 {
 	delete_list(xt->elems);
 	delete_lines(xt->lines);
