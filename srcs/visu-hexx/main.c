@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:30:01 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:57:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:24:50 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_prop	*init_visuhexx(void)
 	xt->n_start = 0;
 	xt->n_end = 0;
 	xt->n_ants = 0;
+	xt->spdmod = 1;
 	xt->imgs = (t_img *)malloc(sizeof(t_img));
 	MLX_PTR = mlx_init();
 	WIN_PTR = mlx_new_window(xt->mlx_ptr, W_W, W_H, W_NAME);

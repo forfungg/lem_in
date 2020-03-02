@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:58:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:15:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:45:39 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static int		is_around(int num, int val, double step)
 {
 	if (num <= val)
 	{
-		if (num >= val - step * 2)
+		if (num >= val - step * 3)
 			return (1);
 	}
 	if (num >= val)
 	{
-		if (num <= val + step * 2)
+		if (num <= val + step * 3)
 			return (1);
 	}
 	return (0);
@@ -92,7 +92,7 @@ void			recalc_ant_movement(t_prop *xt)
 		while (temp)
 		{
 			if (temp->nextpos)
-				draw_ant_algo(temp);
+				draw_ant_algo(xt, temp);
 			temp = temp->next;
 		}
 	}

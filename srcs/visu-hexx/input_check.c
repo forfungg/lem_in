@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 20:46:34 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:54:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 10:41:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,21 @@ static int		get_len(t_node **array)
 	return (cnt);
 }
 
+static int		check_lines(t_prop *xt)
+{
+	if (!xt->lines)
+		return (1);
+	else
+		return (0);
+}
+
 void			check_input(t_prop *xt)
 {
 	int err;
 
 	err = 0;
 	err += check_n_start_end(xt);
+	err += check_lines(xt);
 	err += check_ants(xt);
 	if (err != 0)
 		error_exit("Input is incorrect");

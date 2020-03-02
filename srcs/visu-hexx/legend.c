@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:28:17 by solopov           #+#    #+#             */
-/*   Updated: 2020/03/01 00:12:49 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:42:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,26 @@ static void	display_controls(t_prop *xt)
 {
 	char *str;
 
-	str = ft_strdup("1 to display all links");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 10, 0xffffff, str);
+	str = ft_strdup("1: display all links");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 10, 0xffffff, str);
 	free(str);
-	str = ft_strdup("2 to display paths");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 25, 0xffffff, str);
+	str = ft_strdup("2: display paths");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 25, 0xffffff, str);
 	free(str);
-	str = ft_strdup("3 to display paths on black bg");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 40, 0xffffff, str);
+	str = ft_strdup("3: display paths on black bg");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 40, 0xffffff, str);
 	free(str);
-	str = ft_strdup("N to show room/ant numbers");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 55, 0xffffff, str);
+	str = ft_strdup("N: show room/ant numbers");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 55, 0xffffff, str);
 	free(str);
-	str = ft_strdup("SPACE to play/ pause");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 70, 0xffffff, str);
+	str = ft_strdup("SPACE: play/ pause");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 70, 0xffffff, str);
 	free(str);
-	str = ft_strdup("RIGHT arrow to move forward one step");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 85, 0xffffff, str);
+	str = ft_strdup("RIGHT ARROW: move forward one step");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 85, 0xffffff, str);
 	free(str);
-	str = ft_strdup("R to restart visualiser");
-	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 400, 100, 0xffffff, str);
+	str = ft_strdup("R: restart visualiser");
+	mlx_string_put(MLX_PTR, WIN_PTR, W_W - 500, 100, 0xffffff, str);
 	free(str);
 }
 
@@ -95,5 +95,6 @@ void		display_stats(t_prop *xt)
 {
 	display_ants_rooms_links(xt);
 	display_controls(xt);
+	display_controls_add(xt);
 	display_path_str(xt);
 }

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:47:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:37:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:19:15 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	new_node_to_path(t_prop *xt, t_node *node, char *name)
 	while (tmp->path)
 		tmp = tmp->path;
 	tmp->path = find_node(xt->elems, name);
+	free(name);
 }
 
 t_paths	*new_path_to_list(t_prop *xt, t_lines *line, int cnt)
@@ -29,7 +30,8 @@ t_paths	*new_path_to_list(t_prop *xt, t_lines *line, int cnt)
 
 	name = receive_name(line->str, cnt);
 	new = (t_paths *)malloc(sizeof(t_paths));
-	new->node = find_node(xt->elems, name);
+	if (!(new->node = find_node(xt->elems, name)))
+		error_exit("Node not found on path!");
 	line = line->next;
 	free(name);
 	while (line)
@@ -38,10 +40,8 @@ t_paths	*new_path_to_list(t_prop *xt, t_lines *line, int cnt)
 		new_node_to_path(xt, new->node, name);
 		if (ft_strequ(name, find_end(xt->elems)->name))
 			break ;
-		free(name);
 		line = line->next;
 	}
-	free(name);
 	new->next = 0;
 	return (new);
 }

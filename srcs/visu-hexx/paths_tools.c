@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 23:36:29 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:36:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:08:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ char	*receive_name(char *line, int cnt)
 	tmp = get_ant_str(cnt);
 	while (array[i] && !strstr(array[i], tmp))
 		i++;
+	if (!array[i])
+		error_exit("Ant problmes");
 	section = ft_strsplit(array[i], '-');
+	if (!section[1])
+		error_exit("No section found");
 	ret = ft_strdup(section[1]);
 	clear_split(array);
 	clear_split(section);

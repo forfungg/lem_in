@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:30:50 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:39:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ typedef struct		s_prop
 	int				stpy;
 	int				color;
 	int				fd;
+	double			spdmod;
 }					t_prop;
 
 typedef struct		s_pcur
@@ -258,13 +259,14 @@ void				display_path(t_prop *xt);
 void				display_ants(t_prop *xt);
 void				display_uniroom(t_prop *xt);
 void				display_stats(t_prop *xt);
+void				display_controls_add(t_prop *xt);
 
 /*
 ** Moving ants
 */
 
 void				move_ants(t_prop *xt);
-void				draw_ant_algo(t_ant *ant);
+void				draw_ant_algo(t_prop *xt, t_ant *ant);
 void				recalc_ant_movement(t_prop *xt);
 void				update_ant_positions(t_prop *xt, char *line);
 
