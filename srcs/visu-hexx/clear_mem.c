@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 23:25:33 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:44:35 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:18:12 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void			delete_node(t_node *node)
 		while (node->ngb[i])
 			node->ngb[i++] = NULL;
 		free(node->ngb);
-		free(node->cap);
 		i = 0;
 	}
+	if (node->cap)
+		free(node->cap);
 	free(node->name);
 	free(node);
 }
@@ -57,6 +58,19 @@ static void		delete_lines(t_lines *lines)
 	}
 }
 
+static void		delete_paths(t_paths *paths)
+{
+	t_paths *temp;
+
+	temp = paths;
+	while (paths)
+	{
+		temp = paths->next;
+		free(paths);
+		paths = temp;
+	}
+}
+
 static void		delete_ants(t_ant *ants)
 {
 	t_ant *temp;
@@ -67,21 +81,30 @@ static void		delete_ants(t_ant *ants)
 	while (temp)
 	{
 		temp = ants->next;
-		free(ants->curpos);
-		free(ants->nextpos);
 		free(ants);
 		ants = temp;
 	}
+}
+
+static void		destroy_images(t_prop *xt)
+{
+	mlx_destroy_image(MLX_PTR, IMGS->bg);
+	mlx_destroy_image(MLX_PTR, IMGS->sand);
+	mlx_destroy_image(MLX_PTR, IMGS->uniroom);
+	mlx_destroy_image(MLX_PTR, IMGS->line);
+	mlx_destroy_image(MLX_PTR, IMGS->path);
+	mlx_destroy_image(MLX_PTR, IMGS->ant);
 }
 
 void			clear_memory(t_prop *xt)
 {
 	delete_list(xt->elems);
 	delete_lines(xt->lines);
-	mlx_destroy_window(MLX_PTR, WIN_PTR);
+	delete_paths(xt->all_paths);
+	delete_ants(xt->ants);
+	destroy_images(xt);
 	free(xt->imgs);
 	free(xt->moves);
-	free(xt->ants);
-	free(MLX_PTR);
+	mlx_destroy_window(MLX_PTR, WIN_PTR);
 	free(xt);
 }

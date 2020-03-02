@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/29 23:59:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:13:24 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_node			*create_node(char *name, int x, int y)
 	node->y = y;
 	node->ngb = NULL;
 	node->cap = NULL;
-	node->path = 0;
+	node->path = NULL;
 	node->empty = 1;
 	return (node);
 }

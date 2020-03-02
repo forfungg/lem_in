@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 11:39:38 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:18:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define W_W 1920
 # define W_H 1080
 # define FRAMES 120
-# define THREADS 5
 # define W_NAME "VISU-HEXX"
 # define PRT ft_printf
 
@@ -42,18 +41,9 @@ typedef struct		s_img
 	void			*sand;
 	int				*sanddat;
 
-	void			*room;
-	int				*roomdat;
-	int				roomsize;
-
 	void			*uniroom;
+	int				roomsize;
 	int				*udat;
-
-	void			*start;
-	int				*startdat;
-
-	void			*end;
-	int				*enddat;
 
 	void			*line;
 	int				*linedat;
@@ -86,7 +76,6 @@ typedef struct		s_node
 	int				*cap;
 	int				empty;
 	int				visited;
-
 }					t_node;
 
 typedef struct		s_paths

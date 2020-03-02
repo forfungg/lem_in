@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 23:46:44 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:47:13 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:56:20 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void			capacitize_ngbs(t_node *list)
 		if (list->ngb)
 		{
 			cnt = count_neighbors(list->ngb);
-			list->cap = (int *)ft_memalloc(sizeof(int) * cnt);
+			if (!list->cap)
+				list->cap = (int *)ft_memalloc(sizeof(int) * cnt);
 			if (!(list->cap))
 				error_exit("Malloc at capacitize_ngbs");
 			i = 0;
