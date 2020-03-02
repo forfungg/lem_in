@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/03/01 00:19:51 by asolopov         ###   ########.fr        #
+#    Updated: 2020/03/02 12:22:41 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ VISU_HEXX			= visu-hexx
 VISU_HEXX_SRCS		= controls.c\
 					create_ant_nodes.c\
 					clear_mem.c\
+					clear_mem_ops.c\
 					exit_functions.c\
 					img_tools.c\
 					img_tools2.c\

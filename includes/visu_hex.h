@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 12:18:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:22:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,9 @@ void				update_ant_positions(t_prop *xt, char *line);
 
 void				delete_node(t_node *node);
 void				delete_list(t_node *lst);
+void				delete_ants(t_ant *ants);
+void				delete_paths(t_paths *paths);
+void				delete_lines(t_lines *lines);
 void				clear_memory(t_prop *xt);
 void				error_exit(char *msg);
 void				clear_split(char **props);
