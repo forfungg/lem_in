@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/03 14:09:17 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:37:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,6 @@ void				move_ants(t_prop *xt);
 void				draw_ant_algo(t_prop *xt, t_ant *ant);
 void				recalc_ant_movement(t_prop *xt);
 void				update_ant_positions(t_prop *xt, char *line);
-
 
 /*
 ** Memory & Program Exit

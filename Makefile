@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/03/03 14:03:19 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/03/03 14:35:30 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,21 +108,19 @@ TIME_SRCS			= ft_start_timer.c \
 
 
 TIME_FILES		= $(addprefix $(TIME_DIR), $(TIME_SRCS))
+
 # Directories
 
 LEM_IN_DIR			= ./srcs/lem-in/
 VISU_HEXX_DIR		= ./srcs/visu-hexx/
 TIME_DIR			= ./srcs/time/
 LIBFT_DIR			= ./libs/libft/
-LIB_MLX_DIR			= ./libs/libmlx
 
 # Libraries
 
 LIBFT_NAME			= libft.a
-MLX_NAME			= libmlx.a
-MLX_A				= $(addprefix $(LIB_MLX_DIR), $(MLX_NAME))
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
-LIBMLXFLAGS			= -I$(LIB_MLX_DIR) -L$(LIB_MLX_DIR) -lmlx -framework OpenGL -framework Appkit
+LIBMLXFLAGS			= -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 
 # Includes
 INCLUDES			= includes
@@ -145,14 +143,10 @@ $(LIBFT_NAME):
 	@echo "$(RED)Compiling Libft Library$(RES)"
 	@Make all -C $(LIBFT_DIR)
 	@echo "$(GREEN)Done.$(RES)"
-	@echo "$(RED)Compiling MLX Library$(RES)"
-	@Make all -C $(LIB_MLX_DIR)
-	@echo "$(GREEN)Done.$(RES)"
 
 clean:
 	@echo "$(RED)Removing Object Files...$(RES)"
 	@Make clean -C $(LIBFT_DIR)
-	@Make clean -C $(LIB_MLX_DIR)
 	@echo "$(GREEN)Done.$(RES)"
 
 fclean: clean
@@ -161,7 +155,6 @@ fclean: clean
 	@/bin/rm -f $(VISU_HEXX)
 	@/bin/rm -f $(CHECKER_EXE)
 	@Make fclean -C $(LIBFT_DIR)
-	@Make fclean -C $(LIB_MLX_DIR)
 	@echo "$(GREEN)Done.$(RES)"
 
 re: fclean all
