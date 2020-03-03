@@ -12,6 +12,7 @@
 		"__node_handle": "c",
 		"visu_hex.h": "c",
 		"math.h": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"libft.h": "c"
 	}
 }

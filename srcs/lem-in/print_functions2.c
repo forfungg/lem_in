@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 17:40:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 20:55:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,18 @@ void		print_debug(t_prop *xt)
 	ft_printf("Potentional Flow:\t%d\n", xt->pot_flow);
 	ft_printf("{LIGHT}Utilized Flow:\t\t%d\n{EOC}", count_paths(xt->all_paths));
 	ft_printf("Solution Lenght:\t%d\n", xt->out_len);
-	ft_printf("{LIGHT}Time to Process Input:\t%f sec\n{EOC}",\
+	ft_printf("{LIGHT}Time to Process Rooms:\t%f sec\n{EOC}",\
 		ft_time_lapsed(xt->stopwatch->start,\
 		xt->stopwatch->marks[0]->timestamp));
-	ft_printf("Ford-Fulkerson Time:\t%f sec\n",\
+	ft_printf("Time to Process Links:\t%f sec\n",\
 		ft_time_lapsed(xt->stopwatch->marks[0]->timestamp,\
 		xt->stopwatch->marks[1]->timestamp));
+	ft_printf("{LIGHT}Time to Process Input:\t%f sec\n{EOC}",\
+		ft_time_lapsed(xt->stopwatch->start,\
+		xt->stopwatch->marks[1]->timestamp));
+	ft_printf("Ford-Fulkerson Time:\t%f sec\n",\
+		ft_time_lapsed(xt->stopwatch->marks[1]->timestamp,\
+		xt->stopwatch->marks[2]->timestamp));
 	ft_stop_timer(xt->stopwatch);
 	ft_printf("{LIGHT}Total Time:\t\t%f sec\n\n{EOC}",\
 		ft_time_lapsed(xt->stopwatch->start, xt->stopwatch->end));

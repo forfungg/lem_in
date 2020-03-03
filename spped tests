@@ -1,0 +1,8 @@
+old strequ
+./lem-in -f resources/testmaps/lem_map_4kd5  51.35s user 0.08s system 99% cpu 51.779 total
+4k_01
+Time to Process Rooms:	0.195592 sec
+Time to Process Links:	0.749449 sec
+lem_map_4kd5
+Time to Process Rooms:	0.216968 sec
+Time to Process Links:	40.082891 sec

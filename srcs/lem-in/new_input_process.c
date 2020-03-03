@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/03/03 14:24:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 20:52:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int			process_link(t_prop *xt, char *p, int i)
 
 	end = 0;
 	if (xt->pathways == NULL)
+	{
 		xt->pathways = p;
+		ft_markdown(xt->stopwatch, "ROOMS");
+	}
 	p[i] = '\0';
 	node1 = find_node(xt->elems, p);
 	p[i] = '-';
