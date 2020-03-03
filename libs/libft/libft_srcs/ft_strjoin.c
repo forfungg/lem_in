@@ -6,18 +6,11 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 08:29:40 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/24 15:23:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:33:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// static char one_missing(char const *s1, char const *s2)
-// {
-// 	char *res;
-
-// 	if (!s1)
-// }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

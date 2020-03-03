@@ -142,7 +142,7 @@ All files have to correspond with 42 norm. In brief:
 
 	- visuhex -> pathdrawing vs ants movement
 	- error management
-		- if p[0] == 'L' error
+		- if p[0] == 'L' error (done)
 		- order error (ants->rooms->links)
 		- **ROOMS starting or including char "-" ?**
 		- DUPLICATE rooms (done)

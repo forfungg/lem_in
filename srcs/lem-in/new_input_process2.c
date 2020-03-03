@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 17:16:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:41:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ static int	process_info(t_prop *xt, char *p, int i)
 		i++;
 	}
 	if (p[i] == ' ')
-		ret = process_room(xt, p, i);
+	{
+		if (xt->pathways)
+			error_exit("Room definition after link definition");
+		else if (xt->n_ants == 0)
+			error_exit("Definiton of ants is missing");
+		else
+			ret = process_room(xt, p, i);
+	}
 	else if (p[i] == '-')
 		ret = process_link(xt, p, i);
 	else if (p[i] == '\n' && digit)
@@ -43,7 +50,9 @@ void		process_input(t_prop *xt)
 	i = 1;
 	while (p[0] != '\0')
 	{
-		if (p[0] == '#' || p[0] == 'L')
+		if (p[0] == 'L')
+			error_exit("Input line starts with 'L'");
+		else if (p[0] == '#')
 			p += process_comment(xt, p);
 		else
 			p += process_info(xt, p, 0);
