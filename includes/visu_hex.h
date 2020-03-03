@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_hex.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 13:42:47 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 12:22:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:09:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,9 @@ void				read_input(t_prop *xt);
 int					get_coord(char *str);
 void				new_node(char **props, t_prop *xt);
 void				prepend_node(char **props, t_prop *xt);
-int					is_room(char *line, t_prop *xt);
-int					is_link(char *line, t_prop *xt);
-int					is_ants(char *str, t_prop *xt);
+int					is_room(char *line);
+int					is_link(char *line);
+int					is_ants(char *str);
 int					is_number(char *str);
 int					count_elems(char **array);
 void				check_input(t_prop *xt);

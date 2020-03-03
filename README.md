@@ -82,6 +82,11 @@ In no way can the program quit in an unexpected manner (Segmentation fault, bus 
 
 The program cannot have memory leaks.
 
+Executable must be compiled with flags:
+- Wall
+- Wextra
+- Werror
+
 All files have to correspond with 42 norm. In brief:
 ```
 	Function can contain maximum of 25 lines

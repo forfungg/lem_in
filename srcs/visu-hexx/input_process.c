@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:37:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 12:13:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:09:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,17 @@ void	prepend_node(char **props, t_prop *xt)
 void	read_input(t_prop *xt)
 {
 	char	*line;
-	int		maxflow;
 
 	xt->all_paths = NULL;
 	while (get_next_line(xt->fd, &line) > 0)
 	{
 		if (line[0] == '#' || line[0] == 'L')
 			save_commands(line, xt);
-		else if (is_ants(line, xt) == 1)
+		else if (is_ants(line) == 1)
 			save_ants(line, xt);
-		else if (is_room(line, xt) == 1)
+		else if (is_room(line) == 1)
 			save_room(line, xt);
-		else if (is_link(line, xt) == 1)
+		else if (is_link(line) == 1)
 			save_link(line, xt);
 		free(line);
 	}

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 13:08:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:24:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			process_room(t_prop *xt, char *p, int i)
 	return (i + 1);
 }
 
-static void	add_link(t_prop *xt, t_node *node1, t_node *node2)
+static void	add_link(t_node *node1, t_node *node2)
 {
 	if (node1 == NULL || node2 == NULL)
 		error_exit("Wrong Input");
@@ -71,7 +71,7 @@ int			process_link(t_prop *xt, char *p, int i)
 	else
 		p[i] = '\0';
 	node2 = find_node(xt->elems, p + tmp);
-	add_link(xt, node1, node2);
+	add_link(node1, node2);
 	if (!end)
 		p[i] = '\n';
 	return (end ? i : i + 1);

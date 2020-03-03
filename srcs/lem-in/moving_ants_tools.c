@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/17 10:46:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:15:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	*str_append(char *str, int nb, char *name)
 void	print_output(char **out)
 {
 	int		cnt;
-	char	*line;
 
 	cnt = 0;
 	ft_printf("\n");

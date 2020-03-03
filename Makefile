@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/03/02 12:22:41 by asolopov         ###   ########.fr        #
+#    Updated: 2020/03/03 14:03:19 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Flags 'n colors
 
-CFLAGS		=	-O3 #-Wall -Wextra -Werror
+CFLAGS		=	-O3 -Wall -Wextra -Werror
 GREEN		=	\033[0;32m
 GREENB		=	\033[1;32m
 RES			=	\033[0m

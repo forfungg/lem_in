@@ -6,27 +6,11 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:19:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 17:13:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:16:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-/*
-** Get pointer to the last path
-*/
-
-static t_que	*get_p_last(t_paths *paths)
-{
-	t_paths	*tmp;
-
-	if (!paths)
-		return (NULL);
-	tmp = paths;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp->path);
-}
 
 static void		adjust_capacities(t_que *tmp)
 {

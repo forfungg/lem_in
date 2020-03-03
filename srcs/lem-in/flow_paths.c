@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 13:45:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 19:55:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:17:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,6 @@
 /*
 ** Checks graph and returns those paths that have flow (BFS)
 */
-
-static int	not_in_path(t_que *path, t_node *node)
-{
-	while (path && path->next)
-	{
-		if (ft_strequ(path->node->name, node->name))
-			return (FALSE);
-		path = path->next;
-	}
-	return (TRUE);
-}
 
 static void	explore_ngbs(t_node *current, t_que *path, t_paths **q)
 {

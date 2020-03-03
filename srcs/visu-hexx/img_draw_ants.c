@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 11:46:15 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:10:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 #include <math.h>
-
-static double	ft_abs(double x)
-{
-	return (x > 0 ? x : -x);
-}
 
 void			move_ants(t_prop *xt)
 {
@@ -41,7 +36,6 @@ void			draw_ant_algo(t_prop *xt, t_ant *ant)
 {
 	double		dx;
 	double		dy;
-	double		err;
 	double		direction;
 	double		speed;
 

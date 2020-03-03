@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/03/01 00:27:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:07:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-static void	increment_x(int *img, t_prop *xt, t_node *beg, t_node *end)
+static void	increment_x(int *img, t_prop *xt, t_node *beg)
 {
 	int		error;
 	t_pcur	*pcur;
@@ -39,7 +39,7 @@ static void	increment_x(int *img, t_prop *xt, t_node *beg, t_node *end)
 	free(pcur);
 }
 
-static void	increment_y(int *img, t_prop *xt, t_node *beg, t_node *end)
+static void	increment_y(int *img, t_prop *xt, t_node *beg)
 {
 	int		error;
 	t_pcur	*pcur;
@@ -78,7 +78,7 @@ void		cnct_nodes(int *img, t_prop *xt, t_node *beg, t_node *end)
 	xt->stpx = end->nx >= beg->nx ? 1 : -1;
 	xt->stpy = end->ny >= beg->ny ? 1 : -1;
 	if (xt->dx > xt->dy)
-		increment_x(img, xt, beg, end);
+		increment_x(img, xt, beg);
 	else
-		increment_y(img, xt, beg, end);
+		increment_y(img, xt, beg);
 }

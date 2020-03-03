@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 13:03:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 12:52:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:15:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void		move_ants(t_prop *xt, t_paths *paths)
 {
 	char	**out;
 	int		len;
-	t_que	*tmp;
 	t_paths	*head;
 
 	if (!paths)

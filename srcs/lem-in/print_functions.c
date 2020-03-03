@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 21:06:39 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 12:56:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:13:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	print_edges(t_node *head)
 
 void	print_queue(t_que *queue)
 {
-	int i;
-
 	if (!queue)
 		return ;
 	ft_printf("%s", queue->node->name);

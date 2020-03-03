@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:19:47 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/26 18:56:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:16:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,6 @@ static void	extremes_path_len(t_paths *paths, int *min, int *max, int *cnt)
 		i++;
 	}
 	*cnt = i;
-}
-
-static int	paths_count(t_paths *paths)
-{
-	int cnt;
-
-	cnt = 0;
-	while (paths)
-	{
-		cnt++;
-		paths = paths->next;
-	}
-	return (cnt);
 }
 
 static int	second_square(t_paths *paths, int cnt, int ants)

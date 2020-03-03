@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_create_lines.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:30:39 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:31:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:04:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static void	create_connections_paths(t_prop *xt)
 {
 	t_paths *path;
 	t_node	*tmp;
-	t_node	*start;
 
 	path = xt->all_paths;
 	while (path)

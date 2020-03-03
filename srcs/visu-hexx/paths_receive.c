@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths_receive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:47:05 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 11:19:15 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:12:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	create_path_list(t_prop *xt, t_lines *lines)
 {
 	int		cnt;
 	int		len;
-	t_paths	*ret;
 
 	cnt = 1;
 	len = split_line(lines->str);

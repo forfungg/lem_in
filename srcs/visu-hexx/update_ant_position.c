@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_ant_position.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:24:02 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:12:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	next_line(t_prop *xt)
 {
-	t_lines *temp;
-
 	if (xt->cpy->next)
 		xt->cpy = xt->cpy->next;
 	else
@@ -50,6 +48,7 @@ void		update_ant_positions(t_prop *xt, char *line)
 	int		cnt;
 	char	**array;
 
+	cnt = 0;
 	if (line)
 	{
 		array = ft_strsplit(line, ' ');

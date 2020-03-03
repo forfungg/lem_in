@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 20:46:34 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/02 10:41:38 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:11:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ static int		check_ants(t_prop *xt)
 	if (xt->f_ants < 1)
 		return (1);
 	return (0);
-}
-
-static int		get_len(t_node **array)
-{
-	int cnt;
-
-	cnt = 0;
-	if (!array)
-		return (0);
-	while (array[cnt] != 0)
-		cnt += 1;
-	return (cnt);
 }
 
 static int		check_lines(t_prop *xt)

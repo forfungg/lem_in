@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 20:53:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:25:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,42 +34,6 @@ static int		check_ants(t_prop *xt)
 		return (1);
 	if (xt->f_ants < 1)
 		return (1);
-	return (0);
-}
-
-static int		get_len(t_node **array)
-{
-	int cnt;
-
-	cnt = 0;
-	if (!array)
-		return (0);
-	while (array[cnt] != 0)
-		cnt += 1;
-	return (cnt);
-}
-
-static int		check_duplicate(t_node **array)
-{
-	int x;
-	int y;
-	int len;
-
-	if (!array)
-		return (0);
-	x = 0;
-	len = get_len(array);
-	while (x < len)
-	{
-		y = x + 1;
-		while (y < len)
-		{
-			if (ft_strequ(array[x]->name, array[y]->name) == 1)
-				return (1);
-			y += 1;
-		}
-		x += 1;
-	}
 	return (0);
 }
 

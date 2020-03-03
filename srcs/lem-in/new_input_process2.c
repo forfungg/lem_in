@@ -6,17 +6,27 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 17:45:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/03/03 13:41:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:23:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static int	order_check(t_prop *xt, char *p, int i)
+{
+	if (xt->pathways)
+		error_exit("Room definition after link definition");
+	else if (xt->n_ants == 0)
+		error_exit("Definiton of ants is missing");
+	return (process_room(xt, p, i));
+}
 
 static int	process_info(t_prop *xt, char *p, int i)
 {
 	int		digit;
 	int		ret;
 
+	ret = 0;
 	digit = 1;
 	while (p[i] != ' ' && p[i] != '\n' && p[i] != '-')
 	{
@@ -24,14 +34,7 @@ static int	process_info(t_prop *xt, char *p, int i)
 		i++;
 	}
 	if (p[i] == ' ')
-	{
-		if (xt->pathways)
-			error_exit("Room definition after link definition");
-		else if (xt->n_ants == 0)
-			error_exit("Definiton of ants is missing");
-		else
-			ret = process_room(xt, p, i);
-	}
+		ret = order_check(xt, p, i);
 	else if (p[i] == '-')
 		ret = process_link(xt, p, i);
 	else if (p[i] == '\n' && digit)

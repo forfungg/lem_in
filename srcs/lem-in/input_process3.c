@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 11:13:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:06:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:12:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 void	read_input(t_prop *xt)
 {
-	char	*line;
-
 	xt->all_paths = NULL;
 	ft_start_timer(xt->stopwatch);
 	load_input(xt, FILE);

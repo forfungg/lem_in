@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_identify.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 23:39:26 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 23:40:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 14:08:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		is_number(char *str)
 	return (1);
 }
 
-int		is_ants(char *str, t_prop *xt)
+int		is_ants(char *str)
 {
 	if (is_number(str) == 1 && strlen(str) != 0)
 		return (1);
@@ -47,7 +47,7 @@ int		is_ants(char *str, t_prop *xt)
 ** check_link
 */
 
-int		is_link(char *line, t_prop *xt)
+int		is_link(char *line)
 {
 	int		cnt;
 	char	**props;
@@ -62,7 +62,7 @@ int		is_link(char *line, t_prop *xt)
 ** check_room
 */
 
-int		is_room(char *line, t_prop *xt)
+int		is_room(char *line)
 {
 	char	**props;
 	int		ret;
