@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 16:14:11 by asolopov          #+#    #+#             */
-/*   Updated: 2020/03/01 00:02:10 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/03/03 13:33:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int			onupdate(t_prop *xt)
 	return (0);
 }
 
+int			exit_hook(t_prop *xt)
+{
+	clear_memory(xt);
+	exit(1);
+}
+
 void		draw_farm(t_prop *xt)
 {
 	IMGS->disp_names = 0;
@@ -56,5 +62,6 @@ void		draw_farm(t_prop *xt)
 	display_all(xt);
 	mlx_loop_hook(MLX_PTR, &onupdate, xt);
 	mlx_hook(xt->win_ptr, 2, 0, key_hook_press, xt);
+	mlx_hook(xt->win_ptr, 17, 0, exit_hook, xt);
 	mlx_loop(MLX_PTR);
 }

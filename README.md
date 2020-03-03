@@ -1,5 +1,10 @@
 # Before Final Upload
 - What do we do with other comments and commands
+- error management
+		- if p[0] == 'L' error
+		- order error (ants->rooms->links)
+		- **ROOMS starting or including char "-" ?**
+- test environment
 # GitHub To-Do
 - readme
 - python plotter/solver
@@ -137,10 +142,8 @@ All files have to correspond with 42 norm. In brief:
 	| lem_map_4kd5	| 10000	| 44.018	| 36.616
 	| lem_map_4kd5	| 100000| 51.130	|
 	| lem_map_10k25d| 100000| 
-	lem_map_4kd5 segfaults sometimes in reading process when adding neighbors
 
 
-	- visuhex -> pathdrawing vs ants movement
 	- error management
 		- if p[0] == 'L' error
 		- order error (ants->rooms->links)
@@ -152,14 +155,6 @@ All files have to correspond with 42 norm. In brief:
 			- mandatory start and end (done)
 			- number of ants and only once(done)
 		- no solution
-	- check unique paths
-		- limit the BFS search? min(start->ngb, end->ngb)
-			- once the limit of unique path is reached, stop bfs
-	- split ants among the paths
-		- figure out whether we make the ants literally or just abstract somehow
-	- output
-	- memory leaks check
-	- test bfs consistency
 	- test environment
 
 ## Random notes
