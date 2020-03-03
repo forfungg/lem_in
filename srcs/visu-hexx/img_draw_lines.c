@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 14:54:49 by solopov           #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:27:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ static int	ft_abs(int x)
 	return (x > 0 ? x : -x);
 }
 
-void	connect_nodes(int *image, t_prop *xt, t_node *beg, t_node *end)
+void		cnct_nodes(int *img, t_prop *xt, t_node *beg, t_node *end)
 {
 	xt->dx = ft_abs(end->nx - beg->nx);
 	xt->dy = ft_abs(end->ny - beg->ny);
 	xt->stpx = end->nx >= beg->nx ? 1 : -1;
 	xt->stpy = end->ny >= beg->ny ? 1 : -1;
 	if (xt->dx > xt->dy)
-		increment_x(image, xt, beg, end);
+		increment_x(img, xt, beg, end);
 	else
-		increment_y(image, xt, beg, end);
+		increment_y(img, xt, beg, end);
 }

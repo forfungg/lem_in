@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_draw_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 14:58:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:26:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:46:15 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static double	ft_abs(double x)
 	return (x > 0 ? x : -x);
 }
 
-void	move_ants(t_prop *xt)
+void			move_ants(t_prop *xt)
 {
 	t_ant	*temp;
 	t_node	*end;
@@ -37,7 +37,7 @@ void	move_ants(t_prop *xt)
 	}
 }
 
-void	*draw_ant_algo(t_ant *ant)
+void			draw_ant_algo(t_prop *xt, t_ant *ant)
 {
 	double		dx;
 	double		dy;
@@ -48,7 +48,7 @@ void	*draw_ant_algo(t_ant *ant)
 	dx = (ant->nextpos->nx - ant->curpos->nx);
 	dy = (ant->nextpos->ny - ant->curpos->ny);
 	direction = atan2(dy, dx);
-	speed = sqrt(ant->stpx * ant->stpx + ant->stpy * ant->stpy);
+	speed = sqrt(ant->stpx * ant->stpx + ant->stpy * ant->stpy) * xt->spdmod;
 	ant->x = ant->x + (speed * cos(direction));
 	ant->y = ant->y + (speed * sin(direction));
 }

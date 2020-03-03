@@ -3,29 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   update_ant_position.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:08:00 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/27 13:27:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/01 00:24:02 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu_hex.h"
 
-void	free_line(t_prop *xt)
+static void	next_line(t_prop *xt)
 {
 	t_lines *temp;
 
-	if (xt->lines->next)
-		temp = xt->lines->next;
+	if (xt->cpy->next)
+		xt->cpy = xt->cpy->next;
 	else
-		temp = 0;
-	free(xt->lines->str);
-	free(xt->lines);
-	xt->lines = temp;
+		xt->cpy = 0;
 }
 
-void	update_positions(t_prop *xt, char *set)
+static void	update_positions(t_prop *xt, char *set)
 {
 	char	**section;
 	t_ant	*temp;
@@ -48,7 +45,7 @@ void	update_positions(t_prop *xt, char *set)
 	clear_split(section);
 }
 
-void	update_ant_positions(t_prop *xt, char *line)
+void		update_ant_positions(t_prop *xt, char *line)
 {
 	int		cnt;
 	char	**array;
@@ -62,6 +59,6 @@ void	update_ant_positions(t_prop *xt, char *line)
 			cnt += 1;
 		}
 		clear_split(array);
-		free_line(xt);
+		next_line(xt);
 	}
 }

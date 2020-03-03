@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:29:16 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 17:41:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 12:21:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void		read_flags(t_prop *xt, int argc, char **argv)
 		{
 			if (ft_strchr(argv[i], 'f') && i + 1 < argc)
 				open_graph_file(xt, argv[i + 1]);
+			else if (ft_strchr(argv[i], 'f') && i + 1 >= argc)
+				error_exit("Failed : no file provided");
 			if (ft_strchr(argv[i], 'd'))
 				xt->flags.debug = 1;
 			if (ft_strchr(argv[i], 'u'))

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/31 10:53:16 by asolopov          #+#    #+#              #
-#    Updated: 2020/02/27 15:06:39 by jnovotny         ###   ########.fr        #
+#    Updated: 2020/03/02 12:22:41 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,25 +63,35 @@ VISU_HEXX			= visu-hexx
 
 VISU_HEXX_SRCS		= controls.c\
 					create_ant_nodes.c\
+					clear_mem.c\
+					clear_mem_ops.c\
 					exit_functions.c\
-					images_tools.c\
+					img_tools.c\
+					img_tools2.c\
 					img_create_ant.c\
 					img_create_back.c\
 					img_create_lines.c\
 					img_create_rooms.c\
+					img_display_obj.c\
+					img_display_opt.c\
 					img_draw_ants.c\
 					img_draw_lines.c\
-					img_draw_visu-hexx.c\
+					img_draw_all.c\
 					input_process.c\
+					input_identify.c\
+					input_save.c\
 					legend.c\
 					lines_management.c\
 					main.c\
 					move_ants.c\
 					nodes_management.c\
+					nodes_management2.c\
+					nodes_find.c\
 					paths_receive.c\
-					print_functions.c\
+					paths_tools.c\
+					flags_out.c\
+					input_check.c\
 					update_ant_position.c \
-					assigning_ants.c \
 					
 
 VISU_HEXX_FILES		= $(addprefix $(VISU_HEXX_DIR), $(VISU_HEXX_SRCS))

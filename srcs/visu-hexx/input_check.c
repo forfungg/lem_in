@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/10 17:11:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/02/29 20:53:52 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/29 20:46:34 by asolopov          #+#    #+#             */
+/*   Updated: 2020/03/02 10:41:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu_hex.h"
 
 static int		check_n_start_end(t_prop *xt)
 {
@@ -49,28 +49,12 @@ static int		get_len(t_node **array)
 	return (cnt);
 }
 
-static int		check_duplicate(t_node **array)
+static int		check_lines(t_prop *xt)
 {
-	int x;
-	int y;
-	int len;
-
-	if (!array)
+	if (!xt->lines)
+		return (1);
+	else
 		return (0);
-	x = 0;
-	len = get_len(array);
-	while (x < len)
-	{
-		y = x + 1;
-		while (y < len)
-		{
-			if (ft_strequ(array[x]->name, array[y]->name) == 1)
-				return (1);
-			y += 1;
-		}
-		x += 1;
-	}
-	return (0);
 }
 
 void			check_input(t_prop *xt)
@@ -79,6 +63,7 @@ void			check_input(t_prop *xt)
 
 	err = 0;
 	err += check_n_start_end(xt);
+	err += check_lines(xt);
 	err += check_ants(xt);
 	if (err != 0)
 		error_exit("Input is incorrect");

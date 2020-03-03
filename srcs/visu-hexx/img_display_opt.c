@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_tools.c                                       :+:      :+:    :+:   */
+/*   img_display.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 16:00:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/29 20:39:44 by asolopov         ###   ########.fr       */
+/*   Created: 2020/02/29 23:28:16 by asolopov          #+#    #+#             */
+/*   Updated: 2020/02/29 23:28:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "visu_hex.h"
 
-void	open_graph_file(t_prop *xt, char *filename)
+void	display_all(t_prop *xt)
 {
-	FILE = open(filename, O_RDONLY);
-	if (DEBUG)
-		ft_printf("Processed File (%d): %s\n", FILE, filename);
-	if (FILE < 0)
-		error_exit("Failed to open given file");
+	display_background(xt);
+	display_lines(xt);
+	display_uniroom(xt);
+	display_ants(xt);
+	display_stats(xt);
 }
 
-void	close_graph_file(t_prop *xt)
+void	display_paths(t_prop *xt)
 {
-	if (close(FILE) < 0)
-		error_exit("Failed to close given graph file");
+	display_background(xt);
+	display_uniroom(xt);
+	display_path(xt);
+	display_ants(xt);
+	display_stats(xt);
+}
+
+void	display_black(t_prop *xt)
+{
+	display_path(xt);
+	display_ants(xt);
+	display_stats(xt);
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 16:16:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/02/27 17:43:53 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/03/03 12:21:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		show_usage(void)
 	ft_printf("\t-d .............. shows debug output\n");
 	ft_printf("\t    -db ......... shows augmenting paths as well\n");
 	ft_printf("\t-u .............. shows program's usage\n");
-	ft_printf("\t-i .............. shows program's information\n");
+	ft_printf("\t-i .............. ./shows program's information\n");
 	exit(0);
 }
 
